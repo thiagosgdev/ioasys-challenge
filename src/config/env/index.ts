@@ -3,7 +3,6 @@ import 'dotenv/config';
 export default () => {
   return {
     nodeEnv: process.env.NODE_ENV || 'local',
-
     port: parseInt(process.env.PORT, 10),
     jwtSecret: process.env.JWT_SECRET,
     jwtExpires: process.env.JWT_EXPIRES_IN,
