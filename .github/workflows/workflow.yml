@@ -27,7 +27,7 @@ jobs:
           aws-region: sa-east-1
       # Step 5
       - name: Build Application and Run unit Test
-        run: yarn test & start
+        run: yarn start
 
   continuous-deployment:
     runs-on: ubuntu-latest
