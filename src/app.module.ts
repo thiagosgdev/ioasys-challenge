@@ -1,24 +1,14 @@
-import { HttpModule } from '@nestjs/axios';
 import { Module } from '@nestjs/common';
-import {
-  HealthCheckService,
-  HttpHealthIndicator,
-  TerminusModule,
-  TypeOrmHealthIndicator,
-} from '@nestjs/terminus';
+
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { HealthController } from './utils/health/health.controller';
+import { UserModule } from './modules/users/user.module';
+import { HealthModule } from './utils/health/health.module';
 import { MetricsController } from './utils/metrics/metrics.controller';
 
 @Module({
-  imports: [TerminusModule, HttpModule],
-  controllers: [AppController, HealthController, MetricsController],
-  providers: [
-    AppService,
-    HealthCheckService,
-    HttpHealthIndicator,
-    TypeOrmHealthIndicator,
-  ],
+  imports: [HealthModule, UserModule],
+  controllers: [AppController, MetricsController],
+  providers: [AppService],
 })
 export class AppModule {}
