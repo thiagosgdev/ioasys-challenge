@@ -1,14 +1,18 @@
-version: 1.0
-os: linux
+version: 0.0
+os: ubuntu
 files:
- - source: .
-   destination: /home/projects/ioasys-challenge
+  - source: /
+    destination: /home/ec2-user/projects/ioasys-challenge
 hooks:
-  AfterInstall:
-   - location: scripts/install_app_dependencies
-     timeout: 300
-     runas: root
+  ApplicationStop:
+    - location: scripts/application_stop.sh
+      timeout: 300
+      runas: ec2-user
+  BeforeInstall:
+    - location: scripts/before_install.sh
+      timeout: 300
+      runas: ec2-user
   ApplicationStart:
-   - location: scripts/start_server
-     timeout: 300
-     runas: root
+    - location: scripts/application_start.sh
+      timeout: 300
+      runas: ec2-usera
