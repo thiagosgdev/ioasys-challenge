@@ -1,10 +1,10 @@
 #!/bin/bash
 
 #give permission for everything in the project directory
-sudo chmod -R 777 /home/ubuntu/projects/ioasys-challenge
+sudo chmod -R 777 /home/ec2-user/ioasys-challenge
 
 #navigate into the working directory where all github files are
-cd /home/ubuntu/projects/ioasys-challenge
+cd /home/ec2-user/ioasys-challenge
 
 #add npm and node to path
 export NVM_DIR="$HOME/.nvm"	
