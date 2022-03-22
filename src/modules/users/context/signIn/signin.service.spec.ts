@@ -1,12 +1,12 @@
 import { BadRequestException } from '@nestjs/common';
 import { Test, TestingModule } from '@nestjs/testing';
 import { SigninResponseDTO } from 'src/shared/dtos/users/signinResponse.dto';
-import { SigninService } from './signin.service';
+import { SigninService } from 'src/modules/users/context/signIn/signin.service';
 
 const mockSigninResponseDTO = (): SigninResponseDTO => {
   return {
     token: 'any_token',
-    refresh_token: 'any_refresh_token',
+    refreshToken: 'any_refresh_token',
   };
 };
 describe('Sign in Service', () => {

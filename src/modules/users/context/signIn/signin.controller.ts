@@ -3,32 +3,40 @@ import {
   Controller,
   Get,
   HttpCode,
+  HttpException,
   HttpStatus,
-  Res,
 } from '@nestjs/common';
+import { ApiBadRequestResponse, ApiOkResponse, ApiTags } from '@nestjs/swagger';
 import { instanceToInstance } from 'class-transformer';
-import { Response } from 'express';
 
 import { SigninRequestDTO } from 'src/shared/dtos/users/signinRequest.dto';
-import { SigninService } from './signin.service';
+import { SigninService } from 'src/modules/users/context/signIn/signin.service';
 
-@Controller('/signin')
+@Controller('/users')
 export class SigninController {
   constructor(private signinService: SigninService) {}
 
-  @Get()
+  @Get('/signin')
   @HttpCode(HttpStatus.OK)
-  public async handle(
-    @Body() data: SigninRequestDTO,
-    @Res() res: Response,
-  ): Promise<Response> {
+  @ApiTags('users')
+  @ApiOkResponse({
+    description: 'A token will be returned.',
+    schema: {
+      example:
+        'eyJhbGciOiJIUzI1NiJ9.eyJSb2xlIjoiQWRtaW4iLCJJc3N1ZXIiOiJJc3N1ZXIiLCJVc2VybmFtZSI6IkphdmFJblVzZSIsImV4cCI6MTY0NzI5OTI0MywiaWF0IjoxNjQ3Mjk5MjQzfQ.T56MxkVLF8M5wm5PBm3j7fJrubC4jHJPk8MmoVHhmPo',
+    },
+  })
+  @ApiBadRequestResponse({
+    description: 'This will be returned when has validation error',
+  })
+  public async handle(@Body() data: SigninRequestDTO) {
     try {
-      const tokens = await this.signinService.login(data);
-      if (tokens) {
-        return res.status(200).send(instanceToInstance(tokens));
-      }
+      return instanceToInstance(await this.signinService.login(data));
     } catch (error) {
-      return res.status(500).send({ message: error.message });
+      throw new HttpException(
+        error.response.message,
+        error.response.statusCode,
+      );
     }
   }
 }

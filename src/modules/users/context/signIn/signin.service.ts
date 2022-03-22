@@ -13,7 +13,7 @@ export class SigninService implements SignIn {
     //call generate token method
     return {
       token: 'this a token',
-      refresh_token: 'this is a refresh token',
+      refreshToken: 'this is a refresh token',
     };
   }
 }
