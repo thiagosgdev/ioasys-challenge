@@ -20,7 +20,7 @@ export class SigninController {
   @HttpCode(HttpStatus.OK)
   @ApiTags('users')
   @ApiOkResponse({
-    description: 'A token will be returned.',
+    description: 'A token and refresh token will be returned.',
     schema: {
       example:
         'eyJhbGciOiJIUzI1NiJ9.eyJSb2xlIjoiQWRtaW4iLCJJc3N1ZXIiOiJJc3N1ZXIiLCJVc2VybmFtZSI6IkphdmFJblVzZSIsImV4cCI6MTY0NzI5OTI0MywiaWF0IjoxNjQ3Mjk5MjQzfQ.T56MxkVLF8M5wm5PBm3j7fJrubC4jHJPk8MmoVHhmPo',

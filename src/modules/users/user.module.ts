@@ -4,13 +4,14 @@ import { CacheModule, Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { DatabaseModule } from 'src/infra/database.module';
 import { User } from 'src/shared/entities/user.entity';
-import { UserRepo } from 'src/shared/repositories/user.repository';
 import { ResetPasswordController } from 'src/modules/users/context/resetPassword/resetPassword.controller';
 import { ResetPasswordService } from 'src/modules/users/context/resetPassword/resetPassword.service';
 import { SigninController } from 'src/modules/users/context/signIn/signin.controller';
 import { SigninService } from 'src/modules/users/context/signIn/signin.service';
 import { userProviders } from './user.provider';
 import { MailerModule } from '@nestjs-modules/mailer';
+import { BcryptProvider } from 'src/shared/providers/HasherProvider/bcrypt.provider';
+import { JwtProvider } from 'src/shared/providers/EncryptProvider/jwt.provider';
 
 @Module({
   imports: [
@@ -29,7 +30,13 @@ import { MailerModule } from '@nestjs-modules/mailer';
       },
     }),
   ],
-  providers: [...userProviders, SigninService, ResetPasswordService],
+  providers: [
+    ...userProviders,
+    { provide: 'HASH_PROVIDER', useClass: BcryptProvider },
+    { provide: 'ENCRYPTER_PROVIDER', useClass: JwtProvider },
+    SigninService,
+    ResetPasswordService,
+  ],
   controllers: [SigninController, ResetPasswordController],
 })
 export class UserModule {}

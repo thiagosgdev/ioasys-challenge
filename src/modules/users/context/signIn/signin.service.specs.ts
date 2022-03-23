@@ -2,6 +2,8 @@ import { BadRequestException } from '@nestjs/common';
 import { Test, TestingModule } from '@nestjs/testing';
 import { SigninResponseDTO } from 'src/shared/dtos/users/signinResponse.dto';
 import { SigninService } from 'src/modules/users/context/signIn/signin.service';
+import { BcryptProvider } from 'src/shared/providers/HasherProvider/bcrypt.provider';
+import { JwtProvider } from 'src/shared/providers/EncryptProvider/jwt.provider';
 
 const mockSigninResponseDTO = (): SigninResponseDTO => {
   return {
@@ -14,7 +16,17 @@ describe('Sign in Service', () => {
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
-      providers: [SigninService],
+      providers: [
+        SigninService,
+        {
+          provide: 'HASH_PROVIDER',
+          useClass: BcryptProvider,
+        },
+        {
+          provide: 'ENCRYPTER_PROVIDER',
+          useClass: JwtProvider,
+        },
+      ],
     }).compile();
 
     service = module.get<SigninService>(SigninService);
