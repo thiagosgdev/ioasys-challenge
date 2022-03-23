@@ -2,7 +2,7 @@ import { Module } from '@nestjs/common';
 import { TerminusModule } from '@nestjs/terminus';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { WinstonModule } from 'nest-winston';
-import { APP_INTERCEPTOR } from '@nestjs/core';
+import { APP_GUARD, APP_INTERCEPTOR } from '@nestjs/core';
 import { MailerModule } from '@nestjs-modules/mailer';
 
 import { LoggerInterceptor } from 'src/shared/interceptors/logger.interceptor';
@@ -11,12 +11,17 @@ import { HealthModule } from 'src/utils/health/health.module';
 import { MetricsController } from 'src/utils/metrics/metrics.controller';
 import { winstonConfig } from 'src/configs/logger/winston.config';
 import { mailerConfig } from 'src/configs/mailer.config';
+import { ThrottlerGuard, ThrottlerModule } from '@nestjs/throttler';
 
 @Module({
   imports: [
     TypeOrmModule.forRoot(),
     WinstonModule.forRoot(winstonConfig),
     MailerModule.forRoot(mailerConfig),
+    ThrottlerModule.forRoot({
+      ttl: 60,
+      limit: 10,
+    }),
     HealthModule,
     TerminusModule,
     UserModule,
@@ -26,6 +31,10 @@ import { mailerConfig } from 'src/configs/mailer.config';
     {
       provide: APP_INTERCEPTOR,
       useClass: LoggerInterceptor,
+    },
+    {
+      provide: APP_GUARD,
+      useClass: ThrottlerGuard,
     },
   ],
 })
