@@ -12,6 +12,8 @@ import { userProviders } from './user.provider';
 import { MailerModule } from '@nestjs-modules/mailer';
 import { BcryptProvider } from 'src/shared/providers/HasherProvider/bcrypt.provider';
 import { JwtProvider } from 'src/shared/providers/EncryptProvider/jwt.provider';
+import { SignUpService } from './context/signUp/signUp.service';
+import { SignUpController } from './context/signUp/signUp.controller';
 
 @Module({
   imports: [
@@ -36,7 +38,8 @@ import { JwtProvider } from 'src/shared/providers/EncryptProvider/jwt.provider';
     { provide: 'ENCRYPTER_PROVIDER', useClass: JwtProvider },
     SigninService,
     ResetPasswordService,
+    SignUpService,
   ],
-  controllers: [SigninController, ResetPasswordController],
+  controllers: [SigninController, ResetPasswordController, SignUpController],
 })
 export class UserModule {}

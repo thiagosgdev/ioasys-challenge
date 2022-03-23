@@ -25,7 +25,8 @@ export class SignUpController {
       }
       return instanceToInstance(await this.signUpService.create(data));
     } catch (error) {
-      throw new HttpException(error.response.message, error.response.status);
+      console.log(error);
+      throw new HttpException(error.message, error.status);
     }
   }
 }

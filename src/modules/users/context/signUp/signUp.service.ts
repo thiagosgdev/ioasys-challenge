@@ -16,8 +16,10 @@ export class SignUpService {
   async create(data: SignUpRequestDTO): Promise<User> {
     const { email, password } = data;
 
-    const savedUser = await this.userRepository.findOne(email);
-    if (savedUser) {
+    console.log(data);
+
+    const exists = await this.userRepository.findOne({ email });
+    if (exists) {
       throw new BadRequestException(
         'E-mail already in use! Try to recover your password',
       );
@@ -25,15 +27,17 @@ export class SignUpService {
 
     const hashedPassword = await this.hasher.createHash(password);
 
-    const user = this.userRepository.create({
-      ...data,
+    const userData = {
+      first_name: data.firstName,
+      last_name: data.lastName,
+      email,
       password: hashedPassword,
-    });
+    };
+
+    const user = this.userRepository.create(userData);
 
     await this.userRepository.save(user);
-    if (user) {
-      return user;
-    }
-    return null;
+
+    return user;
   }
 }

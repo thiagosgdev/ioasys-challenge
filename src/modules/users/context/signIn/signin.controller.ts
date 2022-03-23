@@ -33,10 +33,7 @@ export class SigninController {
     try {
       return instanceToInstance(await this.signinService.login(data));
     } catch (error) {
-      throw new HttpException(
-        error.response.message,
-        error.response.statusCode,
-      );
+      throw new HttpException(error.message, error.statusCode);
     }
   }
 }
