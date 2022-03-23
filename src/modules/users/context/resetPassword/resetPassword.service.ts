@@ -17,8 +17,8 @@ export class ResetPasswordService {
       throw new NotFoundException('No user found!');
     }
     const mail = {
-      to: email,
-      from: 'noreply@squad8.com',
+      to: 'thiagosgdev@gmail.com',
+      from: 'squad8.test@gmail.com',
       subject: 'Email Reset de Senha',
       template: 'recover-password',
       context: {

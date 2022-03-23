@@ -1,16 +1,20 @@
 import { MailerOptions } from '@nestjs-modules/mailer';
 import { HandlebarsAdapter } from '@nestjs-modules/mailer/dist/adapters/handlebars.adapter';
 import * as path from 'path';
-import aws from '@aws-sdk/client-ses';
-import { defaultProvider } from '@aws-sdk/credential-provider-node';
+import * as aws from '@aws-sdk/client-ses';
 
-const user = 'squad8.test@gmail.com';
-const pass = 'Squad8test*';
+import envConfig from 'src/configs/env';
+
+const user = envConfig().emailUsername;
+const pass = envConfig().emailPassword;
 
 const ses = new aws.SES({
   apiVersion: '2010-12-01',
-  region: 'us-east-1',
-  credentialDefaultProvider: defaultProvider,
+  region: envConfig().awsRegion,
+  credentials: {
+    accessKeyId: envConfig().awsSESAccess,
+    secretAccessKey: envConfig().awsSESSecret,
+  },
 });
 
 export const mailerConfig: MailerOptions = {
@@ -22,8 +26,8 @@ export const mailerConfig: MailerOptions = {
       layoutsDir: path.resolve(__dirname, '..', '..', 'templates'),
     },
   },
-  transport: `smtp://${user}:${pass}@smtp.gmail.com`,
-  //  transport: {
-  //    SES: { ses, aws },
-  //  },
+  //  transport: `smtp://${user}:${pass}@smtp.gmail.com`,
+  transport: {
+    SES: { ses, aws },
+  },
 };

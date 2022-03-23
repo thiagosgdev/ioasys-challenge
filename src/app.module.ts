@@ -11,7 +11,6 @@ import { HealthModule } from 'src/utils/health/health.module';
 import { MetricsController } from 'src/utils/metrics/metrics.controller';
 import { winstonConfig } from 'src/configs/logger/winston.config';
 import { mailerConfig } from 'src/configs/mailer.config';
-import { EtherealMailProvider } from './shared/providers/MailProvider/ethereal.provider';
 
 @Module({
   imports: [
@@ -24,10 +23,6 @@ import { EtherealMailProvider } from './shared/providers/MailProvider/ethereal.p
   ],
   controllers: [MetricsController],
   providers: [
-    {
-      provide: 'ETHEREAL_PROVIDER',
-      useClass: EtherealMailProvider,
-    },
     {
       provide: APP_INTERCEPTOR,
       useClass: LoggerInterceptor,

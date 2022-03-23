@@ -12,5 +12,10 @@ export default () => {
     dbUser: process.env.DB_USER,
     dbPassword: process.env.DB_PASSWORD,
     dbName: process.env.DB_NAME,
+    emailUsername: process.env.EMAIL_USERNAME,
+    emailPassword: process.env.EMAIL_PASSWORD,
+    awsRegion: process.env.AWS_REGION,
+    awsSESAccess: process.env.AWS_SES_ACCESS_KEY_ID,
+    awsSESSecret: process.env.AWS_SES_SECRET_ACCESS_KEY,
   };
 };
