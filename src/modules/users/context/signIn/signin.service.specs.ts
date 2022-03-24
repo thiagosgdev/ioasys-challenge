@@ -4,11 +4,21 @@ import { SigninResponseDTO } from 'src/shared/dtos/users/signinResponse.dto';
 import { SigninService } from 'src/modules/users/context/signIn/signin.service';
 import { BcryptProvider } from 'src/shared/providers/HasherProvider/bcrypt.provider';
 import { JwtProvider } from 'src/shared/providers/EncryptProvider/jwt.provider';
+import { UserEntityDTO } from 'src/shared/dtos/users/userEntity.dto';
 
+const mockUser: UserEntityDTO = {
+  firstName: 'Test',
+  lastName: 'Tester',
+  email: 'test@test.com',
+  created_at: new Date(),
+  updated_at: null,
+  deleted_at: null,
+};
 const mockSigninResponseDTO = (): SigninResponseDTO => {
   return {
     token: 'any_token',
     refreshToken: 'any_refresh_token',
+    user: mockUser,
   };
 };
 describe('Sign in Service', () => {
