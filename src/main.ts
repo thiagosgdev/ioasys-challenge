@@ -10,7 +10,7 @@ import { AppModule } from 'src/app.module';
 
 async function bootstrap() {
   const logger = WinstonModule.createLogger(winstonConfig);
-  const app = await NestFactory.create(AppModule, { logger });
+  const app = await NestFactory.create(AppModule, { logger, cors: true });
 
   const config = new DocumentBuilder()
     .setTitle('Ioasys Challenge API')
