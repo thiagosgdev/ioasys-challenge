@@ -1,19 +1,22 @@
 import * as redisStore from 'cache-manager-redis-store';
 import type { RedisClientOptions } from 'redis';
 import { CacheModule, Module } from '@nestjs/common';
+import { MailerModule } from '@nestjs-modules/mailer';
 import { TypeOrmModule } from '@nestjs/typeorm';
+
 import { DatabaseModule } from 'src/infra/database.module';
 import { User } from 'src/shared/entities/user.entity';
 import { ResetPasswordController } from 'src/modules/users/context/resetPassword/resetPassword.controller';
 import { ResetPasswordService } from 'src/modules/users/context/resetPassword/resetPassword.service';
 import { SigninController } from 'src/modules/users/context/signIn/signin.controller';
 import { SigninService } from 'src/modules/users/context/signIn/signin.service';
-import { userProviders } from './user.provider';
-import { MailerModule } from '@nestjs-modules/mailer';
 import { BcryptProvider } from 'src/shared/providers/HasherProvider/bcrypt.provider';
 import { JwtProvider } from 'src/shared/providers/EncryptProvider/jwt.provider';
-import { SignUpService } from './context/signUp/signUp.service';
-import { SignUpController } from './context/signUp/signUp.controller';
+import { userProviders } from 'src/modules/users/user.provider';
+import { SignUpService } from 'src/modules/users/context/signUp/signUp.service';
+import { SignUpController } from 'src/modules/users/context/signUp/signUp.controller';
+import { LogoutService } from 'src/modules/users/context/logOut/logout.service';
+import { LogoutController } from 'src/modules/users/context/logOut/logout.controller';
 
 @Module({
   imports: [
@@ -39,7 +42,13 @@ import { SignUpController } from './context/signUp/signUp.controller';
     SigninService,
     ResetPasswordService,
     SignUpService,
+    LogoutService,
   ],
-  controllers: [SigninController, ResetPasswordController, SignUpController],
+  controllers: [
+    SigninController,
+    ResetPasswordController,
+    SignUpController,
+    LogoutController,
+  ],
 })
 export class UserModule {}

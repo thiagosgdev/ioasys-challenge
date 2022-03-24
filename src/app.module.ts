@@ -1,9 +1,10 @@
-import { Module } from '@nestjs/common';
+import { CacheModule, Module } from '@nestjs/common';
 import { TerminusModule } from '@nestjs/terminus';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { WinstonModule } from 'nest-winston';
 import { APP_GUARD, APP_INTERCEPTOR } from '@nestjs/core';
 import { MailerModule } from '@nestjs-modules/mailer';
+import * as redisStore from 'cache-manager-redis-store';
 
 import { LoggerInterceptor } from 'src/shared/interceptors/logger.interceptor';
 import { UserModule } from 'src/modules/users/user.module';
@@ -21,6 +22,11 @@ import { ThrottlerGuard, ThrottlerModule } from '@nestjs/throttler';
     ThrottlerModule.forRoot({
       ttl: 60,
       limit: 10,
+    }),
+    CacheModule.register({
+      store: redisStore,
+      host: 'redis',
+      port: 6379,
     }),
     HealthModule,
     TerminusModule,

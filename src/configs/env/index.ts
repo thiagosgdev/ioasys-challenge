@@ -17,5 +17,6 @@ export default () => {
     awsRegion: process.env.AWS_REGION,
     awsSESAccess: process.env.AWS_SES_ACCESS_KEY_ID,
     awsSESSecret: process.env.AWS_SES_SECRET_ACCESS_KEY,
+    redisPort: process.env.REDIS_PORT,
   };
 };

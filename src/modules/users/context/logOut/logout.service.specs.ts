@@ -1,14 +1,14 @@
 import { Test, TestingModule } from '@nestjs/testing';
-import { SignoutService } from './signout.service';
+import { LogoutService } from './logout.service';
 
 describe('Signout Service', () => {
-  let service: SignoutService;
+  let service: LogoutService;
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
-      providers: [SignoutService],
+      providers: [LogoutService],
     }).compile();
 
-    service = module.get<SignoutService>(SignoutService);
+    service = module.get<LogoutService>(LogoutService);
   });
   it('Should be defined!', () => {
     expect(service).toBeDefined();
