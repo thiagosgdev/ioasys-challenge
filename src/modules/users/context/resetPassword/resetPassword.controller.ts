@@ -1,24 +1,18 @@
 import {
   Body,
-  CACHE_MANAGER,
   Controller,
   Get,
   HttpCode,
   HttpException,
   HttpStatus,
-  Inject,
 } from '@nestjs/common';
-import { Cache } from 'cache-manager';
 import { ApiBadRequestResponse, ApiOkResponse, ApiTags } from '@nestjs/swagger';
+
 import { ResetPasswordService } from 'src/modules/users/context/resetPassword/resetPassword.service';
 
 @Controller('/users')
 export class ResetPasswordController {
-  constructor(
-    private resetPasswordService: ResetPasswordService,
-    @Inject(CACHE_MANAGER)
-    private cacheManager: Cache,
-  ) {}
+  constructor(private resetPasswordService: ResetPasswordService) {}
 
   @Get('/resetpassword')
   @HttpCode(HttpStatus.OK)
@@ -33,14 +27,11 @@ export class ResetPasswordController {
     description:
       'This will be returned when has validation error or no user is found',
   })
-  public async handle(@Body() email: string) {
+  public async handle(@Body('email') email: string) {
     try {
-      //  await this.cacheManager.set('1234', 'abcde');
-      //  return await this.cacheManager.get('1234');
-      return await this.resetPasswordService.execute(email);
+      await this.resetPasswordService.execute(email);
     } catch (error) {
-      console.log(error);
-      return error;
+      throw new HttpException(error.message, error.status);
     }
   }
 }

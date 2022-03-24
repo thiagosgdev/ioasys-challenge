@@ -11,13 +11,13 @@ export class ResetPasswordService {
     private mailerService: MailerService,
   ) {}
   async execute(email: string) {
-    const exists = true;
+    const exists = await this.userRepository.findOne({ email });
 
     if (!exists) {
       throw new NotFoundException('No user found!');
     }
     const mail = {
-      to: 'thiagosgdev@gmail.com',
+      to: email,
       from: 'squad8.test@gmail.com',
       subject: 'Email Reset de Senha',
       template: 'recover-password',
