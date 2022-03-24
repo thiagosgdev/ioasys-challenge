@@ -17,6 +17,8 @@ import { SignUpService } from 'src/modules/users/context/signUp/signUp.service';
 import { SignUpController } from 'src/modules/users/context/signUp/signUp.controller';
 import { LogoutService } from 'src/modules/users/context/logOut/logout.service';
 import { LogoutController } from 'src/modules/users/context/logOut/logout.controller';
+import { ListUsersService } from 'src/modules/users/context/listUsers/listUsers.service';
+import { ListUsersController } from 'src/modules/users/context/listUsers/listUsers.controller';
 
 @Module({
   imports: [
@@ -43,12 +45,14 @@ import { LogoutController } from 'src/modules/users/context/logOut/logout.contro
     ResetPasswordService,
     SignUpService,
     LogoutService,
+    ListUsersService,
   ],
   controllers: [
     SigninController,
     ResetPasswordController,
     SignUpController,
     LogoutController,
+    ListUsersController,
   ],
 })
 export class UserModule {}
