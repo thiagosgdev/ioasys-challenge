@@ -6,10 +6,8 @@
 
 Users - (/users)
 
-- /signin - Required Body: email: string, password: string
-- /resetpassword - Required body: email: string
-- /logout - Required Header: Token: string
-- /signup - Require Body: TBD
+- /signin - Required Body: email: string, password: string - Returns a object {token: string, refreshToken: string}
+- /signup - Require Body: firstName: string, lastName: string, email: string, password: string, passwordConfirmation: string
 - Export documents as Markdown, HTML and PDF
 
 ### Infraestruture
