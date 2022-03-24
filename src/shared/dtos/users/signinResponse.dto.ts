@@ -1,7 +1,7 @@
-import { UserEntityDTO } from 'src/shared/dtos/users/userEntity.dto';
+import { UserDTO } from './user.dto';
 
 export class SigninResponseDTO {
   token: string;
   refreshToken: string;
-  user: UserEntityDTO;
+  user: UserDTO;
 }

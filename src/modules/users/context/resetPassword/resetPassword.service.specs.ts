@@ -1,15 +1,17 @@
 import { Test, TestingModule } from '@nestjs/testing';
-import { UserModel } from 'src/domain/models/user.model';
 import { UserRepo } from 'src/shared/repositories/user.repository';
 import { ResetPasswordService } from 'src/modules/users/context/resetPassword/resetPassword.service';
+import { UserDTO } from 'src/shared/dtos/users/user.dto';
 
-const mockUserModel = (): UserModel => ({
+const mockUserModel = (): UserDTO => ({
   id: '56e1c6de-73d0-4d32-a130-3efa59d1f6ab',
+  firstName: 'any_first_name',
+  lastName: 'any_last_name',
   email: 'test@test.com',
   password: '12345678',
-  created_at: new Date(),
-  updated_at: new Date(),
-  deleted_at: new Date(),
+  createdAt: new Date(),
+  updatedAt: new Date(),
+  deletedAt: new Date(),
 });
 describe('Reset Password Service', () => {
   let service: ResetPasswordService;

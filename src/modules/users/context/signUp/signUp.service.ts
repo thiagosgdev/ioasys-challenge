@@ -16,8 +16,6 @@ export class SignUpService {
   async create(data: SignUpRequestDTO): Promise<User> {
     const { email, password } = data;
 
-    console.log(data);
-
     const exists = await this.userRepository.findOne({ email });
     if (exists) {
       throw new BadRequestException(
@@ -27,14 +25,10 @@ export class SignUpService {
 
     const hashedPassword = await this.hasher.createHash(password);
 
-    const userData = {
-      first_name: data.firstName,
-      last_name: data.lastName,
-      email,
+    const user = this.userRepository.create({
+      ...data,
       password: hashedPassword,
-    };
-
-    const user = this.userRepository.create(userData);
+    });
 
     await this.userRepository.save(user);
 
