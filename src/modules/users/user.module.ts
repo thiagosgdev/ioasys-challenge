@@ -19,6 +19,8 @@ import { LogoutService } from 'src/modules/users/context/logOut/logout.service';
 import { LogoutController } from 'src/modules/users/context/logOut/logout.controller';
 import { ListUsersService } from 'src/modules/users/context/listUsers/listUsers.service';
 import { ListUsersController } from 'src/modules/users/context/listUsers/listUsers.controller';
+import { UpdateUserService } from './context/updateUsers/updateUser.service';
+import { UpdateUserController } from './context/updateUsers/updateUser.controller';
 
 @Module({
   imports: [
@@ -46,6 +48,7 @@ import { ListUsersController } from 'src/modules/users/context/listUsers/listUse
     SignUpService,
     LogoutService,
     ListUsersService,
+    UpdateUserService,
   ],
   controllers: [
     SigninController,
@@ -53,6 +56,7 @@ import { ListUsersController } from 'src/modules/users/context/listUsers/listUse
     SignUpController,
     LogoutController,
     ListUsersController,
+    UpdateUserController,
   ],
 })
 export class UserModule {}
