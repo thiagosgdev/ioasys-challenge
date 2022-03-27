@@ -1,3 +1,4 @@
+import { ApiProperty } from '@nestjs/swagger';
 import { Exclude } from 'class-transformer';
 import {
   IsEmail,
@@ -10,14 +11,17 @@ import {
 export class SignUpDTO {
   @IsNotEmpty()
   @IsString()
+  @ApiProperty()
   firstName: string;
 
   @IsNotEmpty()
   @IsString()
+  @ApiProperty()
   lastName: string;
 
   @IsNotEmpty()
   @IsEmail()
+  @ApiProperty()
   email: string;
 
   @IsNotEmpty()
@@ -25,5 +29,6 @@ export class SignUpDTO {
   @MinLength(6)
   @MaxLength(20)
   @Exclude()
+  @ApiProperty()
   password: string;
 }
