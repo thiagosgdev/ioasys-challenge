@@ -5,6 +5,7 @@ import {
   HttpCode,
   HttpException,
   HttpStatus,
+  Post,
 } from '@nestjs/common';
 import { ApiBadRequestResponse, ApiOkResponse, ApiTags } from '@nestjs/swagger';
 import { instanceToInstance } from 'class-transformer';
@@ -16,7 +17,7 @@ import { SigninService } from 'src/modules/users/context/signIn/signin.service';
 export class SigninController {
   constructor(private signinService: SigninService) {}
 
-  @Get('/signin')
+  @Post('/signin')
   @HttpCode(HttpStatus.OK)
   @ApiTags('users')
   @ApiOkResponse({
