@@ -4,10 +4,12 @@ import {
   CreateDateColumn,
   DeleteDateColumn,
   Entity,
+  OneToMany,
   PrimaryColumn,
   UpdateDateColumn,
 } from 'typeorm';
 import { v4 as uuidV4 } from 'uuid';
+import { UserMood } from './userMoods.entity';
 
 @Entity('users')
 export class User {
@@ -26,6 +28,9 @@ export class User {
   @Exclude({ toPlainOnly: true })
   @Column({ select: false })
   password: string;
+
+  @OneToMany(() => UserMood, (userMoods) => userMoods.user)
+  userMoods: UserMood[];
 
   @CreateDateColumn({ name: 'created_at' })
   createdAt: Date;
