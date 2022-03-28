@@ -15,6 +15,8 @@ import { mailerConfig } from 'src/configs/mailer.config';
 import { ThrottlerGuard, ThrottlerModule } from '@nestjs/throttler';
 import { MessageModule } from './modules/messages/message.module';
 import { MessageTypeModule } from './modules/messagesTypes/messagesTypes.module';
+import { MoodModule } from './modules/moods/moods.module';
+import { UserMoodModule } from './modules/usersMoods/userMoods.module';
 
 @Module({
   imports: [
@@ -35,6 +37,8 @@ import { MessageTypeModule } from './modules/messagesTypes/messagesTypes.module'
     UserModule,
     MessageModule,
     MessageTypeModule,
+    MoodModule,
+    UserMoodModule,
   ],
   controllers: [MetricsController],
   providers: [

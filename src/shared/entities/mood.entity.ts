@@ -1,5 +1,5 @@
-import { Exclude } from 'class-transformer';
 import {
+  BeforeInsert,
   Column,
   CreateDateColumn,
   DeleteDateColumn,
@@ -11,25 +11,18 @@ import {
 import { v4 as uuidV4 } from 'uuid';
 import { UserMood } from './userMoods.entity';
 
-@Entity('users')
-export class User {
+@Entity('moods')
+export class Mood {
   @PrimaryColumn()
   id: string;
 
-  @Column({ name: 'first_name' })
-  firstName: string;
-
-  @Column({ name: 'last_name' })
-  lastName: string;
+  @Column()
+  name: string;
 
   @Column()
-  email: string;
+  active: boolean;
 
-  @Exclude({ toPlainOnly: true })
-  @Column({ select: false })
-  password: string;
-
-  @OneToMany(() => UserMood, (userMoods) => userMoods.user)
+  @OneToMany(() => UserMood, (userMoods) => userMoods.mood)
   userMoods: UserMood[];
 
   @CreateDateColumn({ name: 'created_at' })
@@ -41,9 +34,8 @@ export class User {
   @DeleteDateColumn({ name: 'deleted_at' })
   deletedAt: Date;
 
-  constructor() {
-    if (!this.id) {
-      this.id = uuidV4();
-    }
+  @BeforeInsert()
+  async createId() {
+    this.id = uuidV4();
   }
 }
