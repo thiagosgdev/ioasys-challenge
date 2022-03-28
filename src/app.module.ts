@@ -13,6 +13,8 @@ import { MetricsController } from 'src/utils/metrics/metrics.controller';
 import { winstonConfig } from 'src/configs/logger/winston.config';
 import { mailerConfig } from 'src/configs/mailer.config';
 import { ThrottlerGuard, ThrottlerModule } from '@nestjs/throttler';
+import { MessageModule } from './modules/messages/message.module';
+import { MessageTypeModule } from './modules/messagesTypes/messagesTypes.module';
 
 @Module({
   imports: [
@@ -31,6 +33,8 @@ import { ThrottlerGuard, ThrottlerModule } from '@nestjs/throttler';
     HealthModule,
     TerminusModule,
     UserModule,
+    MessageModule,
+    MessageTypeModule,
   ],
   controllers: [MetricsController],
   providers: [
