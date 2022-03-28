@@ -21,22 +21,31 @@ export class SigninService implements SignIn {
   ) {}
   async login(data: SigninRequestDTO): Promise<SigninResponseDTO> {
     const { email, password } = data;
-
     if (!email || !password) {
       throw new BadRequestException('Required field not provided!');
     }
-    const user = await this.userRepository.findOne({ email });
+    const userCredentials = await this.userRepository.findOne({
+      select: ['email', 'password'],
+      where: {
+        email,
+      },
+    });
 
-    if (!user) {
-      user.password = String(Math.random() * 1000) + 'F4!L';
+    if (!userCredentials) {
+      userCredentials.password = String(Math.random() * 1000) + 'F4!L';
     }
-
-    const isValid = await this.hasher.compareHash(password, user.password);
+    const isValid = await this.hasher.compareHash(
+      password,
+      userCredentials.password,
+    );
 
     if (!isValid) {
       throw new BadRequestException('Invalid email/password');
     }
 
+    const user = await this.userRepository.findOne({
+      email,
+    });
     const token = await this.encrypter.encrypt(user.id);
     const refreshToken = await this.encrypterRefresh.encryptRefresh(user.id);
 
