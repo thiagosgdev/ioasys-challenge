@@ -1,4 +1,4 @@
-import { BadRequestException, Inject } from '@nestjs/common';
+import { BadRequestException, Inject, NotFoundException } from '@nestjs/common';
 import { SignIn } from 'src/domain/usecase/users/sigin.usecase';
 import { SigninRequestDTO } from 'src/shared/dtos/users/signinRequest.dto';
 import { SigninResponseDTO } from 'src/shared/dtos/users/signinResponse.dto';
@@ -21,9 +21,7 @@ export class SigninService implements SignIn {
   ) {}
   async login(data: SigninRequestDTO): Promise<SigninResponseDTO> {
     const { email, password } = data;
-    if (!email || !password) {
-      throw new BadRequestException('Required field not provided!');
-    }
+
     const userCredentials = await this.userRepository.findOne({
       select: ['email', 'password'],
       where: {
@@ -32,7 +30,7 @@ export class SigninService implements SignIn {
     });
 
     if (!userCredentials) {
-      userCredentials.password = String(Math.random() * 1000) + 'F4!L';
+      throw new NotFoundException('No user found!');
     }
     const isValid = await this.hasher.compareHash(
       password,

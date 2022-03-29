@@ -2,9 +2,7 @@ import {
   BadRequestException,
   Body,
   Controller,
-  HttpCode,
   HttpException,
-  HttpStatus,
   Post,
 } from '@nestjs/common';
 import { ApiBadRequestResponse, ApiOkResponse, ApiTags } from '@nestjs/swagger';
@@ -18,7 +16,6 @@ export class SignUpController {
   constructor(private signUpService: SignUpService) {}
 
   @Post('/signup')
-  @HttpCode(HttpStatus.CREATED)
   @ApiTags('users')
   @ApiOkResponse({
     description: 'The user object will be returned',

@@ -13,13 +13,13 @@ import { instanceToInstance } from 'class-transformer';
 import { SigninRequestDTO } from 'src/shared/dtos/users/signinRequest.dto';
 import { SigninService } from 'src/modules/users/context/signIn/signin.service';
 
+@ApiTags('users')
 @Controller('/users')
 export class SigninController {
   constructor(private signinService: SigninService) {}
 
   @Post('/signin')
   @HttpCode(HttpStatus.OK)
-  @ApiTags('users')
   @ApiOkResponse({
     description: 'A token and refresh token will be returned.',
     schema: {

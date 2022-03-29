@@ -6,11 +6,13 @@ import {
   Entity,
   OneToMany,
   PrimaryColumn,
+  Unique,
   UpdateDateColumn,
 } from 'typeorm';
 import { v4 as uuidV4 } from 'uuid';
 import { UserMood } from './userMoods.entity';
 
+@Unique(['email'])
 @Entity('users')
 export class User {
   @PrimaryColumn()

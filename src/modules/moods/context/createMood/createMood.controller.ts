@@ -1,11 +1,4 @@
-import {
-  Body,
-  Controller,
-  HttpCode,
-  HttpException,
-  HttpStatus,
-  Post,
-} from '@nestjs/common';
+import { Body, Controller, HttpException, Post } from '@nestjs/common';
 import { ApiCreatedResponse, ApiTags } from '@nestjs/swagger';
 import { instanceToInstance } from 'class-transformer';
 
@@ -17,7 +10,6 @@ export class CreateMoodController {
   constructor(private createMoodService: CreateMoodService) {}
 
   @Post()
-  @HttpCode(HttpStatus.CREATED)
   @ApiTags('moods')
   @ApiCreatedResponse({
     description: 'The mood created will be returned',

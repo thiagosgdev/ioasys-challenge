@@ -5,18 +5,19 @@ import {
   HttpCode,
   HttpException,
   HttpStatus,
+  Patch,
 } from '@nestjs/common';
 import { ApiBadRequestResponse, ApiOkResponse, ApiTags } from '@nestjs/swagger';
 
 import { ResetPasswordService } from 'src/modules/users/context/resetPassword/resetPassword.service';
 
+@ApiTags('users')
 @Controller('/users')
 export class ResetPasswordController {
   constructor(private resetPasswordService: ResetPasswordService) {}
 
-  @Get('/resetpassword')
+  @Patch('/resetpassword')
   @HttpCode(HttpStatus.OK)
-  @ApiTags('users')
   @ApiOkResponse({
     description: 'A email will be sent to the user.',
     schema: {

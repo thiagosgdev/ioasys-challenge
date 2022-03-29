@@ -14,7 +14,6 @@ export class ListMoodsController {
   constructor(private listMoodsService: ListMoodsService) {}
 
   @Get('/list')
-  @HttpCode(HttpStatus.OK)
   @ApiTags('moods')
   @ApiOkResponse({
     description: 'A list of moods will be returned',

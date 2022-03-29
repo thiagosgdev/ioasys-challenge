@@ -1,10 +1,4 @@
-import {
-  Controller,
-  Get,
-  HttpCode,
-  HttpException,
-  HttpStatus,
-} from '@nestjs/common';
+import { Controller, Get, HttpException } from '@nestjs/common';
 import { ApiOkResponse, ApiTags } from '@nestjs/swagger';
 import { instanceToInstance } from 'class-transformer';
 
@@ -15,7 +9,6 @@ export class ListMessagesTypesController {
   constructor(private listMessagesTypesService: ListMessagesTypesService) {}
 
   @Get('/types/list')
-  @HttpCode(HttpStatus.OK)
   @ApiTags('messages')
   @ApiOkResponse({
     description: 'A list of messages will be returned',

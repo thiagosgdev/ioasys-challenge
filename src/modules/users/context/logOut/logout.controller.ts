@@ -6,17 +6,17 @@ import {
   HttpException,
   HttpStatus,
 } from '@nestjs/common';
-import { ApiOkResponse, ApiTags } from '@nestjs/swagger';
+import { ApiTags } from '@nestjs/swagger';
 
 import { LogoutService } from './logout.service';
 
+@ApiTags('users')
 @Controller('/users')
 export class LogoutController {
   constructor(private logoutService: LogoutService) {}
 
   @Get('/logout')
-  @HttpCode(HttpStatus.OK)
-  @ApiTags('users')
+  @HttpCode(HttpStatus.NO_CONTENT)
   public async handle(@Headers('Authorization') auth: string) {
     try {
       const token = auth.split(' ')[1];

@@ -14,7 +14,6 @@ export class ListMessagesController {
   constructor(private listMessagesService: ListMessagesService) {}
 
   @Get('/list')
-  @HttpCode(HttpStatus.OK)
   @ApiTags('messages')
   @ApiOkResponse({
     description: 'A list of messages will be returned',
