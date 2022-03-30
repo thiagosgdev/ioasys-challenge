@@ -1,3 +1,4 @@
+import { UnauthorizedException } from '@nestjs/common';
 import { sign, verify } from 'jsonwebtoken';
 import envConfig from 'src/configs/env';
 import { Decrypter } from './protocols/decrypter';
@@ -20,6 +21,9 @@ export class JwtProvider implements Encrypter, Decrypter, EncrypterRefresh {
         id = String(payload.sub);
       }
     });
+    if (!id) {
+      throw new UnauthorizedException('Not a valid token! Please signin again');
+    }
     return id;
   }
 

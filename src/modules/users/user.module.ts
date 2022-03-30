@@ -21,6 +21,8 @@ import { ListUsersService } from 'src/modules/users/context/listUsers/listUsers.
 import { ListUsersController } from 'src/modules/users/context/listUsers/listUsers.controller';
 import { UpdateUserService } from './context/updateUsers/updateUser.service';
 import { UpdateUserController } from './context/updateUsers/updateUser.controller';
+import { RefreshService } from './context/refresh/refresh.service';
+import { RefreshController } from './context/refresh/refresh.controller';
 
 @Module({
   imports: [
@@ -49,6 +51,7 @@ import { UpdateUserController } from './context/updateUsers/updateUser.controlle
     LogoutService,
     ListUsersService,
     UpdateUserService,
+    RefreshService,
   ],
   controllers: [
     SigninController,
@@ -57,6 +60,7 @@ import { UpdateUserController } from './context/updateUsers/updateUser.controlle
     LogoutController,
     ListUsersController,
     UpdateUserController,
+    RefreshController,
   ],
 })
 export class UserModule {}
