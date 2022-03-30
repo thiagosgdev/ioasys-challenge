@@ -25,9 +25,6 @@ export class Activity {
   @Column()
   active: boolean;
 
-  @Column({ name: 'activity_category_id' })
-  activityCategoryId: string;
-
   @OneToMany(
     () => ActivityCategories,
     (activityCategories) => activityCategories.activities,
