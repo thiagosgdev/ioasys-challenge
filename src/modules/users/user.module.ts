@@ -23,6 +23,8 @@ import { UpdateUserService } from './context/updateUsers/updateUser.service';
 import { UpdateUserController } from './context/updateUsers/updateUser.controller';
 import { RefreshService } from './context/refresh/refresh.service';
 import { RefreshController } from './context/refresh/refresh.controller';
+import { FindUserByEmailController } from './context/findUserByEmail/findUserByEmail.controller';
+import { FindUserByEmailService } from './context/findUserByEmail/findUserByEmail.service';
 
 @Module({
   imports: [
@@ -52,6 +54,7 @@ import { RefreshController } from './context/refresh/refresh.controller';
     ListUsersService,
     UpdateUserService,
     RefreshService,
+    FindUserByEmailService,
   ],
   controllers: [
     SigninController,
@@ -61,6 +64,7 @@ import { RefreshController } from './context/refresh/refresh.controller';
     ListUsersController,
     UpdateUserController,
     RefreshController,
+    FindUserByEmailController,
   ],
 })
 export class UserModule {}
