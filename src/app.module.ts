@@ -13,12 +13,13 @@ import { MetricsController } from 'src/utils/metrics/metrics.controller';
 import { winstonConfig } from 'src/configs/logger/winston.config';
 import { mailerConfig } from 'src/configs/mailer.config';
 import { ThrottlerGuard, ThrottlerModule } from '@nestjs/throttler';
-import { MessageModule } from './modules/messages/message.module';
-import { MessageTypeModule } from './modules/messagesTypes/messagesTypes.module';
-import { MoodModule } from './modules/moods/moods.module';
-import { UserMoodModule } from './modules/usersMoods/userMoods.module';
-import { ActivityModule } from './modules/activities/activities.module';
-import { CategoriesModule } from './modules/categories/categories.module';
+import { MessageModule } from 'src/modules/messages/message.module';
+import { MessageTypeModule } from 'src/modules/messagesTypes/messagesTypes.module';
+import { MoodModule } from 'src/modules/moods/moods.module';
+import { UserMoodModule } from 'src/modules/usersMoods/userMoods.module';
+import { ActivityModule } from 'src/modules/activities/activities.module';
+import { CategoriesModule } from 'src/modules/categories/categories.module';
+import { UserInterestsModule } from 'src/modules/userInterests/userInterests.module';
 
 @Module({
   imports: [
@@ -43,6 +44,7 @@ import { CategoriesModule } from './modules/categories/categories.module';
     UserMoodModule,
     ActivityModule,
     CategoriesModule,
+    UserInterestsModule,
   ],
   controllers: [MetricsController],
   providers: [
