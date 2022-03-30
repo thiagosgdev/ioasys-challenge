@@ -17,6 +17,8 @@ import { MessageModule } from './modules/messages/message.module';
 import { MessageTypeModule } from './modules/messagesTypes/messagesTypes.module';
 import { MoodModule } from './modules/moods/moods.module';
 import { UserMoodModule } from './modules/usersMoods/userMoods.module';
+import { ActivityModule } from './modules/activities/activities.module';
+import { CategoriesModule } from './modules/categories/categories.module';
 
 @Module({
   imports: [
@@ -39,6 +41,8 @@ import { UserMoodModule } from './modules/usersMoods/userMoods.module';
     MessageTypeModule,
     MoodModule,
     UserMoodModule,
+    ActivityModule,
+    CategoriesModule,
   ],
   controllers: [MetricsController],
   providers: [
