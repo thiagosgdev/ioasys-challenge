@@ -2,6 +2,8 @@ import { ApiProperty } from '@nestjs/swagger';
 import {
   IsEmail,
   IsNotEmpty,
+  IsNumber,
+  IsOptional,
   IsString,
   MaxLength,
   MinLength,
@@ -36,4 +38,19 @@ export class SignUpRequestDTO {
   @MaxLength(20)
   @ApiProperty()
   passwordConfirmation: string;
+
+  @IsOptional()
+  @IsNumber()
+  @ApiProperty()
+  phone: number;
+
+  @IsOptional()
+  @IsString()
+  @ApiProperty()
+  emergencyName: string;
+
+  @IsOptional()
+  @IsNumber()
+  @ApiProperty()
+  emergencyPhone: number;
 }

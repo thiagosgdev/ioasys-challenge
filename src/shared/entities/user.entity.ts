@@ -10,6 +10,7 @@ import {
   UpdateDateColumn,
 } from 'typeorm';
 import { v4 as uuidV4 } from 'uuid';
+import { UserInterest } from './userInterests.entity';
 import { UserMood } from './userMoods.entity';
 
 @Unique(['email'])
@@ -31,8 +32,20 @@ export class User {
   @Column({ select: false })
   password: string;
 
+  @Column()
+  phone: number;
+
+  @Column({ name: 'emergency_name' })
+  emergencyName: string;
+
+  @Column({ name: 'emergency_phone' })
+  emergencyPhone: number;
+
   @OneToMany(() => UserMood, (userMoods) => userMoods.user)
   userMoods: UserMood[];
+
+  @OneToMany(() => UserInterest, (userInterests) => userInterests.user)
+  userInterests: UserInterest[];
 
   @CreateDateColumn({ name: 'created_at' })
   createdAt: Date;

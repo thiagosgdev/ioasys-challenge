@@ -29,19 +29,24 @@ export class CreateUsers1645791033864 implements MigrationInterface {
             isUnique: true,
           },
           {
-            name: 'token',
-            type: 'varchar',
-            isNullable: true,
-          },
-          {
-            name: 'refresh_token',
-            type: 'varchar',
-            isNullable: true,
-          },
-          {
             name: 'is_admin',
             type: 'boolean',
             default: false,
+          },
+          {
+            name: 'phone',
+            type: 'int',
+            isNullable: true,
+          },
+          {
+            name: 'emergency_name',
+            type: 'varchar',
+            isNullable: true,
+          },
+          {
+            name: 'emergency_phone',
+            type: 'int',
+            isNullable: true,
           },
           {
             name: 'created_at',
