@@ -2,6 +2,7 @@ import { ApiProperty } from '@nestjs/swagger';
 import { Exclude } from 'class-transformer';
 import {
   IsEmail,
+  IsNumber,
   IsOptional,
   IsString,
   MaxLength,
@@ -34,9 +35,9 @@ export class UpdateUserDTO {
   password?: string;
 
   @IsOptional()
-  @IsString()
+  @IsNumber()
   @ApiProperty()
-  phone?: string;
+  phone?: number;
 
   @IsOptional()
   @IsString()
