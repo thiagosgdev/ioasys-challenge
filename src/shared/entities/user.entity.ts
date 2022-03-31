@@ -10,6 +10,7 @@ import {
   UpdateDateColumn,
 } from 'typeorm';
 import { v4 as uuidV4 } from 'uuid';
+import { Event } from './event.entity';
 import { UserInterest } from './userInterests.entity';
 import { UserMood } from './userMoods.entity';
 
@@ -40,6 +41,9 @@ export class User {
 
   @Column({ name: 'emergency_phone' })
   emergencyPhone: number;
+
+  @OneToMany(() => Event, (events) => events.users)
+  events: Event[];
 
   @OneToMany(() => UserMood, (userMoods) => userMoods.user)
   userMoods: UserMood[];
