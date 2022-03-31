@@ -1,5 +1,13 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { IsDate, IsNotEmpty, IsNumber, IsString } from 'class-validator';
+import {
+  IsBoolean,
+  IsISO8601,
+  IsNotEmpty,
+  IsNumber,
+  IsOptional,
+  IsString,
+  IsUUID,
+} from 'class-validator';
 
 export class CreateEventRequestDTO {
   @IsString()
@@ -7,7 +15,12 @@ export class CreateEventRequestDTO {
   @ApiProperty()
   name: string;
 
-  @IsDate()
+  @IsString()
+  @IsNotEmpty()
+  @ApiProperty()
+  description: string;
+
+  @IsISO8601()
   @IsNotEmpty()
   @ApiProperty()
   date: Date;
@@ -15,22 +28,7 @@ export class CreateEventRequestDTO {
   @IsNumber()
   @IsNotEmpty()
   @ApiProperty()
-  declinedParticipants: number;
-
-  @IsNumber()
-  @IsNotEmpty()
-  @ApiProperty()
-  maybeParticipants: number;
-
-  @IsNumber()
-  @IsNotEmpty()
-  @ApiProperty()
-  confirmedParticipants: number;
-
-  @IsNumber()
-  @IsNotEmpty()
-  @ApiProperty()
-  participants: number;
+  minimumAge: number;
 
   @IsNumber()
   @IsNotEmpty()
@@ -40,10 +38,25 @@ export class CreateEventRequestDTO {
   @IsString()
   @IsNotEmpty()
   @ApiProperty()
-  duration: string;
+  startTime: string;
 
   @IsString()
+  @IsOptional()
+  @ApiProperty()
+  endTime?: string;
+
+  @IsUUID()
   @IsNotEmpty()
   @ApiProperty()
-  typeEvent: string;
+  activityId: string;
+
+  @IsUUID()
+  @IsNotEmpty()
+  @ApiProperty()
+  userId: string;
+
+  @IsBoolean()
+  @IsNotEmpty()
+  @ApiProperty()
+  isAccessible: boolean;
 }

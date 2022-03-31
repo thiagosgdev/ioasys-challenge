@@ -4,14 +4,14 @@ import {
   CreateDateColumn,
   DeleteDateColumn,
   Entity,
-  JoinColumn,
-  ManyToOne,
   OneToMany,
   PrimaryColumn,
   UpdateDateColumn,
 } from 'typeorm';
 import { v4 as uuidV4 } from 'uuid';
+
 import { ActivityCategories } from './activityCategories.entity';
+import { Event } from './event.entity';
 import { UserInterest } from './userInterests.entity';
 
 @Entity('activities')
@@ -33,6 +33,9 @@ export class Activity {
 
   @OneToMany(() => UserInterest, (userMoods) => userMoods.activities)
   userInterests: UserInterest[];
+
+  @OneToMany(() => Event, (events) => events.activities)
+  events: Event[];
 
   @CreateDateColumn({ name: 'created_at' })
   createdAt: Date;

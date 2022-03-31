@@ -20,6 +20,7 @@ import { UserMoodModule } from 'src/modules/usersMoods/userMoods.module';
 import { ActivityModule } from 'src/modules/activities/activities.module';
 import { CategoriesModule } from 'src/modules/categories/categories.module';
 import { UserInterestsModule } from 'src/modules/userInterests/userInterests.module';
+import { EventModule } from './modules/events/events.module';
 
 @Module({
   imports: [
@@ -45,6 +46,7 @@ import { UserInterestsModule } from 'src/modules/userInterests/userInterests.mod
     ActivityModule,
     CategoriesModule,
     UserInterestsModule,
+    EventModule,
   ],
   controllers: [MetricsController],
   providers: [
