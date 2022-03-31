@@ -11,6 +11,9 @@ export class EventResponseDTO {
   description: string;
 
   @ApiResponseProperty()
+  isOnline: boolean;
+
+  @ApiResponseProperty()
   date: Date;
 
   @ApiResponseProperty()
@@ -23,13 +26,16 @@ export class EventResponseDTO {
   startTime: string;
 
   @ApiResponseProperty()
-  endTime?: string;
+  endTime: string;
 
   @ApiResponseProperty()
   activityId: string;
 
   @ApiResponseProperty()
   userId: string;
+
+  @ApiResponseProperty()
+  userIdentity: number;
 
   @ApiResponseProperty()
   isAccessible: boolean;

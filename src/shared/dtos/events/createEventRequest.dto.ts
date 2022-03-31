@@ -20,6 +20,11 @@ export class CreateEventRequestDTO {
   @ApiProperty()
   description: string;
 
+  @IsBoolean()
+  @ApiProperty()
+  @IsOptional()
+  isOnline?: boolean;
+
   @IsISO8601()
   @IsNotEmpty()
   @ApiProperty()
@@ -54,6 +59,10 @@ export class CreateEventRequestDTO {
   @IsNotEmpty()
   @ApiProperty()
   userId: string;
+
+  @IsNumber()
+  @ApiProperty()
+  userIdentity: number;
 
   @IsBoolean()
   @IsNotEmpty()

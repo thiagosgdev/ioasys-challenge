@@ -12,14 +12,13 @@ import { UpdateUserService } from 'src/modules/users/context/updateUsers/updateU
 import { UserDTO } from 'src/shared/dtos/users/user.dto';
 import { UpdateUserDTO } from 'src/shared/dtos/users/updateUser.dto';
 
-@ApiTags('Users')
+@ApiTags('users')
 @Controller('/users')
 export class UpdateUserController {
   constructor(private updateUserService: UpdateUserService) {}
 
   @Put()
   @HttpCode(HttpStatus.OK)
-  @ApiTags('users')
   @ApiOkResponse({
     type: UserDTO,
   })

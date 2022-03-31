@@ -45,6 +45,12 @@ export class Event {
   @Column({ name: 'user_id' })
   userId: string;
 
+  @Column({ name: 'user_identity' })
+  userIdentity: number;
+
+  @Column({ name: 'is_online' })
+  isOnline: boolean;
+
   @Column({ name: 'is_accessible' })
   isAccessible: boolean;
 
