@@ -11,7 +11,11 @@ import { AppModule } from 'src/app.module';
 async function bootstrap() {
   const logger = WinstonModule.createLogger(winstonConfig);
   const app = await NestFactory.create(AppModule, { logger });
-  app.enableCors();
+  app.enableCors({
+    origin: true,
+    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS',
+    credentials: true,
+  });
   app.use(
     helmet({
       contentSecurityPolicy: false,
