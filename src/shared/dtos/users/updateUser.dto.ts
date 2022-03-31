@@ -45,7 +45,7 @@ export class UpdateUserDTO {
   emergencyName?: string;
 
   @IsOptional()
-  @IsString()
+  @IsNumber()
   @ApiProperty()
-  emergencyPhone?: string;
+  emergencyPhone?: number;
 }
