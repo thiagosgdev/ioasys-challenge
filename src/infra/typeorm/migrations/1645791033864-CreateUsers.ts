@@ -35,7 +35,7 @@ export class CreateUsers1645791033864 implements MigrationInterface {
           },
           {
             name: 'phone',
-            type: 'int',
+            type: 'varchar',
             isNullable: true,
           },
           {
@@ -45,7 +45,7 @@ export class CreateUsers1645791033864 implements MigrationInterface {
           },
           {
             name: 'emergency_phone',
-            type: 'int',
+            type: 'varchar',
             isNullable: true,
           },
           {

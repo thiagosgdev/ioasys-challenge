@@ -34,13 +34,13 @@ export class User {
   password: string;
 
   @Column()
-  phone: number;
+  phone: string;
 
   @Column({ name: 'emergency_name' })
   emergencyName: string;
 
   @Column({ name: 'emergency_phone' })
-  emergencyPhone: number;
+  emergencyPhone: string;
 
   @OneToMany(() => Event, (events) => events.users)
   events: Event[];

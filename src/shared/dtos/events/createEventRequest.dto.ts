@@ -60,9 +60,9 @@ export class CreateEventRequestDTO {
   @ApiProperty()
   userId: string;
 
-  @IsNumber()
+  @IsString()
   @ApiProperty()
-  userIdentity: number;
+  userIdentity: string;
 
   @IsBoolean()
   @IsNotEmpty()

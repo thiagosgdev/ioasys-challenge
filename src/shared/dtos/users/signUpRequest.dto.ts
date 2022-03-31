@@ -2,7 +2,6 @@ import { ApiProperty } from '@nestjs/swagger';
 import {
   IsEmail,
   IsNotEmpty,
-  IsNumber,
   IsOptional,
   IsString,
   MaxLength,
@@ -40,9 +39,9 @@ export class SignUpRequestDTO {
   passwordConfirmation: string;
 
   @IsOptional()
-  @IsNumber()
+  @IsString()
   @ApiProperty()
-  phone: number;
+  phone: string;
 
   @IsOptional()
   @IsString()
@@ -50,7 +49,7 @@ export class SignUpRequestDTO {
   emergencyName: string;
 
   @IsOptional()
-  @IsNumber()
+  @IsString()
   @ApiProperty()
-  emergencyPhone: number;
+  emergencyPhone: string;
 }
