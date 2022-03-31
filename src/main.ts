@@ -10,7 +10,8 @@ import { AppModule } from 'src/app.module';
 
 async function bootstrap() {
   const logger = WinstonModule.createLogger(winstonConfig);
-  const app = await NestFactory.create(AppModule, { logger, cors: true });
+  const app = await NestFactory.create(AppModule, { logger });
+  app.enableCors();
   app.use(
     helmet({
       contentSecurityPolicy: false,
