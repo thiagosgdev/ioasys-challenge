@@ -18,6 +18,7 @@ export class ListUserInterestsController {
         await this.listUserInterestsService.execute(userId),
       );
     } catch (error) {
+      console.log(error);
       throw new HttpException(
         error.response.message,
         error.response.statusCode,

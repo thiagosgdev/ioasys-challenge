@@ -27,7 +27,7 @@ export class UserInterest {
 
   @ManyToOne(() => User, (user) => user.userInterests)
   @JoinColumn({ name: 'user_id' })
-  user: User[];
+  users: User[];
 
   @ManyToOne(() => Activity, (activity) => activity.userInterests)
   @JoinColumn({ name: 'activity_id' })

@@ -9,11 +9,18 @@ export class ListUserInterestsService {
     private userInterestRepository: Repository<UserInterest>,
   ) {}
   async execute(userId: string) {
-    return await this.userInterestRepository.find({
-      where: {
-        id: userId,
-      },
-      relations: ['activities'],
-    });
+    return await await this.userInterestRepository
+      .createQueryBuilder('users_interests')
+      .where({ userId })
+      .select([
+        'users_interests.userId',
+        'users_interests.createdAt',
+        'activities.id',
+        'activities.name',
+        'users.FirstName',
+      ])
+      .leftJoin('users_interests.activities', 'activities')
+      .leftJoin('users_interests.users', 'users')
+      .getMany();
   }
 }

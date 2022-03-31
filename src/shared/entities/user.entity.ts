@@ -44,7 +44,7 @@ export class User {
   @OneToMany(() => UserMood, (userMoods) => userMoods.user)
   userMoods: UserMood[];
 
-  @OneToMany(() => UserInterest, (userInterests) => userInterests.user)
+  @OneToMany(() => UserInterest, (userInterests) => userInterests.users)
   userInterests: UserInterest[];
 
   @CreateDateColumn({ name: 'created_at' })
