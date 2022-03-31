@@ -32,4 +32,19 @@ export class UpdateUserDTO {
   @MaxLength(20)
   @ApiProperty()
   password?: string;
+
+  @IsOptional()
+  @IsString()
+  @ApiProperty()
+  phone?: string;
+
+  @IsOptional()
+  @IsString()
+  @ApiProperty()
+  emergencyName?: string;
+
+  @IsOptional()
+  @IsString()
+  @ApiProperty()
+  emergencyPhone?: string;
 }
