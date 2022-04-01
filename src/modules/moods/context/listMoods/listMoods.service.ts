@@ -1,7 +1,8 @@
 import { Inject } from '@nestjs/common';
+import { Repository } from 'typeorm';
+
 import { MoodResponse } from 'src/shared/dtos/moods/mood.dto';
 import { Mood } from 'src/shared/entities/mood.entity';
-import { Repository } from 'typeorm';
 
 export class ListMoodsService {
   constructor(

@@ -1,7 +1,8 @@
 import { Inject } from '@nestjs/common';
+import { Repository } from 'typeorm';
+
 import { CreateMoodRequestDTO } from 'src/shared/dtos/moods/createMoodRequest.dto';
 import { Mood } from 'src/shared/entities/mood.entity';
-import { Repository } from 'typeorm';
 
 export class CreateMoodService {
   constructor(
@@ -9,8 +10,6 @@ export class CreateMoodService {
     private moodRepository: Repository<Mood>,
   ) {}
   async execute(data: CreateMoodRequestDTO) {
-    const mood = this.moodRepository.create(data);
-    await this.moodRepository.save(mood);
-    return mood;
+    return await this.moodRepository.save(data);
   }
 }

@@ -3,11 +3,11 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 
 import { DatabaseModule } from 'src/infra/database.module';
 import { Mood } from 'src/shared/entities/mood.entity';
-import { CreateMoodController } from './context/createMood/createMood.controller';
-import { CreateMoodService } from './context/createMood/createMood.service';
-import { ListMoodsController } from './context/listMoods/listMoods.controller';
-import { ListMoodsService } from './context/listMoods/listMoods.service';
-import { moodProviders } from './moods.provider';
+import { CreateMoodController } from 'src/modules/moods/context/createMood/createMood.controller';
+import { CreateMoodService } from 'src/modules/moods/context/createMood/createMood.service';
+import { ListMoodsController } from 'src/modules/moods/context/listMoods/listMoods.controller';
+import { ListMoodsService } from 'src/modules/moods/context/listMoods/listMoods.service';
+import { moodProviders } from 'src/modules/moods/moods.provider';
 
 @Module({
   imports: [DatabaseModule, TypeOrmModule.forFeature([Mood])],
