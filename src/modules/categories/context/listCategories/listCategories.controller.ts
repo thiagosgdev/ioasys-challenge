@@ -1,10 +1,10 @@
 import { Controller, Get, HttpException } from '@nestjs/common';
 import { ApiOkResponse, ApiTags } from '@nestjs/swagger';
-import { instanceToInstance } from 'class-transformer';
-import { ListCategoriesService } from './listActivitiesCategories.service';
+
+import { ListCategoriesService } from 'src/modules/categories/context/listCategories/listCategories.service';
 
 @ApiTags('categories')
-@Controller('/categories')
+@Controller()
 export class ListCategoriesController {
   constructor(private listCategoriesService: ListCategoriesService) {}
 
@@ -14,9 +14,12 @@ export class ListCategoriesController {
   })
   public async handle() {
     try {
-      return instanceToInstance(await this.listCategoriesService.execute());
+      return await this.listCategoriesService.execute();
     } catch (error) {
-      throw new HttpException(error.message, error.statusCode);
+      throw new HttpException(
+        error.response.message,
+        error.response.statusCode,
+      );
     }
   }
 }

@@ -1,5 +1,6 @@
-import { Category } from 'src/shared/entities/category.entity';
 import { Connection } from 'typeorm';
+
+import { Category } from 'src/shared/entities/category.entity';
 
 export const categoriesProviders = [
   {
