@@ -1,6 +1,7 @@
 import { Inject } from '@nestjs/common';
-import { MessageType } from 'src/shared/entities/messageType.entity';
 import { Repository } from 'typeorm';
+
+import { MessageType } from 'src/shared/entities/messageType.entity';
 
 export class ListMessagesTypesService {
   constructor(

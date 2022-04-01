@@ -1,23 +1,25 @@
 import { Controller, Get, HttpException } from '@nestjs/common';
 import { ApiOkResponse, ApiTags } from '@nestjs/swagger';
-import { instanceToInstance } from 'class-transformer';
 
 import { ListMessagesTypesService } from 'src/modules/messagesTypes/context/listMessages/listMessagesTypes.service';
 
-@Controller('/messages')
+@ApiTags('messages')
+@Controller('/types')
 export class ListMessagesTypesController {
   constructor(private listMessagesTypesService: ListMessagesTypesService) {}
 
-  @Get('/types/list')
-  @ApiTags('messages')
+  @Get('/list')
   @ApiOkResponse({
     description: 'A list of messages will be returned',
   })
   public async handle() {
     try {
-      return instanceToInstance(await this.listMessagesTypesService.execute());
+      return await this.listMessagesTypesService.execute();
     } catch (error) {
-      throw new HttpException(error.message, error.statusCode);
+      throw new HttpException(
+        error.response.message,
+        error.response.statusCode,
+      );
     }
   }
 }

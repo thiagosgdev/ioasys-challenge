@@ -1,26 +1,26 @@
 import { Body, Controller, HttpException, Post } from '@nestjs/common';
-import { ApiOkResponse, ApiTags } from '@nestjs/swagger';
-import { instanceToInstance } from 'class-transformer';
-import { CreateMessageTypeRequestDTO } from 'src/shared/dtos/messagesTypes/createMessageTypeRequest.dto';
+import { ApiCreatedResponse, ApiTags } from '@nestjs/swagger';
 
+import { CreateMessageTypeRequestDTO } from 'src/shared/dtos/messagesTypes/createMessageTypeRequest.dto';
 import { CreateMessageTypeService } from 'src/modules/messagesTypes/context/createMessageType/createMessageType.service';
 
-@Controller('/messages')
+@ApiTags('messages')
+@Controller('/types')
 export class CreateMessageTypeController {
   constructor(private createMessageTypeService: CreateMessageTypeService) {}
 
-  @Post('/types')
-  @ApiTags('messages')
-  @ApiOkResponse({
+  @Post()
+  @ApiCreatedResponse({
     description: 'Return the message type created.',
   })
   public async handle(@Body() data: CreateMessageTypeRequestDTO) {
     try {
-      return instanceToInstance(
-        await this.createMessageTypeService.execute(data),
-      );
+      await this.createMessageTypeService.execute(data);
     } catch (error) {
-      throw new HttpException(error.message, error.statusCode);
+      throw new HttpException(
+        error.response.message,
+        error.response.statusCode,
+      );
     }
   }
 }

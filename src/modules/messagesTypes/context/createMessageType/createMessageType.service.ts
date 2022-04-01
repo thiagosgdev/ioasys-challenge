@@ -1,7 +1,8 @@
 import { Inject } from '@nestjs/common';
+import { Repository } from 'typeorm';
+
 import { CreateMessageTypeRequestDTO } from 'src/shared/dtos/messagesTypes/createMessageTypeRequest.dto';
 import { MessageType } from 'src/shared/entities/messageType.entity';
-import { Repository } from 'typeorm';
 
 export class CreateMessageTypeService {
   constructor(
@@ -9,8 +10,6 @@ export class CreateMessageTypeService {
     private messageRepository: Repository<MessageType>,
   ) {}
   async execute(data: CreateMessageTypeRequestDTO) {
-    const messageType = this.messageRepository.create(data);
-    await this.messageRepository.save(messageType);
-    return messageType;
+    return await this.messageRepository.save(data);
   }
 }
