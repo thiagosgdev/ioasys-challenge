@@ -2,7 +2,7 @@ import { CacheModule, Module } from '@nestjs/common';
 import { TerminusModule } from '@nestjs/terminus';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { WinstonModule } from 'nest-winston';
-import { APP_GUARD, APP_INTERCEPTOR } from '@nestjs/core';
+import { APP_GUARD, APP_INTERCEPTOR, RouterModule } from '@nestjs/core';
 import { MailerModule } from '@nestjs-modules/mailer';
 import * as redisStore from 'cache-manager-redis-store';
 
@@ -22,12 +22,14 @@ import { CategoriesModule } from 'src/modules/categories/categories.module';
 import { UserInterestsModule } from 'src/modules/userInterests/userInterests.module';
 import { EventModule } from 'src/modules/events/events.module';
 import { AddressModule } from 'src/modules/address/address.module';
+import { routerConfig } from './configs/routes';
 
 @Module({
   imports: [
     TypeOrmModule.forRoot(),
     WinstonModule.forRoot(winstonConfig),
     MailerModule.forRoot(mailerConfig),
+    RouterModule.register(routerConfig),
     ThrottlerModule.forRoot({
       ttl: 60,
       limit: 10,
