@@ -1,6 +1,6 @@
 import { ActivityModule } from 'src/modules/activities/activities.module';
 import { ActivityCategoriesModule } from 'src/modules/activitiesCategories/activitiesCategories.module';
-import { AddressModule } from 'src/modules/address/address.module';
+import { AddressModule } from 'src/modules/addresses/address.module';
 import { CategoriesModule } from 'src/modules/categories/categories.module';
 import { EventModule } from 'src/modules/events/events.module';
 import { MessageModule } from 'src/modules/messages/message.module';

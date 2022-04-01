@@ -10,8 +10,6 @@ export class CreateAddressService {
     private addressRepository: Repository<Address>,
   ) {}
   async execute(data: CreateAddressRequestDTO) {
-    const address = this.addressRepository.create(data);
-    return await this.addressRepository.save(address);
-    //return address;
+    return await this.addressRepository.save(data);
   }
 }

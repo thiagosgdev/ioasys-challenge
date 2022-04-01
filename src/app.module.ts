@@ -12,6 +12,7 @@ import { HealthModule } from 'src/utils/health/health.module';
 import { MetricsController } from 'src/utils/metrics/metrics.controller';
 import { winstonConfig } from 'src/configs/logger/winston.config';
 import { mailerConfig } from 'src/configs/mailer.config';
+import { routerConfig } from 'src/configs/routes';
 import { ThrottlerGuard, ThrottlerModule } from '@nestjs/throttler';
 import { MessageModule } from 'src/modules/messages/message.module';
 import { MessageTypeModule } from 'src/modules/messagesTypes/messagesTypes.module';
@@ -21,8 +22,7 @@ import { ActivityModule } from 'src/modules/activities/activities.module';
 import { CategoriesModule } from 'src/modules/categories/categories.module';
 import { UserInterestsModule } from 'src/modules/userInterests/userInterests.module';
 import { EventModule } from 'src/modules/events/events.module';
-import { AddressModule } from 'src/modules/address/address.module';
-import { routerConfig } from './configs/routes';
+import { AddressModule } from 'src/modules/addresses/address.module';
 
 @Module({
   imports: [

@@ -1,11 +1,11 @@
 import { Body, Controller, HttpException, Post } from '@nestjs/common';
 import { ApiCreatedResponse, ApiTags } from '@nestjs/swagger';
-import { CreateAddressRequestDTO } from 'src/shared/dtos/address/createAddressRequest.dto';
 
-import { CreateAddressService } from 'src/modules/address/context/createAddress/createAddress.service';
+import { CreateAddressRequestDTO } from 'src/shared/dtos/address/createAddressRequest.dto';
+import { CreateAddressService } from 'src/modules/addresses/context/createAddress/createAddress.service';
 
 @ApiTags('addresses')
-@Controller('/addresses')
+@Controller()
 export class CreateAddressController {
   constructor(private createAddressService: CreateAddressService) {}
 
@@ -17,7 +17,6 @@ export class CreateAddressController {
     try {
       return await this.createAddressService.execute(data);
     } catch (error) {
-      console.log(error);
       throw new HttpException(
         error.response.message,
         error.response.statusCode,

@@ -1,10 +1,10 @@
 import { Controller, Get, HttpException } from '@nestjs/common';
 import { ApiOkResponse, ApiTags } from '@nestjs/swagger';
 
-import { ListAddressesService } from './listAddressess.service';
+import { ListAddressesService } from 'src/modules/addresses/context/listAddresses/listAddressess.service';
 
 @ApiTags('addresses')
-@Controller('/addresses')
+@Controller()
 export class ListAddressesController {
   constructor(private listAddressesService: ListAddressesService) {}
 
