@@ -1,11 +1,11 @@
 import { Body, Controller, HttpException, Post } from '@nestjs/common';
 import { ApiCreatedResponse, ApiTags } from '@nestjs/swagger';
-import { instanceToInstance } from 'class-transformer';
+
 import { CreateActivityRequestDTO } from 'src/shared/dtos/activities/createActivityRequest.dto';
-import { CreateActivityService } from './createActivity.service';
+import { CreateActivityService } from 'src/modules/activities/context/createActivity/createActivity.service';
 
 @ApiTags('activities')
-@Controller('/activities')
+@Controller()
 export class CreateActivityController {
   constructor(private createActivityService: CreateActivityService) {}
 
@@ -15,9 +15,12 @@ export class CreateActivityController {
   })
   public async handle(@Body() data: CreateActivityRequestDTO) {
     try {
-      return instanceToInstance(await this.createActivityService.execute(data));
+      return await this.createActivityService.execute(data);
     } catch (error) {
-      throw new HttpException(error.message, error.statusCode);
+      throw new HttpException(
+        error.response.message,
+        error.response.statusCode,
+      );
     }
   }
 }

@@ -1,5 +1,6 @@
-import { Activity } from 'src/shared/entities/activity.entity';
 import { Connection } from 'typeorm';
+
+import { Activity } from 'src/shared/entities/activity.entity';
 
 export const activityProviders = [
   {
