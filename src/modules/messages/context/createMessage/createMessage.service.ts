@@ -1,7 +1,8 @@
 import { Inject } from '@nestjs/common';
+import { Repository } from 'typeorm';
+
 import { CreateMessageRequestDTO } from 'src/shared/dtos/messages/createMessageRequest.dto';
 import { Message } from 'src/shared/entities/message.entity';
-import { Repository } from 'typeorm';
 
 export class CreateMessageService {
   constructor(
@@ -9,8 +10,6 @@ export class CreateMessageService {
     private messageRepository: Repository<Message>,
   ) {}
   async execute(data: CreateMessageRequestDTO) {
-    const message = this.messageRepository.create(data);
-    await this.messageRepository.save(message);
-    return message;
+    return await this.messageRepository.save(data);
   }
 }

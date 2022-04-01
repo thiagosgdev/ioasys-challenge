@@ -1,7 +1,8 @@
 import { Inject } from '@nestjs/common';
+import { Repository } from 'typeorm';
+
 import { MessageResponse } from 'src/shared/dtos/messages/message.dto';
 import { Message } from 'src/shared/entities/message.entity';
-import { Repository } from 'typeorm';
 
 export class ListMessagesService {
   constructor(
