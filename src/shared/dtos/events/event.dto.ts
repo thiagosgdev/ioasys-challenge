@@ -35,7 +35,7 @@ export class EventResponseDTO {
   userId: string;
 
   @ApiResponseProperty()
-  userIdentity: number;
+  userIdentity: string;
 
   @ApiResponseProperty()
   isAccessible: boolean;

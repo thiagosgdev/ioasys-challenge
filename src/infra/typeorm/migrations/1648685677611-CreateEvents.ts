@@ -42,7 +42,7 @@ export class CreateEvents1648685677611 implements MigrationInterface {
           },
           {
             name: 'user_identity',
-            type: 'bigint',
+            type: 'varchar',
             isNullable: true,
           },
           {

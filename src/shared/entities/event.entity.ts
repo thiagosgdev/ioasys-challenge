@@ -46,7 +46,7 @@ export class Event {
   userId: string;
 
   @Column({ name: 'user_identity' })
-  userIdentity: number;
+  userIdentity: string;
 
   @Column({ name: 'is_online' })
   isOnline: boolean;
