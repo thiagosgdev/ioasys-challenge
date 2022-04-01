@@ -1,22 +1,21 @@
 import { Body, Controller, HttpException, Post } from '@nestjs/common';
-import { ApiOkResponse, ApiTags } from '@nestjs/swagger';
-import { instanceToInstance } from 'class-transformer';
+import { ApiCreatedResponse, ApiTags } from '@nestjs/swagger';
 
 import { CreateEventRequestDTO } from 'src/shared/dtos/events/createEventRequest.dto';
-import { CreateEventService } from './createEvent.service';
+import { CreateEventService } from 'src/modules/events/context/createEvent/createEvent.service';
 
 @ApiTags('events')
-@Controller('/events')
+@Controller()
 export class CreateEventController {
   constructor(private createEventService: CreateEventService) {}
 
   @Post()
-  @ApiOkResponse({
+  @ApiCreatedResponse({
     description: 'Return the event created.',
   })
   public async handle(@Body() data: CreateEventRequestDTO) {
     try {
-      return instanceToInstance(await this.createEventService.execute(data));
+      return await this.createEventService.execute(data);
     } catch (error) {
       throw new HttpException(
         error.response.message,

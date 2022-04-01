@@ -10,8 +10,6 @@ export class CreateEventService {
     private eventRepository: Repository<Event>,
   ) {}
   async execute(data: CreateEventRequestDTO) {
-    const event = this.eventRepository.create(data);
-    await this.eventRepository.save(event);
-    return event;
+    return await this.eventRepository.save(data);
   }
 }

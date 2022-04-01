@@ -1,6 +1,7 @@
 import { Inject } from '@nestjs/common';
-import { Event } from 'src/shared/entities/event.entity';
 import { Repository } from 'typeorm';
+
+import { Event } from 'src/shared/entities/event.entity';
 
 export class ListEventsService {
   constructor(
