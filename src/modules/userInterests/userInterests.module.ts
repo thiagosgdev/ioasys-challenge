@@ -8,6 +8,8 @@ import { CreateUserInterestService } from 'src/modules/userInterests/context/cre
 import { ListUserInterestsService } from 'src/modules/userInterests/context/listUserInterests/listUserInterests.service';
 import { CreateUserInterestController } from 'src/modules/userInterests/context/createUserInterests/createUserInterest.controller';
 import { ListUserInterestsController } from 'src/modules/userInterests/context/listUserInterests/listUserInterests.controller';
+import { ListUserInterestsByUserIdService } from 'src/modules/userInterests/context/listUserInterestsByUserId/listUserInterestsByUserId.service';
+import { ListUserInterestsByUserIdController } from 'src/modules/userInterests/context/listUserInterestsByUserId/listUserInterestsByUserId.controller';
 
 @Module({
   imports: [DatabaseModule, TypeOrmModule.forFeature([UserInterest])],
@@ -15,7 +17,12 @@ import { ListUserInterestsController } from 'src/modules/userInterests/context/l
     ...userInterestsProviders,
     CreateUserInterestService,
     ListUserInterestsService,
+    ListUserInterestsByUserIdService,
   ],
-  controllers: [CreateUserInterestController, ListUserInterestsController],
+  controllers: [
+    CreateUserInterestController,
+    ListUserInterestsController,
+    ListUserInterestsByUserIdController,
+  ],
 })
 export class UserInterestsModule {}

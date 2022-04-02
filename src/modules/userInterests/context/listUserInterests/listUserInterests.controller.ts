@@ -1,4 +1,4 @@
-import { Controller, Get, HttpException, Param } from '@nestjs/common';
+import { Controller, Get, HttpException } from '@nestjs/common';
 import { ApiOkResponse, ApiTags } from '@nestjs/swagger';
 
 import { ListUserInterestsService } from 'src/modules/userInterests/context/listUserInterests/listUserInterests.service';
@@ -8,13 +8,13 @@ import { ListUserInterestsService } from 'src/modules/userInterests/context/list
 export class ListUserInterestsController {
   constructor(private listUserInterestsService: ListUserInterestsService) {}
 
-  @Get('/:userId')
+  @Get('/list')
   @ApiOkResponse({
     description: 'A list of the user interests will be returned',
   })
-  public async handle(@Param('userId') userId: string) {
+  public async handle() {
     try {
-      return await this.listUserInterestsService.execute(userId);
+      return await this.listUserInterestsService.execute();
     } catch (error) {
       throw new HttpException(
         error.response.message,
