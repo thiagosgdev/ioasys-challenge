@@ -1,7 +1,8 @@
 import { Inject } from '@nestjs/common';
+import { Repository } from 'typeorm';
+
 import { CreateUserInterestRequestDTO } from 'src/shared/dtos/userInterest/createUserInterestRequest.dto';
 import { UserInterest } from 'src/shared/entities/userInterests.entity';
-import { Repository } from 'typeorm';
 
 export class CreateUserInterestService {
   constructor(
@@ -9,8 +10,6 @@ export class CreateUserInterestService {
     private userInterestRepository: Repository<UserInterest>,
   ) {}
   async execute(data: CreateUserInterestRequestDTO) {
-    const userInterest = this.userInterestRepository.create(data);
-    await this.userInterestRepository.save(userInterest);
-    return userInterest;
+    return await this.userInterestRepository.save(data);
   }
 }

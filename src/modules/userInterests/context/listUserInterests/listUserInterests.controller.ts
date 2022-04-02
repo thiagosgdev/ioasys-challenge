@@ -1,24 +1,21 @@
 import { Controller, Get, HttpException, Param } from '@nestjs/common';
 import { ApiOkResponse, ApiTags } from '@nestjs/swagger';
-import { instanceToInstance } from 'class-transformer';
-import { ListUserInterestsService } from './listUserInterests.service';
 
-@Controller('/users')
+import { ListUserInterestsService } from 'src/modules/userInterests/context/listUserInterests/listUserInterests.service';
+
+@ApiTags('users')
+@Controller('/interests')
 export class ListUserInterestsController {
   constructor(private listUserInterestsService: ListUserInterestsService) {}
 
-  @Get('/interests/:userId')
-  @ApiTags('users')
+  @Get('/:userId')
   @ApiOkResponse({
     description: 'A list of the user interests will be returned',
   })
   public async handle(@Param('userId') userId: string) {
     try {
-      return instanceToInstance(
-        await this.listUserInterestsService.execute(userId),
-      );
+      return await this.listUserInterestsService.execute(userId);
     } catch (error) {
-      console.log(error);
       throw new HttpException(
         error.response.message,
         error.response.statusCode,

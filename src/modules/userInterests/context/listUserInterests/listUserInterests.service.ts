@@ -9,7 +9,7 @@ export class ListUserInterestsService {
     private userInterestRepository: Repository<UserInterest>,
   ) {}
   async execute(userId: string) {
-    return await await this.userInterestRepository
+    return await this.userInterestRepository
       .createQueryBuilder('users_interests')
       .where({ userId })
       .select([
