@@ -10,7 +10,7 @@ import {
 } from 'typeorm';
 import { v4 as uuidV4 } from 'uuid';
 
-import { ActivityCategories } from './activityCategories.entity';
+import { ActivityCategories } from 'src/shared/entities/activityCategories.entity';
 
 @Entity('categories')
 export class Category {

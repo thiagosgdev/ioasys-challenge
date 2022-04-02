@@ -10,9 +10,9 @@ import {
 } from 'typeorm';
 import { v4 as uuidV4 } from 'uuid';
 
-import { ActivityCategories } from './activityCategories.entity';
-import { Event } from './event.entity';
-import { UserInterest } from './userInterests.entity';
+import { ActivityCategories } from 'src/shared/entities/activityCategories.entity';
+import { Event } from 'src/shared/entities/event.entity';
+import { UserInterest } from 'src/shared/entities/userInterests.entity';
 
 @Entity('activities')
 export class Activity {

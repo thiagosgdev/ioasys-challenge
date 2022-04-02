@@ -10,7 +10,8 @@ import {
   UpdateDateColumn,
 } from 'typeorm';
 import { v4 as uuidV4 } from 'uuid';
-import { MessageType } from './messageType.entity';
+
+import { MessageType } from 'src/shared/entities/messageType.entity';
 
 @Entity('messages')
 export class Message {

@@ -9,7 +9,8 @@ import {
   UpdateDateColumn,
 } from 'typeorm';
 import { v4 as uuidV4 } from 'uuid';
-import { UserMood } from './userMoods.entity';
+
+import { UserMood } from 'src/shared/entities/userMoods.entity';
 
 @Entity('moods')
 export class Mood {

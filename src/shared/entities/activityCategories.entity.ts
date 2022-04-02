@@ -6,13 +6,13 @@ import {
   Entity,
   JoinColumn,
   ManyToOne,
-  OneToMany,
   PrimaryColumn,
   UpdateDateColumn,
 } from 'typeorm';
 import { v4 as uuidV4 } from 'uuid';
-import { Activity } from './activity.entity';
-import { Category } from './category.entity';
+
+import { Activity } from 'src/shared/entities/activity.entity';
+import { Category } from 'src/shared/entities/category.entity';
 
 @Entity('activity_categories')
 export class ActivityCategories {

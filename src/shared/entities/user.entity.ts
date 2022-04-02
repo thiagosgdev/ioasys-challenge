@@ -1,4 +1,3 @@
-import { Exclude } from 'class-transformer';
 import {
   Column,
   CreateDateColumn,
@@ -10,9 +9,10 @@ import {
   UpdateDateColumn,
 } from 'typeorm';
 import { v4 as uuidV4 } from 'uuid';
-import { Event } from './event.entity';
-import { UserInterest } from './userInterests.entity';
-import { UserMood } from './userMoods.entity';
+
+import { Event } from 'src/shared/entities/event.entity';
+import { UserInterest } from 'src/shared/entities/userInterests.entity';
+import { UserMood } from 'src/shared/entities/userMoods.entity';
 
 @Unique(['email'])
 @Entity('users')
@@ -29,7 +29,6 @@ export class User {
   @Column()
   email: string;
 
-  @Exclude({ toPlainOnly: true })
   @Column({ select: false })
   password: string;
 
