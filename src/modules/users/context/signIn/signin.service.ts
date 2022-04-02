@@ -1,4 +1,8 @@
-import { BadRequestException, Inject, NotFoundException } from '@nestjs/common';
+import {
+  Inject,
+  NotFoundException,
+  UnauthorizedException,
+} from '@nestjs/common';
 import { SignIn } from 'src/domain/usecase/users/sigin.usecase';
 import { SigninRequestDTO } from 'src/shared/dtos/users/signinRequest.dto';
 import { SigninResponseDTO } from 'src/shared/dtos/users/signinResponse.dto';
@@ -38,7 +42,7 @@ export class SigninService implements SignIn {
     );
 
     if (!isValid) {
-      throw new BadRequestException('Invalid email/password');
+      throw new UnauthorizedException('Invalid email/password');
     }
 
     const user = await this.userRepository.findOne({

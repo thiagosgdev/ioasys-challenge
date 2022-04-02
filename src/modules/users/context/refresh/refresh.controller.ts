@@ -4,30 +4,30 @@ import {
   ApiTags,
   ApiUnauthorizedResponse,
 } from '@nestjs/swagger';
-import { instanceToInstance } from 'class-transformer';
 
-import { RefreshService } from './refresh.service';
+import { RefreshService } from 'src/modules/users/context/refresh/refresh.service';
 
 @ApiTags('users')
-@Controller('/users')
+@Controller('/refresh')
 export class RefreshController {
   constructor(private refreshService: RefreshService) {}
 
-  @Post('/refresh')
+  @Post()
   @ApiOkResponse({
     description: 'A token will be returned.',
   })
   @ApiUnauthorizedResponse({
-    description: 'The token is invalid!',
+    description: 'The refresh token is invalid!',
   })
   public async handle(@Body('refreshToken') refreshToken: string) {
     try {
-      return instanceToInstance(
-        await this.refreshService.execute(refreshToken),
-      );
+      return await this.refreshService.execute(refreshToken);
     } catch (error) {
       throw new HttpException(
-        error.response.message,
+        {
+          message: error.response.message,
+          code: 'token.invalid',
+        },
         error.response.statusCode,
       );
     }

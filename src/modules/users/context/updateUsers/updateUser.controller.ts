@@ -6,14 +6,19 @@ import {
   HttpStatus,
   Put,
 } from '@nestjs/common';
-import { ApiBadRequestResponse, ApiOkResponse, ApiTags } from '@nestjs/swagger';
+import {
+  ApiBadRequestResponse,
+  ApiNotFoundResponse,
+  ApiOkResponse,
+  ApiTags,
+} from '@nestjs/swagger';
 
 import { UpdateUserService } from 'src/modules/users/context/updateUsers/updateUser.service';
 import { UserDTO } from 'src/shared/dtos/users/user.dto';
 import { UpdateUserDTO } from 'src/shared/dtos/users/updateUser.dto';
 
 @ApiTags('users')
-@Controller('/users')
+@Controller()
 export class UpdateUserController {
   constructor(private updateUserService: UpdateUserService) {}
 
@@ -25,11 +30,17 @@ export class UpdateUserController {
   @ApiBadRequestResponse({
     description: 'This will be returned when has validation error',
   })
+  @ApiNotFoundResponse({
+    description: 'No user found!',
+  })
   public async handle(@Body() updateUserRequestBody: UpdateUserDTO) {
     try {
       return await this.updateUserService.update(updateUserRequestBody);
     } catch (error) {
-      throw new HttpException(error.message, error.status);
+      throw new HttpException(
+        error.response.message,
+        error.response.statusCode,
+      );
     }
   }
 }

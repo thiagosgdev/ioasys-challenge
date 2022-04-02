@@ -1,9 +1,10 @@
-import { Injectable, Inject } from '@nestjs/common';
+import { Injectable, Inject, NotFoundException } from '@nestjs/common';
+import { Repository } from 'typeorm';
+
 import { UpdateUserDTO } from 'src/shared/dtos/users/updateUser.dto';
 import { UserDTO } from 'src/shared/dtos/users/user.dto';
 import { User } from 'src/shared/entities/user.entity';
 import { Hasher } from 'src/shared/providers/HasherProvider/protocols/hasher';
-import { Repository } from 'typeorm';
 
 @Injectable()
 export class UpdateUserService {
@@ -22,13 +23,14 @@ export class UpdateUserService {
 
     const userExists = await this.userRepository.findOne({ email: data.email });
 
+    if (!userExists) {
+      throw new NotFoundException('No user found!');
+    }
     const updatedUser = {
       ...userExists,
       ...data,
     };
 
-    await this.userRepository.save(updatedUser);
-
-    return updatedUser;
+    return await this.userRepository.save(updatedUser);
   }
 }

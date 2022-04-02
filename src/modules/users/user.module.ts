@@ -19,12 +19,12 @@ import { LogoutService } from 'src/modules/users/context/logOut/logout.service';
 import { LogoutController } from 'src/modules/users/context/logOut/logout.controller';
 import { ListUsersService } from 'src/modules/users/context/listUsers/listUsers.service';
 import { ListUsersController } from 'src/modules/users/context/listUsers/listUsers.controller';
-import { UpdateUserService } from './context/updateUsers/updateUser.service';
-import { UpdateUserController } from './context/updateUsers/updateUser.controller';
-import { RefreshService } from './context/refresh/refresh.service';
-import { RefreshController } from './context/refresh/refresh.controller';
-import { FindUserByEmailController } from './context/findUserByEmail/findUserByEmail.controller';
-import { FindUserByEmailService } from './context/findUserByEmail/findUserByEmail.service';
+import { UpdateUserService } from 'src/modules/users/context/updateUsers/updateUser.service';
+import { UpdateUserController } from 'src/modules/users/context/updateUsers/updateUser.controller';
+import { RefreshService } from 'src/modules/users/context/refresh/refresh.service';
+import { RefreshController } from 'src/modules/users/context/refresh/refresh.controller';
+import { FindUserByEmailController } from 'src/modules/users/context/findUserByEmail/findUserByEmail.controller';
+import { FindUserByEmailService } from 'src/modules/users/context/findUserByEmail/findUserByEmail.service';
 
 @Module({
   imports: [

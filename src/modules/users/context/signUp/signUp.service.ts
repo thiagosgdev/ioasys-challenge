@@ -1,4 +1,9 @@
-import { Injectable, Inject, BadRequestException } from '@nestjs/common';
+import {
+  Injectable,
+  Inject,
+  BadRequestException,
+  ConflictException,
+} from '@nestjs/common';
 import { SignUpRequestDTO } from 'src/shared/dtos/users/signUpRequest.dto';
 import { User } from 'src/shared/entities/user.entity';
 import { Hasher } from 'src/shared/providers/HasherProvider/protocols/hasher';
@@ -14,11 +19,15 @@ export class SignUpService {
   ) {}
 
   async create(data: SignUpRequestDTO): Promise<User> {
-    const { email, password } = data;
+    const { email, password, passwordConfirmation } = data;
+
+    if (password !== passwordConfirmation) {
+      throw new BadRequestException('Password not match! Try again.');
+    }
 
     const exists = await this.userRepository.findOne({ email });
     if (exists) {
-      throw new BadRequestException(
+      throw new ConflictException(
         'E-mail already in use! Try to recover your password',
       );
     }
@@ -30,8 +39,6 @@ export class SignUpService {
       password: hashedPassword,
     });
 
-    await this.userRepository.save(user);
-
-    return user;
+    return this.userRepository.save(user);
   }
 }

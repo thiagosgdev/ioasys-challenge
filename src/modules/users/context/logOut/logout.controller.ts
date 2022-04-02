@@ -11,11 +11,11 @@ import { ApiTags } from '@nestjs/swagger';
 import { LogoutService } from 'src/modules/users/context/logOut/logout.service';
 
 @ApiTags('users')
-@Controller('/users')
+@Controller('/logout')
 export class LogoutController {
   constructor(private logoutService: LogoutService) {}
 
-  @Post('/logout')
+  @Post()
   @HttpCode(HttpStatus.NO_CONTENT)
   public async handle(@Headers('Authorization') auth: string) {
     try {

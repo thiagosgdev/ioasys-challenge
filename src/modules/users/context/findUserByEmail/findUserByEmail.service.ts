@@ -1,7 +1,8 @@
 import { Inject, NotFoundException } from '@nestjs/common';
+import { Repository } from 'typeorm';
+
 import { UserDTO } from 'src/shared/dtos/users/user.dto';
 import { User } from 'src/shared/entities/user.entity';
-import { Repository } from 'typeorm';
 
 export class FindUserByEmailService {
   constructor(

@@ -1,7 +1,8 @@
 import { MailerService } from '@nestjs-modules/mailer';
 import { Inject, Injectable, NotFoundException } from '@nestjs/common';
-import { User } from 'src/shared/entities/user.entity';
 import { Repository } from 'typeorm';
+
+import { User } from 'src/shared/entities/user.entity';
 
 @Injectable()
 export class ResetPasswordService {

@@ -1,20 +1,24 @@
 import {
   Body,
   Controller,
-  Get,
   HttpCode,
   HttpException,
   HttpStatus,
   Post,
 } from '@nestjs/common';
-import { ApiBadRequestResponse, ApiOkResponse, ApiTags } from '@nestjs/swagger';
-import { instanceToInstance } from 'class-transformer';
+import {
+  ApiBadRequestResponse,
+  ApiNotFoundResponse,
+  ApiOkResponse,
+  ApiTags,
+  ApiUnauthorizedResponse,
+} from '@nestjs/swagger';
 
 import { SigninRequestDTO } from 'src/shared/dtos/users/signinRequest.dto';
 import { SigninService } from 'src/modules/users/context/signIn/signin.service';
 
 @ApiTags('users')
-@Controller('/users')
+@Controller()
 export class SigninController {
   constructor(private signinService: SigninService) {}
 
@@ -22,19 +26,26 @@ export class SigninController {
   @HttpCode(HttpStatus.OK)
   @ApiOkResponse({
     description: 'A token and refresh token will be returned.',
-    schema: {
-      example:
-        'eyJhbGciOiJIUzI1NiJ9.eyJSb2xlIjoiQWRtaW4iLCJJc3N1ZXIiOiJJc3N1ZXIiLCJVc2VybmFtZSI6IkphdmFJblVzZSIsImV4cCI6MTY0NzI5OTI0MywiaWF0IjoxNjQ3Mjk5MjQzfQ.T56MxkVLF8M5wm5PBm3j7fJrubC4jHJPk8MmoVHhmPo',
-    },
+  })
+  @ApiUnauthorizedResponse({
+    description: 'This will be returned when has validation error',
+  })
+  @ApiNotFoundResponse({
+    description:
+      'This will be returned when no user is found with the email provided',
   })
   @ApiBadRequestResponse({
-    description: 'This will be returned when has validation error',
+    description:
+      'This will be returned when has validation error or no user is found',
   })
   public async handle(@Body() data: SigninRequestDTO) {
     try {
-      return instanceToInstance(await this.signinService.login(data));
+      return await this.signinService.login(data);
     } catch (error) {
-      throw new HttpException(error.message, error.statusCode);
+      throw new HttpException(
+        error.response.message,
+        error.response.statusCode,
+      );
     }
   }
 }

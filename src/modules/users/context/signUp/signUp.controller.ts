@@ -1,36 +1,37 @@
+import { Body, Controller, HttpException, Post } from '@nestjs/common';
 import {
-  BadRequestException,
-  Body,
-  Controller,
-  HttpException,
-  Post,
-} from '@nestjs/common';
-import { ApiBadRequestResponse, ApiOkResponse, ApiTags } from '@nestjs/swagger';
+  ApiBadRequestResponse,
+  ApiConflictResponse,
+  ApiOkResponse,
+  ApiTags,
+} from '@nestjs/swagger';
 
-import { instanceToInstance } from 'class-transformer';
 import { SignUpRequestDTO } from 'src/shared/dtos/users/signUpRequest.dto';
-import { SignUpService } from './signUp.service';
+import { SignUpService } from 'src/modules/users/context/signUp/signUp.service';
 
-@Controller('/users')
+@ApiTags('users')
+@Controller('/signup')
 export class SignUpController {
   constructor(private signUpService: SignUpService) {}
 
-  @Post('/signup')
-  @ApiTags('users')
+  @Post()
   @ApiOkResponse({
     description: 'The user object will be returned',
   })
   @ApiBadRequestResponse({
     description: 'This will be returned when a validation error happens',
   })
+  @ApiConflictResponse({
+    description: 'E-mail already in use!',
+  })
   public async handle(@Body() data: SignUpRequestDTO) {
     try {
-      if (data.password != data.passwordConfirmation) {
-        throw new BadRequestException('Password not match! Try again.');
-      }
-      return instanceToInstance(await this.signUpService.create(data));
+      return await this.signUpService.create(data);
     } catch (error) {
-      throw new HttpException(error.message, error.status);
+      throw new HttpException(
+        error.response.message,
+        error.response.statusCode,
+      );
     }
   }
 }
