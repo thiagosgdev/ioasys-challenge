@@ -11,7 +11,6 @@ export class CreateActivityService {
   ) {}
   async execute(data: CreateActivityRequestDTO) {
     const activity = this.activityRepository.create(data);
-    await this.activityRepository.save(activity);
-    return activity;
+    return await this.activityRepository.save(activity);
   }
 }

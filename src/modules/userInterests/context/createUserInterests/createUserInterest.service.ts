@@ -10,6 +10,7 @@ export class CreateUserInterestService {
     private userInterestRepository: Repository<UserInterest>,
   ) {}
   async execute(data: CreateUserInterestRequestDTO) {
-    return await this.userInterestRepository.save(data);
+    const userInterest = this.userInterestRepository.create(data);
+    return await this.userInterestRepository.save(userInterest);
   }
 }
