@@ -1,6 +1,7 @@
 import { Inject } from '@nestjs/common';
-import { UserMood } from 'src/shared/entities/userMoods.entity';
 import { Repository } from 'typeorm';
+
+import { UserMood } from 'src/shared/entities/userMoods.entity';
 
 export class ListUserMoodsService {
   constructor(

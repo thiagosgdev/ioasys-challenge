@@ -39,7 +39,7 @@ export const routerConfig = [
     module: EventModule,
   },
   {
-    path: '/users/interests',
+    path: '/users',
     module: UserInterestsModule,
   },
   {
@@ -47,7 +47,7 @@ export const routerConfig = [
     module: CategoriesModule,
   },
   {
-    path: '/users/moods',
+    path: '/users',
     module: UserMoodModule,
   },
 ];

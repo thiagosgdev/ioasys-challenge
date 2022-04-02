@@ -7,26 +7,26 @@ import {
   Param,
 } from '@nestjs/common';
 import { ApiOkResponse, ApiTags } from '@nestjs/swagger';
-import { instanceToInstance } from 'class-transformer';
-import { ListUserMoodsService } from './listUserMoods.service';
 
-@Controller('/users')
+import { ListUserMoodsService } from 'src/modules/usersMoods/context/listUserMoods/listUserMoods.service';
+
+@ApiTags('users')
+@Controller('/moods')
 export class ListUserMoodsController {
   constructor(private listUserMoodsService: ListUserMoodsService) {}
 
-  @Get('/moods/list/:userId')
-  @HttpCode(HttpStatus.OK)
-  @ApiTags('users')
+  @Get('/list/:userId')
   @ApiOkResponse({
     description: 'A list of the user moods will be returned',
   })
   public async handle(@Param('userId') userId: string) {
     try {
-      return instanceToInstance(
-        await this.listUserMoodsService.execute(userId),
-      );
+      return await this.listUserMoodsService.execute(userId);
     } catch (error) {
-      throw new HttpException(error.message, error.statusCode);
+      throw new HttpException(
+        error.response.message,
+        error.response.statusCode,
+      );
     }
   }
 }
