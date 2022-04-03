@@ -2,21 +2,6 @@ version: "3.3"
 
 services:
   
-  database_ioasys:
-    image: postgres
-    container_name: database_ioasys
-    restart: always
-    ports: 
-      - "65435:5432"
-    environment:
-      - POSTGRES_USER=${DB_USERNAME}
-      - POSTGRES_PASSWORD=${DB_PASSWORD}
-      - POSTGRES_DB=${DB_NAME}
-    volumes:
-      - pgdata:/data/postgres    
-    env_file:
-      - .env
-
   app_ioasys:
     build: .
     container_name: app_ioasys
@@ -28,10 +13,8 @@ services:
       - /usr/app/node_modules 
     links: 
       - redis
-      - database_ioasys
     depends_on:
       - redis
-      - database_ioasys
     env_file:
       - .env
   redis:

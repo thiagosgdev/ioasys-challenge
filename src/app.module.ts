@@ -23,6 +23,7 @@ import { CategoriesModule } from 'src/modules/categories/categories.module';
 import { UserInterestsModule } from 'src/modules/userInterests/userInterests.module';
 import { EventModule } from 'src/modules/events/events.module';
 import { AddressModule } from 'src/modules/addresses/address.module';
+import { AttendeeModule } from './modules/attendees/attendees.module';
 
 @Module({
   imports: [
@@ -51,6 +52,7 @@ import { AddressModule } from 'src/modules/addresses/address.module';
     UserInterestsModule,
     EventModule,
     AddressModule,
+    AttendeeModule,
   ],
   controllers: [MetricsController],
   providers: [

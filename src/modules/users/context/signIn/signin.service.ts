@@ -3,6 +3,9 @@ import {
   NotFoundException,
   UnauthorizedException,
 } from '@nestjs/common';
+import { JwtService } from '@nestjs/jwt';
+import { Repository } from 'typeorm';
+
 import { SignIn } from 'src/domain/usecase/users/sigin.usecase';
 import { SigninRequestDTO } from 'src/shared/dtos/users/signinRequest.dto';
 import { SigninResponseDTO } from 'src/shared/dtos/users/signinResponse.dto';
@@ -10,7 +13,7 @@ import { User } from 'src/shared/entities/user.entity';
 import { Encrypter } from 'src/shared/providers/EncryptProvider/protocols/encrypter';
 import { EncrypterRefresh } from 'src/shared/providers/EncryptProvider/protocols/encrypterExpirationDate';
 import { Hasher } from 'src/shared/providers/HasherProvider/protocols/hasher';
-import { Repository } from 'typeorm';
+import envConfig from 'src/configs/env';
 
 export class SigninService implements SignIn {
   constructor(
@@ -18,10 +21,7 @@ export class SigninService implements SignIn {
     private userRepository: Repository<User>,
     @Inject('HASH_PROVIDER')
     private hasher: Hasher,
-    @Inject('ENCRYPTER_PROVIDER')
-    private encrypter: Encrypter,
-    @Inject('ENCRYPTER_PROVIDER')
-    private encrypterRefresh: EncrypterRefresh,
+    private jwtService: JwtService,
   ) {}
   async login(data: SigninRequestDTO): Promise<SigninResponseDTO> {
     const { email, password } = data;
@@ -48,8 +48,15 @@ export class SigninService implements SignIn {
     const user = await this.userRepository.findOne({
       email,
     });
-    const token = await this.encrypter.encrypt(user.id);
-    const refreshToken = await this.encrypterRefresh.encryptRefresh(user.id);
+    const token = this.jwtService.sign(
+      { userId: user.id },
+      { expiresIn: envConfig().jwtExpires },
+    );
+    const payload = this.jwtService.decode(token);
+    const refreshToken = this.jwtService.sign(
+      { userId: user.id },
+      { expiresIn: envConfig().jwtRefExpires },
+    );
 
     return { token, refreshToken, user };
   }

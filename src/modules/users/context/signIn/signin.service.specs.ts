@@ -1,4 +1,3 @@
-import { BadRequestException } from '@nestjs/common';
 import { Test, TestingModule } from '@nestjs/testing';
 import { SigninResponseDTO } from 'src/shared/dtos/users/signinResponse.dto';
 import { SigninService } from 'src/modules/users/context/signIn/signin.service';

@@ -42,6 +42,7 @@ export class SigninController {
     try {
       return await this.signinService.login(data);
     } catch (error) {
+      console.log(error);
       throw new HttpException(
         error.response.message,
         error.response.statusCode,

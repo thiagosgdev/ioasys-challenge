@@ -3,6 +3,8 @@ import type { RedisClientOptions } from 'redis';
 import { CacheModule, Module } from '@nestjs/common';
 import { MailerModule } from '@nestjs-modules/mailer';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { ConfigModule, ConfigService } from '@nestjs/config';
+import { JwtModule } from '@nestjs/jwt';
 
 import { DatabaseModule } from 'src/infra/database.module';
 import { User } from 'src/shared/entities/user.entity';
@@ -25,9 +27,17 @@ import { RefreshService } from 'src/modules/users/context/refresh/refresh.servic
 import { RefreshController } from 'src/modules/users/context/refresh/refresh.controller';
 import { FindUserByEmailController } from 'src/modules/users/context/findUserByEmail/findUserByEmail.controller';
 import { FindUserByEmailService } from 'src/modules/users/context/findUserByEmail/findUserByEmail.service';
+import envConfig from 'src/configs/env';
 
 @Module({
   imports: [
+    JwtModule.registerAsync({
+      imports: [ConfigModule],
+      useFactory: async () => ({
+        secret: envConfig().jwtSecret,
+      }),
+      inject: [ConfigService],
+    }),
     MailerModule,
     DatabaseModule,
     TypeOrmModule.forFeature([User]),

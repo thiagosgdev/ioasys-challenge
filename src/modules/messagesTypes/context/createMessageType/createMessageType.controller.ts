@@ -15,7 +15,7 @@ export class CreateMessageTypeController {
   })
   public async handle(@Body() data: CreateMessageTypeRequestDTO) {
     try {
-      await this.createMessageTypeService.execute(data);
+      return await this.createMessageTypeService.execute(data);
     } catch (error) {
       throw new HttpException(
         error.response.message,
