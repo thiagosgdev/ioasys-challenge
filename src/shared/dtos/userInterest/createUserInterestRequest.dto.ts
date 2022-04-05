@@ -1,5 +1,5 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { IsNotEmpty, IsUUID } from 'class-validator';
+import { IsArray, IsNotEmpty, IsUUID } from 'class-validator';
 
 export class CreateUserInterestRequestDTO {
   @IsUUID()
@@ -7,8 +7,8 @@ export class CreateUserInterestRequestDTO {
   @ApiProperty()
   userId: string;
 
-  @IsUUID()
+  @IsArray()
   @IsNotEmpty()
   @ApiProperty()
-  activityId: string;
+  activityIds: string[];
 }

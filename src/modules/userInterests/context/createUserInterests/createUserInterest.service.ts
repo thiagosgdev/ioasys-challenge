@@ -10,7 +10,19 @@ export class CreateUserInterestService {
     private userInterestRepository: Repository<UserInterest>,
   ) {}
   async execute(data: CreateUserInterestRequestDTO) {
-    const userInterest = this.userInterestRepository.create(data);
-    return await this.userInterestRepository.save(userInterest);
+    const userInterest = {
+      userId: data.userId,
+      activityId: '',
+    };
+    let newUserInterest: UserInterest;
+    const activities = data.activityIds;
+
+    await this.userInterestRepository.softDelete({ userId: data.userId });
+
+    activities.forEach(async (activity) => {
+      userInterest.activityId = activity;
+      newUserInterest = this.userInterestRepository.create(userInterest);
+      await this.userInterestRepository.save(newUserInterest);
+    });
   }
 }

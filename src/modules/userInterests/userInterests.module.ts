@@ -10,11 +10,13 @@ import { CreateUserInterestController } from 'src/modules/userInterests/context/
 import { ListUserInterestsController } from 'src/modules/userInterests/context/listUserInterests/listUserInterests.controller';
 import { ListUserInterestsByUserIdService } from 'src/modules/userInterests/context/listUserInterestsByUserId/listUserInterestsByUserId.service';
 import { ListUserInterestsByUserIdController } from 'src/modules/userInterests/context/listUserInterestsByUserId/listUserInterestsByUserId.controller';
+import { UserInterestRepo } from './repositories/userInterests.repository';
 
 @Module({
   imports: [DatabaseModule, TypeOrmModule.forFeature([UserInterest])],
   providers: [
     ...userInterestsProviders,
+    UserInterestRepo,
     CreateUserInterestService,
     ListUserInterestsService,
     ListUserInterestsByUserIdService,
