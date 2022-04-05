@@ -13,12 +13,7 @@ export class UpdateUserDTO {
   @IsOptional()
   @IsString()
   @ApiProperty()
-  firstName?: string;
-
-  @IsOptional()
-  @IsString()
-  @ApiProperty()
-  lastName?: string;
+  name?: string;
 
   @IsOptional()
   @IsEmail()

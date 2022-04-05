@@ -9,11 +9,7 @@ export class UserDTO {
 
   @IsString()
   @ApiProperty()
-  firstName: string;
-
-  @IsString()
-  @ApiProperty()
-  lastName: string;
+  name: string;
 
   @IsString()
   @ApiProperty()

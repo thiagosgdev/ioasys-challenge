@@ -18,8 +18,8 @@ const createAdmin = async () => {
 
   await client.connect();
   await client.query(
-    `INSERT INTO users(id, first_name, last_name, email, password, token, refresh_token, 
-    is_admin, created_at, updated_at, deleted_at) VALUES ('${id}', 'admin', 'admin',
+    `INSERT INTO users(id, name, email, password, token, refresh_token, 
+    is_admin, created_at, updated_at, deleted_at) VALUES ('${id}', 'admin',
     'admin@admin.com', '${password}', null, null, true, now(), null, null);`,
   );
   console.log('User created!');

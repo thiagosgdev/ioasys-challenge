@@ -5,8 +5,7 @@ import { UserDTO } from 'src/shared/dtos/users/user.dto';
 
 const mockUserModel = (): UserDTO => ({
   id: '56e1c6de-73d0-4d32-a130-3efa59d1f6ab',
-  firstName: 'any_first_name',
-  lastName: 'any_last_name',
+  name: 'any_name',
   email: 'test@test.com',
   password: '12345678',
   createdAt: new Date(),

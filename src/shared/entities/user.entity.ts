@@ -21,11 +21,8 @@ export class User {
   @PrimaryColumn()
   id: string;
 
-  @Column({ name: 'first_name' })
-  firstName: string;
-
-  @Column({ name: 'last_name' })
-  lastName: string;
+  @Column()
+  name: string;
 
   @Column()
   email: string;
