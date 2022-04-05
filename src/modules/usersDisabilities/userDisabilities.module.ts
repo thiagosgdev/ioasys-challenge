@@ -10,11 +10,13 @@ import { ListUserDisabilitiesByUserIdService } from 'src/modules/usersDisabiliti
 import { ListUserDisabilitiesService } from 'src/modules/usersDisabilities/context/listUserDisabilities/listUserDisabilities.service';
 import { ListUserDisabilitiesByUserIdController } from 'src/modules/usersDisabilities/context/listUserDisabilitiesByUserId/listUserDisabilitiesByUserId.controller';
 import { ListUserDisabilitiesController } from 'src/modules/usersDisabilities/context/listUserDisabilities/listUserDisabilities.controller';
+import { UserDisabilityRepo } from 'src/modules/usersDisabilities/repositories/userDisabilitily.repository';
 
 @Module({
   imports: [DatabaseModule, TypeOrmModule.forFeature([UserDisability])],
   providers: [
     ...userDisabilitiesProviders,
+    UserDisabilityRepo,
     CreateUserDisabilitiesService,
     ListUserDisabilitiesService,
     ListUserDisabilitiesByUserIdService,

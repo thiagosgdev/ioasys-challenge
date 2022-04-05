@@ -1,4 +1,4 @@
-import { ConsoleLogger, Inject } from '@nestjs/common';
+import { Inject } from '@nestjs/common';
 import { Repository } from 'typeorm';
 
 import { UserDisability } from 'src/shared/entities/userDisability.entity';
@@ -17,6 +17,7 @@ export class CreateUserDisabilitiesService {
     };
     let newUserDisability: UserDisability;
     const disabilities = data.disabilityIds;
+    await this.userDisabilitiesRepository.softDelete({ userId: data.userId });
 
     disabilities.forEach(async (disability) => {
       userDisability.disabilityId = disability;
