@@ -13,6 +13,7 @@ import { v4 as uuidV4 } from 'uuid';
 import { Event } from 'src/shared/entities/event.entity';
 import { UserInterest } from 'src/shared/entities/userInterests.entity';
 import { UserMood } from 'src/shared/entities/userMoods.entity';
+import { UserDisability } from './userDisability.entity';
 
 @Unique(['email'])
 @Entity('users')
@@ -49,6 +50,9 @@ export class User {
 
   @OneToMany(() => UserInterest, (userInterests) => userInterests.users)
   userInterests: UserInterest[];
+
+  @OneToMany(() => UserDisability, (userDisabilities) => userDisabilities.users)
+  userDisabilities: UserDisability[];
 
   @CreateDateColumn({ name: 'created_at' })
   createdAt: Date;

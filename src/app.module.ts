@@ -23,7 +23,9 @@ import { CategoriesModule } from 'src/modules/categories/categories.module';
 import { UserInterestsModule } from 'src/modules/userInterests/userInterests.module';
 import { EventModule } from 'src/modules/events/events.module';
 import { AddressModule } from 'src/modules/addresses/address.module';
-import { AttendeeModule } from './modules/attendees/attendees.module';
+import { AttendeeModule } from 'src/modules/attendees/attendees.module';
+import { DisabilitiesModule } from 'src/modules/disabilities/disabilities.module';
+import { UserDisabilitiesModule } from './modules/usersDisabilities/userDisabilities.module';
 
 @Module({
   imports: [
@@ -53,6 +55,8 @@ import { AttendeeModule } from './modules/attendees/attendees.module';
     EventModule,
     AddressModule,
     AttendeeModule,
+    DisabilitiesModule,
+    UserDisabilitiesModule,
   ],
   controllers: [MetricsController],
   providers: [
