@@ -5,6 +5,8 @@ import {
   HttpException,
   HttpStatus,
   Put,
+  Request,
+  UseGuards,
 } from '@nestjs/common';
 import {
   ApiBadRequestResponse,
@@ -16,12 +18,14 @@ import {
 import { UpdateUserService } from 'src/modules/users/context/updateUsers/updateUser.service';
 import { UserDTO } from 'src/shared/dtos/users/user.dto';
 import { UpdateUserDTO } from 'src/shared/dtos/users/updateUser.dto';
+import { JwtAuthGuard } from 'src/shared/providers/EncryptProvider/jwtAuth.guard';
 
 @ApiTags('users')
 @Controller()
 export class UpdateUserController {
   constructor(private updateUserService: UpdateUserService) {}
 
+  @UseGuards(JwtAuthGuard)
   @Put()
   @HttpCode(HttpStatus.OK)
   @ApiOkResponse({
@@ -33,9 +37,13 @@ export class UpdateUserController {
   @ApiNotFoundResponse({
     description: 'No user found!',
   })
-  public async handle(@Body() updateUserRequestBody: UpdateUserDTO) {
+  public async handle(
+    @Body() updateUserRequestBody: UpdateUserDTO,
+    @Request() req,
+  ) {
     try {
-      return await this.updateUserService.update(updateUserRequestBody);
+      const userId = req.user.userId;
+      return await this.updateUserService.update(userId, updateUserRequestBody);
     } catch (error) {
       throw new HttpException(
         error.response.message,

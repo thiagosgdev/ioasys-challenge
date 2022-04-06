@@ -1,12 +1,14 @@
 import helmet from 'helmet';
 import { NestFactory } from '@nestjs/core';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
-import { ValidationPipe } from '@nestjs/common';
+import { UseGuards, ValidationPipe } from '@nestjs/common';
 import { WinstonModule } from 'nest-winston';
 
 import configEnv from 'src/configs/env/index';
 import { winstonConfig } from 'src/configs/logger/winston.config';
 import { AppModule } from 'src/app.module';
+import { JwtStrategy } from './shared/providers/EncryptProvider/jwt.strategy';
+import { JwtAuthGuard } from './shared/providers/EncryptProvider/jwtAuth.guard';
 
 async function bootstrap() {
   const logger = WinstonModule.createLogger(winstonConfig);

@@ -5,10 +5,5 @@ export class CreateUserMoodRequestDTO {
   @IsUUID()
   @IsNotEmpty()
   @ApiProperty()
-  userId: string;
-
-  @IsUUID()
-  @IsNotEmpty()
-  @ApiProperty()
   moodId: string;
 }

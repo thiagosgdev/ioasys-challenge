@@ -5,6 +5,8 @@ import { WinstonModule } from 'nest-winston';
 import { APP_GUARD, APP_INTERCEPTOR, RouterModule } from '@nestjs/core';
 import { MailerModule } from '@nestjs-modules/mailer';
 import * as redisStore from 'cache-manager-redis-store';
+import { ConfigModule, ConfigService } from '@nestjs/config';
+import { JwtModule } from '@nestjs/jwt';
 
 import { LoggerInterceptor } from 'src/shared/interceptors/logger.interceptor';
 import { UserModule } from 'src/modules/users/user.module';
@@ -26,9 +28,17 @@ import { AddressModule } from 'src/modules/addresses/address.module';
 import { AttendeeModule } from 'src/modules/attendees/attendees.module';
 import { DisabilitiesModule } from 'src/modules/disabilities/disabilities.module';
 import { UserDisabilitiesModule } from './modules/usersDisabilities/userDisabilities.module';
+import envConfig from 'src/configs/env';
 
 @Module({
   imports: [
+    JwtModule.registerAsync({
+      imports: [ConfigModule],
+      useFactory: async () => ({
+        secret: envConfig().jwtSecret,
+      }),
+      inject: [ConfigService],
+    }),
     TypeOrmModule.forRoot(),
     WinstonModule.forRoot(winstonConfig),
     MailerModule.forRoot(mailerConfig),

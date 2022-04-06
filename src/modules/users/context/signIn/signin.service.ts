@@ -52,7 +52,6 @@ export class SigninService implements SignIn {
       { userId: user.id },
       { expiresIn: envConfig().jwtExpires },
     );
-    const payload = this.jwtService.decode(token);
     const refreshToken = this.jwtService.sign(
       { userId: user.id },
       { expiresIn: envConfig().jwtRefExpires },

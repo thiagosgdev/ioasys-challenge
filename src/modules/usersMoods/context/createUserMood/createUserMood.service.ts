@@ -9,7 +9,11 @@ export class CreateUserMoodService {
     @Inject('USER_MOOD_REPOSITORY')
     private userMoodRepository: Repository<UserMood>,
   ) {}
-  async execute(data: CreateUserMoodRequestDTO) {
-    return await this.userMoodRepository.save(data);
+  async execute(userId: string, data: CreateUserMoodRequestDTO) {
+    const mood = this.userMoodRepository.create({
+      userId,
+      moodId: data.moodId,
+    });
+    return await this.userMoodRepository.save(mood);
   }
 }

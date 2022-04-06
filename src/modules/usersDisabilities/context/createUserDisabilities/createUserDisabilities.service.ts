@@ -10,14 +10,14 @@ export class CreateUserDisabilitiesService {
     private userDisabilitiesRepository: Repository<UserDisability>,
   ) {}
 
-  async execute(data: CreateUserDisabilityRequestDTO) {
+  async execute(userId: string, data: CreateUserDisabilityRequestDTO) {
     const userDisability = {
-      userId: data.userId,
+      userId,
       disabilityId: '',
     };
     let newUserDisability: UserDisability;
     const disabilities = data.disabilityIds;
-    await this.userDisabilitiesRepository.softDelete({ userId: data.userId });
+    await this.userDisabilitiesRepository.softDelete({ userId });
 
     disabilities.forEach(async (disability) => {
       userDisability.disabilityId = disability;

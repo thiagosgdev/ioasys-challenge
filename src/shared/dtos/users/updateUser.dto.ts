@@ -9,16 +9,10 @@ import {
 } from 'class-validator';
 
 export class UpdateUserDTO {
-  id?: string;
   @IsOptional()
   @IsString()
   @ApiProperty()
   name?: string;
-
-  @IsOptional()
-  @IsEmail()
-  @ApiProperty()
-  email?: string;
 
   @IsOptional()
   @IsString()

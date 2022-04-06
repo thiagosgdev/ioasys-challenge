@@ -15,17 +15,18 @@ export class UpdateUserService {
     private hasher: Hasher,
   ) {}
 
-  async update(data: UpdateUserDTO): Promise<UserDTO> {
+  async update(userId: string, data: UpdateUserDTO): Promise<UserDTO> {
+    const userExists = await this.userRepository.findOne({ id: userId });
+
+    if (!userExists) {
+      throw new NotFoundException('No user found!');
+    }
+
     if (data.password) {
       const hashedPassword = await this.hasher.createHash(data.password);
       data.password = hashedPassword;
     }
 
-    const userExists = await this.userRepository.findOne({ email: data.email });
-
-    if (!userExists) {
-      throw new NotFoundException('No user found!');
-    }
     const updatedUser = {
       ...userExists,
       ...data,

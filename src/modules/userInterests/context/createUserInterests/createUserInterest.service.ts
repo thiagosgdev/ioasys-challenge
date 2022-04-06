@@ -9,15 +9,15 @@ export class CreateUserInterestService {
     @Inject('USER_INTEREST_REPOSITORY')
     private userInterestRepository: Repository<UserInterest>,
   ) {}
-  async execute(data: CreateUserInterestRequestDTO) {
+  async execute(userId: string, data: CreateUserInterestRequestDTO) {
     const userInterest = {
-      userId: data.userId,
+      userId,
       activityId: '',
     };
     let newUserInterest: UserInterest;
     const activities = data.activityIds;
 
-    await this.userInterestRepository.softDelete({ userId: data.userId });
+    await this.userInterestRepository.softDelete({ userId });
 
     activities.forEach(async (activity) => {
       userInterest.activityId = activity;

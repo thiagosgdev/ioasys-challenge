@@ -1,7 +1,15 @@
-import { Body, Controller, HttpException, Post } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  HttpException,
+  Post,
+  Request,
+  UseGuards,
+} from '@nestjs/common';
 import { ApiCreatedResponse, ApiTags } from '@nestjs/swagger';
 
 import { CreateUserMoodRequestDTO } from 'src/shared/dtos/userMood/createUserMoodRequest.dto';
+import { JwtAuthGuard } from 'src/shared/providers/EncryptProvider/jwtAuth.guard';
 import { CreateUserMoodService } from './createUserMood.service';
 
 @ApiTags('users')
@@ -9,13 +17,15 @@ import { CreateUserMoodService } from './createUserMood.service';
 export class CreateUserMoodController {
   constructor(private createUserMoodService: CreateUserMoodService) {}
 
+  @UseGuards(JwtAuthGuard)
   @Post()
   @ApiCreatedResponse({
     description: 'The user mood created will be returned',
   })
-  public async handle(@Body() data: CreateUserMoodRequestDTO) {
+  public async handle(@Body() data: CreateUserMoodRequestDTO, @Request() req) {
     try {
-      return await this.createUserMoodService.execute(data);
+      const userId = req.user.userId;
+      return await this.createUserMoodService.execute(userId, data);
     } catch (error) {
       throw new HttpException(
         error.response.message,

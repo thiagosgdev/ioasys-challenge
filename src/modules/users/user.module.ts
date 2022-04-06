@@ -5,6 +5,7 @@ import { MailerModule } from '@nestjs-modules/mailer';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { JwtModule } from '@nestjs/jwt';
+import { PassportModule } from '@nestjs/passport';
 
 import { DatabaseModule } from 'src/infra/database.module';
 import { User } from 'src/shared/entities/user.entity';
@@ -27,6 +28,7 @@ import { RefreshService } from 'src/modules/users/context/refresh/refresh.servic
 import { RefreshController } from 'src/modules/users/context/refresh/refresh.controller';
 import { FindUserByEmailController } from 'src/modules/users/context/findUserByEmail/findUserByEmail.controller';
 import { FindUserByEmailService } from 'src/modules/users/context/findUserByEmail/findUserByEmail.service';
+import { JwtStrategy } from 'src/shared/providers/EncryptProvider/jwt.strategy';
 import envConfig from 'src/configs/env';
 
 @Module({
@@ -40,6 +42,7 @@ import envConfig from 'src/configs/env';
     }),
     MailerModule,
     DatabaseModule,
+    PassportModule,
     TypeOrmModule.forFeature([User]),
     CacheModule.register<RedisClientOptions>({
       store: redisStore,
@@ -65,6 +68,7 @@ import envConfig from 'src/configs/env';
     UpdateUserService,
     RefreshService,
     FindUserByEmailService,
+    JwtStrategy,
   ],
   controllers: [
     SigninController,
