@@ -11,11 +11,13 @@ import { ListEventsController } from 'src/modules/events/context/listEvents/list
 import { ListEventsByUserInterestsController } from 'src/modules/events/context/listEventsByUserInterests/listEventsByUserInterests.controller';
 import { ListEventsByUserInterestsService } from 'src/modules/events/context/listEventsByUserInterests/listEventsByUserInterests.service';
 import { EventRepo } from 'src/modules/events/repositories/events.repository';
+import { addressesProviders } from 'src/modules/addresses/address.provider';
 
 @Module({
   imports: [DatabaseModule, TypeOrmModule.forFeature([Event])],
   providers: [
     ...eventsProviders,
+    ...addressesProviders,
     EventRepo,
     CreateEventService,
     ListEventsService,

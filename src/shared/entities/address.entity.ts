@@ -30,6 +30,9 @@ export class Address {
   @Column({ name: 'zip_code' })
   zipCode: string;
 
+  @Column({ name: 'reference_point' })
+  referencePoint: string;
+
   @Column({ name: 'user_id' })
   userId: string;
 

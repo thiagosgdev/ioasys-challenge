@@ -21,7 +21,7 @@ export class CreateEvents1648685677611 implements MigrationInterface {
           },
           {
             name: 'date',
-            type: 'timestamp',
+            type: 'varchar',
           },
           {
             name: 'max_participants',
@@ -46,14 +46,14 @@ export class CreateEvents1648685677611 implements MigrationInterface {
             isNullable: true,
           },
           {
-            name: 'is_accessible',
+            name: 'is_online',
             type: 'boolean',
             default: false,
           },
           {
-            name: 'is_online',
-            type: 'boolean',
-            default: false,
+            name: 'url',
+            type: 'varchar',
+            isNullable: true,
           },
           {
             name: 'activity_id',

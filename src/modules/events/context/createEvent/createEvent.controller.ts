@@ -17,6 +17,7 @@ export class CreateEventController {
     try {
       return await this.createEventService.execute(data);
     } catch (error) {
+      console.log(error);
       throw new HttpException(
         error.response.message,
         error.response.statusCode,

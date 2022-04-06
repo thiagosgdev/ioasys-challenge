@@ -20,6 +20,9 @@ export class AddressResponse {
   zipCode: string;
 
   @ApiProperty()
+  referencePoint: string;
+
+  @ApiProperty()
   userId: string;
 
   @ApiProperty()

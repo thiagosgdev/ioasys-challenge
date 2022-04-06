@@ -14,6 +14,7 @@
   "scripts": {
     "seed:database": "ts-node ./src/infra/typeorm/seeds/create-database.ts",
     "seed:data": "ts-node ./src/infra/typeorm/seeds/create-data.ts",
+    "seed:admin": "ts-node ./src/infra/typeorm/seeds/create-admin.ts",
     "typeorm": "ts-node ./node_modules/typeorm/cli.js",
     "migration:run": "ts-node ./node_modules/typeorm/cli.js migration:run",
     "sonar": "node sonar-project.js",

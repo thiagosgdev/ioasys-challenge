@@ -1,71 +1,17 @@
 import { ApiProperty } from '@nestjs/swagger';
-import {
-  IsBoolean,
-  IsISO8601,
-  IsNotEmpty,
-  IsNumber,
-  IsOptional,
-  IsString,
-  IsUUID,
-} from 'class-validator';
+import { IsNotEmpty, IsObject } from 'class-validator';
+
+import { CreateAddressRequestDTO } from 'src/shared/dtos/address/createAddressRequest.dto';
+import { CreateEventObject } from 'src/shared/dtos/events/createEventObject.dto';
 
 export class CreateEventRequestDTO {
-  @IsString()
+  @IsObject()
+  @ApiProperty()
+  @IsNotEmpty()
+  event: CreateEventObject;
+
+  @IsObject()
   @IsNotEmpty()
   @ApiProperty()
-  name: string;
-
-  @IsString()
-  @IsNotEmpty()
-  @ApiProperty()
-  description: string;
-
-  @IsBoolean()
-  @ApiProperty()
-  @IsOptional()
-  isOnline?: boolean;
-
-  @IsISO8601()
-  @IsNotEmpty()
-  @ApiProperty()
-  date: Date;
-
-  @IsNumber()
-  @IsNotEmpty()
-  @ApiProperty()
-  minimumAge: number;
-
-  @IsNumber()
-  @IsNotEmpty()
-  @ApiProperty()
-  maxParticipants: number;
-
-  @IsString()
-  @IsNotEmpty()
-  @ApiProperty()
-  startTime: string;
-
-  @IsString()
-  @IsOptional()
-  @ApiProperty()
-  endTime?: string;
-
-  @IsUUID()
-  @IsNotEmpty()
-  @ApiProperty()
-  activityId: string;
-
-  @IsUUID()
-  @IsNotEmpty()
-  @ApiProperty()
-  userId: string;
-
-  @IsString()
-  @ApiProperty()
-  userIdentity: string;
-
-  @IsBoolean()
-  @IsNotEmpty()
-  @ApiProperty()
-  isAccessible: boolean;
+  address: CreateAddressRequestDTO;
 }

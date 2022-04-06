@@ -30,6 +30,11 @@ export class CreateAddressRequestDTO {
   @IsString()
   @IsOptional()
   @ApiProperty()
+  referencePoint?: string;
+
+  @IsString()
+  @IsOptional()
+  @ApiProperty()
   userId?: string;
 
   @IsString()

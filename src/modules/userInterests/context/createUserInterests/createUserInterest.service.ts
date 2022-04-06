@@ -17,7 +17,7 @@ export class CreateUserInterestService {
     let newUserInterest: UserInterest;
     const activities = data.activityIds;
 
-    await this.userInterestRepository.softDelete({ userId });
+    await this.userInterestRepository.delete({ userId });
 
     activities.forEach(async (activity) => {
       userInterest.activityId = activity;

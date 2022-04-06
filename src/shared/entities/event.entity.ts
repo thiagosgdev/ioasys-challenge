@@ -26,10 +26,10 @@ export class Event {
   description: string;
 
   @Column()
-  date: Date;
+  date: string;
 
-  @Column({ name: 'minimum_age' })
-  minimumAge: number;
+  @Column({ name: 'is_pet_friendly' })
+  isPetFriendly: boolean;
 
   @Column({ name: 'max_participants' })
   maxParticipants: number;
@@ -52,8 +52,8 @@ export class Event {
   @Column({ name: 'is_online' })
   isOnline: boolean;
 
-  @Column({ name: 'is_accessible' })
-  isAccessible: boolean;
+  @Column()
+  url: string;
 
   @ManyToOne(() => User, (user) => user.events)
   @JoinColumn({ name: 'user_id' })

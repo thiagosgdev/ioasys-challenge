@@ -14,7 +14,7 @@ export class EventResponseDTO {
   isOnline: boolean;
 
   @ApiResponseProperty()
-  date: Date;
+  date: string;
 
   @ApiResponseProperty()
   minimumAge: number;
@@ -38,7 +38,7 @@ export class EventResponseDTO {
   userIdentity: string;
 
   @ApiResponseProperty()
-  isAccessible: boolean;
+  accessibilities: string[];
 
   @ApiResponseProperty()
   createdAt: Date;
