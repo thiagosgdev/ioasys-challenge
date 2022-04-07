@@ -6,7 +6,12 @@ import {
   HttpStatus,
   Patch,
 } from '@nestjs/common';
-import { ApiBadRequestResponse, ApiOkResponse, ApiTags } from '@nestjs/swagger';
+import {
+  ApiBadRequestResponse,
+  ApiBody,
+  ApiNotFoundResponse,
+  ApiTags,
+} from '@nestjs/swagger';
 
 import { ResetPasswordService } from 'src/modules/users/context/resetPassword/resetPassword.service';
 
@@ -17,19 +22,26 @@ export class ResetPasswordController {
 
   @Patch()
   @HttpCode(HttpStatus.OK)
-  @ApiOkResponse({
-    description: 'A email will be sent to the user.',
+  @ApiBody({
     schema: {
-      example: 'test@test.com',
+      type: 'object',
+      properties: {
+        email: {
+          type: 'string',
+          example: 'test@test.com',
+        },
+      },
     },
   })
   @ApiBadRequestResponse({
-    description:
-      'This will be returned when has validation error or no user is found',
+    description: 'This will be returned when has validation error',
+  })
+  @ApiNotFoundResponse({
+    description: 'No user was found with the e-mail provided',
   })
   public async handle(@Body('email') email: string) {
     try {
-      await this.resetPasswordService.execute(email);
+      return await this.resetPasswordService.execute(email);
     } catch (error) {
       throw new HttpException(
         error.response.message,

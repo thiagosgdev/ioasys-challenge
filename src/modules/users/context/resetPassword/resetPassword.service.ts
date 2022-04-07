@@ -1,5 +1,10 @@
 import { MailerService } from '@nestjs-modules/mailer';
-import { Inject, Injectable, NotFoundException } from '@nestjs/common';
+import {
+  Inject,
+  Injectable,
+  InternalServerErrorException,
+  NotFoundException,
+} from '@nestjs/common';
 import { Repository } from 'typeorm';
 
 import { User } from 'src/shared/entities/user.entity';
@@ -26,6 +31,14 @@ export class ResetPasswordService {
         token: 'test',
       },
     };
-    await this.mailerService.sendMail(mail);
+    await this.mailerService.sendMail(mail).catch((err) => {
+      throw new InternalServerErrorException(
+        'There was a problem sending the e-mail, please contact the support',
+      );
+    });
+
+    return {
+      message: 'The new password was sent to your e-mail',
+    };
   }
 }
