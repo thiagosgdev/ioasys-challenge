@@ -11,13 +11,12 @@ export class CreateEventController {
 
   @Post()
   @ApiCreatedResponse({
-    description: 'Return the event created.',
+    description: 'Return the event and adress created.',
   })
   public async handle(@Body() data: CreateEventRequestDTO) {
     try {
       return await this.createEventService.execute(data);
     } catch (error) {
-      console.log(error);
       throw new HttpException(
         error.response.message,
         error.response.statusCode,

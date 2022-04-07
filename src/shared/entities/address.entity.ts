@@ -5,10 +5,12 @@ import {
   DeleteDateColumn,
   Entity,
   JoinColumn,
+  OneToMany,
   PrimaryColumn,
   UpdateDateColumn,
 } from 'typeorm';
 import { v4 as uuidV4 } from 'uuid';
+import { Event } from './event.entity';
 
 @Entity('addresses')
 export class Address {
@@ -37,8 +39,10 @@ export class Address {
   userId: string;
 
   @Column({ name: 'event_id' })
-  @JoinColumn({ name: 'activity_id' })
   eventId: string;
+
+  @OneToMany(() => Event, (events) => events.address)
+  events: Event[];
 
   @CreateDateColumn({ name: 'created_at' })
   createdAt: Date;

@@ -2,6 +2,8 @@ import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 
+import { Event } from 'src/shared/entities/event.entity';
+
 @Injectable()
 export class EventRepo {
   constructor(
@@ -21,5 +23,30 @@ export class EventRepo {
       `,
       [userId],
     );
+  }
+
+  async listEventAddress(eventId?: string): Promise<Event[]> {
+    let events: Event[];
+
+    const eventsOnline = await this.repository.find({
+      where: {
+        isOnline: true,
+        deletedAt: null,
+      },
+    });
+
+    let query = ` SELECT ev.*, ad.id as address_id, ad.* FROM events ev 
+                        INNER JOIN addresses ad ON ev.id = ad.event_id
+                    WHERE ev.deleted_at IS NULL `;
+    if (eventId) {
+      query += 'AND ev.id = $1';
+      events = eventsOnline.concat(
+        await this.repository.query(query, [eventId]),
+      );
+    }
+
+    events = eventsOnline.concat(await this.repository.query(query));
+
+    return events;
   }
 }

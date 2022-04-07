@@ -13,6 +13,7 @@ import { v4 as uuidV4 } from 'uuid';
 
 import { Activity } from 'src/shared/entities/activity.entity';
 import { User } from 'src/shared/entities/user.entity';
+import { Address } from './address.entity';
 
 @Entity('events')
 export class Event {
@@ -62,6 +63,9 @@ export class Event {
   @ManyToOne(() => Activity, (activities) => activities.events)
   @JoinColumn({ name: 'activity_id' })
   activities: Activity[];
+
+  @ManyToOne(() => Address, (address) => address.events)
+  address: Address;
 
   @CreateDateColumn({ name: 'created_at' })
   createdAt: Date;

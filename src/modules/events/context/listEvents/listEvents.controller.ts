@@ -1,4 +1,4 @@
-import { Controller, Get, HttpException } from '@nestjs/common';
+import { Controller, Get, HttpException, Query } from '@nestjs/common';
 import { ApiOkResponse, ApiTags } from '@nestjs/swagger';
 
 import { ListEventsService } from 'src/modules/events/context/listEvents/listEvents.service';
@@ -12,10 +12,11 @@ export class ListEventsController {
   @ApiOkResponse({
     description: 'A list of events will be returned',
   })
-  public async handle() {
+  public async handle(@Query('eventId') eventId: string) {
     try {
-      return await this.listEventsService.execute();
+      return await this.listEventsService.execute(eventId);
     } catch (error) {
+      console.log(error);
       throw new HttpException(
         error.response.message,
         error.response.statusCode,

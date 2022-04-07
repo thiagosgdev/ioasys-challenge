@@ -16,12 +16,12 @@ export class CreateEventService {
     const event = this.eventRepository.create(data.event);
     await this.eventRepository.save(event);
 
-    const address = this.addressRepository.create({
-      ...data.address,
-      eventId: event.id,
-    });
-    await this.addressRepository.save(address);
-
-    return { event, address };
+    if (data.address) {
+      const address = this.addressRepository.create({
+        ...data.address,
+        eventId: event.id,
+      });
+      await this.addressRepository.save(address);
+    }
   }
 }
