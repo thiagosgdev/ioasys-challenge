@@ -4,6 +4,7 @@ import {
   HttpCode,
   HttpException,
   HttpStatus,
+  Patch,
   Put,
   Request,
   UseGuards,
@@ -26,7 +27,7 @@ export class UpdateUserController {
   constructor(private updateUserService: UpdateUserService) {}
 
   @UseGuards(JwtAuthGuard)
-  @Put()
+  @Patch()
   @HttpCode(HttpStatus.OK)
   @ApiOkResponse({
     type: UserDTO,

@@ -30,6 +30,8 @@ import { FindUserByEmailController } from 'src/modules/users/context/findUserByE
 import { FindUserByEmailService } from 'src/modules/users/context/findUserByEmail/findUserByEmail.service';
 import { JwtStrategy } from 'src/shared/providers/EncryptProvider/jwt.strategy';
 import envConfig from 'src/configs/env';
+import { FindUserByIdController } from './context/findUserById/findUserById.controller';
+import { FindUserByIdService } from './context/findUserById/findUserById.service';
 
 @Module({
   imports: [
@@ -60,6 +62,7 @@ import envConfig from 'src/configs/env';
     ...userProviders,
     { provide: 'HASH_PROVIDER', useClass: BcryptProvider },
     { provide: 'ENCRYPTER_PROVIDER', useClass: JwtProvider },
+    JwtStrategy,
     SigninService,
     ResetPasswordService,
     SignUpService,
@@ -68,7 +71,7 @@ import envConfig from 'src/configs/env';
     UpdateUserService,
     RefreshService,
     FindUserByEmailService,
-    JwtStrategy,
+    FindUserByIdService,
   ],
   controllers: [
     SigninController,
@@ -79,6 +82,7 @@ import envConfig from 'src/configs/env';
     UpdateUserController,
     RefreshController,
     FindUserByEmailController,
+    FindUserByIdController,
   ],
 })
 export class UserModule {}

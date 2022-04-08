@@ -1,10 +1,10 @@
-import { Controller, Get, HttpException, Query } from '@nestjs/common';
+import { Controller, Get, HttpException, Param, Query } from '@nestjs/common';
 import { ApiOkResponse, ApiTags } from '@nestjs/swagger';
 
 import { FindUserByEmailService } from 'src/modules/users/context/findUserByEmail/findUserByEmail.service';
 
 @ApiTags('users')
-@Controller('/find')
+@Controller('/find/:email')
 export class FindUserByEmailController {
   constructor(private findUserByEmailService: FindUserByEmailService) {}
 
@@ -12,7 +12,7 @@ export class FindUserByEmailController {
   @ApiOkResponse({
     description: 'Return the user found',
   })
-  public async handle(@Query('email') email: string) {
+  public async handle(@Param('email') email: string) {
     try {
       return await this.findUserByEmailService.execute(email);
     } catch (error) {
