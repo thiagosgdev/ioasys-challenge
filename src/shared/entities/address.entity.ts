@@ -41,8 +41,8 @@ export class Address {
   @Column({ name: 'event_id' })
   eventId: string;
 
-  @OneToMany(() => Event, (events) => events.address)
-  events: Event[];
+  //  @OneToMany(() => Event, (events) => events.address)
+  //  events: Event[];
 
   @CreateDateColumn({ name: 'created_at' })
   createdAt: Date;

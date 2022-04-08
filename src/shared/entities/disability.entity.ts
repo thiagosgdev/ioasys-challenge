@@ -12,6 +12,7 @@ import {
   UpdateDateColumn,
 } from 'typeorm';
 import { v4 as uuidV4 } from 'uuid';
+import { EventAccessibility } from './eventAccessibility.entity';
 import { UserDisability } from './userDisability.entity';
 
 @Entity('disabilities')
@@ -33,6 +34,12 @@ export class Disability {
     (userDisabilities) => userDisabilities.disabilities,
   )
   userDisabilities: UserDisability[];
+
+  @OneToMany(
+    () => EventAccessibility,
+    (eventDisabilities) => eventDisabilities.disabilities,
+  )
+  eventDisabilities: EventAccessibility;
 
   @CreateDateColumn({ name: 'created_at' })
   createdAt: Date;

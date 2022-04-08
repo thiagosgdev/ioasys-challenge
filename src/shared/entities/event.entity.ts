@@ -14,6 +14,7 @@ import { v4 as uuidV4 } from 'uuid';
 import { Activity } from 'src/shared/entities/activity.entity';
 import { User } from 'src/shared/entities/user.entity';
 import { Address } from './address.entity';
+import { EventAccessibility } from './eventAccessibility.entity';
 
 @Entity('events')
 export class Event {
@@ -64,8 +65,14 @@ export class Event {
   @JoinColumn({ name: 'activity_id' })
   activities: Activity[];
 
-  @ManyToOne(() => Address, (address) => address.events)
-  address: Address;
+  //  @ManyToOne(() => Address, (address) => address.events)
+  //  address: Address;
+
+  //  @ManyToOne(
+  //    () => EventAccessibility,
+  //    (eventAccessibilities) => eventAccessibilities.events,
+  //  )
+  //  eventAccessibilities: EventAccessibility[];
 
   @CreateDateColumn({ name: 'created_at' })
   createdAt: Date;

@@ -3,12 +3,12 @@ import { IsNotEmpty, IsNumber, IsOptional, IsString } from 'class-validator';
 
 export class CreateAddressRequestDTO {
   @IsString()
-  @IsNotEmpty()
+  @IsOptional()
   @ApiProperty()
   street: string;
 
   @IsNumber()
-  @IsNotEmpty()
+  @IsOptional()
   @ApiProperty()
   number: number;
 
@@ -18,12 +18,12 @@ export class CreateAddressRequestDTO {
   city: string;
 
   @IsString()
-  @IsNotEmpty()
+  @IsOptional()
   @ApiProperty()
   state: string;
 
   @IsString()
-  @IsNotEmpty()
+  @IsOptional()
   @ApiProperty()
   zipCode: string;
 
