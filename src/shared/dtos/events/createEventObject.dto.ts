@@ -60,6 +60,15 @@ export class CreateEventObject {
   @ApiProperty()
   activityId: string;
 
+  @IsNumber()
+  @IsOptional()
+  @ApiProperty()
+  price: number;
+
+  @IsBoolean()
+  @IsOptional()
+  isPromoted: boolean;
+
   @IsString()
   @IsNotEmpty()
   @ApiProperty()
@@ -69,4 +78,6 @@ export class CreateEventObject {
   @IsNotEmpty()
   @ApiProperty()
   accessibilities: string[];
+
+  userId?: string;
 }

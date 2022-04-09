@@ -15,6 +15,9 @@ export class UserDTO {
   @ApiProperty()
   email: string;
 
+  @ApiProperty()
+  isPremium: boolean;
+
   @Exclude()
   @ApiProperty()
   password: string;

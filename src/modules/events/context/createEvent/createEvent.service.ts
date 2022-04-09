@@ -5,6 +5,7 @@ import { CreateEventRequestDTO } from 'src/shared/dtos/events/createEventRequest
 import { Event } from 'src/shared/entities/event.entity';
 import { Address } from 'src/shared/entities/address.entity';
 import { EventAccessibility } from 'src/shared/entities/eventAccessibility.entity';
+import { RequestUserObject } from 'src/shared/dtos/shared/request.dto';
 
 export class CreateEventService {
   constructor(
@@ -15,7 +16,12 @@ export class CreateEventService {
     @Inject('ADDRESS_REPOSITORY')
     private addressRepository: Repository<Address>,
   ) {}
-  async execute(data: CreateEventRequestDTO) {
+  async execute(user: RequestUserObject, data: CreateEventRequestDTO) {
+    data.event.userId = user.userId;
+
+    if (user.role !== 'premium') {
+      data.event.isPromoted = false;
+    }
     const event = this.eventRepository.create(data.event);
     await this.eventRepository.save(event);
 

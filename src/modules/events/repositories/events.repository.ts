@@ -19,15 +19,14 @@ export class EventRepo {
         INNER JOIN activities ac ON ui.activity_id = ac.id
         WHERE ui.user_id = $1 
         AND ui.deleted_at IS NULL 
-      AND ac.active = true;
+      AND ac.active = true
+      ORDER BY is_promoted DESC;
       `,
       [userId],
     );
   }
 
   async listEventAddress(eventId?: string): Promise<Event[]> {
-    let events: Event[];
-
     const eventsOnline = await this.repository.find({
       where: {
         isOnline: true,
@@ -40,13 +39,10 @@ export class EventRepo {
                     WHERE ev.deleted_at IS NULL `;
     if (eventId) {
       query += 'AND ev.id = $1';
-      events = eventsOnline.concat(
-        await this.repository.query(query, [eventId]),
-      );
+      return eventsOnline.concat(await this.repository.query(query, [eventId]));
     }
+    query += 'ORDER BY is_promoted DESC';
 
-    events = eventsOnline.concat(await this.repository.query(query));
-
-    return events;
+    return eventsOnline.concat(await this.repository.query(query));
   }
 }

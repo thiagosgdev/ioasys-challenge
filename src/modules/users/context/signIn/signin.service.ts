@@ -49,6 +49,7 @@ export class SigninService implements SignIn {
       email,
     });
 
+    if (user.isPremium) role = 'premium';
     if (user.isAdmin) role = 'admin';
 
     const token = this.jwtService.sign(

@@ -8,7 +8,7 @@ export class RequestDTO {
   user: RequestUserObject;
 }
 
-type RequestUserObject = {
+export type RequestUserObject = {
   userId: string;
   role: string;
 };

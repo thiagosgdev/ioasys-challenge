@@ -36,6 +36,9 @@ export class User {
   @Column({ name: 'is_admin' })
   isAdmin: string;
 
+  @Column({ name: 'is_premium' })
+  isPremium: boolean;
+
   @Column({ name: 'emergency_name' })
   emergencyName: string;
 

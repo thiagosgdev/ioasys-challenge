@@ -17,22 +17,22 @@ export class EventResponseDTO {
   date: string;
 
   @ApiResponseProperty()
-  minimumAge: number;
-
-  @ApiResponseProperty()
   maxParticipants: number;
 
   @ApiResponseProperty()
   startTime: string;
 
   @ApiResponseProperty()
-  endTime: string;
-
-  @ApiResponseProperty()
   activityId: string;
 
   @ApiResponseProperty()
   userId: string;
+
+  @ApiResponseProperty()
+  price: number;
+
+  @ApiResponseProperty()
+  isPromoted: boolean;
 
   @ApiResponseProperty()
   userIdentity: string;

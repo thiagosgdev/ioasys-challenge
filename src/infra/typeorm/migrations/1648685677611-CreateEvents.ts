@@ -56,6 +56,16 @@ export class CreateEvents1648685677611 implements MigrationInterface {
             isNullable: true,
           },
           {
+            name: 'price',
+            type: 'float',
+            isNullable: true,
+          },
+          {
+            name: 'is_promoted',
+            type: 'boolean',
+            default: false,
+          },
+          {
             name: 'activity_id',
             type: 'uuid',
           },

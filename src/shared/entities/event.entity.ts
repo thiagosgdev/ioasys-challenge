@@ -42,6 +42,12 @@ export class Event {
   @Column({ name: 'end_time' })
   endTime?: string;
 
+  @Column()
+  price: number;
+
+  @Column({ name: 'is_promoted' })
+  isPromoted: boolean;
+
   @Column({ name: 'activity_id' })
   activityId: string;
 

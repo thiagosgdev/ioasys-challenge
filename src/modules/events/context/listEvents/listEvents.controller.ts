@@ -1,5 +1,5 @@
 import { Controller, Get, HttpException, Query } from '@nestjs/common';
-import { ApiOkResponse, ApiTags } from '@nestjs/swagger';
+import { ApiOkResponse, ApiQuery, ApiTags } from '@nestjs/swagger';
 
 import { ListEventsService } from 'src/modules/events/context/listEvents/listEvents.service';
 
@@ -9,6 +9,10 @@ export class ListEventsController {
   constructor(private listEventsService: ListEventsService) {}
 
   @Get('/list')
+  @ApiQuery({
+    name: 'eventId',
+    required: false,
+  })
   @ApiOkResponse({
     description: 'A list of events will be returned',
   })
@@ -16,7 +20,6 @@ export class ListEventsController {
     try {
       return await this.listEventsService.execute(eventId);
     } catch (error) {
-      console.log(error);
       throw new HttpException(
         error.response.message,
         error.response.statusCode,
