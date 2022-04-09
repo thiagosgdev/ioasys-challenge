@@ -16,12 +16,14 @@ import {
 
 import { SigninRequestDTO } from 'src/shared/dtos/users/signinRequest.dto';
 import { SigninService } from 'src/modules/users/context/signIn/signin.service';
+import { Public } from 'src/shared/decorators/public.decorator';
 
 @ApiTags('users')
 @Controller()
 export class SigninController {
   constructor(private signinService: SigninService) {}
 
+  @Public()
   @Post('/signin')
   @HttpCode(HttpStatus.OK)
   @ApiOkResponse({
@@ -42,7 +44,6 @@ export class SigninController {
     try {
       return await this.signinService.login(data);
     } catch (error) {
-      console.log(error);
       throw new HttpException(
         error.response.message,
         error.response.statusCode,

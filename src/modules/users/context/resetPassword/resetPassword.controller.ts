@@ -14,12 +14,14 @@ import {
 } from '@nestjs/swagger';
 
 import { ResetPasswordService } from 'src/modules/users/context/resetPassword/resetPassword.service';
+import { Public } from 'src/shared/decorators/public.decorator';
 
 @ApiTags('users')
 @Controller('/resetpassword')
 export class ResetPasswordController {
   constructor(private resetPasswordService: ResetPasswordService) {}
 
+  @Public()
   @Patch()
   @HttpCode(HttpStatus.OK)
   @ApiBody({

@@ -1,5 +1,5 @@
 import { Controller, Get, HttpException } from '@nestjs/common';
-import { ApiOkResponse, ApiTags } from '@nestjs/swagger';
+import { ApiBearerAuth, ApiOkResponse, ApiTags } from '@nestjs/swagger';
 
 import { ListUserInterestsService } from 'src/modules/userInterests/context/listUserInterests/listUserInterests.service';
 
@@ -8,7 +8,8 @@ import { ListUserInterestsService } from 'src/modules/userInterests/context/list
 export class ListUserInterestsController {
   constructor(private listUserInterestsService: ListUserInterestsService) {}
 
-  @Get('/list')
+  @Get('/list/all')
+  @ApiBearerAuth()
   @ApiOkResponse({
     description: 'A list of the user interests will be returned',
   })

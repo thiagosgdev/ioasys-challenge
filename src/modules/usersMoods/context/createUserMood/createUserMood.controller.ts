@@ -1,28 +1,25 @@
-import {
-  Body,
-  Controller,
-  HttpException,
-  Post,
-  Request,
-  UseGuards,
-} from '@nestjs/common';
+import { Body, Controller, HttpException, Post, Request } from '@nestjs/common';
 import { ApiCreatedResponse, ApiTags } from '@nestjs/swagger';
+import { RequestDTO } from 'src/shared/dtos/shared/request.dto';
 
+import { CreateUserMoodService } from 'src/modules/usersMoods/context/createUserMood/createUserMood.service';
 import { CreateUserMoodRequestDTO } from 'src/shared/dtos/userMood/createUserMoodRequest.dto';
-import { JwtAuthGuard } from 'src/shared/providers/EncryptProvider/jwtAuth.guard';
-import { CreateUserMoodService } from './createUserMood.service';
+import { UserMood } from 'src/shared/entities/userMoods.entity';
 
 @ApiTags('users')
 @Controller('/moods')
 export class CreateUserMoodController {
   constructor(private createUserMoodService: CreateUserMoodService) {}
 
-  @UseGuards(JwtAuthGuard)
   @Post()
   @ApiCreatedResponse({
     description: 'The user mood created will be returned',
+    type: UserMood,
   })
-  public async handle(@Body() data: CreateUserMoodRequestDTO, @Request() req) {
+  public async handle(
+    @Body() data: CreateUserMoodRequestDTO,
+    @Request() req: RequestDTO,
+  ) {
     try {
       const userId = req.user.userId;
       return await this.createUserMoodService.execute(userId, data);

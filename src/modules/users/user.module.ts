@@ -29,19 +29,13 @@ import { RefreshController } from 'src/modules/users/context/refresh/refresh.con
 import { FindUserByEmailController } from 'src/modules/users/context/findUserByEmail/findUserByEmail.controller';
 import { FindUserByEmailService } from 'src/modules/users/context/findUserByEmail/findUserByEmail.service';
 import { JwtStrategy } from 'src/shared/providers/EncryptProvider/jwt.strategy';
-import envConfig from 'src/configs/env';
-import { FindUserByIdController } from './context/findUserById/findUserById.controller';
-import { FindUserByIdService } from './context/findUserById/findUserById.service';
+import { FindUserByIdController } from 'src/modules/users/context/findUserById/findUserById.controller';
+import { FindUserByIdService } from 'src/modules/users/context/findUserById/findUserById.service';
+import jwtConfig from 'src/configs/jwt';
 
 @Module({
   imports: [
-    JwtModule.registerAsync({
-      imports: [ConfigModule],
-      useFactory: async () => ({
-        secret: envConfig().jwtSecret,
-      }),
-      inject: [ConfigService],
-    }),
+    JwtModule.registerAsync(jwtConfig()),
     MailerModule,
     DatabaseModule,
     PassportModule,

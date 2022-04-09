@@ -33,6 +33,9 @@ export class User {
   @Column()
   phone: string;
 
+  @Column({ name: 'is_admin' })
+  isAdmin: string;
+
   @Column({ name: 'emergency_name' })
   emergencyName: string;
 

@@ -2,21 +2,26 @@ import { Body, Controller, HttpException, Post } from '@nestjs/common';
 import {
   ApiBadRequestResponse,
   ApiConflictResponse,
-  ApiOkResponse,
+  ApiCreatedResponse,
   ApiTags,
 } from '@nestjs/swagger';
 
 import { SignUpRequestDTO } from 'src/shared/dtos/users/signUpRequest.dto';
 import { SignUpService } from 'src/modules/users/context/signUp/signUp.service';
+import { Public } from 'src/shared/decorators/public.decorator';
+import { User } from 'src/shared/entities/user.entity';
+import { UserDTO } from 'src/shared/dtos/users/user.dto';
 
+@Public()
 @ApiTags('users')
 @Controller('/signup')
 export class SignUpController {
   constructor(private signUpService: SignUpService) {}
 
   @Post()
-  @ApiOkResponse({
+  @ApiCreatedResponse({
     description: 'The user object will be returned',
+    type: UserDTO,
   })
   @ApiBadRequestResponse({
     description: 'This will be returned when a validation error happens',

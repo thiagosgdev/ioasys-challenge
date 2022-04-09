@@ -1,24 +1,16 @@
-import {
-  Body,
-  Controller,
-  HttpException,
-  Post,
-  Request,
-  UseGuards,
-} from '@nestjs/common';
-import { ApiCreatedResponse, ApiTags } from '@nestjs/swagger';
+import { Body, Controller, HttpException, Post, Request } from '@nestjs/common';
+import { ApiBearerAuth, ApiCreatedResponse, ApiTags } from '@nestjs/swagger';
 
 import { CreateUserInterestRequestDTO } from 'src/shared/dtos/userInterest/createUserInterestRequest.dto';
 import { CreateUserInterestService } from 'src/modules/userInterests/context/createUserInterests/createUserInterest.service';
-import { JwtAuthGuard } from 'src/shared/providers/EncryptProvider/jwtAuth.guard';
 
 @ApiTags('users')
 @Controller()
 export class CreateUserInterestController {
   constructor(private createUserInterestService: CreateUserInterestService) {}
 
-  @UseGuards(JwtAuthGuard)
   @Post('/interests')
+  @ApiBearerAuth()
   @ApiCreatedResponse({
     description: 'The user interest created will be returned',
   })

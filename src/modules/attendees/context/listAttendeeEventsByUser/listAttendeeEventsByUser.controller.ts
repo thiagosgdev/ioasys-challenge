@@ -1,36 +1,32 @@
-import { Controller, Get, Headers, HttpException, Query } from '@nestjs/common';
-import { JwtService } from '@nestjs/jwt';
+import { Controller, Get, HttpException, Query, Request } from '@nestjs/common';
 import { ApiOkResponse, ApiTags } from '@nestjs/swagger';
 
 import { ListAttendeeEventsByUserIdService } from 'src/modules/attendees/context/listAttendeeEventsByUser/listAttendeeEventsByUser.service';
+import { RequestDTO } from 'src/shared/dtos/shared/request.dto';
 
-//@UseGuards(JwtAuthGuard)
 @ApiTags('attendees')
 @Controller('/list')
 export class ListAttendeeEventsByUserIdController {
   constructor(
     private listAttendeeEventsByUserIdService: ListAttendeeEventsByUserIdService,
-    private jwtService: JwtService,
   ) {}
 
   @Get('/user')
   @ApiOkResponse({
-    description: 'A list all attendees CONFIRMED events will be returned',
+    description:
+      'A list of all user events will be returned with the status passed',
   })
   public async handle(
-    @Headers('Authorization') auth: string,
+    @Request() req: RequestDTO,
     @Query('status') status: string,
   ) {
     try {
-      const token = auth.split(' ')[1];
-      const payload = this.jwtService.decode(token);
-      const userId = payload['userId'];
+      const userId = req.user.userId;
       return await this.listAttendeeEventsByUserIdService.execute({
         userId,
         status,
       });
     } catch (error) {
-      console.log(error);
       throw new HttpException(
         error.response.message,
         error.response.statusCode,

@@ -1,15 +1,8 @@
-import {
-  Controller,
-  Get,
-  HttpException,
-  Request,
-  UseGuards,
-} from '@nestjs/common';
+import { Controller, Get, HttpException, Request } from '@nestjs/common';
 import { ApiOkResponse, ApiTags } from '@nestjs/swagger';
 import { JwtAuthGuard } from 'src/shared/providers/EncryptProvider/jwtAuth.guard';
 import { FindUserByIdService } from './findUserById.service';
 
-@UseGuards(JwtAuthGuard)
 @ApiTags('users')
 @Controller('/find')
 export class FindUserByIdController {

@@ -27,18 +27,13 @@ import { EventModule } from 'src/modules/events/events.module';
 import { AddressModule } from 'src/modules/addresses/address.module';
 import { AttendeeModule } from 'src/modules/attendees/attendees.module';
 import { DisabilitiesModule } from 'src/modules/disabilities/disabilities.module';
-import { UserDisabilitiesModule } from './modules/usersDisabilities/userDisabilities.module';
-import envConfig from 'src/configs/env';
+import { UserDisabilitiesModule } from 'src/modules/usersDisabilities/userDisabilities.module';
+import { JwtAuthGuard } from 'src/shared/providers/EncryptProvider/jwtAuth.guard';
+import jwtConfig from 'src/configs/jwt';
 
 @Module({
   imports: [
-    JwtModule.registerAsync({
-      imports: [ConfigModule],
-      useFactory: async () => ({
-        secret: envConfig().jwtSecret,
-      }),
-      inject: [ConfigService],
-    }),
+    JwtModule.registerAsync(jwtConfig()),
     TypeOrmModule.forRoot(),
     WinstonModule.forRoot(winstonConfig),
     MailerModule.forRoot(mailerConfig),
@@ -77,6 +72,10 @@ import envConfig from 'src/configs/env';
     {
       provide: APP_GUARD,
       useClass: ThrottlerGuard,
+    },
+    {
+      provide: APP_GUARD,
+      useClass: JwtAuthGuard,
     },
   ],
 })

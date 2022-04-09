@@ -1,16 +1,8 @@
-import {
-  Body,
-  Controller,
-  HttpException,
-  Post,
-  Request,
-  UseGuards,
-} from '@nestjs/common';
+import { Body, Controller, HttpException, Post, Request } from '@nestjs/common';
 import { ApiCreatedResponse, ApiTags } from '@nestjs/swagger';
-import { CreateUserDisabilityRequestDTO } from 'src/shared/dtos/userDisabilities/createUserDisabilitiesRequest.dto';
-import { JwtAuthGuard } from 'src/shared/providers/EncryptProvider/jwtAuth.guard';
 
-import { CreateUserDisabilitiesService } from './createUserDisabilities.service';
+import { CreateUserDisabilityRequestDTO } from 'src/shared/dtos/userDisabilities/createUserDisabilitiesRequest.dto';
+import { CreateUserDisabilitiesService } from 'src/modules/usersDisabilities/context/createUserDisabilities/createUserDisabilities.service';
 
 @ApiTags('users')
 @Controller()
@@ -19,7 +11,6 @@ export class CreateUserDisabilitiesController {
     private createUserDisabilitiesService: CreateUserDisabilitiesService,
   ) {}
 
-  @UseGuards(JwtAuthGuard)
   @Post('/disabilities')
   @ApiCreatedResponse({
     description: 'The user disability created will be returned',

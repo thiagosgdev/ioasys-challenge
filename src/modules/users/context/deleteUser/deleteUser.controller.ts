@@ -4,21 +4,17 @@ import {
   HttpCode,
   HttpException,
   HttpStatus,
-  Query,
   Request,
-  UseGuards,
 } from '@nestjs/common';
 import { ApiNoContentResponse, ApiTags } from '@nestjs/swagger';
 
 import { DeleteUserService } from 'src/modules/users/context/deleteUser/deleteUser.service';
-import { JwtAuthGuard } from 'src/shared/providers/EncryptProvider/jwtAuth.guard';
 
 @ApiTags('users')
 @Controller()
 export class DeleteUserController {
   constructor(private deleteUserService: DeleteUserService) {}
 
-  @UseGuards(JwtAuthGuard)
   @Delete()
   @HttpCode(HttpStatus.NO_CONTENT)
   @ApiNoContentResponse({
