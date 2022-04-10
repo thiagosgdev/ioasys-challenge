@@ -20,9 +20,9 @@ export class CreateEventController {
   ) {
     try {
       const user = req.user;
-      console.log(user.role);
       return await this.createEventService.execute(user, data);
     } catch (error) {
+      console.log(error);
       throw new HttpException(
         error.response.message,
         error.response.statusCode,

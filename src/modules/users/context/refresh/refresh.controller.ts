@@ -6,12 +6,14 @@ import {
 } from '@nestjs/swagger';
 
 import { RefreshService } from 'src/modules/users/context/refresh/refresh.service';
+import { Public } from 'src/shared/decorators/public.decorator';
 
 @ApiTags('users')
 @Controller('/refresh')
 export class RefreshController {
   constructor(private refreshService: RefreshService) {}
 
+  @Public()
   @Post()
   @ApiOkResponse({
     description: 'A token will be returned.',
