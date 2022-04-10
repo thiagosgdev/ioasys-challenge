@@ -8,6 +8,7 @@ import { getNowDate } from 'src/shared/functions/getNowDate';
 @Injectable()
 export class EventRepo {
   private nowDate: string = getNowDate();
+
   constructor(
     @InjectRepository(Event)
     private readonly repository: Repository<Event>,

@@ -2,6 +2,7 @@ import { ApiProperty } from '@nestjs/swagger';
 import {
   IsArray,
   IsBoolean,
+  IsDate,
   IsISO8601,
   IsNotEmpty,
   IsNumber,
@@ -31,10 +32,10 @@ export class CreateEventObject {
   @IsOptional()
   url?: string;
 
-  @IsISO8601()
+  @IsDate()
   @IsNotEmpty()
   @ApiProperty()
-  date: string;
+  date: Date;
 
   @IsBoolean()
   @IsNotEmpty()

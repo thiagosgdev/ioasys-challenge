@@ -13,8 +13,6 @@ import { v4 as uuidV4 } from 'uuid';
 
 import { Activity } from 'src/shared/entities/activity.entity';
 import { User } from 'src/shared/entities/user.entity';
-import { Address } from './address.entity';
-import { EventAccessibility } from './eventAccessibility.entity';
 
 @Entity('events')
 export class Event {
@@ -28,7 +26,7 @@ export class Event {
   description: string;
 
   @Column()
-  date: string;
+  date: Date;
 
   @Column({ name: 'is_pet_friendly' })
   isPetFriendly: boolean;
