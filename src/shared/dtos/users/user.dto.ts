@@ -1,19 +1,19 @@
 import { ApiProperty } from '@nestjs/swagger';
 import { Exclude } from 'class-transformer';
-import { IsDate, IsString } from 'class-validator';
+import { IsDate } from 'class-validator';
 
 export class UserDTO {
-  @IsString()
   @ApiProperty()
   id: string;
 
-  @IsString()
   @ApiProperty()
   name: string;
 
-  @IsString()
   @ApiProperty()
   email: string;
+
+  @ApiProperty()
+  aboutMe: string;
 
   @ApiProperty()
   isPremium: boolean;

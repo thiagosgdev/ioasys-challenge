@@ -25,6 +25,11 @@ export class UpdateUserDTO {
   @IsOptional()
   @IsString()
   @ApiProperty()
+  aboutMe: string;
+
+  @IsOptional()
+  @IsString()
+  @ApiProperty()
   phone?: string;
 
   @IsOptional()

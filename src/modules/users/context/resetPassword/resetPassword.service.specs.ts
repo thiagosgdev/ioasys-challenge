@@ -7,6 +7,7 @@ const mockUserModel = (): UserDTO => ({
   name: 'any_name',
   email: 'test@test.com',
   password: '12345678',
+  aboutMe: null,
   isPremium: false,
   createdAt: new Date(),
   updatedAt: new Date(),

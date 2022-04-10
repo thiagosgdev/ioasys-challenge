@@ -11,6 +11,7 @@ const mockUser: UserDTO = {
   email: 'test@test.com',
   password: null,
   isPremium: false,
+  aboutMe: null,
   createdAt: new Date(),
   updatedAt: null,
   deletedAt: null,
