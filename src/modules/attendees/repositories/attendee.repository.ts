@@ -15,10 +15,11 @@ export class AttendeeRepo {
     const { userId, status } = data;
     return await this.repository.query(
       `SELECT
-            ev.*
+            ev.*, ad.*
         FROM
             attendees att
             INNER JOIN events ev ON att.event_id = ev.id
+            INNER JOIN addresses ad ON att.event_id = ad.event_id 
             INNER JOIN users us ON att.user_id = us.id
         WHERE
             att.user_id = $1 AND

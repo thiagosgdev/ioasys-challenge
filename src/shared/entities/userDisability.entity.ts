@@ -12,7 +12,7 @@ import {
 import { v4 as uuidV4 } from 'uuid';
 
 import { User } from 'src/shared/entities/user.entity';
-import { Disability } from './disability.entity';
+import { Disability } from 'src/shared/entities/disability.entity';
 
 @Entity('users_disabilities')
 export class UserDisability {

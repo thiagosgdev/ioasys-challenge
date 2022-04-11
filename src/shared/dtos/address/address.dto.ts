@@ -1,39 +1,61 @@
-import { ApiProperty } from '@nestjs/swagger';
+import { ApiResponseProperty } from '@nestjs/swagger';
 
 export class AddressResponse {
-  @ApiProperty()
+  @ApiResponseProperty({
+    example: '6dc05b64-81e9-4ad6-8875-4b37f7ee0eee',
+  })
   id: string;
 
-  @ApiProperty()
+  @ApiResponseProperty({
+    example: 'Avenida Paulista',
+  })
   street: string;
 
-  @ApiProperty()
+  @ApiResponseProperty({
+    example: 123,
+  })
   number: number;
 
-  @ApiProperty()
+  @ApiResponseProperty({
+    example: 'São Paulo',
+  })
   city: string;
 
-  @ApiProperty()
+  @ApiResponseProperty({
+    example: 'SP',
+  })
   state: string;
 
-  @ApiProperty()
+  @ApiResponseProperty({
+    example: '12345-678',
+  })
   zipCode: string;
 
-  @ApiProperty()
+  @ApiResponseProperty({
+    example: 'Next to the Sunset Park',
+  })
   referencePoint: string;
 
-  @ApiProperty()
+  @ApiResponseProperty({
+    example: '404d6e94-d948-4e10-9652-c2365e6d6f50',
+  })
   userId: string;
 
-  @ApiProperty()
+  @ApiResponseProperty({
+    example: 'aac11a3b-4fa7-43c9-abac-df068554e2e9',
+  })
   eventId: string;
 
-  @ApiProperty()
+  @ApiResponseProperty()
   createdAt: Date;
 
-  @ApiProperty()
+  @ApiResponseProperty({
+    example: null,
+  })
   updatedAt: Date;
 
-  @ApiProperty()
+  @ApiResponseProperty({
+    example: null,
+  })
   deletedAt: Date;
 }

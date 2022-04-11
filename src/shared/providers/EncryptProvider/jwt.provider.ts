@@ -1,9 +1,9 @@
 import { UnauthorizedException } from '@nestjs/common';
 import { sign, verify } from 'jsonwebtoken';
 import envConfig from 'src/configs/env';
-import { Decrypter } from './protocols/decrypter';
-import { Encrypter } from './protocols/encrypter';
-import { EncrypterRefresh } from './protocols/encrypterExpirationDate';
+import { Decrypter } from 'src/shared/providers/EncryptProvider/protocols/decrypter';
+import { Encrypter } from 'src/shared/providers/EncryptProvider/protocols/encrypter';
+import { EncrypterRefresh } from 'src/shared/providers/EncryptProvider/protocols/encrypterExpirationDate';
 
 export class JwtProvider implements Encrypter, Decrypter, EncrypterRefresh {
   async encrypt(value: string): Promise<string> {

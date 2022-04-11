@@ -3,6 +3,8 @@ import { ApiCreatedResponse, ApiTags } from '@nestjs/swagger';
 
 import { CreateUserDisabilityRequestDTO } from 'src/shared/dtos/userDisabilities/createUserDisabilitiesRequest.dto';
 import { CreateUserDisabilitiesService } from 'src/modules/usersDisabilities/context/createUserDisabilities/createUserDisabilities.service';
+import { ApiCommomDecorators } from 'src/shared/decorators/globalDoc.decorator';
+import { UserDisabilitieResponseDTO } from 'src/shared/dtos/userDisabilities/userDisability.dto';
 
 @ApiTags('users')
 @Controller()
@@ -14,7 +16,9 @@ export class CreateUserDisabilitiesController {
   @Post('/disabilities')
   @ApiCreatedResponse({
     description: 'The user disability created will be returned',
+    type: UserDisabilitieResponseDTO,
   })
+  @ApiCommomDecorators()
   public async handle(
     @Body() data: CreateUserDisabilityRequestDTO,
     @Request() req,

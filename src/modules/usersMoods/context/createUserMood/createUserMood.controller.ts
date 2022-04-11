@@ -4,7 +4,8 @@ import { RequestDTO } from 'src/shared/dtos/shared/request.dto';
 
 import { CreateUserMoodService } from 'src/modules/usersMoods/context/createUserMood/createUserMood.service';
 import { CreateUserMoodRequestDTO } from 'src/shared/dtos/userMood/createUserMoodRequest.dto';
-import { UserMood } from 'src/shared/entities/userMoods.entity';
+import { ApiCommomDecorators } from 'src/shared/decorators/globalDoc.decorator';
+import { UserMoodResponseDTO } from 'src/shared/dtos/userMood/userMood.dto';
 
 @ApiTags('users')
 @Controller('/moods')
@@ -14,8 +15,9 @@ export class CreateUserMoodController {
   @Post()
   @ApiCreatedResponse({
     description: 'The user mood created will be returned',
-    type: UserMood,
+    type: UserMoodResponseDTO,
   })
+  @ApiCommomDecorators()
   public async handle(
     @Body() data: CreateUserMoodRequestDTO,
     @Request() req: RequestDTO,

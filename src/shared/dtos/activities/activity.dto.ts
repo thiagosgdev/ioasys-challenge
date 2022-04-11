@@ -1,21 +1,31 @@
-import { ApiProperty } from '@nestjs/swagger';
+import { ApiResponseProperty } from '@nestjs/swagger';
 
 export class ActivityResponse {
-  @ApiProperty()
+  @ApiResponseProperty({
+    example: '107e8bde-f574-4da7-8129-3280815d1c77',
+  })
   id: string;
 
-  @ApiProperty()
+  @ApiResponseProperty({
+    example: 'Futebol',
+  })
   name: string;
 
-  @ApiProperty()
+  @ApiResponseProperty({
+    example: true,
+  })
   active: boolean;
 
-  @ApiProperty()
+  @ApiResponseProperty()
   createdAt: Date;
 
-  @ApiProperty()
+  @ApiResponseProperty({
+    example: null,
+  })
   updatedAt: Date;
 
-  @ApiProperty()
+  @ApiResponseProperty({
+    example: null,
+  })
   deletedAt: Date;
 }

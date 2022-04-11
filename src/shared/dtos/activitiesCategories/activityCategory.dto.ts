@@ -1,21 +1,31 @@
-import { ApiProperty } from '@nestjs/swagger';
+import { ApiResponseProperty } from '@nestjs/swagger';
 
 export class ActivityCategoryResponse {
-  @ApiProperty()
+  @ApiResponseProperty({
+    example: '107e8bde-f574-4da7-8129-3280815d1c77',
+  })
   id: string;
 
-  @ApiProperty()
+  @ApiResponseProperty({
+    example: '1ac96fe3-f65a-48d3-b193-6b7e448aa6df',
+  })
   activityId: string;
 
-  @ApiProperty()
+  @ApiResponseProperty({
+    example: '6dc05b64-81e9-4ad6-8875-4b37f7ee0eee',
+  })
   categoryId: string;
 
-  @ApiProperty()
+  @ApiResponseProperty()
   createdAt: Date;
 
-  @ApiProperty()
+  @ApiResponseProperty({
+    example: null,
+  })
   updatedAt: Date;
 
-  @ApiProperty()
+  @ApiResponseProperty({
+    example: null,
+  })
   deletedAt: Date;
 }

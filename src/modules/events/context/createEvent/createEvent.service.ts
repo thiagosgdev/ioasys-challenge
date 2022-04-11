@@ -6,6 +6,7 @@ import { Event } from 'src/shared/entities/event.entity';
 import { Address } from 'src/shared/entities/address.entity';
 import { EventAccessibility } from 'src/shared/entities/eventAccessibility.entity';
 import { RequestUserObject } from 'src/shared/dtos/shared/request.dto';
+import { EventAddressResponseDTO } from 'src/shared/dtos/events/eventAddressResponse.dto';
 
 export class CreateEventService {
   constructor(
@@ -16,7 +17,10 @@ export class CreateEventService {
     @Inject('ADDRESS_REPOSITORY')
     private addressRepository: Repository<Address>,
   ) {}
-  async execute(user: RequestUserObject, data: CreateEventRequestDTO) {
+  async execute(
+    user: RequestUserObject,
+    data: CreateEventRequestDTO,
+  ): Promise<EventAddressResponseDTO> {
     data.event.userId = user.userId;
 
     if (user.role !== 'premium') {
@@ -46,6 +50,8 @@ export class CreateEventService {
         eventId: event.id,
       });
       await this.addressRepository.save(address);
+      return { event, address };
     }
+    return { event };
   }
 }

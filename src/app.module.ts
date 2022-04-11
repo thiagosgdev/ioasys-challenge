@@ -5,7 +5,6 @@ import { WinstonModule } from 'nest-winston';
 import { APP_GUARD, APP_INTERCEPTOR, RouterModule } from '@nestjs/core';
 import { MailerModule } from '@nestjs-modules/mailer';
 import * as redisStore from 'cache-manager-redis-store';
-import { ConfigModule, ConfigService } from '@nestjs/config';
 import { JwtModule } from '@nestjs/jwt';
 
 import { LoggerInterceptor } from 'src/shared/interceptors/logger.interceptor';

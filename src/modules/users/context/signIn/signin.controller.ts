@@ -11,6 +11,7 @@ import {
   ApiNotFoundResponse,
   ApiOkResponse,
   ApiTags,
+  ApiTooManyRequestsResponse,
   ApiUnauthorizedResponse,
 } from '@nestjs/swagger';
 
@@ -30,7 +31,8 @@ export class SigninController {
     description: 'A token and refresh token will be returned.',
   })
   @ApiUnauthorizedResponse({
-    description: 'This will be returned when has validation error',
+    description:
+      'This will be returned when has a user credentials validation error',
   })
   @ApiNotFoundResponse({
     description:
@@ -39,6 +41,10 @@ export class SigninController {
   @ApiBadRequestResponse({
     description:
       'This will be returned when has validation error or no user is found',
+  })
+  @ApiTooManyRequestsResponse({
+    description:
+      'Too many request. Please wait a while before making more requests!',
   })
   public async handle(@Body() data: SigninRequestDTO) {
     try {

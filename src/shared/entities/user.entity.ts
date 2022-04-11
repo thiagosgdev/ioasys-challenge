@@ -13,7 +13,7 @@ import { v4 as uuidV4 } from 'uuid';
 import { Event } from 'src/shared/entities/event.entity';
 import { UserInterest } from 'src/shared/entities/userInterests.entity';
 import { UserMood } from 'src/shared/entities/userMoods.entity';
-import { UserDisability } from './userDisability.entity';
+import { UserDisability } from 'src/shared/entities/userDisability.entity';
 
 @Unique(['email'])
 @Entity('users')

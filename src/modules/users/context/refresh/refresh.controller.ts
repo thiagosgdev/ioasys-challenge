@@ -1,9 +1,5 @@
 import { Body, Controller, HttpException, Post } from '@nestjs/common';
-import {
-  ApiOkResponse,
-  ApiTags,
-  ApiUnauthorizedResponse,
-} from '@nestjs/swagger';
+import { ApiOkResponse, ApiTags } from '@nestjs/swagger';
 
 import { RefreshService } from 'src/modules/users/context/refresh/refresh.service';
 import { Public } from 'src/shared/decorators/public.decorator';
@@ -18,18 +14,12 @@ export class RefreshController {
   @ApiOkResponse({
     description: 'A token will be returned.',
   })
-  @ApiUnauthorizedResponse({
-    description: 'The refresh token is invalid!',
-  })
   public async handle(@Body('refreshToken') refreshToken: string) {
     try {
       return await this.refreshService.execute(refreshToken);
     } catch (error) {
       throw new HttpException(
-        {
-          message: error.response.message,
-          code: 'token.invalid',
-        },
+        error.response.message,
         error.response.statusCode,
       );
     }

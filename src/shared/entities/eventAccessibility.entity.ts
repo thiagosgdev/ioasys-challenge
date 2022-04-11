@@ -1,5 +1,4 @@
 import {
-  BeforeInsert,
   Column,
   CreateDateColumn,
   DeleteDateColumn,
@@ -10,8 +9,7 @@ import {
   UpdateDateColumn,
 } from 'typeorm';
 
-import { Disability } from './disability.entity';
-import { Event } from './event.entity';
+import { Disability } from 'src/shared/entities/disability.entity';
 
 @Entity('events_accessibilities')
 export class EventAccessibility {

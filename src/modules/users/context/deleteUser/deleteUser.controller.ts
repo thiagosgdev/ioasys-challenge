@@ -9,6 +9,7 @@ import {
 import { ApiNoContentResponse, ApiTags } from '@nestjs/swagger';
 
 import { DeleteUserService } from 'src/modules/users/context/deleteUser/deleteUser.service';
+import { ApiCommomDecorators } from 'src/shared/decorators/globalDoc.decorator';
 
 @ApiTags('users')
 @Controller()
@@ -20,6 +21,7 @@ export class DeleteUserController {
   @ApiNoContentResponse({
     description: 'User deleted.',
   })
+  @ApiCommomDecorators()
   public async handle(@Request() req) {
     try {
       await this.deleteUserService.execute(req.user.userId);

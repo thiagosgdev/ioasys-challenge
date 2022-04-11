@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 
-import { EventRepo } from '../../repositories/events.repository';
+import { EventRepo } from 'src/modules/events/repositories/events.repository';
 
 @Injectable()
 export class ListEventsService {

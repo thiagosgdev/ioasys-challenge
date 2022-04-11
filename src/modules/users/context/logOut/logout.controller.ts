@@ -9,6 +9,7 @@ import {
 import { ApiTags } from '@nestjs/swagger';
 
 import { LogoutService } from 'src/modules/users/context/logOut/logout.service';
+import { ApiCommomDecorators } from 'src/shared/decorators/globalDoc.decorator';
 
 @ApiTags('users')
 @Controller('/logout')
@@ -17,6 +18,7 @@ export class LogoutController {
 
   @Post()
   @HttpCode(HttpStatus.NO_CONTENT)
+  @ApiCommomDecorators()
   public async handle(@Headers('Authorization') auth: string) {
     try {
       const token = auth.split(' ')[1];

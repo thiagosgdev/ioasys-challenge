@@ -17,6 +17,7 @@ import {
 import { UpdateUserService } from 'src/modules/users/context/updateUsers/updateUser.service';
 import { UserDTO } from 'src/shared/dtos/users/user.dto';
 import { UpdateUserDTO } from 'src/shared/dtos/users/updateUser.dto';
+import { ApiCommomDecorators } from 'src/shared/decorators/globalDoc.decorator';
 
 @ApiTags('users')
 @Controller()
@@ -34,6 +35,7 @@ export class UpdateUserController {
   @ApiNotFoundResponse({
     description: 'No user found!',
   })
+  @ApiCommomDecorators()
   public async handle(
     @Body() updateUserRequestBody: UpdateUserDTO,
     @Request() req,

@@ -4,6 +4,7 @@ import {
   ApiConflictResponse,
   ApiCreatedResponse,
   ApiTags,
+  ApiTooManyRequestsResponse,
 } from '@nestjs/swagger';
 
 import { SignUpRequestDTO } from 'src/shared/dtos/users/signUpRequest.dto';
@@ -28,6 +29,10 @@ export class SignUpController {
   })
   @ApiConflictResponse({
     description: 'E-mail already in use!',
+  })
+  @ApiTooManyRequestsResponse({
+    description:
+      'Too many request. Please wait a while before making more requests!',
   })
   public async handle(@Body() data: SignUpRequestDTO) {
     try {

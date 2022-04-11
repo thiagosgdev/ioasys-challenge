@@ -1,7 +1,8 @@
 import { Controller, Get, HttpException, Param } from '@nestjs/common';
 import { ApiOkResponse, ApiTags } from '@nestjs/swagger';
-
-import { ListUserDisabilitiesByUserIdService } from './listUserDisabilitiesByUserId.service';
+import { ApiCommomDecorators } from 'src/shared/decorators/globalDoc.decorator';
+import { UserDisabilitieResponseDTO } from 'src/shared/dtos/userDisabilities/userDisability.dto';
+import { ListUserDisabilitiesByUserIdService } from 'src/modules/usersDisabilities/context/listUserDisabilitiesByUserId/listUserDisabilitiesByUserId.service';
 
 @ApiTags('users')
 @Controller('/disabilities')
@@ -13,7 +14,9 @@ export class ListUserDisabilitiesByUserIdController {
   @Get('/list/:userId')
   @ApiOkResponse({
     description: 'A list of the user disabilities will be returned',
+    type: UserDisabilitieResponseDTO,
   })
+  @ApiCommomDecorators()
   public async handle(@Param('userId') userId: string) {
     try {
       return await this.listUserDisabilitiesByUserIdService.execute(userId);

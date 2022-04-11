@@ -1,12 +1,12 @@
 import { ApiProperty } from '@nestjs/swagger';
 
-import { Address } from 'src/shared/entities/address.entity';
-import { Event } from 'src/shared/entities/event.entity';
+import { EventResponseDTO } from 'src/shared/dtos/events/event.dto';
+import { AddressResponse } from 'src/shared/dtos/address/address.dto';
 
 export class EventAddressResponseDTO {
   @ApiProperty()
-  event: Event;
+  event: EventResponseDTO;
 
   @ApiProperty()
-  address?: Address | undefined;
+  address?: AddressResponse | undefined;
 }

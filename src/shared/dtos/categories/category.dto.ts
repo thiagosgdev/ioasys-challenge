@@ -1,21 +1,31 @@
 import { ApiProperty } from '@nestjs/swagger';
 
 export class CategoryResponse {
-  @ApiProperty()
+  @ApiProperty({
+    example: 'aaeceb87-2538-4590-b0c1-8e7d51ed6328',
+  })
   id: string;
 
-  @ApiProperty()
+  @ApiProperty({
+    example: 'Esporte',
+  })
   name: string;
 
-  @ApiProperty()
+  @ApiProperty({
+    example: true,
+  })
   active: boolean;
 
   @ApiProperty()
   createdAt: Date;
 
-  @ApiProperty()
+  @ApiProperty({
+    example: null,
+  })
   updatedAt: Date;
 
-  @ApiProperty()
+  @ApiProperty({
+    example: null,
+  })
   deletedAt: Date;
 }
