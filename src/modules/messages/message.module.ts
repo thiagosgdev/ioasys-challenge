@@ -8,10 +8,21 @@ import { CreateMessageService } from 'src/modules/messages/context/createMessage
 import { ListMessagesController } from 'src/modules/messages/context/listMessages/listMessages.controller';
 import { ListMessagesService } from 'src/modules/messages/context/listMessages/listMessages.service';
 import { messageProviders } from 'src/modules/messages/message.provider';
+import { DailyMessageController } from 'src/modules/messages/context/dailyMessage/dailyMessage.controller';
+import { DailyMessageService } from 'src/modules/messages/context/dailyMessage/dailyMessage.service';
 
 @Module({
   imports: [DatabaseModule, TypeOrmModule.forFeature([Message])],
-  providers: [...messageProviders, ListMessagesService, CreateMessageService],
-  controllers: [ListMessagesController, CreateMessageController],
+  providers: [
+    ...messageProviders,
+    ListMessagesService,
+    CreateMessageService,
+    DailyMessageService,
+  ],
+  controllers: [
+    ListMessagesController,
+    CreateMessageController,
+    DailyMessageController,
+  ],
 })
 export class MessageModule {}

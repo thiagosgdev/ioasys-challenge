@@ -10,12 +10,12 @@ import { CreateMessageService } from 'src/modules/messages/context/createMessage
 import { ApiCommomDecorators } from 'src/shared/decorators/globalDoc.decorator';
 import { MessageResponseDTO } from 'src/shared/dtos/messages/message.dto';
 
+@ApiTags('messages')
 @Controller()
 export class CreateMessageController {
   constructor(private createMessageService: CreateMessageService) {}
 
   @Post()
-  @ApiTags('messages')
   @ApiCreatedResponse({
     description: 'The message created will be returned',
     type: MessageResponseDTO,

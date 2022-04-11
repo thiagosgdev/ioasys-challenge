@@ -1,24 +1,24 @@
 import { Controller, Get, HttpException } from '@nestjs/common';
 import { ApiOkResponse, ApiTags } from '@nestjs/swagger';
 
-import { ListMessagesService } from 'src/modules/messages/context/listMessages/listMessages.service';
+import { DailyMessageService } from 'src/modules/messages/context/dailyMessage/dailyMessage.service';
 import { ApiCommomDecorators } from 'src/shared/decorators/globalDoc.decorator';
 import { MessageResponseDTO } from 'src/shared/dtos/messages/message.dto';
 
 @ApiTags('messages')
-@Controller()
-export class ListMessagesController {
-  constructor(private listMessagesService: ListMessagesService) {}
+@Controller('/daily')
+export class DailyMessageController {
+  constructor(private dailyMessageService: DailyMessageService) {}
 
-  @Get('/list')
+  @Get()
   @ApiOkResponse({
-    description: 'A list of messages will be returned',
+    description: 'Return a daily message',
     type: MessageResponseDTO,
   })
   @ApiCommomDecorators()
   public async handle() {
     try {
-      return await this.listMessagesService.execute();
+      return await this.dailyMessageService.execute();
     } catch (error) {
       throw new HttpException(
         error.response.message,
