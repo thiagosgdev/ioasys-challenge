@@ -25,6 +25,12 @@ export class Activity {
   @Column()
   active: boolean;
 
+  @Column({ name: 'url_active' })
+  urlActive: string;
+
+  @Column({ name: 'url_inactive' })
+  urlInactive: string;
+
   @OneToMany(
     () => ActivityCategories,
     (activityCategories) => activityCategories.activities,
