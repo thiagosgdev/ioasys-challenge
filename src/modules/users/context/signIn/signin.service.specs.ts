@@ -12,6 +12,7 @@ const mockUser: UserDTO = {
   password: null,
   isPremium: false,
   aboutMe: null,
+  city: 'Test City',
   createdAt: new Date(),
   updatedAt: null,
   deletedAt: null,

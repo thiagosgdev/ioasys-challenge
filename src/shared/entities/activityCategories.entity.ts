@@ -6,7 +6,7 @@ import {
   Entity,
   JoinColumn,
   ManyToOne,
-  PrimaryColumn,
+  PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
 import { v4 as uuidV4 } from 'uuid';
@@ -16,7 +16,7 @@ import { Category } from 'src/shared/entities/category.entity';
 
 @Entity('activity_categories')
 export class ActivityCategories {
-  @PrimaryColumn()
+  @PrimaryGeneratedColumn()
   id: string;
 
   @Column()

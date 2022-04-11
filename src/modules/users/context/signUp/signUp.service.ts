@@ -39,6 +39,6 @@ export class SignUpService {
       password: hashedPassword,
     });
 
-    return this.userRepository.save(user);
+    return await this.userRepository.save(user);
   }
 }

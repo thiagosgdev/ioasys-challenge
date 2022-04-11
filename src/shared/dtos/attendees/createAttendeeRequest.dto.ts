@@ -5,16 +5,9 @@ export class CreateAttendeeRequestDTO {
   @IsString()
   @IsNotEmpty()
   @ApiProperty({
-    examples: ['CONFIRMED', 'MAYBE', 'DECLINED'],
+    examples: ['CONFIRMED', 'SAVED'],
   })
   status: string;
-
-  @IsUUID()
-  @IsNotEmpty()
-  @ApiProperty({
-    example: 'ba07b725-2c09-4203-a5b7-386f640277cf',
-  })
-  userId: string;
 
   @IsUUID()
   @IsNotEmpty()

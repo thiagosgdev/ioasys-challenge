@@ -22,6 +22,9 @@ export class UserDTO {
   @ApiProperty()
   password: string;
 
+  @ApiProperty()
+  city: string;
+
   @IsDate()
   @ApiProperty()
   createdAt: Date;

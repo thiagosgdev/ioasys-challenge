@@ -5,7 +5,7 @@ import {
   DeleteDateColumn,
   Entity,
   OneToMany,
-  PrimaryColumn,
+  PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
 import { v4 as uuidV4 } from 'uuid';
@@ -14,7 +14,7 @@ import { ActivityCategories } from 'src/shared/entities/activityCategories.entit
 
 @Entity('categories')
 export class Category {
-  @PrimaryColumn()
+  @PrimaryGeneratedColumn()
   id: string;
 
   @Column()

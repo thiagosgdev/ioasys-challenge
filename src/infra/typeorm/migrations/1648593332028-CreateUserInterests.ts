@@ -10,6 +10,7 @@ export class CreateUserInterests1648593332028 implements MigrationInterface {
             name: 'id',
             type: 'uuid',
             isPrimary: true,
+            default: 'gen_random_uuid ()',
           },
           {
             name: 'activity_id',

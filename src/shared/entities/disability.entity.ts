@@ -5,7 +5,7 @@ import {
   DeleteDateColumn,
   Entity,
   OneToMany,
-  PrimaryColumn,
+  PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
 import { v4 as uuidV4 } from 'uuid';
@@ -14,7 +14,7 @@ import { UserDisability } from 'src/shared/entities/userDisability.entity';
 
 @Entity('disabilities')
 export class Disability {
-  @PrimaryColumn()
+  @PrimaryGeneratedColumn()
   id: string;
 
   @Column()

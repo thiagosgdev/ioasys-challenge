@@ -10,6 +10,7 @@ export class CreateCategory1588645417425 implements MigrationInterface {
             name: 'id',
             type: 'uuid',
             isPrimary: true,
+            default: 'gen_random_uuid ()',
           },
           {
             name: 'name',

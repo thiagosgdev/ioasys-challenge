@@ -10,6 +10,7 @@ export class CreateDisabilities1649198679890 implements MigrationInterface {
             name: 'id',
             type: 'uuid',
             isPrimary: true,
+            default: 'gen_random_uuid ()',
           },
           {
             name: 'user_id',

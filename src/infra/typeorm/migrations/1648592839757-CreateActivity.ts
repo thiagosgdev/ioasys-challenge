@@ -10,6 +10,7 @@ export class CreateActivity1648592839757 implements MigrationInterface {
             name: 'id',
             type: 'uuid',
             isPrimary: true,
+            default: 'gen_random_uuid ()',
           },
           {
             name: 'name',
@@ -18,6 +19,16 @@ export class CreateActivity1648592839757 implements MigrationInterface {
           {
             name: 'active',
             type: 'boolean',
+          },
+          {
+            name: 'url_active',
+            type: 'varchar',
+            isNullable: true,
+          },
+          {
+            name: 'url_inactive',
+            type: 'varchar',
+            isNullable: true,
           },
           {
             name: 'created_at',

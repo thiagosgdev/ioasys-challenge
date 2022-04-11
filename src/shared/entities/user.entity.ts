@@ -4,11 +4,10 @@ import {
   DeleteDateColumn,
   Entity,
   OneToMany,
-  PrimaryColumn,
+  PrimaryGeneratedColumn,
   Unique,
   UpdateDateColumn,
 } from 'typeorm';
-import { v4 as uuidV4 } from 'uuid';
 
 import { Event } from 'src/shared/entities/event.entity';
 import { UserInterest } from 'src/shared/entities/userInterests.entity';
@@ -18,7 +17,7 @@ import { UserDisability } from 'src/shared/entities/userDisability.entity';
 @Unique(['email'])
 @Entity('users')
 export class User {
-  @PrimaryColumn()
+  @PrimaryGeneratedColumn()
   id: string;
 
   @Column()
@@ -32,6 +31,9 @@ export class User {
 
   @Column({ name: 'about_me' })
   aboutMe: string;
+
+  @Column()
+  city: string;
 
   @Column()
   phone: string;
@@ -68,10 +70,4 @@ export class User {
 
   @DeleteDateColumn({ name: 'deleted_at' })
   deletedAt: Date;
-
-  constructor() {
-    if (!this.id) {
-      this.id = uuidV4();
-    }
-  }
 }

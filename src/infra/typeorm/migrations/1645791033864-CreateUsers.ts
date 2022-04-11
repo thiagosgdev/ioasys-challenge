@@ -10,6 +10,7 @@ export class CreateUsers1645791033864 implements MigrationInterface {
             name: 'id',
             type: 'uuid',
             isPrimary: true,
+            default: 'gen_random_uuid ()',
           },
           {
             name: 'name',
@@ -30,7 +31,17 @@ export class CreateUsers1645791033864 implements MigrationInterface {
             isNullable: true,
           },
           {
+            name: 'city',
+            type: 'varchar',
+            isNullable: true,
+          },
+          {
             name: 'is_admin',
+            type: 'boolean',
+            default: false,
+          },
+          {
+            name: 'is_premium',
             type: 'boolean',
             default: false,
           },

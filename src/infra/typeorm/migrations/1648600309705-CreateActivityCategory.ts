@@ -10,6 +10,7 @@ export class CreateActivityCategory1648600309705 implements MigrationInterface {
             name: 'id',
             type: 'uuid',
             isPrimary: true,
+            default: 'gen_random_uuid ()',
           },
           {
             name: 'category_id',

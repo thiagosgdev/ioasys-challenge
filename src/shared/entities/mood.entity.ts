@@ -5,7 +5,7 @@ import {
   DeleteDateColumn,
   Entity,
   OneToMany,
-  PrimaryColumn,
+  PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
 import { v4 as uuidV4 } from 'uuid';
@@ -14,7 +14,7 @@ import { UserMood } from 'src/shared/entities/userMoods.entity';
 
 @Entity('moods')
 export class Mood {
-  @PrimaryColumn()
+  @PrimaryGeneratedColumn()
   id: string;
 
   @Column()

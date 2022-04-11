@@ -10,6 +10,7 @@ export class CreateAddress1648763448758 implements MigrationInterface {
             name: 'id',
             type: 'uuid',
             isPrimary: true,
+            default: 'gen_random_uuid ()',
           },
           {
             name: 'street',
@@ -30,6 +31,11 @@ export class CreateAddress1648763448758 implements MigrationInterface {
           {
             name: 'zip_code',
             type: 'varchar',
+          },
+          {
+            name: 'reference_point',
+            type: 'varchar',
+            isNullable: true,
           },
           {
             name: 'event_id',

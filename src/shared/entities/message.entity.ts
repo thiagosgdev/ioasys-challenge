@@ -6,16 +6,15 @@ import {
   Entity,
   JoinColumn,
   ManyToOne,
-  PrimaryColumn,
+  PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
-import { v4 as uuidV4 } from 'uuid';
 
 import { MessageType } from 'src/shared/entities/messageType.entity';
 
 @Entity('messages')
 export class Message {
-  @PrimaryColumn()
+  @PrimaryGeneratedColumn()
   id: string;
 
   @Column()
@@ -39,9 +38,7 @@ export class Message {
 
   @DeleteDateColumn({ name: 'deleted_at' })
   deletedAt: Date;
-
-  @BeforeInsert()
-  async createId() {
-    this.id = uuidV4();
-  }
+}
+function PrimaryGeratedColumn() {
+  throw new Error('Function not implemented.');
 }

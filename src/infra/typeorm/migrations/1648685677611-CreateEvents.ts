@@ -10,6 +10,7 @@ export class CreateEvents1648685677611 implements MigrationInterface {
             name: 'id',
             type: 'uuid',
             isPrimary: true,
+            default: 'gen_random_uuid ()',
           },
           {
             name: 'name',
@@ -21,14 +22,10 @@ export class CreateEvents1648685677611 implements MigrationInterface {
           },
           {
             name: 'date',
-            type: 'varchar',
+            type: 'timestamp',
           },
           {
             name: 'max_participants',
-            type: 'int',
-          },
-          {
-            name: 'minimum_age',
             type: 'int',
           },
           {
@@ -62,6 +59,11 @@ export class CreateEvents1648685677611 implements MigrationInterface {
           },
           {
             name: 'is_promoted',
+            type: 'boolean',
+            default: false,
+          },
+          {
+            name: 'is_pet_friendly',
             type: 'boolean',
             default: false,
           },

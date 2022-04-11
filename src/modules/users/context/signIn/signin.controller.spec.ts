@@ -13,6 +13,7 @@ const mockUser: UserDTO = {
   email: 'test@test.com',
   password: null,
   isPremium: false,
+  city: 'Any City',
   aboutMe: null,
   createdAt: new Date(),
   updatedAt: null,

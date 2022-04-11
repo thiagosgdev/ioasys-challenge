@@ -30,6 +30,11 @@ export class UpdateUserDTO {
   @IsOptional()
   @IsString()
   @ApiProperty()
+  city: string;
+
+  @IsOptional()
+  @IsString()
+  @ApiProperty()
   phone?: string;
 
   @IsOptional()

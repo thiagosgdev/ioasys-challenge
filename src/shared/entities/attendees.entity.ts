@@ -5,14 +5,16 @@ import {
   DeleteDateColumn,
   Entity,
   JoinColumn,
-  PrimaryColumn,
+  PrimaryGeneratedColumn,
+  Unique,
   UpdateDateColumn,
 } from 'typeorm';
 import { v4 as uuidV4 } from 'uuid';
 
+@Unique(['userId', 'eventId'])
 @Entity('attendees')
 export class Attendee {
-  @PrimaryColumn()
+  @PrimaryGeneratedColumn()
   id: string;
 
   @Column()

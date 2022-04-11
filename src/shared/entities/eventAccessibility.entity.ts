@@ -5,7 +5,7 @@ import {
   Entity,
   JoinColumn,
   ManyToOne,
-  PrimaryColumn,
+  PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
 
@@ -13,7 +13,7 @@ import { Disability } from 'src/shared/entities/disability.entity';
 
 @Entity('events_accessibilities')
 export class EventAccessibility {
-  @PrimaryColumn()
+  @PrimaryGeneratedColumn()
   id: string;
 
   @Column({ name: 'event_id' })

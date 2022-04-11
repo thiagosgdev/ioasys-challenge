@@ -6,7 +6,7 @@ import {
   Entity,
   JoinColumn,
   ManyToOne,
-  PrimaryColumn,
+  PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
 import { v4 as uuidV4 } from 'uuid';
@@ -16,7 +16,7 @@ import { Disability } from 'src/shared/entities/disability.entity';
 
 @Entity('users_disabilities')
 export class UserDisability {
-  @PrimaryColumn()
+  @PrimaryGeneratedColumn()
   id: string;
 
   @Column({ name: 'user_id' })

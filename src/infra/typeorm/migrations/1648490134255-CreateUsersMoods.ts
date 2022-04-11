@@ -10,6 +10,7 @@ export class CreateUsersMoods1648490134255 implements MigrationInterface {
             name: 'id',
             type: 'uuid',
             isPrimary: true,
+            default: 'gen_random_uuid ()',
           },
           {
             name: 'mood_id',

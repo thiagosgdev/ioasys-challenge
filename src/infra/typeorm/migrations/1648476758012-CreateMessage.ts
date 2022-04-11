@@ -10,6 +10,7 @@ export class CreateMessage1648476758012 implements MigrationInterface {
             name: 'id',
             type: 'uuid',
             isPrimary: true,
+            default: 'gen_random_uuid ()',
           },
           {
             name: 'message_type_id',

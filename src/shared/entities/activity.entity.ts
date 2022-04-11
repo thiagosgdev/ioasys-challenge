@@ -5,7 +5,7 @@ import {
   DeleteDateColumn,
   Entity,
   OneToMany,
-  PrimaryColumn,
+  PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
 import { v4 as uuidV4 } from 'uuid';
@@ -16,7 +16,7 @@ import { UserInterest } from 'src/shared/entities/userInterests.entity';
 
 @Entity('activities')
 export class Activity {
-  @PrimaryColumn()
+  @PrimaryGeneratedColumn()
   id: string;
 
   @Column()
