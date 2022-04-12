@@ -34,9 +34,9 @@ export class Disability {
 
   @OneToMany(
     () => EventAccessibility,
-    (eventDisabilities) => eventDisabilities.disabilities,
+    (eventAccessibilities) => eventAccessibilities.accessibilities,
   )
-  eventDisabilities: EventAccessibility;
+  eventAccessibilities: EventAccessibility;
 
   @CreateDateColumn({ name: 'created_at' })
   createdAt: Date;

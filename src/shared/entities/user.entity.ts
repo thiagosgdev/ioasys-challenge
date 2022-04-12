@@ -13,6 +13,7 @@ import { Event } from 'src/shared/entities/event.entity';
 import { UserInterest } from 'src/shared/entities/userInterests.entity';
 import { UserMood } from 'src/shared/entities/userMoods.entity';
 import { UserDisability } from 'src/shared/entities/userDisability.entity';
+import { Attendee } from './attendees.entity';
 
 @Unique(['email'])
 @Entity('users')
@@ -49,6 +50,9 @@ export class User {
 
   @Column({ name: 'emergency_phone' })
   emergencyPhone: string;
+
+  @OneToMany(() => Attendee, (attendees) => attendees.users)
+  attendees: Attendee[];
 
   @OneToMany(() => Event, (events) => events.users)
   events: Event[];

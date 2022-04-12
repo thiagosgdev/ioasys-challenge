@@ -15,12 +15,10 @@ export class CreateAttendee1648864272401 implements MigrationInterface {
           {
             name: 'event_id',
             type: 'uuid',
-            isUnique: true,
           },
           {
             name: 'user_id',
             type: 'uuid',
-            isUnique: true,
           },
           {
             name: 'status',

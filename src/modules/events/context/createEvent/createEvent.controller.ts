@@ -33,6 +33,7 @@ export class CreateEventController {
       const user = req.user;
       return await this.createEventService.execute(user, data);
     } catch (error) {
+      console.log(error);
       throw new HttpException(
         error.response.message,
         error.response.statusCode,

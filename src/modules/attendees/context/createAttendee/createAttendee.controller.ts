@@ -1,6 +1,7 @@
 import { Body, Controller, HttpException, Post, Request } from '@nestjs/common';
 import {
   ApiBadRequestResponse,
+  ApiConflictResponse,
   ApiCreatedResponse,
   ApiTags,
 } from '@nestjs/swagger';
@@ -23,6 +24,9 @@ export class CreateAttendeeController {
   })
   @ApiBadRequestResponse({
     description: 'Returns a message if a invalid field is provided.',
+  })
+  @ApiConflictResponse({
+    description: 'The user already is registered for this event',
   })
   @ApiCommomDecorators()
   public async handle(

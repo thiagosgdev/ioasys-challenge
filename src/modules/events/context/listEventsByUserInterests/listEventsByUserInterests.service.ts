@@ -8,8 +8,7 @@ export class ListEventsByUserInterestsService {
 
   async execute(userId: string) {
     const events = await this.repository.listEventsByUserInterests(userId);
-    if (events.length < 1)
-      throw new NotFoundException('No events found with this activities!');
+    if (events.length < 1) throw new NotFoundException('No event found');
     return events;
   }
 }

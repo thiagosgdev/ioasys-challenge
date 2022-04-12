@@ -5,13 +5,15 @@ import {
   DeleteDateColumn,
   Entity,
   JoinColumn,
+  ManyToOne,
   PrimaryGeneratedColumn,
-  Unique,
   UpdateDateColumn,
 } from 'typeorm';
 import { v4 as uuidV4 } from 'uuid';
 
-@Unique(['userId', 'eventId'])
+import { Event } from './event.entity';
+import { User } from './user.entity';
+
 @Entity('attendees')
 export class Attendee {
   @PrimaryGeneratedColumn()
@@ -21,12 +23,18 @@ export class Attendee {
   status: string;
 
   @Column({ name: 'user_id' })
-  @JoinColumn({ name: 'user_id' })
   userId: string;
 
   @Column({ name: 'event_id' })
-  @JoinColumn({ name: 'event_id' })
   eventId: string;
+
+  @ManyToOne(() => User, (users) => users.attendees)
+  @JoinColumn({ name: 'user_id' })
+  users: User;
+
+  @ManyToOne(() => Event, (event) => event.attendees)
+  @JoinColumn({ name: 'event_id' })
+  event: Event;
 
   @CreateDateColumn({ name: 'created_at' })
   createdAt: Date;

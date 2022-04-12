@@ -4,6 +4,10 @@ import { SigninService } from 'src/modules/users/context/signIn/signin.service';
 import { BcryptProvider } from 'src/shared/providers/HasherProvider/bcrypt.provider';
 import { JwtProvider } from 'src/shared/providers/EncryptProvider/jwt.provider';
 import { UserDTO } from 'src/shared/dtos/users/user.dto';
+import { JwtService } from '@nestjs/jwt';
+import { JwtModule } from '@nestjs/jwt';
+import jwtConfig from 'src/configs/jwt';
+import { BadRequestException, UnauthorizedException } from '@nestjs/common';
 
 const mockUser: UserDTO = {
   id: 'any_id',
@@ -24,13 +28,26 @@ const mockSigninResponseDTO = (): SigninResponseDTO => {
     user: mockUser,
   };
 };
+
+class mockHashProvider {
+  compareHash() {
+    return false;
+  }
+}
 describe('Sign in Service', () => {
   let service: SigninService;
-
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
       providers: [
         SigninService,
+        {
+          provide: JwtService,
+          useValue: {
+            sign: jest.fn(() => {
+              mockSigninResponseDTO();
+            }),
+          },
+        },
         {
           provide: 'USER_REPOSITORY',
           useValue: {
@@ -39,7 +56,7 @@ describe('Sign in Service', () => {
         },
         {
           provide: 'HASH_PROVIDER',
-          useClass: BcryptProvider,
+          useClass: mockHashProvider,
         },
         {
           provide: 'ENCRYPTER_PROVIDER',
@@ -74,14 +91,14 @@ describe('Sign in Service', () => {
     expect(response).toBeNull();
   });
 
-  it('Should return throw if no password or email is provided', async () => {
+  it('Should throw not matching password is provided', async () => {
     try {
       await service.login({
         email: 'email@test.com',
         password: '',
       });
     } catch (error) {
-      expect(error).toBeInstanceOf(Error);
+      await expect(error).toBeInstanceOf(UnauthorizedException);
     }
   });
 

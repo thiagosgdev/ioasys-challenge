@@ -16,7 +16,7 @@ export class UpdateEventService {
     @Inject('ADDRESS_REPOSITORY')
     private addressRepository: Repository<Address>,
   ) {}
-  async execute(data: UpdateEventRequestDTO): Promise<EventAddressResponseDTO> {
+  async execute(data: UpdateEventRequestDTO) {
     const eventExists = await this.eventRepository.findOne(data.event.eventId);
     let updatedAddress = undefined;
     if (!eventExists) throw new NotFoundException('No event found!');
@@ -52,7 +52,7 @@ export class UpdateEventService {
           eventId: data.event.eventId,
         },
       });
-      if (!addressExists) throw new NotFoundException('No event found!');
+
       updatedAddress = await this.addressRepository.save({
         ...addressExists,
         ...data.address,

@@ -1,5 +1,9 @@
 import { Repository } from 'typeorm';
-import { Inject, InternalServerErrorException } from '@nestjs/common';
+import {
+  ConflictException,
+  Inject,
+  InternalServerErrorException,
+} from '@nestjs/common';
 
 import { CreateAttendeeRequestDTO } from 'src/shared/dtos/attendees/createAttendeeRequest.dto';
 import { Attendee } from 'src/shared/entities/attendees.entity';
@@ -11,7 +15,18 @@ export class CreateAttendeeService {
   ) {}
   async execute(userId, data: CreateAttendeeRequestDTO) {
     const { status, eventId } = data;
-    const attendee = await this.attendeeRepository.create({
+
+    const exists = await this.attendeeRepository.findOne({
+      where: {
+        eventId,
+        userId,
+      },
+    });
+
+    if (exists)
+      throw new ConflictException('User already registered for this event!');
+
+    const attendee = this.attendeeRepository.create({
       userId,
       eventId,
       status,

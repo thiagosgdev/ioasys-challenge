@@ -17,10 +17,7 @@ export class CreateEventService {
     @Inject('ADDRESS_REPOSITORY')
     private addressRepository: Repository<Address>,
   ) {}
-  async execute(
-    user: RequestUserObject,
-    data: CreateEventRequestDTO,
-  ): Promise<EventAddressResponseDTO> {
+  async execute(user: RequestUserObject, data: CreateEventRequestDTO) {
     data.event.userId = user.userId;
 
     if (user.role !== 'premium') {

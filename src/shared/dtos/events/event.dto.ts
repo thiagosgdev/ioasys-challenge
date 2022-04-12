@@ -1,4 +1,9 @@
-import { ApiResponseProperty } from '@nestjs/swagger';
+import { ApiProperty, ApiResponseProperty } from '@nestjs/swagger';
+import { Activity } from 'src/shared/entities/activity.entity';
+import { EventAccessibility } from 'src/shared/entities/eventAccessibility.entity';
+import { ActivityResponse } from '../activities/activity.dto';
+import { DisabilitiesResponse } from '../disabilities/disabilitiesResponse.dto';
+import { EventAccessibilityDTO } from '../eventAcessibilities/eventAcessibility.dto';
 
 export class EventResponseDTO {
   @ApiResponseProperty({
@@ -22,7 +27,7 @@ export class EventResponseDTO {
   isOnline: boolean;
 
   @ApiResponseProperty({
-    example: '05/25/2022',
+    example: '2022-04-22',
   })
   date: Date;
 
@@ -66,14 +71,18 @@ export class EventResponseDTO {
   })
   userIdentity: string;
 
-  @ApiResponseProperty({
-    example: [
-      '6dc05b64-81e9-4ad6-8875-4b37f7ee0eee',
-      'f35b3eb9-fdb2-4ba5-8dd3-34ea05b29482',
-      'f335831a-fcee-4138-9ad6-4cd153ce73ce',
-    ],
+  @ApiProperty({
+    type: ActivityResponse,
   })
-  accessibilities?: string[];
+  activities: Activity;
+
+  @ApiProperty({
+    type: EventAccessibilityDTO,
+  })
+  eventAccessibilities: EventAccessibilityDTO[];
+
+  @ApiResponseProperty()
+  numParticipants? = 0;
 
   @ApiResponseProperty()
   createdAt: Date;

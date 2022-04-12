@@ -6,13 +6,17 @@ import {
   Entity,
   JoinColumn,
   ManyToOne,
+  OneToMany,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
 import { v4 as uuidV4 } from 'uuid';
 
-import { Activity } from 'src/shared/entities/activity.entity';
-import { User } from 'src/shared/entities/user.entity';
+import { Activity } from './activity.entity';
+import { User } from './user.entity';
+import { EventAccessibility } from './eventAccessibility.entity';
+import { Attendee } from './attendees.entity';
+import { Address } from './address.entity';
 
 @Entity('events')
 export class Event {
@@ -66,14 +70,21 @@ export class Event {
   @JoinColumn({ name: 'activity_id' })
   activities: Activity[];
 
-  //  @ManyToOne(() => Address, (address) => address.events)
-  //  address: Address;
+  @OneToMany(() => Address, (addresses) => addresses.events)
+  addresses: Address;
 
-  //  @ManyToOne(
-  //    () => EventAccessibility,
-  //    (eventAccessibilities) => eventAccessibilities.events,
-  //  )
-  //  eventAccessibilities: EventAccessibility[];
+  @OneToMany(() => Attendee, (attendees) => attendees.event)
+  @JoinColumn({ name: 'id' })
+  attendees: Attendee[];
+
+  @OneToMany(
+    () => EventAccessibility,
+    (eventAccessibilities) => eventAccessibilities.events,
+  )
+  @JoinColumn({ name: 'event_id' })
+  eventAccessibilities: EventAccessibility[];
+
+  numParticipants?: number;
 
   @CreateDateColumn({ name: 'created_at' })
   createdAt: Date;
