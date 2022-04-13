@@ -6,29 +6,29 @@ import { APP_GUARD, APP_INTERCEPTOR, RouterModule } from '@nestjs/core';
 import { MailerModule } from '@nestjs-modules/mailer';
 import * as redisStore from 'cache-manager-redis-store';
 import { JwtModule } from '@nestjs/jwt';
-
-import { LoggerInterceptor } from 'src/shared/interceptors/logger.interceptor';
-import { UserModule } from 'src/modules/users/user.module';
-import { HealthModule } from 'src/utils/health/health.module';
-import { MetricsController } from 'src/utils/metrics/metrics.controller';
-import { winstonConfig } from 'src/configs/logger/winston.config';
-import { mailerConfig } from 'src/configs/mailer.config';
-import { routerConfig } from 'src/configs/routes';
 import { ThrottlerGuard, ThrottlerModule } from '@nestjs/throttler';
-import { MessageModule } from 'src/modules/messages/message.module';
-import { MessageTypeModule } from 'src/modules/messagesTypes/messagesTypes.module';
-import { MoodModule } from 'src/modules/moods/moods.module';
-import { UserMoodModule } from 'src/modules/usersMoods/userMoods.module';
-import { ActivityModule } from 'src/modules/activities/activities.module';
-import { CategoriesModule } from 'src/modules/categories/categories.module';
-import { UserInterestsModule } from 'src/modules/userInterests/userInterests.module';
-import { EventModule } from 'src/modules/events/events.module';
-import { AddressModule } from 'src/modules/addresses/address.module';
-import { AttendeeModule } from 'src/modules/attendees/attendees.module';
-import { DisabilitiesModule } from 'src/modules/disabilities/disabilities.module';
-import { UserDisabilitiesModule } from 'src/modules/usersDisabilities/userDisabilities.module';
-import { JwtAuthGuard } from 'src/shared/providers/EncryptProvider/jwtAuth.guard';
-import jwtConfig from 'src/configs/jwt';
+
+import { HealthModule } from './utils/health/health.module';
+import { MetricsController } from './utils/metrics/metrics.controller';
+import { LoggerInterceptor } from './shared/interceptors/logger.interceptor';
+import { JwtAuthGuard } from './shared/providers/EncryptProvider/jwtAuth.guard';
+import { winstonConfig } from './configs/logger/winston.config';
+import { mailerConfig } from './configs/mailer.config';
+import { routerConfig } from './configs/routes';
+import jwtConfig from './configs/jwt';
+import { UserModule } from './modules/users/user.module';
+import { MessageModule } from './modules/messages/message.module';
+import { MessageTypeModule } from './modules/messagesTypes/messagesTypes.module';
+import { MoodModule } from './modules/moods/moods.module';
+import { UserMoodModule } from './modules/usersMoods/userMoods.module';
+import { ActivityModule } from './modules/activities/activities.module';
+import { CategoriesModule } from './modules/categories/categories.module';
+import { UserInterestsModule } from './modules/userInterests/userInterests.module';
+import { EventModule } from './modules/events/events.module';
+import { AddressModule } from './modules/addresses/address.module';
+import { AttendeeModule } from './modules/attendees/attendees.module';
+import { DisabilitiesModule } from './modules/disabilities/disabilities.module';
+import { UserDisabilitiesModule } from './modules/usersDisabilities/userDisabilities.module';
 
 @Module({
   imports: [

@@ -1,12 +1,11 @@
 import { Repository } from 'typeorm';
 import { Inject } from '@nestjs/common';
 
-import { CreateEventRequestDTO } from 'src/shared/dtos/events/createEventRequest.dto';
-import { Event } from 'src/shared/entities/event.entity';
-import { Address } from 'src/shared/entities/address.entity';
-import { EventAccessibility } from 'src/shared/entities/eventAccessibility.entity';
-import { RequestUserObject } from 'src/shared/dtos/shared/request.dto';
-import { EventAddressResponseDTO } from 'src/shared/dtos/events/eventAddressResponse.dto';
+import { CreateEventRequestDTO } from '../../../../shared/dtos/events/createEventRequest.dto';
+import { Event } from '../../../../shared/entities/event.entity';
+import { Address } from '../../../../shared/entities/address.entity';
+import { EventAccessibility } from '../../../../shared/entities/eventAccessibility.entity';
+import { RequestUserObject } from '../../../../shared/dtos/shared/request.dto';
 
 export class CreateEventService {
   constructor(

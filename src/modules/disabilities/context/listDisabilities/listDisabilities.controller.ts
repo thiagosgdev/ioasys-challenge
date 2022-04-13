@@ -1,9 +1,9 @@
 import { Controller, Get, HttpException } from '@nestjs/common';
 import { ApiOkResponse, ApiTags } from '@nestjs/swagger';
 
-import { ListDisabilitiesService } from 'src/modules/disabilities/context/listDisabilities/listDisabilities.service';
-import { ApiCommomDecorators } from 'src/shared/decorators/globalDoc.decorator';
-import { DisabilitiesResponse } from 'src/shared/dtos/disabilities/disabilitiesResponse.dto';
+import { ApiCommomDecorators } from '../../../../shared/decorators/globalDoc.decorator';
+import { DisabilitiesResponse } from '../../../../shared/dtos/disabilities/disabilitiesResponse.dto';
+import { ListDisabilitiesService } from './listDisabilities.service';
 
 @ApiTags('disabilities')
 @Controller()

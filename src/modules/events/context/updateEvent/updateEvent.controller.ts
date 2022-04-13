@@ -1,10 +1,10 @@
 import { Body, Controller, HttpException, Patch } from '@nestjs/common';
 import { ApiOkResponse, ApiTags } from '@nestjs/swagger';
 
-import { ApiCommomDecorators } from 'src/shared/decorators/globalDoc.decorator';
-import { EventAddressResponseDTO } from 'src/shared/dtos/events/eventAddressResponse.dto';
-import { UpdateEventRequestDTO } from 'src/shared/dtos/events/updateEventRequest.dto';
-import { UpdateEventService } from 'src/modules/events/context/updateEvent/updateEvent.service';
+import { ApiCommomDecorators } from '../../../../shared/decorators/globalDoc.decorator';
+import { EventAddressResponseDTO } from '../../../../shared/dtos/events/eventAddressResponse.dto';
+import { UpdateEventRequestDTO } from '../../../../shared/dtos/events/updateEventRequest.dto';
+import { UpdateEventService } from './updateEvent.service';
 
 @ApiTags('events')
 @Controller()

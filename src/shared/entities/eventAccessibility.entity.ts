@@ -9,8 +9,8 @@ import {
   UpdateDateColumn,
 } from 'typeorm';
 
-import { Disability } from 'src/shared/entities/disability.entity';
-import { Event } from 'src/shared/entities/event.entity';
+import { Disability } from './disability.entity';
+import { Event } from './event.entity';
 
 @Entity('events_accessibilities')
 export class EventAccessibility {

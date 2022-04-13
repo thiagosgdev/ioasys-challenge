@@ -5,10 +5,10 @@ import {
   ApiTags,
 } from '@nestjs/swagger';
 
-import { CreateAddressRequestDTO } from 'src/shared/dtos/address/createAddressRequest.dto';
-import { CreateAddressService } from 'src/modules/addresses/context/createAddress/createAddress.service';
-import { AddressResponse } from 'src/shared/dtos/address/address.dto';
-import { ApiCommomDecorators } from 'src/shared/decorators/globalDoc.decorator';
+import { CreateAddressRequestDTO } from '../../../../shared/dtos/address/createAddressRequest.dto';
+import { AddressResponse } from '../../../../shared/dtos/address/address.dto';
+import { ApiCommomDecorators } from '../../../../shared/decorators/globalDoc.decorator';
+import { CreateAddressService } from './createAddress.service';
 
 @ApiTags('addresses')
 @Controller()

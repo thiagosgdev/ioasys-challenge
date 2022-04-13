@@ -13,8 +13,8 @@ import {
   ApiTags,
 } from '@nestjs/swagger';
 
-import { ResetPasswordService } from 'src/modules/users/context/resetPassword/resetPassword.service';
-import { Public } from 'src/shared/decorators/public.decorator';
+import { Public } from '../../../../shared/decorators/public.decorator';
+import { ResetPasswordService } from './resetPassword.service';
 
 @ApiTags('users')
 @Controller('/resetpassword')

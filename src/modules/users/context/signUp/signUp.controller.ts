@@ -7,11 +7,10 @@ import {
   ApiTooManyRequestsResponse,
 } from '@nestjs/swagger';
 
-import { SignUpRequestDTO } from 'src/shared/dtos/users/signUpRequest.dto';
-import { SignUpService } from 'src/modules/users/context/signUp/signUp.service';
-import { Public } from 'src/shared/decorators/public.decorator';
-import { User } from 'src/shared/entities/user.entity';
-import { UserDTO } from 'src/shared/dtos/users/user.dto';
+import { UserDTO } from '../../../../shared/dtos/users/user.dto';
+import { Public } from '../../../../shared/decorators/public.decorator';
+import { SignUpRequestDTO } from '../../../../shared/dtos/users/signUpRequest.dto';
+import { SignUpService } from './signUp.service';
 
 @Public()
 @ApiTags('users')

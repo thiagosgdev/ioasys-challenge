@@ -9,10 +9,10 @@ import {
   UpdateDateColumn,
 } from 'typeorm';
 
-import { Event } from 'src/shared/entities/event.entity';
-import { UserInterest } from 'src/shared/entities/userInterests.entity';
-import { UserMood } from 'src/shared/entities/userMoods.entity';
-import { UserDisability } from 'src/shared/entities/userDisability.entity';
+import { Event } from './event.entity';
+import { UserInterest } from './userInterests.entity';
+import { UserMood } from './userMoods.entity';
+import { UserDisability } from './userDisability.entity';
 import { Attendee } from './attendees.entity';
 
 @Unique(['email'])

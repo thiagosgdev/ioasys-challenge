@@ -1,4 +1,4 @@
-import { UserDTO } from 'src/shared/dtos/users/user.dto';
+import { UserDTO } from './user.dto';
 
 export class SigninResponseDTO {
   token: string;

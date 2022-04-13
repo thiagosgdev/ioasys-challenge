@@ -1,15 +1,15 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 
-import { DatabaseModule } from 'src/infra/database.module';
-import { Message } from 'src/shared/entities/message.entity';
-import { CreateMessageController } from 'src/modules/messages/context/createMessage/createMessage.controller';
-import { CreateMessageService } from 'src/modules/messages/context/createMessage/createMessage.service';
-import { ListMessagesController } from 'src/modules/messages/context/listMessages/listMessages.controller';
-import { ListMessagesService } from 'src/modules/messages/context/listMessages/listMessages.service';
-import { messageProviders } from 'src/modules/messages/message.provider';
-import { DailyMessageController } from 'src/modules/messages/context/dailyMessage/dailyMessage.controller';
-import { DailyMessageService } from 'src/modules/messages/context/dailyMessage/dailyMessage.service';
+import { DatabaseModule } from '../../infra/database.module';
+import { Message } from '../../shared/entities/message.entity';
+import { CreateMessageController } from './context/createMessage/createMessage.controller';
+import { CreateMessageService } from './context/createMessage/createMessage.service';
+import { ListMessagesController } from './context/listMessages/listMessages.controller';
+import { ListMessagesService } from './context/listMessages/listMessages.service';
+import { messageProviders } from './message.provider';
+import { DailyMessageController } from './context/dailyMessage/dailyMessage.controller';
+import { DailyMessageService } from './context/dailyMessage/dailyMessage.service';
 
 @Module({
   imports: [DatabaseModule, TypeOrmModule.forFeature([Message])],

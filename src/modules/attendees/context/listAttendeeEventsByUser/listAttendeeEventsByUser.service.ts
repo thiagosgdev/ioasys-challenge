@@ -1,5 +1,5 @@
-import { AttendeeRepo } from 'src/modules/attendees/repositories/attendee.repository';
-import { ListAttendeeEventsRequestDTO } from 'src/shared/dtos/attendees/listAttendeeEvents.dto';
+import { ListAttendeeEventsRequestDTO } from '../../../../shared/dtos/attendees/listAttendeeEvents.dto';
+import { AttendeeRepo } from '../../repositories/attendee.repository';
 
 export class ListAttendeeEventsByUserIdService {
   constructor(private attendeeRepository: AttendeeRepo) {}

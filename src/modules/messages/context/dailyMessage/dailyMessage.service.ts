@@ -1,8 +1,8 @@
 import { Inject } from '@nestjs/common';
 import { Repository } from 'typeorm';
 
-import { MessageResponseDTO } from 'src/shared/dtos/messages/message.dto';
-import { Message } from 'src/shared/entities/message.entity';
+import { MessageResponseDTO } from '../../../../shared/dtos/messages/message.dto';
+import { Message } from '../../../../shared/entities/message.entity';
 
 export class DailyMessageService {
   constructor(

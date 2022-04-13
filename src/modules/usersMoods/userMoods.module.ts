@@ -1,13 +1,13 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 
-import { DatabaseModule } from 'src/infra/database.module';
-import { UserMood } from 'src/shared/entities/userMoods.entity';
-import { CreateUserMoodController } from 'src/modules/usersMoods/context/createUserMood/createUserMood.controller';
-import { CreateUserMoodService } from 'src/modules/usersMoods/context/createUserMood/createUserMood.service';
-import { ListUserMoodsController } from 'src/modules/usersMoods/context/listUserMoods/listUserMoods.controller';
-import { ListUserMoodsService } from 'src/modules/usersMoods/context/listUserMoods/listUserMoods.service';
-import { userMoodProviders } from 'src/modules/usersMoods/userMoods.provider';
+import { DatabaseModule } from '../../infra/database.module';
+import { UserMood } from '../../shared/entities/userMoods.entity';
+import { CreateUserMoodController } from './context/createUserMood/createUserMood.controller';
+import { CreateUserMoodService } from './context/createUserMood/createUserMood.service';
+import { ListUserMoodsController } from './context/listUserMoods/listUserMoods.controller';
+import { ListUserMoodsService } from './context/listUserMoods/listUserMoods.service';
+import { userMoodProviders } from './userMoods.provider';
 
 @Module({
   imports: [DatabaseModule, TypeOrmModule.forFeature([UserMood])],

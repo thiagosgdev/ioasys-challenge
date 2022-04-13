@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { UserInterestRepo } from 'src/modules/userInterests/repositories/userInterests.repository';
+import { UserInterestRepo } from '../../repositories/userInterests.repository';
 
 @Injectable()
 export class ListUserInterestsByUserIdService {

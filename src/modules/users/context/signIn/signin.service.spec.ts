@@ -1,13 +1,11 @@
 import { Test, TestingModule } from '@nestjs/testing';
-import { SigninResponseDTO } from 'src/shared/dtos/users/signinResponse.dto';
-import { SigninService } from 'src/modules/users/context/signIn/signin.service';
-import { BcryptProvider } from 'src/shared/providers/HasherProvider/bcrypt.provider';
-import { JwtProvider } from 'src/shared/providers/EncryptProvider/jwt.provider';
-import { UserDTO } from 'src/shared/dtos/users/user.dto';
+import { UnauthorizedException } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
-import { JwtModule } from '@nestjs/jwt';
-import jwtConfig from 'src/configs/jwt';
-import { BadRequestException, UnauthorizedException } from '@nestjs/common';
+
+import { SigninResponseDTO } from '../../../../shared/dtos/users/signinResponse.dto';
+import { JwtProvider } from '../../../../shared/providers/EncryptProvider/jwt.provider';
+import { UserDTO } from '../../../../shared/dtos/users/user.dto';
+import { SigninService } from './signin.service';
 
 const mockUser: UserDTO = {
   id: 'any_id',

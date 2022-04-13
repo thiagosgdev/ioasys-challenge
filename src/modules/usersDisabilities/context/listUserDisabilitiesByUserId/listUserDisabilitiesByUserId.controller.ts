@@ -1,8 +1,10 @@
-import { Controller, Get, HttpException, Param } from '@nestjs/common';
+import { Controller, Get, HttpException, Request } from '@nestjs/common';
 import { ApiOkResponse, ApiTags } from '@nestjs/swagger';
-import { ApiCommomDecorators } from 'src/shared/decorators/globalDoc.decorator';
-import { UserDisabilitieResponseDTO } from 'src/shared/dtos/userDisabilities/userDisability.dto';
-import { ListUserDisabilitiesByUserIdService } from 'src/modules/usersDisabilities/context/listUserDisabilitiesByUserId/listUserDisabilitiesByUserId.service';
+
+import { ApiCommomDecorators } from '../../../../shared/decorators/globalDoc.decorator';
+import { UserDisabilitieResponseDTO } from '../../../../shared/dtos/userDisabilities/userDisability.dto';
+import { RequestDTO } from '../../../../shared/dtos/shared/request.dto';
+import { ListUserDisabilitiesByUserIdService } from './listUserDisabilitiesByUserId.service';
 
 @ApiTags('users')
 @Controller('/disabilities')
@@ -11,14 +13,15 @@ export class ListUserDisabilitiesByUserIdController {
     private listUserDisabilitiesByUserIdService: ListUserDisabilitiesByUserIdService,
   ) {}
 
-  @Get('/list/:userId')
+  @Get('/list/user')
   @ApiOkResponse({
     description: 'A list of the user disabilities will be returned',
     type: UserDisabilitieResponseDTO,
   })
   @ApiCommomDecorators()
-  public async handle(@Param('userId') userId: string) {
+  public async handle(@Request() req: RequestDTO) {
     try {
+      const userId = req.user.userId;
       return await this.listUserDisabilitiesByUserIdService.execute(userId);
     } catch (error) {
       throw new HttpException(

@@ -3,12 +3,9 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 
 import { Event } from '../../../shared/entities/event.entity';
-import { getNowDate } from '../../../shared/functions/getNowDate';
 
 @Injectable()
 export class EventRepo {
-  private nowDate: string = getNowDate();
-
   constructor(
     @InjectRepository(Event)
     private readonly repository: Repository<Event>,

@@ -1,9 +1,9 @@
 import { Controller, Get, HttpException } from '@nestjs/common';
 import { ApiOkResponse, ApiTags } from '@nestjs/swagger';
 
-import { DailyMessageService } from 'src/modules/messages/context/dailyMessage/dailyMessage.service';
-import { ApiCommomDecorators } from 'src/shared/decorators/globalDoc.decorator';
-import { MessageResponseDTO } from 'src/shared/dtos/messages/message.dto';
+import { ApiCommomDecorators } from '../../../../shared/decorators/globalDoc.decorator';
+import { MessageResponseDTO } from '../../../../shared/dtos/messages/message.dto';
+import { DailyMessageService } from './dailyMessage.service';
 
 @ApiTags('messages')
 @Controller('/daily')

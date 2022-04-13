@@ -11,8 +11,8 @@ import {
 } from 'typeorm';
 import { v4 as uuidV4 } from 'uuid';
 
-import { Activity } from 'src/shared/entities/activity.entity';
-import { User } from 'src/shared/entities/user.entity';
+import { Activity } from './activity.entity';
+import { User } from './user.entity';
 
 @Entity('users_interests')
 export class UserInterest {

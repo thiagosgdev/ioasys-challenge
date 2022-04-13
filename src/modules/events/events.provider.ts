@@ -1,7 +1,7 @@
 import { Connection } from 'typeorm';
 
-import { Event } from 'src/shared/entities/event.entity';
-import { EventAccessibility } from 'src/shared/entities/eventAccessibility.entity';
+import { Event } from '../../shared/entities/event.entity';
+import { EventAccessibility } from '../../shared/entities/eventAccessibility.entity';
 
 export const eventsProviders = [
   {

@@ -1,10 +1,10 @@
-import { Controller, Get, HttpException, Param, Request } from '@nestjs/common';
+import { Controller, Get, HttpException, Request } from '@nestjs/common';
 import { ApiNotFoundResponse, ApiOkResponse, ApiTags } from '@nestjs/swagger';
 
-import { ListEventsByUserInterestsService } from 'src/modules/events/context/listEventsByUserInterests/listEventsByUserInterests.service';
-import { ApiCommomDecorators } from 'src/shared/decorators/globalDoc.decorator';
-import { EventAddressResponseDTO } from 'src/shared/dtos/events/eventAddressResponse.dto';
-import { RequestDTO } from 'src/shared/dtos/shared/request.dto';
+import { ApiCommomDecorators } from '../../../../shared/decorators/globalDoc.decorator';
+import { EventAddressResponseDTO } from '../../../../shared/dtos/events/eventAddressResponse.dto';
+import { RequestDTO } from '../../../../shared/dtos/shared/request.dto';
+import { ListEventsByUserInterestsService } from './listEventsByUserInterests.service';
 
 @ApiTags('events')
 @Controller()

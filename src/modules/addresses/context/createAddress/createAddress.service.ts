@@ -1,8 +1,8 @@
 import { Repository } from 'typeorm';
 import { Inject } from '@nestjs/common';
 
-import { CreateAddressRequestDTO } from 'src/shared/dtos/address/createAddressRequest.dto';
-import { Address } from 'src/shared/entities/address.entity';
+import { CreateAddressRequestDTO } from '../../../../shared/dtos/address/createAddressRequest.dto';
+import { Address } from '../../../../shared/entities/address.entity';
 
 export class CreateAddressService {
   constructor(

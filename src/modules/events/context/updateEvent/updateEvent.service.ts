@@ -1,11 +1,10 @@
 import { Repository } from 'typeorm';
 import { Inject, NotFoundException } from '@nestjs/common';
 
-import { Event } from 'src/shared/entities/event.entity';
-import { Address } from 'src/shared/entities/address.entity';
-import { UpdateEventRequestDTO } from 'src/shared/dtos/events/updateEventRequest.dto';
-import { EventAddressResponseDTO } from 'src/shared/dtos/events/eventAddressResponse.dto';
-import { EventAccessibility } from 'src/shared/entities/eventAccessibility.entity';
+import { Event } from '../../../../shared/entities/event.entity';
+import { Address } from '../../../../shared/entities/address.entity';
+import { UpdateEventRequestDTO } from '../../../../shared/dtos/events/updateEventRequest.dto';
+import { EventAccessibility } from '../../../../shared/entities/eventAccessibility.entity';
 
 export class UpdateEventService {
   constructor(

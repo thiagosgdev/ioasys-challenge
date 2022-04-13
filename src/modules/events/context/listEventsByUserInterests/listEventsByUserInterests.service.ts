@@ -1,6 +1,6 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 
-import { EventRepo } from 'src/modules/events/repositories/events.repository';
+import { EventRepo } from '../../repositories/events.repository';
 
 @Injectable()
 export class ListEventsByUserInterestsService {

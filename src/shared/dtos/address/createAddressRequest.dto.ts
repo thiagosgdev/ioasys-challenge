@@ -46,17 +46,9 @@ export class CreateAddressRequestDTO {
 
   @IsString()
   @IsOptional()
-  @ApiProperty({
-    example: '404d6e94-d948-4e10-9652-c2365e6d6f50',
-    required: false,
-  })
   userId?: string;
 
   @IsString()
   @IsOptional()
-  @ApiProperty({
-    example: 'aac11a3b-4fa7-43c9-abac-df068554e2e9',
-    required: false,
-  })
   eventId?: string;
 }

@@ -1,7 +1,7 @@
 import { CACHE_MANAGER, Inject } from '@nestjs/common';
 import { Cache } from 'cache-manager';
 
-import { Decrypter } from 'src/shared/providers/EncryptProvider/protocols/decrypter';
+import { Decrypter } from '../../../../shared/providers/EncryptProvider/protocols/decrypter';
 
 export class LogoutService {
   constructor(

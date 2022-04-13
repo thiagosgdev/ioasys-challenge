@@ -1,6 +1,6 @@
 import { Connection } from 'typeorm';
 
-import { UserInterest } from 'src/shared/entities/userInterests.entity';
+import { UserInterest } from '../../shared/entities/userInterests.entity';
 
 export const userInterestsProviders = [
   {

@@ -11,8 +11,8 @@ import {
 } from 'typeorm';
 import { v4 as uuidV4 } from 'uuid';
 
-import { Mood } from 'src/shared/entities/mood.entity';
-import { User } from 'src/shared/entities/user.entity';
+import { Mood } from './mood.entity';
+import { User } from './user.entity';
 
 @Entity('users_moods')
 export class UserMood {

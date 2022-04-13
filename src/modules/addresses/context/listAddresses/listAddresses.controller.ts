@@ -1,8 +1,8 @@
 import { Controller, Get, HttpException } from '@nestjs/common';
 import { ApiOkResponse, ApiTags } from '@nestjs/swagger';
 
-import { ListAddressesService } from 'src/modules/addresses/context/listAddresses/listAddressess.service';
-import { ApiCommomDecorators } from 'src/shared/decorators/globalDoc.decorator';
+import { ApiCommomDecorators } from '../../../../shared/decorators/globalDoc.decorator';
+import { ListAddressesService } from './listAddressess.service';
 
 @ApiTags('addresses')
 @Controller()

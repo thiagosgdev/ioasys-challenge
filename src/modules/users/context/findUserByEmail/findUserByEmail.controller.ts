@@ -6,8 +6,8 @@ import {
   ApiTags,
 } from '@nestjs/swagger';
 
-import { FindUserByEmailService } from 'src/modules/users/context/findUserByEmail/findUserByEmail.service';
-import { UserDTO } from 'src/shared/dtos/users/user.dto';
+import { UserDTO } from '../../../../shared/dtos/users/user.dto';
+import { FindUserByEmailService } from './findUserByEmail.service';
 
 @ApiTags('users')
 @Controller('/find/:email')

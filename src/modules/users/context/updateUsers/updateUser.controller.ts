@@ -14,10 +14,10 @@ import {
   ApiTags,
 } from '@nestjs/swagger';
 
-import { UpdateUserService } from 'src/modules/users/context/updateUsers/updateUser.service';
-import { UserDTO } from 'src/shared/dtos/users/user.dto';
-import { UpdateUserDTO } from 'src/shared/dtos/users/updateUser.dto';
-import { ApiCommomDecorators } from 'src/shared/decorators/globalDoc.decorator';
+import { UserDTO } from '../../../../shared/dtos/users/user.dto';
+import { UpdateUserDTO } from '../../../../shared/dtos/users/updateUser.dto';
+import { ApiCommomDecorators } from '../../../../shared/decorators/globalDoc.decorator';
+import { UpdateUserService } from './updateUser.service';
 
 @ApiTags('users')
 @Controller()

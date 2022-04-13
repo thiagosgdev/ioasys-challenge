@@ -1,5 +1,6 @@
 import { Injectable } from '@nestjs/common';
-import { UserDisabilityRepo } from 'src/modules/usersDisabilities/repositories/userDisabilitily.repository';
+
+import { UserDisabilityRepo } from '../../repositories/userDisabilitily.repository';
 
 @Injectable()
 export class ListUserDisabilitiesByUserIdService {

@@ -1,10 +1,10 @@
 import { Injectable, Inject, NotFoundException } from '@nestjs/common';
 import { Repository } from 'typeorm';
 
-import { UpdateUserDTO } from 'src/shared/dtos/users/updateUser.dto';
-import { UserDTO } from 'src/shared/dtos/users/user.dto';
-import { User } from 'src/shared/entities/user.entity';
-import { Hasher } from 'src/shared/providers/HasherProvider/protocols/hasher';
+import { UpdateUserDTO } from '../../../../shared/dtos/users/updateUser.dto';
+import { UserDTO } from '../../../../shared/dtos/users/user.dto';
+import { User } from '../../../../shared/entities/user.entity';
+import { Hasher } from '../../../../shared/providers/HasherProvider/protocols/hasher';
 
 @Injectable()
 export class UpdateUserService {

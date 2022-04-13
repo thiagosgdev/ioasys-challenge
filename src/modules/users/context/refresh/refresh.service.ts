@@ -1,7 +1,7 @@
 import { Inject } from '@nestjs/common';
 
-import { Decrypter } from 'src/shared/providers/EncryptProvider/protocols/decrypter';
-import { Encrypter } from 'src/shared/providers/EncryptProvider/protocols/encrypter';
+import { Decrypter } from '../../../../shared/providers/EncryptProvider/protocols/decrypter';
+import { Encrypter } from '../../../../shared/providers/EncryptProvider/protocols/encrypter';
 
 export class RefreshService {
   constructor(

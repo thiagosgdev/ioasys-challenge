@@ -3,7 +3,7 @@ import { HandlebarsAdapter } from '@nestjs-modules/mailer/dist/adapters/handleba
 import * as path from 'path';
 import * as aws from '@aws-sdk/client-ses';
 
-import envConfig from 'src/configs/env';
+import envConfig from '../configs/env';
 
 const user = envConfig().emailUsername;
 const pass = envConfig().emailPassword;

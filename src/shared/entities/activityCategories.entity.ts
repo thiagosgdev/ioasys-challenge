@@ -11,8 +11,8 @@ import {
 } from 'typeorm';
 import { v4 as uuidV4 } from 'uuid';
 
-import { Activity } from 'src/shared/entities/activity.entity';
-import { Category } from 'src/shared/entities/category.entity';
+import { Activity } from './activity.entity';
+import { Category } from './category.entity';
 
 @Entity('activity_categories')
 export class ActivityCategories {

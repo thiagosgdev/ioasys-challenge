@@ -1,7 +1,7 @@
 import { Inject } from '@nestjs/common';
 import { Repository } from 'typeorm';
 
-import { User } from 'src/shared/entities/user.entity';
+import { User } from '../../../../shared/entities/user.entity';
 
 export class DeleteUserService {
   constructor(

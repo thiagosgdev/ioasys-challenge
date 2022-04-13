@@ -1,8 +1,8 @@
 import { Inject } from '@nestjs/common';
 import { Repository } from 'typeorm';
 
-import { UserDisability } from 'src/shared/entities/userDisability.entity';
-import { CreateUserDisabilityRequestDTO } from 'src/shared/dtos/userDisabilities/createUserDisabilitiesRequest.dto';
+import { UserDisability } from '../../../../shared/entities/userDisability.entity';
+import { CreateUserDisabilityRequestDTO } from '../../../../shared/dtos/userDisabilities/createUserDisabilitiesRequest.dto';
 
 export class CreateUserDisabilitiesService {
   constructor(

@@ -1,5 +1,4 @@
 import {
-  BeforeInsert,
   Column,
   CreateDateColumn,
   DeleteDateColumn,
@@ -10,7 +9,7 @@ import {
   UpdateDateColumn,
 } from 'typeorm';
 
-import { MessageType } from 'src/shared/entities/messageType.entity';
+import { MessageType } from './messageType.entity';
 
 @Entity('messages')
 export class Message {

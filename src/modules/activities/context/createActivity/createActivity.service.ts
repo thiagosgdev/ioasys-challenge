@@ -1,8 +1,8 @@
 import { Inject } from '@nestjs/common';
 import { Repository } from 'typeorm';
 
-import { Activity } from 'src/shared/entities/activity.entity';
-import { CreateActivityRequestDTO } from 'src/shared/dtos/activities/createActivityRequest.dto';
+import { Activity } from '../../../../shared/entities/activity.entity';
+import { CreateActivityRequestDTO } from '../../../../shared/dtos/activities/createActivityRequest.dto';
 
 export class CreateActivityService {
   constructor(

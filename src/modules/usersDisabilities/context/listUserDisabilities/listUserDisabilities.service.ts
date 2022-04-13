@@ -1,7 +1,7 @@
 import { Inject } from '@nestjs/common';
 import { Repository } from 'typeorm';
 
-import { UserDisability } from 'src/shared/entities/userDisability.entity';
+import { UserDisability } from '../../../../shared/entities/userDisability.entity';
 
 export class ListUserDisabilitiesService {
   constructor(

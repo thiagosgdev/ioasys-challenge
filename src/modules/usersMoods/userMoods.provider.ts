@@ -1,6 +1,6 @@
 import { Connection } from 'typeorm';
 
-import { UserMood } from 'src/shared/entities/userMoods.entity';
+import { UserMood } from '../../shared/entities/userMoods.entity';
 
 export const userMoodProviders = [
   {

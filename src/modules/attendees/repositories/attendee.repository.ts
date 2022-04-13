@@ -2,8 +2,8 @@ import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 
-import { Attendee } from 'src/shared/entities/attendees.entity';
-import { ListAttendeeEventsRequestDTO } from 'src/shared/dtos/attendees/listAttendeeEvents.dto';
+import { Attendee } from '../../../shared/entities/attendees.entity';
+import { ListAttendeeEventsRequestDTO } from '../../../shared/dtos/attendees/listAttendeeEvents.dto';
 
 @Injectable()
 export class AttendeeRepo {

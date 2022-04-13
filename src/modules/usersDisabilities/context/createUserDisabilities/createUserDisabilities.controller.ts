@@ -1,10 +1,10 @@
 import { Body, Controller, HttpException, Post, Request } from '@nestjs/common';
 import { ApiCreatedResponse, ApiTags } from '@nestjs/swagger';
 
-import { CreateUserDisabilityRequestDTO } from 'src/shared/dtos/userDisabilities/createUserDisabilitiesRequest.dto';
-import { CreateUserDisabilitiesService } from 'src/modules/usersDisabilities/context/createUserDisabilities/createUserDisabilities.service';
-import { ApiCommomDecorators } from 'src/shared/decorators/globalDoc.decorator';
-import { UserDisabilitieResponseDTO } from 'src/shared/dtos/userDisabilities/userDisability.dto';
+import { CreateUserDisabilityRequestDTO } from '../../../../shared/dtos/userDisabilities/createUserDisabilitiesRequest.dto';
+import { ApiCommomDecorators } from '../../../../shared/decorators/globalDoc.decorator';
+import { UserDisabilitieResponseDTO } from '../../../../shared/dtos/userDisabilities/userDisability.dto';
+import { CreateUserDisabilitiesService } from './createUserDisabilities.service';
 
 @ApiTags('users')
 @Controller()

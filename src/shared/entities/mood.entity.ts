@@ -10,7 +10,7 @@ import {
 } from 'typeorm';
 import { v4 as uuidV4 } from 'uuid';
 
-import { UserMood } from 'src/shared/entities/userMoods.entity';
+import { UserMood } from './userMoods.entity';
 
 @Entity('moods')
 export class Mood {

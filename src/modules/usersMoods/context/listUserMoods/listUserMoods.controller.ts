@@ -1,10 +1,10 @@
 import { Controller, Get, HttpException, Request } from '@nestjs/common';
 import { ApiOkResponse, ApiTags } from '@nestjs/swagger';
 
-import { ListUserMoodsService } from 'src/modules/usersMoods/context/listUserMoods/listUserMoods.service';
-import { ApiCommomDecorators } from 'src/shared/decorators/globalDoc.decorator';
-import { RequestDTO } from 'src/shared/dtos/shared/request.dto';
-import { UserMoodResponseDTO } from 'src/shared/dtos/userMood/userMood.dto';
+import { ApiCommomDecorators } from '../../../../shared/decorators/globalDoc.decorator';
+import { RequestDTO } from '../../../../shared/dtos/shared/request.dto';
+import { UserMoodResponseDTO } from '../../../../shared/dtos/userMood/userMood.dto';
+import { ListUserMoodsService } from './listUserMoods.service';
 
 @ApiTags('users')
 @Controller('/moods')

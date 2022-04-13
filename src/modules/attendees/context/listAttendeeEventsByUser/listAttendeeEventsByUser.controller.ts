@@ -1,11 +1,10 @@
 import { Controller, Get, HttpException, Query, Request } from '@nestjs/common';
 import { ApiOkResponse, ApiTags } from '@nestjs/swagger';
 
-import { ListAttendeeEventsByUserIdService } from 'src/modules/attendees/context/listAttendeeEventsByUser/listAttendeeEventsByUser.service';
-import { EventRepo } from 'src/modules/events/repositories/events.repository';
-import { ApiCommomDecorators } from 'src/shared/decorators/globalDoc.decorator';
-import { EventAddressResponseDTO } from 'src/shared/dtos/events/eventAddressResponse.dto';
-import { RequestDTO } from 'src/shared/dtos/shared/request.dto';
+import { ApiCommomDecorators } from '../../../../shared/decorators/globalDoc.decorator';
+import { EventAddressResponseDTO } from '../../../../shared/dtos/events/eventAddressResponse.dto';
+import { RequestDTO } from '../../../../shared/dtos/shared/request.dto';
+import { ListAttendeeEventsByUserIdService } from './listAttendeeEventsByUser.service';
 
 @ApiTags('attendees')
 @Controller('/list')

@@ -1,16 +1,16 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 
-import { DatabaseModule } from 'src/infra/database.module';
-import { UserInterest } from 'src/shared/entities/userInterests.entity';
-import { userInterestsProviders } from 'src/modules/userInterests/userInterests.provider';
-import { CreateUserInterestService } from 'src/modules/userInterests/context/createUserInterests/createUserInterest.service';
-import { ListUserInterestsService } from 'src/modules/userInterests/context/listUserInterests/listUserInterests.service';
-import { CreateUserInterestController } from 'src/modules/userInterests/context/createUserInterests/createUserInterest.controller';
-import { ListUserInterestsController } from 'src/modules/userInterests/context/listUserInterests/listUserInterests.controller';
-import { ListUserInterestsByUserIdService } from 'src/modules/userInterests/context/listUserInterestsByUserId/listUserInterestsByUserId.service';
-import { ListUserInterestsByUserIdController } from 'src/modules/userInterests/context/listUserInterestsByUserId/listUserInterestsByUserId.controller';
-import { UserInterestRepo } from 'src/modules/userInterests/repositories/userInterests.repository';
+import { DatabaseModule } from '../../infra/database.module';
+import { UserInterest } from '../../shared/entities/userInterests.entity';
+import { userInterestsProviders } from './userInterests.provider';
+import { CreateUserInterestService } from './context/createUserInterests/createUserInterest.service';
+import { ListUserInterestsService } from './context/listUserInterests/listUserInterests.service';
+import { CreateUserInterestController } from './context/createUserInterests/createUserInterest.controller';
+import { ListUserInterestsController } from './context/listUserInterests/listUserInterests.controller';
+import { ListUserInterestsByUserIdService } from './context/listUserInterestsByUserId/listUserInterestsByUserId.service';
+import { ListUserInterestsByUserIdController } from './context/listUserInterestsByUserId/listUserInterestsByUserId.controller';
+import { UserInterestRepo } from './repositories/userInterests.repository';
 
 @Module({
   imports: [DatabaseModule, TypeOrmModule.forFeature([UserInterest])],

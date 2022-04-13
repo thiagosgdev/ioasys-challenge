@@ -1,20 +1,20 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 
-import { DatabaseModule } from 'src/infra/database.module';
-import { Event } from 'src/shared/entities/event.entity';
-import { eventsProviders } from 'src/modules/events/events.provider';
-import { CreateEventService } from 'src/modules/events/context/createEvent/createEvent.service';
-import { ListEventsService } from 'src/modules/events/context/listEvents/listEvents.service';
-import { CreateEventController } from 'src/modules/events/context/createEvent/createEvent.controller';
-import { ListEventsController } from 'src/modules/events/context/listEvents/listEvents.controller';
-import { ListEventsByUserInterestsController } from 'src/modules/events/context/listEventsByUserInterests/listEventsByUserInterests.controller';
-import { ListEventsByUserInterestsService } from 'src/modules/events/context/listEventsByUserInterests/listEventsByUserInterests.service';
-import { EventRepo } from 'src/modules/events/repositories/events.repository';
-import { UpdateEventService } from 'src/modules/events/context/updateEvent/updateEvent.service';
-import { UpdateEventController } from 'src/modules/events/context/updateEvent/updateEvent.controller';
-import { addressesProviders } from 'src/modules/addresses/address.provider';
+import { DatabaseModule } from '../../infra/database.module';
+import { Event } from '../../shared/entities/event.entity';
 import { attendeesProviders } from '../attendees/attendees.provider';
+import { addressesProviders } from '../addresses/address.provider';
+import { eventsProviders } from './events.provider';
+import { CreateEventService } from './context/createEvent/createEvent.service';
+import { ListEventsService } from './context/listEvents/listEvents.service';
+import { CreateEventController } from './context/createEvent/createEvent.controller';
+import { ListEventsController } from './context/listEvents/listEvents.controller';
+import { ListEventsByUserInterestsController } from './context/listEventsByUserInterests/listEventsByUserInterests.controller';
+import { ListEventsByUserInterestsService } from './context/listEventsByUserInterests/listEventsByUserInterests.service';
+import { EventRepo } from './repositories/events.repository';
+import { UpdateEventService } from './context/updateEvent/updateEvent.service';
+import { UpdateEventController } from './context/updateEvent/updateEvent.controller';
 
 @Module({
   imports: [DatabaseModule, TypeOrmModule.forFeature([Event])],

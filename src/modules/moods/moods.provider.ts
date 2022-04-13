@@ -1,6 +1,6 @@
 import { Connection } from 'typeorm';
 
-import { Mood } from 'src/shared/entities/mood.entity';
+import { Mood } from '../../shared/entities/mood.entity';
 
 export const moodProviders = [
   {

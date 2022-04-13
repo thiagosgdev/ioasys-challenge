@@ -5,10 +5,10 @@ import {
   ApiTags,
 } from '@nestjs/swagger';
 
-import { CreateActivityCategoryRequestDTO } from 'src/shared/dtos/activitiesCategories/createActivityCategoryRequest.dto';
-import { CreateActivityCategoryService } from 'src/modules/activitiesCategories/context/createActivityCategory/createActivityCategory.service';
-import { ActivityCategoryResponse } from 'src/shared/dtos/activitiesCategories/activityCategory.dto';
-import { ApiCommomDecorators } from 'src/shared/decorators/globalDoc.decorator';
+import { CreateActivityCategoryRequestDTO } from '../../../../shared/dtos/activitiesCategories/createActivityCategoryRequest.dto';
+import { ActivityCategoryResponse } from '../../../../shared/dtos/activitiesCategories/activityCategory.dto';
+import { ApiCommomDecorators } from '../../../../shared/decorators/globalDoc.decorator';
+import { CreateActivityCategoryService } from './createActivityCategory.service';
 
 @ApiTags('activities')
 @Controller('/categories')

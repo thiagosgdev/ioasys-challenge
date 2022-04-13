@@ -2,10 +2,10 @@ import { Body, Controller, HttpException, Post, Request } from '@nestjs/common';
 import { ApiCreatedResponse, ApiTags } from '@nestjs/swagger';
 import { RequestDTO } from 'src/shared/dtos/shared/request.dto';
 
-import { CreateUserMoodService } from 'src/modules/usersMoods/context/createUserMood/createUserMood.service';
-import { CreateUserMoodRequestDTO } from 'src/shared/dtos/userMood/createUserMoodRequest.dto';
-import { ApiCommomDecorators } from 'src/shared/decorators/globalDoc.decorator';
-import { UserMoodResponseDTO } from 'src/shared/dtos/userMood/userMood.dto';
+import { CreateUserMoodRequestDTO } from '../../../../shared/dtos/userMood/createUserMoodRequest.dto';
+import { ApiCommomDecorators } from '../../../../shared/decorators/globalDoc.decorator';
+import { UserMoodResponseDTO } from '../../../../shared/dtos/userMood/userMood.dto';
+import { CreateUserMoodService } from './createUserMood.service';
 
 @ApiTags('users')
 @Controller('/moods')

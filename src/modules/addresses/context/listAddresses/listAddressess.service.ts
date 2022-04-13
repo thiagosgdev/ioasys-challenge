@@ -1,7 +1,7 @@
 import { Inject } from '@nestjs/common';
 import { Repository } from 'typeorm';
 
-import { Address } from 'src/shared/entities/address.entity';
+import { Address } from '../../../../shared/entities/address.entity';
 
 export class ListAddressesService {
   constructor(

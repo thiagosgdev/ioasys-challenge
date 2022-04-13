@@ -1,8 +1,8 @@
 import { Inject } from '@nestjs/common';
 import { Repository } from 'typeorm';
 
-import { CreateUserInterestRequestDTO } from 'src/shared/dtos/userInterest/createUserInterestRequest.dto';
-import { UserInterest } from 'src/shared/entities/userInterests.entity';
+import { CreateUserInterestRequestDTO } from '../../../../shared/dtos/userInterest/createUserInterestRequest.dto';
+import { UserInterest } from '../../../../shared/entities/userInterests.entity';
 
 export class CreateUserInterestService {
   constructor(

@@ -1,6 +1,6 @@
 import { Connection } from 'typeorm';
 
-import { Address } from 'src/shared/entities/address.entity';
+import { Address } from '../../shared/entities/address.entity';
 
 export const addressesProviders = [
   {

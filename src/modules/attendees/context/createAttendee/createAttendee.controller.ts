@@ -6,11 +6,11 @@ import {
   ApiTags,
 } from '@nestjs/swagger';
 
-import { CreateAttendeeRequestDTO } from 'src/shared/dtos/attendees/createAttendeeRequest.dto';
-import { CreateAttendeeService } from 'src/modules/attendees/context/createAttendee/createAttendee.service';
-import { AttendeeResponse } from 'src/shared/dtos/attendees/attendee.dto';
-import { ApiCommomDecorators } from 'src/shared/decorators/globalDoc.decorator';
-import { RequestDTO } from 'src/shared/dtos/shared/request.dto';
+import { CreateAttendeeRequestDTO } from '../../../../shared/dtos/attendees/createAttendeeRequest.dto';
+import { AttendeeResponse } from '../../../../shared/dtos/attendees/attendee.dto';
+import { ApiCommomDecorators } from '../../../../shared/decorators/globalDoc.decorator';
+import { RequestDTO } from '../../../../shared/dtos/shared/request.dto';
+import { CreateAttendeeService } from './createAttendee.service';
 
 @ApiTags('attendees')
 @Controller()
@@ -37,7 +37,6 @@ export class CreateAttendeeController {
       const userId = req.user.userId;
       return await this.createAttendeeService.execute(userId, data);
     } catch (error) {
-      console.log(error);
       throw new HttpException(
         error.response.message,
         error.response.statusCode,

@@ -1,7 +1,7 @@
 import { Inject } from '@nestjs/common';
 import { Repository } from 'typeorm';
 
-import { UserInterest } from 'src/shared/entities/userInterests.entity';
+import { UserInterest } from '../../../../shared/entities/userInterests.entity';
 
 export class ListUserInterestsService {
   constructor(

@@ -8,8 +8,8 @@ import {
 } from '@nestjs/common';
 import { ApiTags } from '@nestjs/swagger';
 
-import { LogoutService } from 'src/modules/users/context/logOut/logout.service';
-import { ApiCommomDecorators } from 'src/shared/decorators/globalDoc.decorator';
+import { ApiCommomDecorators } from '../../../../shared/decorators/globalDoc.decorator';
+import { LogoutService } from './logout.service';
 
 @ApiTags('users')
 @Controller('/logout')

@@ -1,8 +1,6 @@
 import { ApiProperty, ApiResponseProperty } from '@nestjs/swagger';
-import { Activity } from 'src/shared/entities/activity.entity';
-import { EventAccessibility } from 'src/shared/entities/eventAccessibility.entity';
+import { Activity } from '../../entities/activity.entity';
 import { ActivityResponse } from '../activities/activity.dto';
-import { DisabilitiesResponse } from '../disabilities/disabilitiesResponse.dto';
 import { EventAccessibilityDTO } from '../eventAcessibilities/eventAcessibility.dto';
 
 export class EventResponseDTO {

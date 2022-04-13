@@ -2,8 +2,8 @@ import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 
-import { UserInterest } from 'src/shared/entities/userInterests.entity';
-import { Activity } from 'src/shared/entities/activity.entity';
+import { UserInterest } from '../../../shared/entities/userInterests.entity';
+import { Activity } from '../../../shared/entities/activity.entity';
 
 @Injectable()
 export class UserInterestRepo {

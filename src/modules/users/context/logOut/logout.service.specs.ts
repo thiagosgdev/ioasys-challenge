@@ -1,5 +1,5 @@
 import { Test, TestingModule } from '@nestjs/testing';
-import { LogoutService } from 'src/modules/users/context/logOut/logout.service';
+import { LogoutService } from './logout.service';
 
 describe('Signout Service', () => {
   let service: LogoutService;

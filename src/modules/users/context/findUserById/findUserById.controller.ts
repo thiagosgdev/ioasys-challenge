@@ -1,9 +1,9 @@
 import { Controller, Get, HttpException, Request } from '@nestjs/common';
 import { ApiOkResponse, ApiTags } from '@nestjs/swagger';
 
-import { ApiCommomDecorators } from 'src/shared/decorators/globalDoc.decorator';
-import { UserDTO } from 'src/shared/dtos/users/user.dto';
-import { FindUserByIdService } from 'src/modules/users/context/findUserById/findUserById.service';
+import { ApiCommomDecorators } from '../../../../shared/decorators/globalDoc.decorator';
+import { UserDTO } from '../../../../shared/dtos/users/user.dto';
+import { FindUserByIdService } from './findUserById.service';
 
 @ApiTags('users')
 @Controller('/find')

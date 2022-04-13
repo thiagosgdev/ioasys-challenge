@@ -1,6 +1,6 @@
 import { Connection } from 'typeorm';
 
-import { Message } from 'src/shared/entities/message.entity';
+import { Message } from '../../shared/entities/message.entity';
 
 export const messageProviders = [
   {

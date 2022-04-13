@@ -1,6 +1,6 @@
 import { ConfigModule, ConfigService } from '@nestjs/config';
 
-import envConfig from 'src/configs/env';
+import envConfig from '../env';
 
 export default () => {
   return {

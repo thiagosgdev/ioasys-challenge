@@ -8,8 +8,8 @@ import {
 } from '@nestjs/common';
 import { ApiNoContentResponse, ApiTags } from '@nestjs/swagger';
 
-import { DeleteUserService } from 'src/modules/users/context/deleteUser/deleteUser.service';
-import { ApiCommomDecorators } from 'src/shared/decorators/globalDoc.decorator';
+import { ApiCommomDecorators } from '../../../../shared/decorators/globalDoc.decorator';
+import { DeleteUserService } from './deleteUser.service';
 
 @ApiTags('users')
 @Controller()

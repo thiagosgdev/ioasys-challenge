@@ -5,10 +5,10 @@ import {
   ApiTags,
 } from '@nestjs/swagger';
 
-import { CreateMoodRequestDTO } from 'src/shared/dtos/moods/createMoodRequest.dto';
-import { CreateMoodService } from 'src/modules/moods/context/createMood/createMood.service';
-import { ApiCommomDecorators } from 'src/shared/decorators/globalDoc.decorator';
-import { MoodResponseDTO } from 'src/shared/dtos/moods/mood.dto';
+import { CreateMoodRequestDTO } from '../../../../shared/dtos/moods/createMoodRequest.dto';
+import { ApiCommomDecorators } from '../../../../shared/decorators/globalDoc.decorator';
+import { MoodResponseDTO } from '../../../../shared/dtos/moods/mood.dto';
+import { CreateMoodService } from './createMood.service';
 
 @ApiTags('moods')
 @Controller()

@@ -1,9 +1,9 @@
 import { Controller, Get, HttpException } from '@nestjs/common';
 import { ApiOkResponse, ApiTags } from '@nestjs/swagger';
 
-import { ListUserInterestsService } from 'src/modules/userInterests/context/listUserInterests/listUserInterests.service';
-import { ApiCommomDecorators } from 'src/shared/decorators/globalDoc.decorator';
-import { UserInterestResponseDTO } from 'src/shared/dtos/userInterest/userInterest.dto';
+import { ApiCommomDecorators } from '../../../../shared/decorators/globalDoc.decorator';
+import { UserInterestResponseDTO } from '../../../../shared/dtos/userInterest/userInterest.dto';
+import { ListUserInterestsService } from './listUserInterests.service';
 
 @ApiTags('users')
 @Controller('/interests')

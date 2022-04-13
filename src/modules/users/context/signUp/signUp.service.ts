@@ -4,10 +4,11 @@ import {
   BadRequestException,
   ConflictException,
 } from '@nestjs/common';
-import { SignUpRequestDTO } from 'src/shared/dtos/users/signUpRequest.dto';
-import { User } from 'src/shared/entities/user.entity';
-import { Hasher } from 'src/shared/providers/HasherProvider/protocols/hasher';
 import { Repository } from 'typeorm';
+
+import { SignUpRequestDTO } from '../../../../shared/dtos/users/signUpRequest.dto';
+import { User } from '../../../../shared/entities/user.entity';
+import { Hasher } from '../../../../shared/providers/HasherProvider/protocols/hasher';
 
 @Injectable()
 export class SignUpService {

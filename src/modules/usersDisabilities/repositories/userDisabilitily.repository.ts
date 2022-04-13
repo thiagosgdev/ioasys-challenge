@@ -2,8 +2,8 @@ import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 
-import { Disability } from 'src/shared/entities/disability.entity';
-import { UserDisability } from 'src/shared/entities/userDisability.entity';
+import { Disability } from '../../../shared/entities/disability.entity';
+import { UserDisability } from '../../../shared/entities/userDisability.entity';
 
 @Injectable()
 export class UserDisabilityRepo {

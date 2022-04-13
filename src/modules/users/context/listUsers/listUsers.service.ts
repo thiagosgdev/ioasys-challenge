@@ -1,8 +1,8 @@
 import { Inject } from '@nestjs/common';
 import { Repository } from 'typeorm';
 
-import { UserDTO } from 'src/shared/dtos/users/user.dto';
-import { User } from 'src/shared/entities/user.entity';
+import { UserDTO } from '../../../../shared/dtos/users/user.dto';
+import { User } from '../../../../shared/entities/user.entity';
 
 export class ListUsersService {
   constructor(

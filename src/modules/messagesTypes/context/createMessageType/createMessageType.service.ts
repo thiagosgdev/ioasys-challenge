@@ -1,8 +1,8 @@
 import { Inject } from '@nestjs/common';
 import { Repository } from 'typeorm';
 
-import { CreateMessageTypeRequestDTO } from 'src/shared/dtos/messagesTypes/createMessageTypeRequest.dto';
-import { MessageType } from 'src/shared/entities/messageType.entity';
+import { CreateMessageTypeRequestDTO } from '../../../../shared/dtos/messagesTypes/createMessageTypeRequest.dto';
+import { MessageType } from '../../../../shared/entities/messageType.entity';
 
 export class CreateMessageTypeService {
   constructor(

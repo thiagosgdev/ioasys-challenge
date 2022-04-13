@@ -6,14 +6,13 @@ import {
 import { JwtService } from '@nestjs/jwt';
 import { Repository } from 'typeorm';
 
-import { SignIn } from 'src/domain/usecase/users/sigin.usecase';
-import { SigninRequestDTO } from 'src/shared/dtos/users/signinRequest.dto';
-import { SigninResponseDTO } from 'src/shared/dtos/users/signinResponse.dto';
-import { User } from 'src/shared/entities/user.entity';
-import { Hasher } from 'src/shared/providers/HasherProvider/protocols/hasher';
-import envConfig from 'src/configs/env';
+import { SigninRequestDTO } from '../../../../shared/dtos/users/signinRequest.dto';
+import { SigninResponseDTO } from '../../../../shared/dtos/users/signinResponse.dto';
+import { User } from '../../../../shared/entities/user.entity';
+import { Hasher } from '../../../../shared/providers/HasherProvider/protocols/hasher';
+import envConfig from '../../../../configs/env';
 
-export class SigninService implements SignIn {
+export class SigninService {
   constructor(
     @Inject('USER_REPOSITORY')
     private userRepository: Repository<User>,

@@ -1,9 +1,9 @@
 import { Body, Controller, HttpException, Post, Request } from '@nestjs/common';
 import { ApiBearerAuth, ApiCreatedResponse, ApiTags } from '@nestjs/swagger';
 
-import { CreateUserInterestRequestDTO } from 'src/shared/dtos/userInterest/createUserInterestRequest.dto';
-import { CreateUserInterestService } from 'src/modules/userInterests/context/createUserInterests/createUserInterest.service';
-import { ApiCommomDecorators } from 'src/shared/decorators/globalDoc.decorator';
+import { ApiCommomDecorators } from '../../../../shared/decorators/globalDoc.decorator';
+import { CreateUserInterestRequestDTO } from '../../../../shared/dtos/userInterest/createUserInterestRequest.dto';
+import { CreateUserInterestService } from './createUserInterest.service';
 
 @ApiTags('users')
 @Controller()

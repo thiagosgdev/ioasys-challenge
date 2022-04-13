@@ -1,12 +1,8 @@
 import { Repository } from 'typeorm';
-import {
-  ConflictException,
-  Inject,
-  InternalServerErrorException,
-} from '@nestjs/common';
+import { ConflictException, Inject } from '@nestjs/common';
 
-import { CreateAttendeeRequestDTO } from 'src/shared/dtos/attendees/createAttendeeRequest.dto';
-import { Attendee } from 'src/shared/entities/attendees.entity';
+import { CreateAttendeeRequestDTO } from '../../../../shared/dtos/attendees/createAttendeeRequest.dto';
+import { Attendee } from '../../../../shared/entities/attendees.entity';
 
 export class CreateAttendeeService {
   constructor(

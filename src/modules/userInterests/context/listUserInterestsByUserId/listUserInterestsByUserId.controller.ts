@@ -1,10 +1,10 @@
 import { Controller, Get, HttpException, Request } from '@nestjs/common';
 import { ApiOkResponse, ApiTags } from '@nestjs/swagger';
 
-import { ListUserInterestsByUserIdService } from 'src/modules/userInterests/context/listUserInterestsByUserId/listUserInterestsByUserId.service';
-import { ApiCommomDecorators } from 'src/shared/decorators/globalDoc.decorator';
-import { RequestDTO } from 'src/shared/dtos/shared/request.dto';
-import { UserInterestResponseDTO } from 'src/shared/dtos/userInterest/userInterest.dto';
+import { ApiCommomDecorators } from '../../../../shared/decorators/globalDoc.decorator';
+import { RequestDTO } from '../../../../shared/dtos/shared/request.dto';
+import { UserInterestResponseDTO } from '../../../../shared/dtos/userInterest/userInterest.dto';
+import { ListUserInterestsByUserIdService } from './listUserInterestsByUserId.service';
 
 @ApiTags('users')
 @Controller('/interests')

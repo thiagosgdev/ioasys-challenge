@@ -1,5 +1,5 @@
 import * as bcrypt from 'bcrypt';
-import { Hasher } from 'src/shared/providers/HasherProvider/protocols/hasher';
+import { Hasher } from './protocols/hasher';
 
 export class BcryptProvider implements Hasher {
   async createHash(text: string): Promise<string> {

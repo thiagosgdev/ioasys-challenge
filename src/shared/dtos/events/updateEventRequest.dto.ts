@@ -1,8 +1,8 @@
 import { ApiProperty } from '@nestjs/swagger';
 import { IsObject, IsOptional } from 'class-validator';
 
-import { UpdateAddressRequestDTO } from 'src/shared/dtos/address/updateAddressRequest.dto';
-import { UpdateEventObject } from 'src/shared/dtos/events/updateEventObject.dto';
+import { UpdateAddressRequestDTO } from '../address/updateAddressRequest.dto';
+import { UpdateEventObject } from './updateEventObject.dto';
 
 export class UpdateEventRequestDTO {
   @IsObject()

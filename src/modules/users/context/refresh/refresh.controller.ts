@@ -1,8 +1,8 @@
 import { Body, Controller, HttpException, Post } from '@nestjs/common';
 import { ApiOkResponse, ApiTags } from '@nestjs/swagger';
 
-import { RefreshService } from 'src/modules/users/context/refresh/refresh.service';
-import { Public } from 'src/shared/decorators/public.decorator';
+import { Public } from '../../../../shared/decorators/public.decorator';
+import { RefreshService } from './refresh.service';
 
 @ApiTags('users')
 @Controller('/refresh')

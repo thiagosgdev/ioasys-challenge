@@ -1,8 +1,8 @@
 import { Inject } from '@nestjs/common';
 import { Repository } from 'typeorm';
 
-import { CreateMoodRequestDTO } from 'src/shared/dtos/moods/createMoodRequest.dto';
-import { Mood } from 'src/shared/entities/mood.entity';
+import { CreateMoodRequestDTO } from '../../../../shared/dtos/moods/createMoodRequest.dto';
+import { Mood } from '../../../../shared/entities/mood.entity';
 
 export class CreateMoodService {
   constructor(

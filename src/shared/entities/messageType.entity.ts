@@ -10,7 +10,7 @@ import {
 } from 'typeorm';
 import { v4 as uuidV4 } from 'uuid';
 
-import { Message } from 'src/shared/entities/message.entity';
+import { Message } from './message.entity';
 
 @Entity('messages_types')
 export class MessageType {

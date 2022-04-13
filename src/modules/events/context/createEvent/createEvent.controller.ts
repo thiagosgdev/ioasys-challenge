@@ -5,11 +5,11 @@ import {
   ApiTags,
 } from '@nestjs/swagger';
 
-import { CreateEventRequestDTO } from 'src/shared/dtos/events/createEventRequest.dto';
-import { CreateEventService } from 'src/modules/events/context/createEvent/createEvent.service';
-import { RequestDTO } from 'src/shared/dtos/shared/request.dto';
-import { ApiCommomDecorators } from 'src/shared/decorators/globalDoc.decorator';
-import { EventAddressResponseDTO } from 'src/shared/dtos/events/eventAddressResponse.dto';
+import { CreateEventRequestDTO } from '../../../../shared/dtos/events/createEventRequest.dto';
+import { RequestDTO } from '../../../../shared/dtos/shared/request.dto';
+import { ApiCommomDecorators } from '../../../../shared/decorators/globalDoc.decorator';
+import { EventAddressResponseDTO } from '../../../../shared/dtos/events/eventAddressResponse.dto';
+import { CreateEventService } from './createEvent.service';
 
 @ApiTags('events')
 @Controller()

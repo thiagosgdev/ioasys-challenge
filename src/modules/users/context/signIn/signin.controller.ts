@@ -15,9 +15,9 @@ import {
   ApiUnauthorizedResponse,
 } from '@nestjs/swagger';
 
-import { SigninRequestDTO } from 'src/shared/dtos/users/signinRequest.dto';
-import { SigninService } from 'src/modules/users/context/signIn/signin.service';
-import { Public } from 'src/shared/decorators/public.decorator';
+import { Public } from '../../../../shared/decorators/public.decorator';
+import { SigninRequestDTO } from '../../../../shared/dtos/users/signinRequest.dto';
+import { SigninService } from './signin.service';
 
 @ApiTags('users')
 @Controller()

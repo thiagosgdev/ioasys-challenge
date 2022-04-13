@@ -5,10 +5,10 @@ import {
   ApiTags,
 } from '@nestjs/swagger';
 
-import { CreateMessageTypeRequestDTO } from 'src/shared/dtos/messagesTypes/createMessageTypeRequest.dto';
-import { CreateMessageTypeService } from 'src/modules/messagesTypes/context/createMessageType/createMessageType.service';
-import { ApiCommomDecorators } from 'src/shared/decorators/globalDoc.decorator';
-import { MessageTypeResponseDTO } from 'src/shared/dtos/messagesTypes/messageType.dto';
+import { CreateMessageTypeRequestDTO } from '../../../../shared/dtos/messagesTypes/createMessageTypeRequest.dto';
+import { ApiCommomDecorators } from '../../../../shared/decorators/globalDoc.decorator';
+import { MessageTypeResponseDTO } from '../../../../shared/dtos/messagesTypes/messageType.dto';
+import { CreateMessageTypeService } from './createMessageType.service';
 
 @ApiTags('messages')
 @Controller('/types')

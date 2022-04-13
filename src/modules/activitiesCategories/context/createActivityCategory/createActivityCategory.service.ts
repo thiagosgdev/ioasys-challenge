@@ -1,8 +1,8 @@
 import { Inject } from '@nestjs/common';
 import { Repository } from 'typeorm';
 
-import { ActivityCategories } from 'src/shared/entities/activityCategories.entity';
-import { CreateActivityCategoryRequestDTO } from 'src/shared/dtos/activitiesCategories/createActivityCategoryRequest.dto';
+import { ActivityCategories } from '../../../../shared/entities/activityCategories.entity';
+import { CreateActivityCategoryRequestDTO } from '../../../../shared/dtos/activitiesCategories/createActivityCategoryRequest.dto';
 
 export class CreateActivityCategoryService {
   constructor(
