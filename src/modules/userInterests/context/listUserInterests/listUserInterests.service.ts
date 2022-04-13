@@ -9,6 +9,8 @@ export class ListUserInterestsService {
     private userInterestRepository: Repository<UserInterest>,
   ) {}
   async execute() {
-    return await this.userInterestRepository.find();
+    return await this.userInterestRepository.find({
+      relations: ['activities'],
+    });
   }
 }

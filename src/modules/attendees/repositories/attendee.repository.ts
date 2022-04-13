@@ -26,5 +26,19 @@ export class AttendeeRepo {
         att.status = $2`,
       [userId, status],
     );
+
+    //return await this.repository
+    //  .createQueryBuilder('events')
+    //  .leftJoinAndSelect('events.activities', 'activities')
+    //  .leftJoin('events.attendees', 'attendees')
+    //  .leftJoin('attendees.users', 'users')
+    //  .leftJoinAndSelect('events.addresses', 'addresses')
+    //  .leftJoinAndSelect('events.eventAccessibilities', 'eventAccessibilities')
+    //  .leftJoinAndSelect('eventAccessibilities.accessibilities', 'disabilities')
+    //  .loadRelationCountAndMap('events.numParticipants', 'events.attendees')
+    //  .where('date > now()')
+    //  .andWhere(`attendees.user_id = $1`, [userId])
+    //  .orderBy('is_promoted', 'DESC')
+    //  .getMany();
   }
 }

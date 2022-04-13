@@ -11,18 +11,19 @@ export class EventRepo {
     private readonly repository: Repository<Event>,
   ) {}
   async listEventsByUserInterests(userId: string): Promise<Event[]> {
+    console.log(userId);
     return await this.repository
       .createQueryBuilder('events')
       .leftJoinAndSelect('events.activities', 'activities')
+      .leftJoin('activities.userInterests', 'userInterests')
       .leftJoin('events.attendees', 'attendees')
-      .leftJoin('attendees.users', 'users')
       .leftJoinAndSelect('events.addresses', 'addresses')
       .leftJoinAndSelect('events.eventAccessibilities', 'eventAccessibilities')
       .leftJoinAndSelect('eventAccessibilities.accessibilities', 'disabilities')
       .loadRelationCountAndMap('events.numParticipants', 'events.attendees')
-      .orderBy('is_promoted', 'DESC')
       .where('date > now()')
-      .andWhere(`attendees.user_id = '${userId}'`)
+      .andWhere(`userInterests.user_id = :userId`, { userId })
+      .orderBy('is_promoted', 'DESC')
       .getMany();
   }
 

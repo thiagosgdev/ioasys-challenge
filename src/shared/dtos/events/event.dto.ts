@@ -1,6 +1,7 @@
 import { ApiProperty, ApiResponseProperty } from '@nestjs/swagger';
 import { Activity } from '../../entities/activity.entity';
 import { ActivityResponse } from '../activities/activity.dto';
+import { AddressResponse } from '../address/address.dto';
 import { EventAccessibilityDTO } from '../eventAcessibilities/eventAcessibility.dto';
 
 export class EventResponseDTO {
@@ -69,6 +70,11 @@ export class EventResponseDTO {
   })
   userIdentity: string;
 
+  @ApiResponseProperty({
+    type: AddressResponse,
+  })
+  addresses: AddressResponse;
+
   @ApiProperty({
     type: ActivityResponse,
   })
@@ -79,7 +85,9 @@ export class EventResponseDTO {
   })
   eventAccessibilities: EventAccessibilityDTO[];
 
-  @ApiResponseProperty()
+  @ApiResponseProperty({
+    example: 25,
+  })
   numParticipants? = 0;
 
   @ApiResponseProperty()

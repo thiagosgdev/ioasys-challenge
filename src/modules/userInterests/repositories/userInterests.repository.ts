@@ -14,7 +14,7 @@ export class UserInterestRepo {
   async listUserInterestsByUserId(userId: string): Promise<Activity[]> {
     return await this.repository.query(
       `
-          SELECT ac.* FROM users_interests ui 
+          SELECT ac.id, ac.name, ac.active, ac.url_active as "urlActive", ac.url_inactive as "urlInactive" FROM users_interests ui
           INNER JOIN users u ON ui.user_id = u.id
           INNER JOIN activities ac ON ui.activity_id = ac.id
           WHERE ui.user_id = $1 AND
