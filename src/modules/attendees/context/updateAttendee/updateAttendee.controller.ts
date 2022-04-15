@@ -1,8 +1,15 @@
-import { Body, Controller, HttpException, Post, Request } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  HttpException,
+  Patch,
+  Post,
+  Request,
+} from '@nestjs/common';
 import {
   ApiBadRequestResponse,
-  ApiConflictResponse,
-  ApiCreatedResponse,
+  ApiNotFoundResponse,
+  ApiOkResponse,
   ApiTags,
 } from '@nestjs/swagger';
 
@@ -10,23 +17,23 @@ import { AttendeeRequestDTO } from '../../../../shared/dtos/attendees/attendeeRe
 import { AttendeeResponse } from '../../../../shared/dtos/attendees/attendee.dto';
 import { ApiCommomDecorators } from '../../../../shared/decorators/globalDoc.decorator';
 import { RequestDTO } from '../../../../shared/dtos/shared/request.dto';
-import { CreateAttendeeService } from './createAttendee.service';
+import { UpdateAttendeeService } from './updateAttendee.service';
 
 @ApiTags('attendees')
 @Controller()
-export class CreateAttendeeController {
-  constructor(private createAttendeeService: CreateAttendeeService) {}
+export class UpdateAttendeeController {
+  constructor(private updateAttendeeService: UpdateAttendeeService) {}
 
-  @Post()
-  @ApiCreatedResponse({
-    description: 'Return the attendee created.',
+  @Patch()
+  @ApiOkResponse({
+    description: 'Return the attendee updated.',
     type: AttendeeResponse,
   })
   @ApiBadRequestResponse({
     description: 'Returns a message if a invalid field is provided.',
   })
-  @ApiConflictResponse({
-    description: 'The user already is registered for this event',
+  @ApiNotFoundResponse({
+    description: 'The user is not registered for this event',
   })
   @ApiCommomDecorators()
   public async handle(
@@ -35,7 +42,7 @@ export class CreateAttendeeController {
   ) {
     try {
       const userId = req.user.userId;
-      return await this.createAttendeeService.execute(userId, data);
+      return await this.updateAttendeeService.execute(userId, data);
     } catch (error) {
       throw new HttpException(
         error.response.message,

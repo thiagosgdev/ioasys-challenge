@@ -15,6 +15,8 @@ import { ListEventsByUserInterestsService } from './context/listEventsByUserInte
 import { EventRepo } from './repositories/events.repository';
 import { UpdateEventService } from './context/updateEvent/updateEvent.service';
 import { UpdateEventController } from './context/updateEvent/updateEvent.controller';
+import { DeleteEventService } from './context/deleteEvent/deleteEvent.service';
+import { DeleteEventController } from './context/deleteEvent/deleteEvent.controller';
 
 @Module({
   imports: [DatabaseModule, TypeOrmModule.forFeature([Event])],
@@ -27,12 +29,14 @@ import { UpdateEventController } from './context/updateEvent/updateEvent.control
     ListEventsService,
     ListEventsByUserInterestsService,
     UpdateEventService,
+    DeleteEventService,
   ],
   controllers: [
     CreateEventController,
     ListEventsController,
     ListEventsByUserInterestsController,
     UpdateEventController,
+    DeleteEventController,
   ],
 })
 export class EventModule {}

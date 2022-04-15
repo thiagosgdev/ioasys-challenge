@@ -4,7 +4,7 @@ import { JwtService } from '@nestjs/jwt';
 
 import { SigninResponseDTO } from '../../../../shared/dtos/users/signinResponse.dto';
 import { JwtProvider } from '../../../../shared/providers/EncryptProvider/jwt.provider';
-import { mockUser } from '../../../../shared/tests/users.mocks';
+import { mockUser } from '../../../../shared/tests/users.mock';
 import { SigninService } from './signin.service';
 
 const mockSigninResponseDTO = (): SigninResponseDTO => {

@@ -1,7 +1,7 @@
 import { Repository } from 'typeorm';
 import { ConflictException, Inject } from '@nestjs/common';
 
-import { CreateAttendeeRequestDTO } from '../../../../shared/dtos/attendees/createAttendeeRequest.dto';
+import { AttendeeRequestDTO } from '../../../../shared/dtos/attendees/attendeeRequest.dto';
 import { Attendee } from '../../../../shared/entities/attendees.entity';
 
 export class CreateAttendeeService {
@@ -9,7 +9,7 @@ export class CreateAttendeeService {
     @Inject('ATTENDEE_REPOSITORY')
     private attendeeRepository: Repository<Attendee>,
   ) {}
-  async execute(userId, data: CreateAttendeeRequestDTO) {
+  async execute(userId, data: AttendeeRequestDTO) {
     const { status, eventId } = data;
 
     const exists = await this.attendeeRepository.findOne({

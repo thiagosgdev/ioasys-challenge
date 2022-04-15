@@ -4,7 +4,7 @@ import { Test, TestingModule } from '@nestjs/testing';
 import {
   mockSignUpRequestDTO,
   mockUser,
-} from '../../../../shared/tests/users.mocks';
+} from '../../../../shared/tests/users.mock';
 import { SignUpController } from './signUp.controller';
 import { SignUpService } from './signUp.service';
 import {

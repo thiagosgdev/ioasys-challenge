@@ -1,10 +1,16 @@
-import { Injectable, NotFoundException } from '@nestjs/common';
+import { Inject, Injectable, NotFoundException } from '@nestjs/common';
+import { Repository } from 'typeorm';
 
 import { EventRepo } from '../../repositories/events.repository';
+import { Event } from '../../../../shared/entities/event.entity';
 
 @Injectable()
 export class ListEventsByUserInterestsService {
-  constructor(private repository: EventRepo) {}
+  constructor(
+    @Inject('EVENT_REPOSITORY')
+    private eventRepository: Repository<Event>,
+    private repository: EventRepo,
+  ) {}
 
   async execute(userId: string) {
     const events = await this.repository.listEventsByUserInterests(userId);

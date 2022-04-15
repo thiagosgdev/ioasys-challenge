@@ -5,7 +5,7 @@ import { BadRequestException, HttpException } from '@nestjs/common';
 import { SigninRequestDTO } from '../../../../shared/dtos/users/signinRequest.dto';
 import { SigninService } from './signin.service';
 import { SigninController } from './signin.controller';
-import { mockUser } from '../../../../shared/tests/users.mocks';
+import { mockUser } from '../../../../shared/tests/users.mock';
 
 const mockSigninRequest = (): SigninRequestDTO => {
   return {

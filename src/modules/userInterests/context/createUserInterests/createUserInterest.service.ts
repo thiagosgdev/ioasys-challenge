@@ -1,7 +1,7 @@
 import { Inject } from '@nestjs/common';
 import { Repository } from 'typeorm';
 
-import { CreateUserInterestRequestDTO } from '../../../../shared/dtos/userInterest/createUserInterestRequest.dto';
+import { UserInterestRequestDTO } from '../../../../shared/dtos/userInterest/userInterestRequest.dto';
 import { UserInterest } from '../../../../shared/entities/userInterests.entity';
 
 export class CreateUserInterestService {
@@ -9,7 +9,7 @@ export class CreateUserInterestService {
     @Inject('USER_INTEREST_REPOSITORY')
     private userInterestRepository: Repository<UserInterest>,
   ) {}
-  async execute(userId: string, data: CreateUserInterestRequestDTO) {
+  async execute(userId: string, data: UserInterestRequestDTO) {
     const userInterest = {
       userId,
       activityId: '',

@@ -7,7 +7,7 @@ import { SignUpService } from './signUp.service';
 import {
   mockSignUpRequestDTO,
   mockUser,
-} from '../../../../shared/tests/users.mocks';
+} from '../../../../shared/tests/users.mock';
 import { BadRequestException, ConflictException } from '@nestjs/common';
 
 const mockUserLogedResponse = {

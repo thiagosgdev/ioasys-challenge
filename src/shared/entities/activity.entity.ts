@@ -37,7 +37,7 @@ export class Activity {
   )
   activityCategories: ActivityCategories;
 
-  @OneToMany(() => UserInterest, (userMoods) => userMoods.activities)
+  @OneToMany(() => UserInterest, (userInterests) => userInterests.activities)
   userInterests: UserInterest[];
 
   @OneToMany(() => Event, (events) => events.activities)

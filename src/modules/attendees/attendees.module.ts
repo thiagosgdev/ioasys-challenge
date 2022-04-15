@@ -11,6 +11,8 @@ import { ListAttendeesController } from './context/listAttendees/listAttendee.co
 import { ListAttendeeEventsByUserIdService } from './context/listAttendeeEventsByUser/listAttendeeEventsByUser.service';
 import { ListAttendeeEventsByUserIdController } from './context/listAttendeeEventsByUser/listAttendeeEventsByUser.controller';
 import { AttendeeRepo } from './repositories/attendee.repository';
+import { UpdateAttendeeService } from './context/updateAttendee/updateAttendee.service';
+import { UpdateAttendeeController } from './context/updateAttendee/updateAttendee.controller';
 
 @Module({
   imports: [DatabaseModule, TypeOrmModule.forFeature([Attendee])],
@@ -20,11 +22,13 @@ import { AttendeeRepo } from './repositories/attendee.repository';
     CreateAttendeeService,
     ListAttendeesService,
     ListAttendeeEventsByUserIdService,
+    UpdateAttendeeService,
   ],
   controllers: [
     CreateAttendeeController,
     ListAttendeesController,
     ListAttendeeEventsByUserIdController,
+    UpdateAttendeeController,
   ],
 })
 export class AttendeeModule {}

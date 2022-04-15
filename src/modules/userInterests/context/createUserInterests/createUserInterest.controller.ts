@@ -1,8 +1,9 @@
 import { Body, Controller, HttpException, Post, Request } from '@nestjs/common';
 import { ApiBearerAuth, ApiCreatedResponse, ApiTags } from '@nestjs/swagger';
 
+import { RequestDTO } from '../../../../shared/dtos/shared/request.dto';
 import { ApiCommomDecorators } from '../../../../shared/decorators/globalDoc.decorator';
-import { CreateUserInterestRequestDTO } from '../../../../shared/dtos/userInterest/createUserInterestRequest.dto';
+import { UserInterestRequestDTO } from '../../../../shared/dtos/userInterest/userInterestRequest.dto';
 import { CreateUserInterestService } from './createUserInterest.service';
 
 @ApiTags('users')
@@ -17,8 +18,8 @@ export class CreateUserInterestController {
   })
   @ApiCommomDecorators()
   public async handle(
-    @Body() data: CreateUserInterestRequestDTO,
-    @Request() req,
+    @Body() data: UserInterestRequestDTO,
+    @Request() req: RequestDTO,
   ) {
     try {
       const userId = req.user.userId;
