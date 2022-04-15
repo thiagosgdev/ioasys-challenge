@@ -1,10 +1,12 @@
 import { Controller, Get, HttpException, Query } from '@nestjs/common';
 import { ApiOkResponse, ApiQuery, ApiTags } from '@nestjs/swagger';
 
+import { Public } from '../../../../shared/decorators/public.decorator';
 import { ApiCommomDecorators } from '../../../../shared/decorators/globalDoc.decorator';
 import { EventResponseDTO } from '../../../../shared/dtos/events/event.dto';
 import { ListEventsService } from '../../context/listEvents/listEvents.service';
 
+@Public()
 @ApiTags('events')
 @Controller()
 export class ListEventsController {
