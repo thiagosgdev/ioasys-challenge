@@ -3,22 +3,9 @@ import { Test, TestingModule } from '@nestjs/testing';
 import { BadRequestException, HttpException } from '@nestjs/common';
 
 import { SigninRequestDTO } from '../../../../shared/dtos/users/signinRequest.dto';
-import { UserDTO } from '../../../../shared/dtos/users/user.dto';
 import { SigninService } from './signin.service';
 import { SigninController } from './signin.controller';
-
-const mockUser: UserDTO = {
-  id: 'any_id',
-  name: 'Test',
-  email: 'test@test.com',
-  password: null,
-  isPremium: false,
-  city: 'Any City',
-  aboutMe: null,
-  createdAt: new Date(),
-  updatedAt: null,
-  deletedAt: null,
-};
+import { mockUser } from '../../../../shared/tests/users.mocks';
 
 const mockSigninRequest = (): SigninRequestDTO => {
   return {

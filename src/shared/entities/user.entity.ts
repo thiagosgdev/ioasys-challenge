@@ -40,7 +40,7 @@ export class User {
   phone: string;
 
   @Column({ name: 'is_admin' })
-  isAdmin: string;
+  isAdmin: boolean;
 
   @Column({ name: 'is_premium' })
   isPremium: boolean;
@@ -52,19 +52,19 @@ export class User {
   emergencyPhone: string;
 
   @OneToMany(() => Attendee, (attendees) => attendees.users)
-  attendees: Attendee[];
+  attendees?: Attendee[];
 
   @OneToMany(() => Event, (events) => events.users)
-  events: Event[];
+  events?: Event[];
 
   @OneToMany(() => UserMood, (userMoods) => userMoods.user)
-  userMoods: UserMood[];
+  userMoods?: UserMood[];
 
   @OneToMany(() => UserInterest, (userInterests) => userInterests.users)
-  userInterests: UserInterest[];
+  userInterests?: UserInterest[];
 
   @OneToMany(() => UserDisability, (userDisabilities) => userDisabilities.users)
-  userDisabilities: UserDisability[];
+  userDisabilities?: UserDisability[];
 
   @CreateDateColumn({ name: 'created_at' })
   createdAt: Date;

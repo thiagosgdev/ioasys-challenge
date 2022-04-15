@@ -35,7 +35,7 @@ export class SignUpController {
   })
   public async handle(@Body() data: SignUpRequestDTO) {
     try {
-      return await this.signUpService.create(data);
+      return await this.signUpService.execute(data);
     } catch (error) {
       throw new HttpException(
         error.response.message,

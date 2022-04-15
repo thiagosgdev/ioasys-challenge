@@ -36,15 +36,15 @@ export class SignUpRequestDTO {
   @IsOptional()
   @IsString()
   @ApiProperty()
-  phone: string;
+  phone?: string;
 
   @IsOptional()
   @IsString()
   @ApiProperty()
-  emergencyName: string;
+  emergencyName?: string;
 
   @IsOptional()
   @IsString()
   @ApiProperty()
-  emergencyPhone: string;
+  emergencyPhone?: string;
 }

@@ -4,11 +4,13 @@ import {
   BadRequestException,
   ConflictException,
 } from '@nestjs/common';
+import { JwtService } from '@nestjs/jwt';
 import { Repository } from 'typeorm';
 
 import { SignUpRequestDTO } from '../../../../shared/dtos/users/signUpRequest.dto';
 import { User } from '../../../../shared/entities/user.entity';
 import { Hasher } from '../../../../shared/providers/HasherProvider/protocols/hasher';
+import envConfig from '../../../../configs/env';
 
 @Injectable()
 export class SignUpService {
@@ -17,10 +19,12 @@ export class SignUpService {
     private userRepository: Repository<User>,
     @Inject('HASH_PROVIDER')
     private hasher: Hasher,
+    private jwtService: JwtService,
   ) {}
 
-  async create(data: SignUpRequestDTO): Promise<User> {
+  async execute(data: SignUpRequestDTO) {
     const { email, password, passwordConfirmation } = data;
+    let role = '';
 
     if (password !== passwordConfirmation) {
       throw new BadRequestException('Password not match! Try again.');
@@ -40,6 +44,21 @@ export class SignUpService {
       password: hashedPassword,
     });
 
-    return await this.userRepository.save(user);
+    await this.userRepository.save(user);
+
+    if (user.isPremium) role = 'premium';
+    if (user.isAdmin) role = 'admin';
+
+    const token = this.jwtService.sign(
+      { userId: user.id, role },
+      { expiresIn: envConfig().jwtExpires },
+    );
+
+    const refreshToken = this.jwtService.sign(
+      { userId: user.id, role },
+      { expiresIn: envConfig().jwtRefExpires },
+    );
+
+    return { token, refreshToken, user };
   }
 }
