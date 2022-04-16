@@ -46,7 +46,7 @@ describe('Create Event Controller', () => {
       mockEventRequest,
     );
   });
-  it('Should call CreateEventService with the correct values', async () => {
+  it('Should create an event on CreateEventService success', async () => {
     const event = await controller.handle(mockRequest, mockEventRequest);
     expect(event).toHaveProperty('id');
   });

@@ -77,7 +77,7 @@ describe('Create Event Service', () => {
         },
         {
           provide: 'ADDRESS_REPOSITORY',
-          useClass: mockEventRepository,
+          useClass: mockAddressRepository,
         },
       ],
     }).compile();

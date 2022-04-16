@@ -24,6 +24,7 @@ export const mockEvent: EventResponseDTO = {
   userIdentity: 'any_identity',
   addresses: null,
   activities: null,
+  users: null,
   eventAccessibilities: null,
   createdAt: new Date(),
   updatedAt: null,
