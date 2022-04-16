@@ -45,7 +45,10 @@ export class CreateEventService {
         ...data.address,
         eventId: event.id,
       });
-      await this.addressRepository.save(address);
+      await this.addressRepository.save({
+        ...data.address,
+        eventId: event.id,
+      });
       return { event, address };
     }
     return { event };

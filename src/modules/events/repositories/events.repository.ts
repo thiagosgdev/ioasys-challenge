@@ -14,6 +14,7 @@ export class EventRepo {
     console.log(userId);
     return await this.repository
       .createQueryBuilder('events')
+      .leftJoinAndSelect('events.users', 'users')
       .leftJoinAndSelect('events.activities', 'activities')
       .leftJoin('activities.userInterests', 'userInterests')
       .leftJoin('events.attendees', 'attendees')
@@ -30,6 +31,7 @@ export class EventRepo {
   async listEvents(eventId?: string): Promise<Event[]> {
     const query = await this.repository
       .createQueryBuilder('events')
+      .leftJoinAndSelect('events.users', 'users')
       .leftJoinAndSelect('events.activities', 'activities')
       .leftJoinAndSelect('events.addresses', 'addresses')
       .leftJoinAndSelect('events.eventAccessibilities', 'eventAccessibilities')

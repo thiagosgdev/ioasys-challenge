@@ -3,6 +3,7 @@ import { Activity } from '../../entities/activity.entity';
 import { ActivityResponse } from '../activities/activity.dto';
 import { AddressResponse } from '../address/address.dto';
 import { EventAccessibilityDTO } from '../eventAcessibilities/eventAcessibility.dto';
+import { UserDTO } from '../users/user.dto';
 
 export class EventResponseDTO {
   @ApiResponseProperty({
@@ -69,6 +70,11 @@ export class EventResponseDTO {
     example: '123.456.789-99',
   })
   userIdentity: string;
+
+  @ApiResponseProperty({
+    type: UserDTO,
+  })
+  users: UserDTO;
 
   @ApiResponseProperty({
     type: AddressResponse,
