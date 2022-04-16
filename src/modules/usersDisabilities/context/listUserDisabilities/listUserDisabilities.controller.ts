@@ -12,7 +12,7 @@ export class ListUserDisabilitiesController {
     private listUserDisabilitiesService: ListUserDisabilitiesService,
   ) {}
 
-  @Get('/list')
+  @Get('/list/all')
   @ApiOkResponse({
     description: 'A list of the user disabilities will be returned',
     type: UserDisabilitieResponseDTO,
