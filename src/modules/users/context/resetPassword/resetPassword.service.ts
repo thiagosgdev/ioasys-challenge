@@ -7,6 +7,8 @@ import {
 } from '@nestjs/common';
 import { Repository } from 'typeorm';
 
+import { makeRandomString } from '../../../../shared/functions/makeRandomString';
+import { Hasher } from '../../../../shared/providers/HasherProvider/protocols/hasher';
 import { User } from '../../../../shared/entities/user.entity';
 
 @Injectable()
@@ -15,6 +17,8 @@ export class ResetPasswordService {
     @Inject('USER_REPOSITORY')
     private userRepository: Repository<User>,
     private mailerService: MailerService,
+    @Inject('HASH_PROVIDER')
+    private hasher: Hasher,
   ) {}
   async execute(email: string) {
     const exists = await this.userRepository.findOne({ email });
@@ -22,16 +26,29 @@ export class ResetPasswordService {
     if (!exists) {
       throw new NotFoundException('No user found!');
     }
+
+    const newPassword = makeRandomString(8);
+
+    const hashedPassword = await this.hasher.createHash(newPassword);
+
+    const user = this.userRepository.create({
+      ...exists,
+      password: hashedPassword,
+    });
+
+    await this.userRepository.save(user);
+
     const mail = {
       to: email,
       from: 'squad8.test@gmail.com',
-      subject: 'Email Reset de Senha',
+      subject: 'Email Nova Senha',
       template: 'recover-password',
       context: {
-        token: 'test',
+        newPassword,
       },
     };
     await this.mailerService.sendMail(mail).catch((err) => {
+      console.log(err);
       throw new InternalServerErrorException(
         'There was a problem sending the e-mail, please contact the support',
       );
