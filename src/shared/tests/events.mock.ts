@@ -50,3 +50,21 @@ export const mockEventRequest: CreateEventRequestDTO = {
   },
   address: mockAddressRequest,
 };
+
+export const mockEventOnlineRequest: CreateEventRequestDTO = {
+  event: {
+    name: 'any_name',
+    description: 'any_description',
+    activityId: 'any_activity_id',
+    date: new Date(),
+    isOnline: true,
+    isPetFriendly: true,
+    isPromoted: false,
+    maxParticipants: 50,
+    price: 0,
+    startTime: '18:30',
+    userId: 'any_id',
+    userIdentity: 'any_identity',
+    accessibilities: ['any_disability_id'],
+  },
+};

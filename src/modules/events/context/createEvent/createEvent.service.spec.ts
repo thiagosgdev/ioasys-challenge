@@ -5,6 +5,7 @@ import { mockAddressRequest } from 'src/shared/tests/address.mock';
 import { AddressResponseDTO } from '../../../../shared/dtos/address/address.dto';
 import {
   mockEvent,
+  mockEventOnlineRequest,
   mockEventRequest,
 } from '../../../../shared/tests/events.mock';
 import { CreateEventService } from './createEvent.service';
@@ -97,7 +98,7 @@ describe('Create Event Service', () => {
   it('Should be defined!', () => {
     expect(service).toBeDefined();
   });
-  it('Should return the event created on execute success', async () => {
+  it('Should return the event and address created on execute success', async () => {
     const response = await service.execute(
       {
         userId: 'any_id',
@@ -106,6 +107,7 @@ describe('Create Event Service', () => {
       mockEventRequest,
     );
     expect(response).toHaveProperty('event');
+    expect(response).toHaveProperty('address');
   });
 
   it('Should create the accessibilities of the event on create success', async () => {
@@ -133,5 +135,17 @@ describe('Create Event Service', () => {
       mockEventRequest,
     );
     expect(addressSpy).toHaveBeenCalledWith(mockAddressRequest);
+  });
+
+  it('Should not return the address on create event online sucess', async () => {
+    const response = await service.execute(
+      {
+        userId: 'any_id',
+        role: 'any_role',
+      },
+      mockEventOnlineRequest,
+    );
+    expect(response).toHaveProperty('event');
+    expect(response.address).toBeUndefined();
   });
 });
