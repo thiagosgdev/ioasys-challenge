@@ -22,7 +22,7 @@ export class ListEventsController {
     type: EventResponseDTO,
   })
   @ApiCommomDecorators()
-  public async handle(@Query('eventId') eventId: string) {
+  public async handle(@Query('eventId') eventId?: string) {
     try {
       return await this.listEventsService.execute(eventId);
     } catch (error) {

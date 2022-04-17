@@ -2,6 +2,7 @@ import { ApiProperty, ApiResponseProperty } from '@nestjs/swagger';
 import { Activity } from '../../entities/activity.entity';
 import { ActivityResponse } from '../activities/activity.dto';
 import { AddressResponseDTO } from '../address/address.dto';
+import { AttendeeResponse } from '../attendees/attendee.dto';
 import { EventAccessibilityDTO } from '../eventAcessibilities/eventAcessibility.dto';
 import { UserDTO } from '../users/user.dto';
 
@@ -62,6 +63,11 @@ export class EventResponseDTO {
   price: number;
 
   @ApiResponseProperty({
+    example: 'www.example.com',
+  })
+  url: string;
+
+  @ApiResponseProperty({
     example: false,
   })
   isPromoted: boolean;
@@ -95,6 +101,8 @@ export class EventResponseDTO {
     example: 25,
   })
   numParticipants? = 0;
+
+  attendees?: AttendeeResponse;
 
   @ApiResponseProperty()
   createdAt: Date;
