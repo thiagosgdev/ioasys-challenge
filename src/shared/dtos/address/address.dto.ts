@@ -1,6 +1,6 @@
 import { ApiResponseProperty } from '@nestjs/swagger';
 
-export class AddressResponse {
+export class AddressResponseDTO {
   @ApiResponseProperty({
     example: '6dc05b64-81e9-4ad6-8875-4b37f7ee0eee',
   })

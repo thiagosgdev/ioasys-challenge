@@ -6,7 +6,7 @@ import {
 } from '@nestjs/swagger';
 
 import { CreateAddressRequestDTO } from '../../../../shared/dtos/address/createAddressRequest.dto';
-import { AddressResponse } from '../../../../shared/dtos/address/address.dto';
+import { AddressResponseDTO } from '../../../../shared/dtos/address/address.dto';
 import { ApiCommomDecorators } from '../../../../shared/decorators/globalDoc.decorator';
 import { CreateAddressService } from './createAddress.service';
 
@@ -18,7 +18,7 @@ export class CreateAddressController {
   @Post()
   @ApiCreatedResponse({
     description: 'Return the address created.',
-    type: AddressResponse,
+    type: AddressResponseDTO,
   })
   @ApiBadRequestResponse({
     description: 'Returns a message if a invalid field is provided.',

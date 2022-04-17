@@ -9,6 +9,7 @@ import {
   mockUser,
 } from '../../../../shared/tests/users.mock';
 import { BadRequestException, ConflictException } from '@nestjs/common';
+import { UserDTO } from 'src/shared/dtos/users/user.dto';
 
 const mockUserLogedResponse = {
   token: 'any_token',
@@ -16,26 +17,26 @@ const mockUserLogedResponse = {
   user: mockUser,
 };
 
-class mockUserRepository {
-  findOne() {
-    return null;
-  }
-  create() {
-    return mockUserLogedResponse;
-  }
-  save() {
-    return null;
-  }
-}
+const mockUserRepository = {
+  findOne: (): Promise<UserDTO | null> => {
+    return Promise.resolve(null);
+  },
+  create: () => {
+    return Promise.resolve(mockUser);
+  },
+  save: () => {
+    return Promise.resolve(null);
+  },
+};
 
-class mockHashProvider {
-  compareHash() {
-    return false;
-  }
-  createHash() {
-    return 'any_hashed';
-  }
-}
+const mockHashProvider = {
+  compareHash: jest.fn(() => {
+    Promise.resolve(false);
+  }),
+  createHash: jest.fn(() => {
+    Promise.resolve('any_hashed');
+  }),
+};
 describe('Sign up Service', () => {
   let service: SignUpService;
 
@@ -55,11 +56,11 @@ describe('Sign up Service', () => {
         },
         {
           provide: 'USER_REPOSITORY',
-          useClass: mockUserRepository,
+          useValue: mockUserRepository,
         },
         {
           provide: 'HASH_PROVIDER',
-          useClass: mockHashProvider,
+          useValue: mockHashProvider,
         },
         {
           provide: 'ENCRYPTER_PROVIDER',
@@ -77,12 +78,11 @@ describe('Sign up Service', () => {
   it('Should return the user and tokens created on SignUp success', async () => {
     const response = await service.execute(mockSignUpRequestDTO());
     expect(response).toHaveProperty('user');
+    expect(response).toHaveProperty('token');
   });
 
   it('Should return a ConflicException if the e-mail already exists', async () => {
-    jest
-      .spyOn(service, 'execute')
-      .mockRejectedValueOnce(new ConflictException());
+    jest.spyOn(mockUserRepository, 'findOne').mockResolvedValueOnce(mockUser);
     const response = service.execute(mockSignUpRequestDTO());
     await expect(response).rejects.toBeInstanceOf(ConflictException);
   });

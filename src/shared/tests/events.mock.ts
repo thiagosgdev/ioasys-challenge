@@ -1,5 +1,6 @@
 import { CreateEventRequestDTO } from '../dtos/events/createEventRequest.dto';
 import { EventResponseDTO } from '../dtos/events/event.dto';
+import { mockAddressRequest } from './address.mock';
 
 export const mockRequest = {
   user: {
@@ -9,7 +10,7 @@ export const mockRequest = {
 };
 
 export const mockEvent: EventResponseDTO = {
-  id: 'any_id',
+  id: 'any_event_id',
   name: 'any_name',
   description: 'any_description',
   activityId: 'any_activity_id',
@@ -37,7 +38,7 @@ export const mockEventRequest: CreateEventRequestDTO = {
     description: 'any_description',
     activityId: 'any_activity_id',
     date: new Date(),
-    isOnline: true,
+    isOnline: false,
     isPetFriendly: true,
     isPromoted: false,
     maxParticipants: 50,
@@ -45,6 +46,7 @@ export const mockEventRequest: CreateEventRequestDTO = {
     startTime: '18:30',
     userId: 'any_id',
     userIdentity: 'any_identity',
-    accessibilities: null,
+    accessibilities: ['any_disability_id'],
   },
+  address: mockAddressRequest,
 };

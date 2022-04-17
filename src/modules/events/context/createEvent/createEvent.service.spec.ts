@@ -1,24 +1,25 @@
 import { Test, TestingModule } from '@nestjs/testing';
-import { JwtService } from '@nestjs/jwt';
 import MockDate from 'mockdate';
+import { mockAddressRequest } from 'src/shared/tests/address.mock';
 
+import { AddressResponseDTO } from '../../../../shared/dtos/address/address.dto';
 import {
   mockEvent,
   mockEventRequest,
 } from '../../../../shared/tests/events.mock';
 import { CreateEventService } from './createEvent.service';
 
-class mockEventRepository {
-  findOne() {
-    return null;
-  }
-  create() {
-    return mockEvent;
-  }
-  save() {
-    return null;
-  }
-}
+const mockEventRepository = {
+  findOne: jest.fn(() => {
+    return Promise.resolve(null);
+  }),
+  create: jest.fn(() => {
+    return Promise.resolve(mockEvent);
+  }),
+  save: jest.fn(() => {
+    return Promise.resolve(null);
+  }),
+};
 
 const mockEventAccessibility = {
   id: 'any_id',
@@ -26,29 +27,45 @@ const mockEventAccessibility = {
   accessibilityId: 'any_accessibility_id',
 };
 
-class mockEventAccessibilityRepository {
-  findOne() {
-    return null;
-  }
-  create() {
-    return mockEventAccessibility;
-  }
-  save() {
-    return null;
-  }
-}
+const mockAddress: AddressResponseDTO = {
+  id: 'any_id',
+  street: 'any_street',
+  city: 'any_city',
+  state: 'any_state',
+  number: 123,
+  zipCode: '99999-999',
+  referencePoint: null,
+  eventId: 'any_event_id',
+  userId: null,
+  createdAt: new Date(),
+  updatedAt: null,
+  deletedAt: null,
+};
 
-class mockAddressRepository {
-  findOne() {
-    return null;
-  }
-  create() {
-    return mockEvent;
-  }
-  save() {
-    return null;
-  }
-}
+const mockEventAccessibilityRepository = {
+  findOne: jest.fn(() => {
+    return Promise.resolve(null);
+  }),
+
+  create: jest.fn((eventId: string, disabilityId: string) => {
+    return mockEventAccessibility;
+  }),
+  save: jest.fn(() => {
+    return Promise.resolve(null);
+  }),
+};
+
+const mockAddressRepository = {
+  findOne: jest.fn(() => {
+    return Promise.resolve(null);
+  }),
+  create: jest.fn(() => {
+    return Promise.resolve(mockAddress);
+  }),
+  save: jest.fn(() => {
+    return Promise.resolve(null);
+  }),
+};
 
 describe('Create Event Service', () => {
   let service: CreateEventService;
@@ -60,24 +77,16 @@ describe('Create Event Service', () => {
       providers: [
         CreateEventService,
         {
-          provide: JwtService,
-          useValue: {
-            sign: jest.fn(() => {
-              null;
-            }),
-          },
-        },
-        {
           provide: 'EVENT_REPOSITORY',
-          useClass: mockEventRepository,
+          useValue: mockEventRepository,
         },
         {
           provide: 'EVENT_ACCESSIBILITY_REPOSITORY',
-          useClass: mockEventAccessibilityRepository,
+          useValue: mockEventAccessibilityRepository,
         },
         {
           provide: 'ADDRESS_REPOSITORY',
-          useClass: mockAddressRepository,
+          useValue: mockAddressRepository,
         },
       ],
     }).compile();
@@ -97,5 +106,32 @@ describe('Create Event Service', () => {
       mockEventRequest,
     );
     expect(response).toHaveProperty('event');
+  });
+
+  it('Should create the accessibilities of the event on create success', async () => {
+    const eventAccessibilitySpy = jest.spyOn(
+      mockEventAccessibilityRepository,
+      'create',
+    );
+    await service.execute(
+      {
+        userId: 'any_id',
+        role: 'any_role',
+      },
+      mockEventRequest,
+    );
+    expect(eventAccessibilitySpy).toHaveReturnedWith(mockEventAccessibility);
+  });
+
+  it('Should create the address of the event on create success', async () => {
+    const addressSpy = jest.spyOn(mockAddressRepository, 'create');
+    await service.execute(
+      {
+        userId: 'any_id',
+        role: 'any_role',
+      },
+      mockEventRequest,
+    );
+    expect(addressSpy).toHaveBeenCalledWith(mockAddressRequest);
   });
 });
