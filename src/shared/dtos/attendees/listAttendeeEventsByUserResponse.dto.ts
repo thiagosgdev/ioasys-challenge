@@ -1,6 +1,7 @@
 import { ApiProperty } from '@nestjs/swagger';
+import { EventResponseDTO } from '../events/event.dto';
 
-export class AttendeeResponse {
+export class ListAttendeeEventsByUserResponseDTO {
   @ApiProperty({
     example: '82ef7258-6066-468f-8f8d-ed34790f5621',
   })
@@ -21,16 +22,23 @@ export class AttendeeResponse {
   })
   eventId: string;
 
-  @ApiProperty()
+  @ApiProperty({
+    example: '2022-04-17T13:44:05.288Z',
+  })
   createdAt: Date;
 
   @ApiProperty({
     example: null,
   })
-  updatedAt: Date;
+  updateAt: Date;
 
   @ApiProperty({
     example: null,
   })
   deletedAt: Date;
+
+  @ApiProperty({
+    type: EventResponseDTO,
+  })
+  event: EventResponseDTO;
 }

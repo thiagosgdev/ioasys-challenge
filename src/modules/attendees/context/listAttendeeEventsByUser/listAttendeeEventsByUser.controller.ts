@@ -1,8 +1,8 @@
 import { Controller, Get, HttpException, Query, Request } from '@nestjs/common';
 import { ApiOkResponse, ApiTags } from '@nestjs/swagger';
 
+import { ListAttendeeEventsByUserResponseDTO } from '../../../../shared/dtos/attendees/listAttendeeEventsByUserResponse.dto';
 import { ApiCommomDecorators } from '../../../../shared/decorators/globalDoc.decorator';
-import { EventAddressResponseDTO } from '../../../../shared/dtos/events/eventAddressResponse.dto';
 import { RequestDTO } from '../../../../shared/dtos/shared/request.dto';
 import { ListAttendeeEventsByUserIdService } from './listAttendeeEventsByUser.service';
 
@@ -17,7 +17,7 @@ export class ListAttendeeEventsByUserIdController {
   @ApiOkResponse({
     description:
       'A list of all user events will be returned with the status passed',
-    type: EventAddressResponseDTO,
+    type: ListAttendeeEventsByUserResponseDTO,
   })
   @ApiCommomDecorators()
   public async handle(
@@ -31,6 +31,7 @@ export class ListAttendeeEventsByUserIdController {
         status,
       });
     } catch (error) {
+      console.log(error);
       throw new HttpException(
         error.response.message,
         error.response.statusCode,

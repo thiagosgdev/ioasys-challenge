@@ -1,50 +1,49 @@
 import {
   Body,
   Controller,
+  Delete,
   HttpException,
-  Patch,
-  Post,
+  Query,
   Request,
 } from '@nestjs/common';
 import {
   ApiBadRequestResponse,
   ApiNotFoundResponse,
   ApiOkResponse,
+  ApiQuery,
   ApiTags,
 } from '@nestjs/swagger';
 
-import { AttendeeRequestDTO } from '../../../../shared/dtos/attendees/attendeeRequest.dto';
 import { AttendeeResponse } from '../../../../shared/dtos/attendees/attendee.dto';
 import { ApiCommomDecorators } from '../../../../shared/decorators/globalDoc.decorator';
 import { RequestDTO } from '../../../../shared/dtos/shared/request.dto';
-import { UpdateAttendeeService } from './updateAttendee.service';
+import { DeleteAttendeeService } from './deleteAttendee.service';
 
 @ApiTags('attendees')
 @Controller()
-export class UpdateAttendeeController {
-  constructor(private updateAttendeeService: UpdateAttendeeService) {}
+export class DeleteAttendeeController {
+  constructor(private deleteAttendeeService: DeleteAttendeeService) {}
 
-  @Patch()
+  @Delete()
+  @ApiQuery({
+    example: {
+      eventId: '84c1c4c2-326e-4c45-8e78-20ca8556ea28',
+    },
+    required: true,
+  })
   @ApiOkResponse({
-    description: 'Return the attendee updated.',
+    description: 'Attendee removed',
     type: AttendeeResponse,
-  })
-  @ApiBadRequestResponse({
-    description: 'Returns a message if a invalid field is provided.',
-  })
-  @ApiNotFoundResponse({
-    description: 'The user is not registered for this event',
   })
   @ApiCommomDecorators()
   public async handle(
     @Request() req: RequestDTO,
-    @Body() data: AttendeeRequestDTO,
+    @Query('eventId') eventId: string,
   ) {
     try {
       const userId = req.user.userId;
-      return await this.updateAttendeeService.execute(userId, data);
+      return await this.deleteAttendeeService.execute(userId, eventId);
     } catch (error) {
-      console.log(error);
       throw new HttpException(
         error.response.message,
         error.response.statusCode,

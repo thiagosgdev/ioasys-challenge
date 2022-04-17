@@ -10,7 +10,7 @@ import { ListAttendeesService } from './listAttendee.service';
 export class ListAttendeesController {
   constructor(private listAttendeesService: ListAttendeesService) {}
 
-  @Get()
+  @Get('/all')
   @ApiOkResponse({
     description: 'A list of all attendees will be returned',
     type: AttendeeResponse,
