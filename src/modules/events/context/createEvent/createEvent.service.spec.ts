@@ -14,11 +14,8 @@ const mockEventRepository = {
   findOne: jest.fn(() => {
     return Promise.resolve(null);
   }),
-  create: jest.fn(() => {
-    return Promise.resolve(mockEvent);
-  }),
   save: jest.fn(() => {
-    return Promise.resolve(null);
+    return Promise.resolve(mockEvent);
   }),
 };
 
@@ -47,12 +44,8 @@ const mockEventAccessibilityRepository = {
   findOne: jest.fn(() => {
     return Promise.resolve(null);
   }),
-
-  create: jest.fn((eventId: string, disabilityId: string) => {
-    return mockEventAccessibility;
-  }),
-  save: jest.fn(() => {
-    return Promise.resolve(null);
+  save: jest.fn(async () => {
+    return Promise.resolve(mockEventAccessibility);
   }),
 };
 
@@ -60,11 +53,8 @@ const mockAddressRepository = {
   findOne: jest.fn(() => {
     return Promise.resolve(null);
   }),
-  create: jest.fn(() => {
-    return Promise.resolve(mockAddress);
-  }),
   save: jest.fn(() => {
-    return Promise.resolve(null);
+    return Promise.resolve(mockAddress);
   }),
 };
 
@@ -110,10 +100,10 @@ describe('Create Event Service', () => {
     expect(response).toHaveProperty('address');
   });
 
-  it('Should create the accessibilities of the event on create success', async () => {
+  it('Should call the accessibilities save()', async () => {
     const eventAccessibilitySpy = jest.spyOn(
       mockEventAccessibilityRepository,
-      'create',
+      'save',
     );
     await service.execute(
       {
@@ -122,11 +112,11 @@ describe('Create Event Service', () => {
       },
       mockEventRequest,
     );
-    expect(eventAccessibilitySpy).toHaveReturnedWith(mockEventAccessibility);
+    expect(eventAccessibilitySpy).toHaveBeenCalled();
   });
 
-  it('Should create the address of the event on create success', async () => {
-    const addressSpy = jest.spyOn(mockAddressRepository, 'create');
+  it('Should create the address of the event on save() success', async () => {
+    const addressSpy = jest.spyOn(mockAddressRepository, 'save');
     await service.execute(
       {
         userId: 'any_id',

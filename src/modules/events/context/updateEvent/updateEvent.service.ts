@@ -17,7 +17,9 @@ export class UpdateEventService {
   ) {}
   async execute(data: UpdateEventRequestDTO) {
     const eventExists = await this.eventRepository.findOne(data.event.eventId);
+
     let updatedAddress = undefined;
+
     if (!eventExists) throw new NotFoundException('No event found!');
 
     const updatedEvent = await this.eventRepository.save({
