@@ -1,4 +1,5 @@
 import {
+  BaseEntity,
   Column,
   CreateDateColumn,
   DeleteDateColumn,
@@ -17,7 +18,7 @@ import { Attendee } from './attendees.entity';
 import { Address } from './address.entity';
 
 @Entity('events')
-export class Event {
+export class Event extends BaseEntity {
   @PrimaryGeneratedColumn()
   id: string;
 

@@ -21,11 +21,8 @@ const mockUserRepository = {
   findOne: (): Promise<UserDTO | null> => {
     return Promise.resolve(null);
   },
-  create: () => {
-    return Promise.resolve(mockUser);
-  },
   save: () => {
-    return Promise.resolve(null);
+    return Promise.resolve(mockUser);
   },
 };
 

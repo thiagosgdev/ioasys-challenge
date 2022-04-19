@@ -22,30 +22,25 @@ export class CreateEventService {
     if (user.role !== 'premium') {
       data.event.isPromoted = false;
     }
-    const event = this.eventRepository.create(data.event);
-    await this.eventRepository.save(event);
+    const event = await this.eventRepository.save(data.event);
 
     if (data.event.accessibilities) {
-      const eventAccessibility = {
-        eventId: event.id,
-        disabilityId: '',
-      };
-      let newEventAccessibility: EventAccessibility;
-      const accessibilities = data.event.accessibilities;
+      const newEventAccessibility = [];
 
-      accessibilities.forEach(async (accessibility) => {
-        eventAccessibility.disabilityId = accessibility;
-        newEventAccessibility =
-          this.eventAccessibilityRepository.create(eventAccessibility);
-        await this.eventAccessibilityRepository.save(newEventAccessibility);
+      data.event.accessibilities.forEach(async (accessibility) => {
+        newEventAccessibility.push({
+          eventId: event.id,
+          disabilityId: accessibility,
+        });
       });
+
+      await this.eventAccessibilityRepository.save(newEventAccessibility);
     }
     if (data.address) {
-      const address = this.addressRepository.create({
+      const address = await this.addressRepository.save({
         ...data.address,
         eventId: event.id,
       });
-      await this.addressRepository.save(address);
       return { event, address };
     }
     return { event };

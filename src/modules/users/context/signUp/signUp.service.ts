@@ -39,12 +39,10 @@ export class SignUpService {
 
     const hashedPassword = await this.hasher.createHash(password);
 
-    const user = this.userRepository.create({
+    const user = await this.userRepository.save({
       ...data,
       password: hashedPassword,
     });
-
-    await this.userRepository.save(user);
 
     if (user.isPremium) role = 'premium';
     if (user.isAdmin) role = 'admin';

@@ -1,4 +1,5 @@
 import {
+  BaseEntity,
   Column,
   CreateDateColumn,
   DeleteDateColumn,
@@ -13,7 +14,7 @@ import { Disability } from './disability.entity';
 import { Event } from './event.entity';
 
 @Entity('events_accessibilities')
-export class EventAccessibility {
+export class EventAccessibility extends BaseEntity {
   @PrimaryGeneratedColumn()
   id: string;
 

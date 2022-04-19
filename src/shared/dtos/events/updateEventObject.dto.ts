@@ -2,6 +2,7 @@ import { ApiProperty } from '@nestjs/swagger';
 import {
   IsArray,
   IsBoolean,
+  IsDate,
   IsNotEmpty,
   IsNumber,
   IsOptional,
@@ -16,7 +17,7 @@ export class UpdateEventObject {
     example: '6dc05b64-81e9-4ad6-8875-4b37f7ee0eee',
     required: true,
   })
-  eventId?: string;
+  eventId: string;
 
   @IsString()
   @IsOptional()
@@ -50,13 +51,13 @@ export class UpdateEventObject {
   @IsOptional()
   url?: string;
 
-  @IsString()
+  @IsDate()
   @IsOptional()
   @ApiProperty({
     example: '05/25/2022',
     required: false,
   })
-  date?: string;
+  date?: Date;
 
   @IsBoolean()
   @IsOptional()
@@ -65,6 +66,22 @@ export class UpdateEventObject {
     required: false,
   })
   isPetFriendly?: boolean;
+
+  @IsBoolean()
+  @IsOptional()
+  @ApiProperty({
+    example: true,
+    required: false,
+  })
+  isPromoted?: boolean;
+
+  @IsNumber()
+  @IsOptional()
+  @ApiProperty({
+    example: 50,
+    required: false,
+  })
+  price?: number;
 
   @IsNumber()
   @IsOptional()
