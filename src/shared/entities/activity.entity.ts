@@ -1,5 +1,4 @@
 import {
-  BeforeInsert,
   Column,
   CreateDateColumn,
   DeleteDateColumn,
@@ -8,10 +7,10 @@ import {
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
-import { v4 as uuidV4 } from 'uuid';
 
 import { ActivityCategories } from './activityCategories.entity';
 import { Event } from './event.entity';
+import { MoodActivity } from './moodsActivities.entity';
 import { UserInterest } from './userInterests.entity';
 
 @Entity('activities')
@@ -40,6 +39,9 @@ export class Activity {
   @OneToMany(() => UserInterest, (userInterests) => userInterests.activities)
   userInterests: UserInterest[];
 
+  @OneToMany(() => MoodActivity, (moodsActivities) => moodsActivities.activity)
+  moodsActivities: MoodActivity[];
+
   @OneToMany(() => Event, (events) => events.activities)
   events: Event[];
 
@@ -51,9 +53,4 @@ export class Activity {
 
   @DeleteDateColumn({ name: 'deleted_at' })
   deletedAt: Date;
-
-  @BeforeInsert()
-  async createId() {
-    this.id = uuidV4();
-  }
 }
