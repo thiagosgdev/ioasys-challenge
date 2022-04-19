@@ -11,19 +11,13 @@ export class CreateUserDisabilitiesService {
   ) {}
 
   async execute(userId: string, data: CreateUserDisabilityRequestDTO) {
-    const userDisability = {
-      userId,
-      disabilityId: '',
-    };
-    let newUserDisability: UserDisability;
-    const disabilities = data.disabilityIds;
+    const newUserDisability = [];
     await this.userDisabilitiesRepository.softDelete({ userId });
 
-    disabilities.forEach(async (disability) => {
-      userDisability.disabilityId = disability;
-      newUserDisability =
-        this.userDisabilitiesRepository.create(userDisability);
-      await this.userDisabilitiesRepository.save(newUserDisability);
+    data.disabilityIds.forEach(async (disability) => {
+      newUserDisability.push({ userId, disabilityId: disability });
     });
+
+    return await this.userDisabilitiesRepository.save(newUserDisability);
   }
 }

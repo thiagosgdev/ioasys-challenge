@@ -10,7 +10,6 @@ export class CreateActivityCategoryService {
     private activityCategoryRepository: Repository<ActivityCategories>,
   ) {}
   async execute(data: CreateActivityCategoryRequestDTO) {
-    const activity = this.activityCategoryRepository.create(data);
-    return await this.activityCategoryRepository.save(activity);
+    return await this.activityCategoryRepository.save(data);
   }
 }

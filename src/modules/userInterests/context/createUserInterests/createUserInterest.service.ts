@@ -10,19 +10,13 @@ export class CreateUserInterestService {
     private userInterestRepository: Repository<UserInterest>,
   ) {}
   async execute(userId: string, data: UserInterestRequestDTO) {
-    const userInterest = {
-      userId,
-      activityId: '',
-    };
-    let newUserInterest: UserInterest;
-    const activities = data.activityIds;
+    const newUserInterest = [];
 
     await this.userInterestRepository.delete({ userId });
 
-    activities.forEach(async (activity) => {
-      userInterest.activityId = activity;
-      newUserInterest = this.userInterestRepository.create(userInterest);
-      await this.userInterestRepository.save(newUserInterest);
+    data.activityIds.forEach(async (activity) => {
+      newUserInterest.push({ userId, activityId: activity });
     });
+    return await this.userInterestRepository.save(newUserInterest);
   }
 }

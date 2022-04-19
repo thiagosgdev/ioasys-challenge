@@ -10,7 +10,6 @@ export class CreateMessageService {
     private messageRepository: Repository<Message>,
   ) {}
   async execute(data: CreateMessageRequestDTO) {
-    const message = this.messageRepository.create(data);
-    return await this.messageRepository.save(message);
+    return await this.messageRepository.save(data);
   }
 }

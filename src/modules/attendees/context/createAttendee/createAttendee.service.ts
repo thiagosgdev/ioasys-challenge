@@ -22,12 +22,10 @@ export class CreateAttendeeService {
     if (exists)
       throw new ConflictException('User already registered for this event!');
 
-    const attendee = this.attendeeRepository.create({
+    return await this.attendeeRepository.save({
       userId,
       eventId,
       status,
     });
-
-    return await this.attendeeRepository.save(attendee);
   }
 }

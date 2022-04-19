@@ -10,7 +10,6 @@ export class CreateCategoryService {
     private categoryRepository: Repository<Category>,
   ) {}
   async execute(data: CreateCategoryRequestDTO) {
-    const category = this.categoryRepository.create(data);
-    return this.categoryRepository.save(category);
+    return await this.categoryRepository.save(data);
   }
 }

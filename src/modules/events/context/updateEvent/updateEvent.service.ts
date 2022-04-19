@@ -28,23 +28,20 @@ export class UpdateEventService {
     });
 
     if (data.event.accessibilities) {
-      const eventAccessibility = {
-        eventId: data.event.eventId,
-        disabilityId: '',
-      };
-      let newEventAccessibility: EventAccessibility;
-      const accessibilities = data.event.accessibilities;
-
       await this.eventAccessibilityRepository.delete({
         eventId: data.event.eventId,
       });
 
-      accessibilities.forEach(async (accessibility) => {
-        eventAccessibility.disabilityId = accessibility;
-        newEventAccessibility =
-          this.eventAccessibilityRepository.create(eventAccessibility);
-        await this.eventAccessibilityRepository.save(newEventAccessibility);
+      const newEventAccessibility = [];
+
+      data.event.accessibilities.forEach(async (accessibility) => {
+        newEventAccessibility.push({
+          eventId: data.event.eventId,
+          disabilityId: accessibility,
+        });
       });
+
+      await this.eventAccessibilityRepository.save(newEventAccessibility);
     }
 
     if (data.address) {
@@ -58,7 +55,8 @@ export class UpdateEventService {
         ...addressExists,
         ...data.address,
       });
+      return { event: updatedEvent, address: updatedAddress };
     }
-    return { event: updatedEvent, address: updatedAddress };
+    return { event: updatedEvent };
   }
 }

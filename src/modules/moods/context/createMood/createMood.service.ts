@@ -10,7 +10,6 @@ export class CreateMoodService {
     private moodRepository: Repository<Mood>,
   ) {}
   async execute(data: CreateMoodRequestDTO) {
-    const mood = this.moodRepository.create(data);
-    return await this.moodRepository.save(mood);
+    return await this.moodRepository.save(data);
   }
 }
