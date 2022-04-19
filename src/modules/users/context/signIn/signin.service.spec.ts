@@ -1,25 +1,31 @@
 import { Test, TestingModule } from '@nestjs/testing';
-import { UnauthorizedException } from '@nestjs/common';
+import { NotFoundException, UnauthorizedException } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
 
 import { SigninResponseDTO } from '../../../../shared/dtos/users/signinResponse.dto';
-import { JwtProvider } from '../../../../shared/providers/EncryptProvider/jwt.provider';
 import { mockUser } from '../../../../shared/tests/users.mock';
 import { SigninService } from './signin.service';
 
 const mockSigninResponseDTO = (): SigninResponseDTO => {
   return {
     token: 'any_token',
-    refreshToken: 'any_refresh_token',
+    refreshToken: 'any_token',
     user: mockUser,
   };
 };
 
-class mockHashProvider {
-  compareHash() {
-    return false;
-  }
-}
+const mockUserRepository = {
+  findOne: jest.fn(() => mockUser),
+};
+
+const mockJWTProvider = {
+  sign: jest.fn(() => {
+    return 'any_token';
+  }),
+};
+const mockHashProvider = {
+  compareHash: jest.fn(() => true),
+};
 describe('Sign in Service', () => {
   let service: SigninService;
   beforeEach(async () => {
@@ -28,25 +34,19 @@ describe('Sign in Service', () => {
         SigninService,
         {
           provide: JwtService,
-          useValue: {
-            sign: jest.fn(() => {
-              mockSigninResponseDTO();
-            }),
-          },
+          useValue: mockJWTProvider,
         },
         {
           provide: 'USER_REPOSITORY',
-          useValue: {
-            findOne: jest.fn(() => mockUser),
-          },
+          useValue: mockUserRepository,
         },
         {
           provide: 'HASH_PROVIDER',
-          useClass: mockHashProvider,
+          useValue: mockHashProvider,
         },
         {
           provide: 'ENCRYPTER_PROVIDER',
-          useClass: JwtProvider,
+          useValue: mockJWTProvider,
         },
       ],
     }).compile();
@@ -58,9 +58,6 @@ describe('Sign in Service', () => {
     expect(service).toBeDefined();
   });
   it('Should return a token and refresh token on sign in success', async () => {
-    jest
-      .spyOn(service, 'login')
-      .mockReturnValueOnce(Promise.resolve(mockSigninResponseDTO()));
     const response: SigninResponseDTO = await service.login({
       email: 'email@test.com',
       password: '12345',
@@ -68,34 +65,21 @@ describe('Sign in Service', () => {
     expect(response).toEqual(mockSigninResponseDTO());
   });
 
-  it('Should return null on sign in fail', async () => {
-    jest.spyOn(service, 'login').mockReturnValueOnce(Promise.resolve(null));
-    const response = await service.login({
-      email: 'email@test.com',
-      password: '12345',
-    });
-    expect(response).toBeNull();
-  });
-
-  it('Should throw not matching password is provided', async () => {
-    try {
-      await service.login({
-        email: 'email@test.com',
-        password: '',
-      });
-    } catch (error) {
-      await expect(error).toBeInstanceOf(UnauthorizedException);
-    }
-  });
-
-  it('Should throw if login() throws', async () => {
-    jest
-      .spyOn(service, 'login')
-      .mockReturnValueOnce(Promise.reject(new Error()));
+  it('Should throw NotFoundException if no user is found', async () => {
+    jest.spyOn(mockUserRepository, 'findOne').mockReturnValueOnce(null);
     const response = service.login({
       email: 'email@test.com',
-      password: '12345',
+      password: '123456',
     });
-    await expect(response).rejects.toThrow();
+    await expect(response).rejects.toBeInstanceOf(NotFoundException);
+  });
+
+  it('Should throw UnauthorizedException if password does not match', async () => {
+    jest.spyOn(mockHashProvider, 'compareHash').mockReturnValueOnce(false);
+    const response = service.login({
+      email: 'email@test.com',
+      password: '123456',
+    });
+    await expect(response).rejects.toBeInstanceOf(UnauthorizedException);
   });
 });
