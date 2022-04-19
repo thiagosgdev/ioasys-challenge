@@ -23,20 +23,16 @@ export class ResetPasswordService {
   async execute(email: string) {
     const exists = await this.userRepository.findOne({ email });
 
-    if (!exists) {
-      throw new NotFoundException('No user found!');
-    }
+    if (!exists) throw new NotFoundException('No user found!');
 
     const newPassword = makeRandomString(8);
 
     const hashedPassword = await this.hasher.createHash(newPassword);
 
-    const user = this.userRepository.create({
+    await this.userRepository.save({
       ...exists,
       password: hashedPassword,
     });
-
-    await this.userRepository.save(user);
 
     const mail = {
       to: email,
