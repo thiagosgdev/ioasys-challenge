@@ -29,6 +29,7 @@ import { AddressModule } from './modules/addresses/address.module';
 import { AttendeeModule } from './modules/attendees/attendees.module';
 import { DisabilitiesModule } from './modules/disabilities/disabilities.module';
 import { UserDisabilitiesModule } from './modules/usersDisabilities/userDisabilities.module';
+import { WellnessTipsModule } from './modules/wellnessTips/wellnessTips.module';
 
 @Module({
   imports: [
@@ -61,6 +62,7 @@ import { UserDisabilitiesModule } from './modules/usersDisabilities/userDisabili
     AttendeeModule,
     DisabilitiesModule,
     UserDisabilitiesModule,
+    WellnessTipsModule,
   ],
   controllers: [MetricsController],
   providers: [

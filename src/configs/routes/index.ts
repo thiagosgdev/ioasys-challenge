@@ -1,3 +1,4 @@
+import { WellnessTipsModule } from 'src/modules/wellnessTips/wellnessTips.module';
 import { ActivityModule } from '../../modules/activities/activities.module';
 import { ActivityCategoriesModule } from '../../modules/activitiesCategories/activitiesCategories.module';
 import { AddressModule } from '../../modules/addresses/address.module';
@@ -69,5 +70,9 @@ export const routerConfig = [
   {
     path: '/users',
     module: UserDisabilitiesModule,
+  },
+  {
+    path: '/wellness',
+    module: WellnessTipsModule,
   },
 ];

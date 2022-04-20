@@ -3,31 +3,23 @@ import {
   CreateDateColumn,
   DeleteDateColumn,
   Entity,
-  JoinColumn,
-  ManyToOne,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
 
-import { MessageType } from './messageType.entity';
-
-@Entity('messages')
-export class Message {
+@Entity('wellness_tips')
+export class WellnessTip {
   @PrimaryGeneratedColumn()
   id: string;
 
   @Column()
-  text: string;
-
-  @Column({ name: 'message_type_id' })
-  messageTypeId: string;
-
-  @ManyToOne(() => MessageType, (type) => type.messages)
-  @JoinColumn({ name: 'message_type_id' })
-  type: MessageType;
+  title: string;
 
   @Column()
-  active: boolean;
+  description: string;
+
+  @Column({ name: 'image_url' })
+  imageUrl: string;
 
   @CreateDateColumn({ name: 'created_at' })
   createdAt: Date;
