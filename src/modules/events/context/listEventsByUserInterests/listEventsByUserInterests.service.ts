@@ -17,16 +17,13 @@ export class ListEventsByUserInterestsService {
 
   async execute(userId: string) {
     const activities = [];
-    console.log('USER ID');
-    console.log(userId);
+
     const userMood = await this.userMoodRepository.findOne({
       where: { userId },
       order: {
         createdAt: 'DESC',
       },
     });
-    console.log('USER MOOD');
-    console.log(userMood);
 
     const moodActivities = await this.moodActivityRepository.find({
       where: {
@@ -34,15 +31,9 @@ export class ListEventsByUserInterestsService {
       },
     });
 
-    console.log('MOOD ACTIVITIES');
-    console.log(moodActivities);
-
     moodActivities.forEach((moodActivity) => {
       activities.push(moodActivity.activityId);
     });
-
-    console.log('ACTIVITIES');
-    console.log(activities);
 
     const events = await this.repository.listEventsByUserInterests(
       userId,
