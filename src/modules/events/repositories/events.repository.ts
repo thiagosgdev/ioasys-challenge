@@ -13,8 +13,10 @@ export class EventRepo {
   async listEventsByUserInterests(
     userId: string,
     activityIds?: string[],
+    take?: number,
+    skiṕ?: number,
   ): Promise<Event[]> {
-    return await this.repository
+    const query = this.repository
       .createQueryBuilder('events')
       .leftJoinAndSelect('events.users', 'users')
       .leftJoinAndSelect('events.activities', 'activities')
@@ -25,13 +27,24 @@ export class EventRepo {
       .leftJoinAndSelect('eventAccessibilities.accessibilities', 'disabilities')
       .loadRelationCountAndMap('events.numParticipants', 'events.attendees')
       .andWhere('date > now()')
-      .andWhere(`userInterests.user_id = :userId`, { userId })
-      .orWhere('activities.id IN (:...ids)', { ids: activityIds })
-      .orderBy('is_promoted', 'DESC')
-      .getMany();
+      .andWhere(`userInterests.user_id = :userId`, { userId });
+
+    query.addOrderBy(`${query.alias}.is\Promoted`, 'DESC');
+
+    if (take) query.offset(take);
+    if (skiṕ) query.limit(skiṕ);
+    if (activityIds.length > 0)
+      query.orWhere('activities.id IN (:...ids)', { ids: activityIds });
+
+    return await query.getMany();
   }
 
-  async listEvents(eventId?: string): Promise<Event[]> {
+  async listEvents(
+    eventId?: string,
+    take?: number,
+    skip?: number,
+  ): Promise<Event[]> {
+    console.log(skip);
     const query = this.repository
       .createQueryBuilder('events')
       .leftJoinAndSelect('events.users', 'users')
@@ -40,10 +53,14 @@ export class EventRepo {
       .leftJoinAndSelect('events.eventAccessibilities', 'eventAccessibilities')
       .leftJoinAndSelect('eventAccessibilities.accessibilities', 'disabilities')
       .loadRelationCountAndMap('events.numParticipants', 'events.attendees')
-      .orderBy('is_promoted', 'DESC')
       .where('date > now()');
 
+    query.addOrderBy(`${query.alias}.is\Promoted`, 'DESC');
+
     if (eventId) query.andWhere({ id: eventId });
+
+    if (skip) query.skip(skip);
+    if (take) query.take(take);
 
     return await query.getMany();
   }

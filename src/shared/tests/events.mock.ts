@@ -11,6 +11,16 @@ export const mockRequest = {
   },
 };
 
+export const mockQueryParamsRequest = {
+  skip: '1',
+  take: '5',
+};
+
+export const mockListEventRequest = {
+  eventId: 'any_event_id',
+  skip: '1',
+  take: '5',
+};
 export const mockEvent: EventResponseDTO = {
   id: 'any_event_id',
   name: 'any_name',

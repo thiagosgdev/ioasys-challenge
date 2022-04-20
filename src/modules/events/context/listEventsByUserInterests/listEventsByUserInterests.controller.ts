@@ -1,5 +1,6 @@
-import { Controller, Get, HttpException, Request } from '@nestjs/common';
+import { Controller, Get, HttpException, Query, Request } from '@nestjs/common';
 import { ApiNotFoundResponse, ApiOkResponse, ApiTags } from '@nestjs/swagger';
+import { QueryFiltersRequest } from 'src/shared/dtos/shared/queryFilters.dto';
 
 import { ApiCommomDecorators } from '../../../../shared/decorators/globalDoc.decorator';
 import { EventAddressResponseDTO } from '../../../../shared/dtos/events/eventAddressResponse.dto';
@@ -22,10 +23,16 @@ export class ListEventsByUserInterestsController {
     description: 'No event was found',
   })
   @ApiCommomDecorators()
-  public async handle(@Request() req: RequestDTO) {
+  public async handle(
+    @Request() req: RequestDTO,
+    @Query() filters?: QueryFiltersRequest,
+  ) {
     try {
       const userId = req.user.userId;
-      return await this.listEventsByUserInterestsService.execute(userId);
+      return await this.listEventsByUserInterestsService.execute(
+        userId,
+        filters,
+      );
     } catch (error) {
       console.log(error);
       throw new HttpException(

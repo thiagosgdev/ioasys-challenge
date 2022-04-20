@@ -4,6 +4,8 @@ import { HttpException, InternalServerErrorException } from '@nestjs/common';
 
 import {
   mockEventList,
+  mockListEventRequest,
+  mockQueryParamsRequest,
   mockRequest,
 } from '../../../../shared/tests/events.mock';
 import { ListEventsByUserInterestsService } from './listEventsByUserInterests.service';
@@ -41,19 +43,19 @@ describe('List Events by User Interests Controller', () => {
   it('Should call ListEventsByUserInterestsService with the correct values', async () => {
     const executeSpy = jest.spyOn(service, 'execute');
     await controller.handle(mockRequest);
-    expect(executeSpy).toHaveBeenCalledWith('any_id');
+    expect(executeSpy).toHaveBeenCalledWith('any_id', undefined);
   });
 
   it('Should throw if ListEventsByUserInterestsService throws', async () => {
     jest
       .spyOn(service, 'execute')
       .mockRejectedValueOnce(new InternalServerErrorException());
-    const response = controller.handle(mockRequest);
+    const response = controller.handle(mockRequest, mockQueryParamsRequest);
     await expect(response).rejects.toBeInstanceOf(HttpException);
   });
 
   it('Should return a list of events on ListEventsByUserInterestsService success', async () => {
-    const events = await controller.handle(mockRequest);
+    const events = await controller.handle(mockRequest, mockQueryParamsRequest);
     expect(events.length).toBeGreaterThan(1);
   });
 });

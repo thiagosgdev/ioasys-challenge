@@ -1,7 +1,10 @@
 import MockDate from 'mockdate';
 import { Test, TestingModule } from '@nestjs/testing';
 
-import { mockEvent, mockEventList } from '../../../../shared/tests/events.mock';
+import {
+  mockEventList,
+  mockListEventRequest,
+} from '../../../../shared/tests/events.mock';
 import { ListEventsController } from './listEvents.controller';
 import { ListEventsService } from './listEvents.service';
 import { HttpException, InternalServerErrorException } from '@nestjs/common';
@@ -33,15 +36,15 @@ describe('List Events Controller', () => {
   });
   it('Should call ListEventsService with the correct values', async () => {
     const executeSpy = jest.spyOn(service, 'execute');
-    await controller.handle('event_id');
-    expect(executeSpy).toHaveBeenCalledWith('event_id');
+    await controller.handle(mockListEventRequest);
+    expect(executeSpy).toHaveBeenCalledWith(mockListEventRequest);
   });
 
   it('Should throw if ListEventsService throws', async () => {
     jest
       .spyOn(service, 'execute')
       .mockRejectedValueOnce(new InternalServerErrorException());
-    const response = controller.handle('event_id');
+    const response = controller.handle(mockListEventRequest);
     await expect(response).rejects.toBeInstanceOf(HttpException);
   });
 
