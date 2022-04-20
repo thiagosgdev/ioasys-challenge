@@ -19,6 +19,8 @@ import { UpdateEventController } from './context/updateEvent/updateEvent.control
 import { DeleteEventService } from './context/deleteEvent/deleteEvent.service';
 import { DeleteEventController } from './context/deleteEvent/deleteEvent.controller';
 import { moodsActivitiesProviders } from '../moodsActivities/moodsActivities.provider';
+import { ListOrganizerEventsService } from './context/listOrganizerEvents/listOrganizerEvents.service';
+import { ListOrganizerEventsController } from './context/listOrganizerEvents/listOrganizerEvents.controller';
 
 @Module({
   imports: [DatabaseModule, TypeOrmModule.forFeature([Event])],
@@ -34,6 +36,7 @@ import { moodsActivitiesProviders } from '../moodsActivities/moodsActivities.pro
     ListEventsByUserInterestsService,
     UpdateEventService,
     DeleteEventService,
+    ListOrganizerEventsService,
   ],
   controllers: [
     CreateEventController,
@@ -41,6 +44,7 @@ import { moodsActivitiesProviders } from '../moodsActivities/moodsActivities.pro
     ListEventsByUserInterestsController,
     UpdateEventController,
     DeleteEventController,
+    ListOrganizerEventsController,
   ],
 })
 export class EventModule {}

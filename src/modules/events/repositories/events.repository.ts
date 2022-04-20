@@ -64,4 +64,30 @@ export class EventRepo {
 
     return await query.getMany();
   }
+
+  async listOrganizerEvents(
+    userId: string,
+    take?: number,
+    skip?: number,
+  ): Promise<Event[]> {
+    console.log(userId);
+
+    const query = this.repository
+      .createQueryBuilder('events')
+      .leftJoinAndSelect('events.users', 'users')
+      .leftJoinAndSelect('events.activities', 'activities')
+      .leftJoinAndSelect('events.addresses', 'addresses')
+      .leftJoinAndSelect('events.eventAccessibilities', 'eventAccessibilities')
+      .leftJoinAndSelect('eventAccessibilities.accessibilities', 'disabilities')
+      .loadRelationCountAndMap('events.numParticipants', 'events.attendees')
+      .where('date > now()')
+      .andWhere('events.user_id = :userId', { userId });
+
+    query.addOrderBy(`${query.alias}.is\Promoted`, 'DESC');
+
+    if (skip) query.skip(skip);
+    if (take) query.take(take);
+
+    return await query.getMany();
+  }
 }
