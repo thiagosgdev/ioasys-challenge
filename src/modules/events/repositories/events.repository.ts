@@ -41,6 +41,7 @@ export class EventRepo {
 
   async listEvents(
     eventId?: string,
+    activityId?: string,
     take?: number,
     skip?: number,
   ): Promise<Event[]> {
@@ -58,6 +59,8 @@ export class EventRepo {
     query.addOrderBy(`${query.alias}.is\Promoted`, 'DESC');
 
     if (eventId) query.andWhere({ id: eventId });
+    else if (activityId)
+      query.andWhere('activities.id = :activityId', { activityId });
 
     if (skip) query.skip(skip);
     if (take) query.take(take);

@@ -1,7 +1,8 @@
-import { Controller, Get, HttpException } from '@nestjs/common';
+import { Controller, Get, HttpException, Query } from '@nestjs/common';
 import { ApiOkResponse, ApiTags } from '@nestjs/swagger';
 
 import { Public } from 'src/shared/decorators/public.decorator';
+import { QueryFiltersRequest } from 'src/shared/dtos/shared/queryFilters.dto';
 import { WellnessTipsResponseDTO } from 'src/shared/dtos/wellness/wellnessResponse';
 import { ApiCommomDecorators } from '../../../../shared/decorators/globalDoc.decorator';
 import { ListWellnessTipsService } from './listWellnessTips.service';
@@ -18,9 +19,9 @@ export class ListWellnessTipsController {
     type: WellnessTipsResponseDTO,
   })
   @ApiCommomDecorators()
-  public async handle() {
+  public async handle(@Query() data: QueryFiltersRequest) {
     try {
-      return await this.listWellnessTipsService.execute();
+      return await this.listWellnessTipsService.execute(data);
     } catch (error) {
       throw new HttpException(
         error.response.message,

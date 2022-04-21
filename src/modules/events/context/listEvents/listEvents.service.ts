@@ -11,12 +11,20 @@ export class ListEventsService {
     let take = 0;
     let skip = 0;
     let eventId = '';
+    let activityId = '';
+
     if (data) {
-      take = Number(data?.take);
-      skip = Number(data?.skip);
-      eventId = data?.eventId;
+      take = Number(data.take);
+      skip = Number(data.skip);
+      eventId = data.eventId;
+      activityId = data.activityId;
     }
 
-    return await this.eventRepository.listEvents(eventId, take, skip);
+    return await this.eventRepository.listEvents(
+      eventId,
+      activityId,
+      take,
+      skip,
+    );
   }
 }
