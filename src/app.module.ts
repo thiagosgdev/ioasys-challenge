@@ -40,7 +40,7 @@ import { WellnessTipsModule } from './modules/wellnessTips/wellnessTips.module';
     RouterModule.register(routerConfig),
     ThrottlerModule.forRoot({
       ttl: 60,
-      limit: 10,
+      limit: 20,
     }),
     CacheModule.register({
       store: redisStore,
