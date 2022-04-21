@@ -71,25 +71,28 @@ describe('List Events by User Interests Service', () => {
     expect(service).toBeDefined();
   });
   it('Should return the list of events on execute success', async () => {
-    const response = await service.execute('any_user_id');
+    const response = await service.execute({
+      userId: 'any_id',
+      role: 'any_role',
+    });
     expect(response.length).toBeGreaterThan(1);
   });
-  it('Should throw a NotFoundException if no event is found', async () => {
-    jest
-      .spyOn(mockEventRepo, 'listEventsByUserInterests')
-      .mockReturnValueOnce([]);
-    const response = service.execute('any_user_id');
-    await expect(response).rejects.toBeInstanceOf(NotFoundException);
-  });
+
   it('Should call UserMoodRepository findOne()', async () => {
     const findOneSpy = jest.spyOn(mockUserMoodRepository, 'findOne');
-    await service.execute('any_user_id');
+    await service.execute({
+      userId: 'any_id',
+      role: 'premium',
+    });
     expect(findOneSpy).toHaveBeenCalled();
   });
 
   it('Should call MoodActivity find()', async () => {
     const findSpy = jest.spyOn(mockMoodActivityRepository, 'find');
-    await service.execute('any_user_id');
+    await service.execute({
+      userId: 'any_id',
+      role: 'premium',
+    });
     expect(findSpy).toHaveBeenCalled();
   });
 });

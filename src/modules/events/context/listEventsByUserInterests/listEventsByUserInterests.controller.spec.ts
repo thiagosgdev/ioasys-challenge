@@ -43,7 +43,13 @@ describe('List Events by User Interests Controller', () => {
   it('Should call ListEventsByUserInterestsService with the correct values', async () => {
     const executeSpy = jest.spyOn(service, 'execute');
     await controller.handle(mockRequest);
-    expect(executeSpy).toHaveBeenCalledWith('any_id', undefined);
+    expect(executeSpy).toHaveBeenCalledWith(
+      {
+        userId: 'any_id',
+        role: 'any_role',
+      },
+      undefined,
+    );
   });
 
   it('Should throw if ListEventsByUserInterestsService throws', async () => {
