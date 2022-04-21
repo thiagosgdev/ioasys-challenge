@@ -18,8 +18,8 @@ export class CreateUserInterestController {
   })
   @ApiCommomDecorators()
   public async handle(
-    @Body() data: UserInterestRequestDTO,
     @Request() req: RequestDTO,
+    @Body() data: UserInterestRequestDTO,
   ) {
     try {
       const userId = req.user.userId;
