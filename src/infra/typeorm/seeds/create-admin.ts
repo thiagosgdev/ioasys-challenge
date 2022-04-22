@@ -27,7 +27,7 @@ const createAdmin = async () => {
   password = await hash('12345678', 8);
   await client.query(
     `
-    INSERT INTO users (id, name, password, email, about_me, city, is_admin, is_premium, phone, emergency_name, emergency_phone) VALUES ('3dd96c63-5892-46ab-8830-e1231d32c6d6', 'Jon Doe', '${password}', 'jon_doe@test.com', 'Teste teste', 'Test city', true, false,'(88)88888-8888', null, null);;
+    INSERT INTO users (id, name, password, email, about_me, city, is_admin, is_premium, phone, emergency_name, emergency_phone) VALUES ('3dd96c63-5892-46ab-8830-e1231d32c6d6', 'Luma Silva', '${password}', 'luma.silva123987@gmail.com', 'Estudante de Engenharia de Produção, gosto de fazer atividades físicas e cursos que estimulam a criatividade.', 'São Paulo', false, true,'(12)34567-8901', null, null);;
     `,
   );
   password = await hash('12345678', 8);
