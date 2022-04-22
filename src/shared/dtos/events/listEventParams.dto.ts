@@ -22,6 +22,14 @@ export class ListEventsParamsRequest {
   @IsString()
   @ApiProperty({
     required: false,
+    example: 'true',
+  })
+  isOnline?: string;
+
+  @IsOptional()
+  @IsString()
+  @ApiProperty({
+    required: false,
     example: '5',
   })
   skip?: string;

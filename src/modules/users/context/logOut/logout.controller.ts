@@ -5,8 +5,10 @@ import {
   HttpException,
   HttpStatus,
   Post,
+  Request,
 } from '@nestjs/common';
 import { ApiTags } from '@nestjs/swagger';
+import { RequestDTO } from 'src/shared/dtos/shared/request.dto';
 
 import { ApiCommomDecorators } from '../../../../shared/decorators/globalDoc.decorator';
 import { LogoutService } from './logout.service';
@@ -19,10 +21,13 @@ export class LogoutController {
   @Post()
   @HttpCode(HttpStatus.NO_CONTENT)
   @ApiCommomDecorators()
-  public async handle(@Headers('Authorization') auth: string) {
+  public async handle(
+    @Headers('Authorization') auth: string,
+    @Request() req: RequestDTO,
+  ) {
     try {
       const token = auth.split(' ')[1];
-      await this.logoutService.logout(token);
+      await this.logoutService.logout(token, req.user.userId);
     } catch (error) {
       throw new HttpException(
         error.response.message,

@@ -42,10 +42,10 @@ export class EventRepo {
   async listEvents(
     eventId?: string,
     activityId?: string,
+    isOnline?: string,
     take?: number,
     skip?: number,
   ): Promise<Event[]> {
-    console.log(skip);
     const query = this.repository
       .createQueryBuilder('events')
       .leftJoinAndSelect('events.users', 'users')
@@ -53,7 +53,12 @@ export class EventRepo {
       .leftJoinAndSelect('events.addresses', 'addresses')
       .leftJoinAndSelect('events.eventAccessibilities', 'eventAccessibilities')
       .leftJoinAndSelect('eventAccessibilities.accessibilities', 'disabilities')
-      .loadRelationCountAndMap('events.numParticipants', 'events.attendees')
+      .loadRelationCountAndMap(
+        'events.numParticipants',
+        'events.attendees',
+        'att',
+        (qb) => qb.andWhere("att.status = 'CONFIRMED'"),
+      )
       .where('date > now()');
 
     query.addOrderBy(`${query.alias}.is\Promoted`, 'DESC');
@@ -61,6 +66,9 @@ export class EventRepo {
     if (eventId) query.andWhere({ id: eventId });
     else if (activityId)
       query.andWhere('activities.id = :activityId', { activityId });
+
+    if (typeof isOnline === 'string')
+      query.andWhere('events.is_online = :isOnline', { isOnline });
 
     if (skip) query.skip(skip);
     if (take) query.take(take);

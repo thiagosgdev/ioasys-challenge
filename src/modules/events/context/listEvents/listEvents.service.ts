@@ -8,21 +8,16 @@ import { EventRepo } from '../../repositories/events.repository';
 export class ListEventsService {
   constructor(private eventRepository: EventRepo) {}
   async execute(data?: ListEventsParamsRequest): Promise<Event[]> {
-    let take = 0;
-    let skip = 0;
-    let eventId = '';
-    let activityId = '';
-
-    if (data) {
-      take = Number(data.take);
-      skip = Number(data.skip);
-      eventId = data.eventId;
-      activityId = data.activityId;
-    }
+    const take = Number(data?.take) ? Number(data.take) : null;
+    const skip = Number(data?.skip) ? Number(data.skip) : 0;
+    const eventId = data?.eventId ? data.eventId : '';
+    const activityId = data?.activityId ? data.activityId : '';
+    const isOnline = data?.isOnline ? data.isOnline : null;
 
     return await this.eventRepository.listEvents(
       eventId,
       activityId,
+      isOnline,
       take,
       skip,
     );

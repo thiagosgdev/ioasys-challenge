@@ -56,7 +56,13 @@ export class ListEventsByUserInterestsService {
       skip,
     );
     if (events.length < 1)
-      return await this.repository.listEvents(undefined, undefined, take, skip);
+      return await this.repository.listEvents(
+        undefined,
+        undefined,
+        undefined,
+        take,
+        skip,
+      );
     return events;
   }
 }

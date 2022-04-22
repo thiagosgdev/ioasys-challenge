@@ -25,7 +25,6 @@ export class ListEventsController {
   @ApiCommomDecorators()
   public async handle(@Query() data?: ListEventsParamsRequest) {
     try {
-      console.log('DATA: ' + data);
       return await this.listEventsService.execute(data);
     } catch (error) {
       console.log(error);
