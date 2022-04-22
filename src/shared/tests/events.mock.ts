@@ -111,6 +111,7 @@ export const mockUpdatedEventResponse: EventAddressResponseDTO = {
     maxParticipants: 50,
     price: 0,
     startTime: '18:30',
+    endTime: '20:00',
     userId: 'any_id',
     userIdentity: 'any_identity',
     url: null,

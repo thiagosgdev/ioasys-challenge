@@ -24,8 +24,10 @@ export class CreateUserInterestController {
     @Body() data: UserInterestRequestDTO,
   ) {
     try {
-      const userId = req.user.userId;
-      return await this.createUserInterestService.execute(userId, data);
+      return await this.createUserInterestService.execute(
+        req.user.userId,
+        data,
+      );
     } catch (error) {
       throw new HttpException(
         error.response.message,

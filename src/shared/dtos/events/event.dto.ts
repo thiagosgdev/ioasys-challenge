@@ -43,9 +43,14 @@ export class EventResponseDTO {
   maxParticipants: number;
 
   @ApiResponseProperty({
-    example: '1500',
+    example: '15:00',
   })
   startTime: string;
+
+  @ApiResponseProperty({
+    example: '18:00',
+  })
+  endTime?: string;
 
   @ApiResponseProperty({
     example: 'a7dc7c2b-4a7a-450e-b574-6b6f7ff5e14b',

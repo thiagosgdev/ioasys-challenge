@@ -1,5 +1,5 @@
 import { Controller, Get, HttpException, Query, Request } from '@nestjs/common';
-import { ApiOkResponse, ApiTags } from '@nestjs/swagger';
+import { ApiBadRequestResponse, ApiOkResponse, ApiTags } from '@nestjs/swagger';
 
 import { ListAttendeeEventsByUserResponseDTO } from '../../../../shared/dtos/attendees/listAttendeeEventsByUserResponse.dto';
 import { ApiCommomDecorators } from '../../../../shared/decorators/globalDoc.decorator';
@@ -19,6 +19,9 @@ export class ListAttendeeEventsByUserIdController {
     description:
       'A list of all user events will be returned with the status passed',
     type: [ListAttendeeEventsByUserResponseDTO],
+  })
+  @ApiBadRequestResponse({
+    description: 'Returns a message if a invalid field is provided.',
   })
   @ApiCommomDecorators()
   public async handle(

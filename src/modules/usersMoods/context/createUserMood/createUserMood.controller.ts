@@ -23,8 +23,7 @@ export class CreateUserMoodController {
     @Request() req: RequestDTO,
   ) {
     try {
-      const userId = req.user.userId;
-      return await this.createUserMoodService.execute(userId, data);
+      return await this.createUserMoodService.execute(req.user.userId, data);
     } catch (error) {
       throw new HttpException(
         error.response.message,

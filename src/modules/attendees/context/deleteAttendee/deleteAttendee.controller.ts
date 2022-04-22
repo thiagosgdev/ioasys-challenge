@@ -41,8 +41,7 @@ export class DeleteAttendeeController {
     @Query('eventId') eventId: string,
   ) {
     try {
-      const userId = req.user.userId;
-      return await this.deleteAttendeeService.execute(userId, eventId);
+      return await this.deleteAttendeeService.execute(req.user.userId, eventId);
     } catch (error) {
       throw new HttpException(
         error.response.message,
