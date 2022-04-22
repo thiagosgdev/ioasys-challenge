@@ -1,34 +1,59 @@
 import {
   Body,
   Controller,
-  Get,
   HttpCode,
+  HttpException,
   HttpStatus,
-  Res,
+  Post,
 } from '@nestjs/common';
-import { instanceToInstance } from 'class-transformer';
-import { Response } from 'express';
+import {
+  ApiBadRequestResponse,
+  ApiNotFoundResponse,
+  ApiOkResponse,
+  ApiTags,
+  ApiTooManyRequestsResponse,
+  ApiUnauthorizedResponse,
+} from '@nestjs/swagger';
 
-import { SigninRequestDTO } from 'src/shared/dtos/users/signinRequest.dto';
+import { Public } from '../../../../shared/decorators/public.decorator';
+import { SigninRequestDTO } from '../../../../shared/dtos/users/signinRequest.dto';
 import { SigninService } from './signin.service';
 
-@Controller('/signin')
+@ApiTags('users')
+@Controller()
 export class SigninController {
   constructor(private signinService: SigninService) {}
 
-  @Get()
+  @Public()
+  @Post('/signin')
   @HttpCode(HttpStatus.OK)
-  public async handle(
-    @Body() data: SigninRequestDTO,
-    @Res() res: Response,
-  ): Promise<Response> {
+  @ApiOkResponse({
+    description: 'A token and refresh token will be returned.',
+  })
+  @ApiUnauthorizedResponse({
+    description:
+      'This will be returned when has a user credentials validation error',
+  })
+  @ApiNotFoundResponse({
+    description:
+      'This will be returned when no user is found with the email provided',
+  })
+  @ApiBadRequestResponse({
+    description:
+      'This will be returned when has validation error or no user is found',
+  })
+  @ApiTooManyRequestsResponse({
+    description:
+      'Too many request. Please wait a while before making more requests!',
+  })
+  public async handle(@Body() data: SigninRequestDTO) {
     try {
-      const tokens = await this.signinService.login(data);
-      if (tokens) {
-        return res.status(200).send(instanceToInstance(tokens));
-      }
+      return await this.signinService.login(data);
     } catch (error) {
-      return res.status(500).send({ message: error.message });
+      throw new HttpException(
+        error.response.message,
+        error.response.statusCode,
+      );
     }
   }
 }
