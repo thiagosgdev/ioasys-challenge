@@ -3,6 +3,7 @@ import {
   ApiBadRequestResponse,
   ApiConflictResponse,
   ApiCreatedResponse,
+  ApiForbiddenResponse,
   ApiTags,
 } from '@nestjs/swagger';
 
@@ -27,6 +28,9 @@ export class CreateAttendeeController {
   })
   @ApiConflictResponse({
     description: 'The user already is registered for this event',
+  })
+  @ApiForbiddenResponse({
+    description: 'This event has reached its maximum capacity!',
   })
   @ApiCommomDecorators()
   public async handle(

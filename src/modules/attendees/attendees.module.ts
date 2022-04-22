@@ -15,11 +15,13 @@ import { UpdateAttendeeService } from './context/updateAttendee/updateAttendee.s
 import { UpdateAttendeeController } from './context/updateAttendee/updateAttendee.controller';
 import { DeleteAttendeeService } from './context/deleteAttendee/deleteAttendee.service';
 import { DeleteAttendeeController } from './context/deleteAttendee/deleteAttendee.controller';
+import { eventsProviders } from '../events/events.provider';
 
 @Module({
   imports: [DatabaseModule, TypeOrmModule.forFeature([Attendee])],
   providers: [
     ...attendeesProviders,
+    ...eventsProviders,
     AttendeeRepo,
     CreateAttendeeService,
     ListAttendeesService,
