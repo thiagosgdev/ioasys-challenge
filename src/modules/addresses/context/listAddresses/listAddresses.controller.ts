@@ -1,6 +1,7 @@
 import { Controller, Get, HttpException } from '@nestjs/common';
 import { ApiOkResponse, ApiTags } from '@nestjs/swagger';
 
+import { AddressResponseDTO } from '../../../../shared/dtos/address/address.dto';
 import { ApiCommomDecorators } from '../../../../shared/decorators/globalDoc.decorator';
 import { ListAddressesService } from './listAddressess.service';
 
@@ -12,6 +13,7 @@ export class ListAddressesController {
   @Get('/list')
   @ApiOkResponse({
     description: 'A list of addresses will be returned',
+    type: [AddressResponseDTO],
   })
   @ApiCommomDecorators()
   public async handle() {

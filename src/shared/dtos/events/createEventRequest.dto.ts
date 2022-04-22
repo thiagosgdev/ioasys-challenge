@@ -12,6 +12,8 @@ export class CreateEventRequestDTO {
 
   @IsObject()
   @IsOptional()
-  @ApiProperty()
+  @ApiProperty({
+    required: false,
+  })
   address?: CreateAddressRequestDTO;
 }

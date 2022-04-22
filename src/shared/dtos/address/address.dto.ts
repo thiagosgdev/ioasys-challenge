@@ -7,7 +7,7 @@ export class AddressResponseDTO {
   id: string;
 
   @ApiResponseProperty({
-    example: 'Avenida Paulista',
+    example: 'Street Jon Doe',
   })
   street: string;
 

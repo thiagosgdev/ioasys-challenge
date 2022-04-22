@@ -1,9 +1,9 @@
 import { Controller, Get, HttpException, Query } from '@nestjs/common';
 import { ApiOkResponse, ApiTags } from '@nestjs/swagger';
 
-import { Public } from 'src/shared/decorators/public.decorator';
-import { QueryFiltersRequest } from 'src/shared/dtos/shared/queryFilters.dto';
-import { WellnessTipsResponseDTO } from 'src/shared/dtos/wellness/wellnessResponse';
+import { Public } from '../../../../shared/decorators/public.decorator';
+import { QueryFiltersRequest } from '../../../../shared/dtos/shared/queryFilters.dto';
+import { WellnessTipsResponseDTO } from '../../../../shared/dtos/wellness/wellnessResponse';
 import { ApiCommomDecorators } from '../../../../shared/decorators/globalDoc.decorator';
 import { ListWellnessTipsService } from './listWellnessTips.service';
 

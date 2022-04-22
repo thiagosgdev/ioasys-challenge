@@ -13,7 +13,7 @@ export class ListUserInterestsController {
   @Get('/list/all')
   @ApiOkResponse({
     description: 'A list of the user interests will be returned',
-    type: UserInterestResponseDTO,
+    type: [UserInterestResponseDTO],
   })
   @ApiCommomDecorators()
   public async handle() {

@@ -5,7 +5,7 @@ export class CreateAddressRequestDTO {
   @IsString()
   @IsOptional()
   @ApiProperty({
-    example: 'Avenida Paulista',
+    example: 'Street Jon Doe',
   })
   street: string;
 
@@ -19,7 +19,7 @@ export class CreateAddressRequestDTO {
   @IsString()
   @IsNotEmpty()
   @ApiProperty({
-    example: 'São Paulo',
+    example: 'São Sebastião',
   })
   city: string;
 

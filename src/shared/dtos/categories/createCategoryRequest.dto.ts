@@ -4,11 +4,17 @@ import { IsBoolean, IsNotEmpty, IsString } from 'class-validator';
 export class CreateCategoryRequestDTO {
   @IsString()
   @IsNotEmpty()
-  @ApiProperty()
+  @ApiProperty({
+    required: true,
+    example: 'Esportes',
+  })
   name: string;
 
   @IsBoolean()
   @IsNotEmpty()
-  @ApiProperty()
+  @ApiProperty({
+    required: true,
+    example: true,
+  })
   active: boolean;
 }

@@ -13,7 +13,7 @@ export class ListAttendeesController {
   @Get('/all')
   @ApiOkResponse({
     description: 'A list of all attendees will be returned',
-    type: AttendeeResponse,
+    type: [AttendeeResponse],
   })
   @ApiCommomDecorators()
   public async handle() {

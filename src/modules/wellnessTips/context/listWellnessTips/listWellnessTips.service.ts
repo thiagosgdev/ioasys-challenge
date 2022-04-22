@@ -1,7 +1,8 @@
 import { Inject } from '@nestjs/common';
-import { QueryFiltersRequest } from 'src/shared/dtos/shared/queryFilters.dto';
-import { WellnessTip } from 'src/shared/entities/wellnessTips.entity';
 import { Repository } from 'typeorm';
+
+import { QueryFiltersRequest } from '../../../../shared/dtos/shared/queryFilters.dto';
+import { WellnessTip } from '../../../../shared/entities/wellnessTips.entity';
 
 export class ListWellnessTipsService {
   constructor(

@@ -1,21 +1,15 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { JwtService } from '@nestjs/jwt';
 import MockDate from 'mockdate';
+import { BadRequestException, ConflictException } from '@nestjs/common';
 
 import { JwtProvider } from '../../../../shared/providers/EncryptProvider/jwt.provider';
-import { SignUpService } from './signUp.service';
 import {
   mockSignUpRequestDTO,
   mockUser,
 } from '../../../../shared/tests/users.mock';
-import { BadRequestException, ConflictException } from '@nestjs/common';
-import { UserDTO } from 'src/shared/dtos/users/user.dto';
-
-const mockUserLogedResponse = {
-  token: 'any_token',
-  refresh_token: 'any_refresh_token',
-  user: mockUser,
-};
+import { UserDTO } from '../../../../shared/dtos/users/user.dto';
+import { SignUpService } from './signUp.service';
 
 const mockUserRepository = {
   findOne: (): Promise<UserDTO | null> => {

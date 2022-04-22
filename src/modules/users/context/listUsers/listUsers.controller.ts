@@ -13,7 +13,7 @@ export class ListUsersController {
   @Get('/list')
   @ApiOkResponse({
     description: 'A list of users will be returned',
-    type: UserDTO,
+    type: [UserDTO],
   })
   @ApiCommomDecorators()
   public async handle() {

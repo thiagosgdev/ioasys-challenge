@@ -5,7 +5,7 @@ export class AttendeeStatusDTO {
   @IsEnum(['CONFIRMED', 'SAVED', 'saved', 'confirmed'])
   @IsNotEmpty()
   @ApiProperty({
-    examples: ['CONFIRMED', 'SAVED'],
+    example: 'CONFIRMED',
   })
   status: string;
 }

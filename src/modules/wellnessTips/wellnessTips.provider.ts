@@ -1,6 +1,6 @@
 import { Connection } from 'typeorm';
 
-import { WellnessTip } from 'src/shared/entities/wellnessTips.entity';
+import { WellnessTip } from '../../shared/entities/wellnessTips.entity';
 
 export const wellnessTipsProviders = [
   {

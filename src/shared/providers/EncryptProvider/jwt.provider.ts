@@ -1,6 +1,7 @@
 import { UnauthorizedException } from '@nestjs/common';
 import { sign, verify } from 'jsonwebtoken';
-import envConfig from 'src/configs/env';
+
+import envConfig from '../../../configs/env';
 import { Decrypter } from './protocols/decrypter';
 import { Encrypter } from './protocols/encrypter';
 import { EncrypterRefresh } from './protocols/encrypterExpirationDate';

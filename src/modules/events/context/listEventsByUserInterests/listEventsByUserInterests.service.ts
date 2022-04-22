@@ -2,10 +2,10 @@ import { Inject, Injectable } from '@nestjs/common';
 import { Repository } from 'typeorm';
 
 import { EventRepo } from '../../repositories/events.repository';
-import { UserMood } from 'src/shared/entities/userMoods.entity';
-import { MoodActivity } from 'src/shared/entities/moodsActivities.entity';
-import { QueryFiltersRequest } from 'src/shared/dtos/shared/queryFilters.dto';
-import { RequestUserObject } from 'src/shared/dtos/shared/request.dto';
+import { UserMood } from '../../../../shared/entities/userMoods.entity';
+import { MoodActivity } from '../../../../shared/entities/moodsActivities.entity';
+import { QueryFiltersRequest } from '../../../../shared/dtos/shared/queryFilters.dto';
+import { RequestUserObject } from '../../../../shared/dtos/shared/request.dto';
 
 @Injectable()
 export class ListEventsByUserInterestsService {
@@ -29,7 +29,6 @@ export class ListEventsByUserInterestsService {
 
     const activities = [];
     if (role === 'premium') {
-      console.log('here');
       const userMood = await this.userMoodRepository.findOne({
         where: { userId },
         order: {

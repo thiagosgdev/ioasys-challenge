@@ -11,7 +11,7 @@ import { ListUserMoodsService } from './listUserMoods.service';
 export class ListUserMoodsController {
   constructor(private listUserMoodsService: ListUserMoodsService) {}
 
-  @Get('/list/:userId')
+  @Get('/list')
   @ApiOkResponse({
     description: 'A list of the user moods will be returned',
     type: UserMoodResponseDTO,
@@ -19,8 +19,7 @@ export class ListUserMoodsController {
   @ApiCommomDecorators()
   public async handle(@Request() req: RequestDTO) {
     try {
-      const userId = req.user.userId;
-      return await this.listUserMoodsService.execute(userId);
+      return await this.listUserMoodsService.execute(req.user.userId);
     } catch (error) {
       throw new HttpException(
         error.response.message,

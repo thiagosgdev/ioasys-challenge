@@ -15,6 +15,7 @@ import {
 } from '@nestjs/swagger';
 
 import { UserDTO } from '../../../../shared/dtos/users/user.dto';
+import { RequestDTO } from '../../../../shared/dtos/shared/request.dto';
 import { UpdateUserDTO } from '../../../../shared/dtos/users/updateUser.dto';
 import { ApiCommomDecorators } from '../../../../shared/decorators/globalDoc.decorator';
 import { UpdateUserService } from './updateUser.service';
@@ -36,13 +37,9 @@ export class UpdateUserController {
     description: 'No user found!',
   })
   @ApiCommomDecorators()
-  public async handle(
-    @Body() updateUserRequestBody: UpdateUserDTO,
-    @Request() req,
-  ) {
+  public async handle(@Body() data: UpdateUserDTO, @Request() req: RequestDTO) {
     try {
-      const userId = req.user.userId;
-      return await this.updateUserService.update(userId, updateUserRequestBody);
+      return await this.updateUserService.update(req.user.userId, data);
     } catch (error) {
       throw new HttpException(
         error.response.message,

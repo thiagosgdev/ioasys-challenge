@@ -16,13 +16,14 @@ export class ListUserDisabilitiesByUserIdController {
   @Get('/list')
   @ApiOkResponse({
     description: 'A list of the user disabilities will be returned',
-    type: UserDisabilitieResponseDTO,
+    type: [UserDisabilitieResponseDTO],
   })
   @ApiCommomDecorators()
   public async handle(@Request() req: RequestDTO) {
     try {
-      const userId = req.user.userId;
-      return await this.listUserDisabilitiesByUserIdService.execute(userId);
+      return await this.listUserDisabilitiesByUserIdService.execute(
+        req.user.userId,
+      );
     } catch (error) {
       throw new HttpException(
         error.response.message,

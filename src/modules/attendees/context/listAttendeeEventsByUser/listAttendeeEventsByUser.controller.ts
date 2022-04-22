@@ -3,9 +3,9 @@ import { ApiOkResponse, ApiTags } from '@nestjs/swagger';
 
 import { ListAttendeeEventsByUserResponseDTO } from '../../../../shared/dtos/attendees/listAttendeeEventsByUserResponse.dto';
 import { ApiCommomDecorators } from '../../../../shared/decorators/globalDoc.decorator';
+import { AttendeeStatusDTO } from '../../../../shared/dtos/attendees/attendeeStatus.dto';
 import { RequestDTO } from '../../../../shared/dtos/shared/request.dto';
 import { ListAttendeeEventsByUserIdService } from './listAttendeeEventsByUser.service';
-import { AttendeeStatusDTO } from 'src/shared/dtos/attendees/attendeeStatus.dto';
 
 @ApiTags('attendees')
 @Controller('/list')
@@ -18,7 +18,7 @@ export class ListAttendeeEventsByUserIdController {
   @ApiOkResponse({
     description:
       'A list of all user events will be returned with the status passed',
-    type: ListAttendeeEventsByUserResponseDTO,
+    type: [ListAttendeeEventsByUserResponseDTO],
   })
   @ApiCommomDecorators()
   public async handle(

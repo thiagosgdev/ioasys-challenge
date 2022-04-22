@@ -1,7 +1,7 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import MockDate from 'mockdate';
-import { mockAddressRequest } from 'src/shared/tests/address.mock';
 
+import { mockAddressRequest } from '../../../../shared/tests/address.mock';
 import { AddressResponseDTO } from '../../../../shared/dtos/address/address.dto';
 import {
   mockEvent,

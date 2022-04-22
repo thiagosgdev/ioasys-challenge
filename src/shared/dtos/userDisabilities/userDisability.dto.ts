@@ -14,7 +14,7 @@ export class UserDisabilitieResponseDTO {
   @ApiProperty({
     example: 'bd7a7819-b47f-4351-b9c4-ab46c4abc57d',
   })
-  activityId: boolean;
+  disabilityId: boolean;
 
   @ApiProperty()
   createdAt: Date;

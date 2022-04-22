@@ -4,6 +4,7 @@ import { ApiBearerAuth, ApiCreatedResponse, ApiTags } from '@nestjs/swagger';
 import { RequestDTO } from '../../../../shared/dtos/shared/request.dto';
 import { ApiCommomDecorators } from '../../../../shared/decorators/globalDoc.decorator';
 import { UserInterestRequestDTO } from '../../../../shared/dtos/userInterest/userInterestRequest.dto';
+import { UserInterestResponseDTO } from '../../../../shared/dtos/userInterest/userInterest.dto';
 import { CreateUserInterestService } from './createUserInterest.service';
 
 @ApiTags('users')
@@ -15,6 +16,7 @@ export class CreateUserInterestController {
   @ApiBearerAuth()
   @ApiCreatedResponse({
     description: 'The user interest created will be returned',
+    type: UserInterestResponseDTO,
   })
   @ApiCommomDecorators()
   public async handle(

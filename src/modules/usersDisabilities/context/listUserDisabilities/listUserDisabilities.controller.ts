@@ -14,8 +14,8 @@ export class ListUserDisabilitiesController {
 
   @Get('/list/all')
   @ApiOkResponse({
-    description: 'A list of the user disabilities will be returned',
-    type: UserDisabilitieResponseDTO,
+    description: 'A list of users disabilities will be returned',
+    type: [UserDisabilitieResponseDTO],
   })
   @ApiCommomDecorators()
   public async handle() {

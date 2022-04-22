@@ -1,11 +1,11 @@
 import { Controller, Get, HttpException, Query, Request } from '@nestjs/common';
-import { ApiOkResponse, ApiQuery, ApiTags } from '@nestjs/swagger';
+import { ApiOkResponse, ApiTags } from '@nestjs/swagger';
 
 import { ApiCommomDecorators } from '../../../../shared/decorators/globalDoc.decorator';
+import { QueryFiltersRequest } from '../../../../shared/dtos/shared/queryFilters.dto';
 import { EventResponseDTO } from '../../../../shared/dtos/events/event.dto';
-import { RequestDTO } from 'src/shared/dtos/shared/request.dto';
+import { RequestDTO } from '../../../../shared/dtos/shared/request.dto';
 import { ListOrganizerEventsService } from './listOrganizerEvents.service';
-import { QueryFiltersRequest } from 'src/shared/dtos/shared/queryFilters.dto';
 
 @ApiTags('events')
 @Controller('/organizer')
@@ -15,7 +15,7 @@ export class ListOrganizerEventsController {
   @Get('/list')
   @ApiOkResponse({
     description: 'A list of the organizer events will be returned',
-    type: EventResponseDTO,
+    type: [EventResponseDTO],
   })
   @ApiCommomDecorators()
   public async handle(

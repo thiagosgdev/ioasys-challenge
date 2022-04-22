@@ -16,8 +16,6 @@ import { ListEventsByUserInterestsService } from './context/listEventsByUserInte
 import { EventRepo } from './repositories/events.repository';
 import { UpdateEventService } from './context/updateEvent/updateEvent.service';
 import { UpdateEventController } from './context/updateEvent/updateEvent.controller';
-import { DeleteEventService } from './context/deleteEvent/deleteEvent.service';
-import { DeleteEventController } from './context/deleteEvent/deleteEvent.controller';
 import { moodsActivitiesProviders } from '../moodsActivities/moodsActivities.provider';
 import { ListOrganizerEventsService } from './context/listOrganizerEvents/listOrganizerEvents.service';
 import { ListOrganizerEventsController } from './context/listOrganizerEvents/listOrganizerEvents.controller';
@@ -35,7 +33,6 @@ import { ListOrganizerEventsController } from './context/listOrganizerEvents/lis
     ListEventsService,
     ListEventsByUserInterestsService,
     UpdateEventService,
-    DeleteEventService,
     ListOrganizerEventsService,
   ],
   controllers: [
@@ -43,7 +40,6 @@ import { ListOrganizerEventsController } from './context/listOrganizerEvents/lis
     ListEventsController,
     ListEventsByUserInterestsController,
     UpdateEventController,
-    DeleteEventController,
     ListOrganizerEventsController,
   ],
 })

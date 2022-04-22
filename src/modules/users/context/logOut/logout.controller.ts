@@ -8,8 +8,8 @@ import {
   Request,
 } from '@nestjs/common';
 import { ApiTags } from '@nestjs/swagger';
-import { RequestDTO } from 'src/shared/dtos/shared/request.dto';
 
+import { RequestDTO } from '../../../../shared/dtos/shared/request.dto';
 import { ApiCommomDecorators } from '../../../../shared/decorators/globalDoc.decorator';
 import { LogoutService } from './logout.service';
 

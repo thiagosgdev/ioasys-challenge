@@ -34,8 +34,7 @@ export class CreateAttendeeController {
     @Body() data: AttendeeRequestDTO,
   ) {
     try {
-      const userId = req.user.userId;
-      return await this.createAttendeeService.execute(userId, data);
+      return await this.createAttendeeService.execute(req.user.userId, data);
     } catch (error) {
       throw new HttpException(
         error.response.message,

@@ -11,40 +11,61 @@ import {
 export class SignUpRequestDTO {
   @IsNotEmpty()
   @IsString()
-  @ApiProperty()
+  @ApiProperty({
+    required: true,
+    example: 'Jon Doe',
+  })
   name: string;
 
   @IsNotEmpty()
   @IsEmail()
-  @ApiProperty()
+  @ApiProperty({
+    required: true,
+    example: 'jon@test.com',
+  })
   email: string;
 
   @IsNotEmpty()
   @IsString()
   @MinLength(6)
   @MaxLength(20)
-  @ApiProperty()
+  @ApiProperty({
+    required: true,
+    example: 'randomPassword',
+  })
   password: string;
 
   @IsNotEmpty()
   @IsString()
   @MinLength(6)
   @MaxLength(20)
-  @ApiProperty()
+  @ApiProperty({
+    required: true,
+    example: 'randomPassword',
+  })
   passwordConfirmation: string;
 
   @IsOptional()
   @IsString()
-  @ApiProperty()
+  @ApiProperty({
+    required: false,
+    example: '(11)11111-1111',
+  })
   phone?: string;
 
   @IsOptional()
   @IsString()
-  @ApiProperty()
+  @ApiProperty({
+    required: false,
+    example: 'Mary Ann',
+  })
   emergencyName?: string;
 
   @IsOptional()
   @IsString()
-  @ApiProperty()
+  @ApiProperty({
+    required: false,
+    example: '(11)11111-1111',
+  })
   emergencyPhone?: string;
 }

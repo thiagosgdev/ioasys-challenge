@@ -7,12 +7,12 @@ export class WellnessTipsResponseDTO {
   id: string;
 
   @ApiResponseProperty({
-    example: 'Chá para dormir melhor',
+    example: 'Any title',
   })
   title: string;
 
   @ApiResponseProperty({
-    example: 'Iniciando o ritual para uma boa noite.',
+    example: 'Any description',
   })
   description: string;
 

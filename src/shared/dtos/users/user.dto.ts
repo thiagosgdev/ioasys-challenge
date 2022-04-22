@@ -7,50 +7,75 @@ import { UserInterest } from '../../entities/userInterests.entity';
 import { UserMood } from '../../entities/userMoods.entity';
 
 export class UserDTO {
-  @ApiProperty()
+  @ApiProperty({
+    example: '',
+  })
   id: string;
 
-  @ApiProperty()
+  @ApiProperty({
+    example: 'Jon Doe',
+  })
   name: string;
 
-  @ApiProperty()
+  @ApiProperty({
+    example: 'jon@test.com',
+  })
   email: string;
 
-  @ApiProperty()
+  @ApiProperty({
+    example: 'Random fact about me',
+  })
   aboutMe: string;
 
-  @ApiProperty()
+  @ApiProperty({
+    example: '(11) 11111-1111',
+  })
   phone: string;
 
-  @ApiProperty()
+  @ApiProperty({
+    example: '(11) 11111-1111',
+  })
   emergencyPhone: string;
 
-  @ApiProperty()
+  @ApiProperty({
+    example: 'Mary Ann',
+  })
   emergencyName: string;
 
-  @ApiProperty()
+  @ApiProperty({
+    example: false,
+  })
   isPremium: boolean;
 
-  @ApiProperty()
+  @ApiProperty({
+    example: false,
+  })
   isAdmin: boolean;
 
   @Exclude()
-  @ApiProperty()
   password: string;
 
-  @ApiProperty()
+  @ApiProperty({
+    example: 'Sao Paulo',
+  })
   city: string;
 
   @IsDate()
-  @ApiProperty()
+  @ApiProperty({
+    example: new Date(),
+  })
   createdAt: Date;
 
   @IsDate()
-  @ApiProperty()
+  @ApiProperty({
+    example: null,
+  })
   updatedAt: Date;
 
   @IsDate()
-  @ApiProperty()
+  @ApiProperty({
+    example: null,
+  })
   deletedAt: Date;
 
   attendees?: Attendee[];

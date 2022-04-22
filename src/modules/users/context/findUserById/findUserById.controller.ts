@@ -18,8 +18,7 @@ export class FindUserByIdController {
   @ApiCommomDecorators()
   public async handle(@Request() res) {
     try {
-      const userId = res.user.userId;
-      return await this.findUserByIdService.execute(userId);
+      return await this.findUserByIdService.execute(res.user.userId);
     } catch (error) {
       throw new HttpException(
         error.response.message,

@@ -1,8 +1,7 @@
 import { Injectable } from '@nestjs/common';
 
-import { QueryFiltersRequest } from 'src/shared/dtos/shared/queryFilters.dto';
-import { Event } from 'src/shared/entities/event.entity';
-
+import { QueryFiltersRequest } from '../../../../shared/dtos/shared/queryFilters.dto';
+import { Event } from '../../../../shared/entities/event.entity';
 import { EventRepo } from '../../repositories/events.repository';
 
 @Injectable()

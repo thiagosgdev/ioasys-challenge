@@ -16,13 +16,14 @@ export class ListUserInterestsByUserIdController {
   @Get('/list')
   @ApiOkResponse({
     description: 'A list of the user interests will be returned',
-    type: UserInterestResponseDTO,
+    type: [UserInterestResponseDTO],
   })
   @ApiCommomDecorators()
   public async handle(@Request() req: RequestDTO) {
     try {
-      const userId = req.user.userId;
-      return await this.listUserInterestsByUserIdService.execute(userId);
+      return await this.listUserInterestsByUserIdService.execute(
+        req.user.userId,
+      );
     } catch (error) {
       throw new HttpException(
         error.response.message,

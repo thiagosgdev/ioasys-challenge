@@ -4,9 +4,9 @@ import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 import { ValidationPipe } from '@nestjs/common';
 import { WinstonModule } from 'nest-winston';
 
-import configEnv from 'src/configs/env/index';
-import { winstonConfig } from 'src/configs/logger/winston.config';
-import { AppModule } from 'src/app.module';
+import configEnv from './configs/env/index';
+import { winstonConfig } from './configs/logger/winston.config';
+import { AppModule } from './app.module';
 
 async function bootstrap() {
   const logger = WinstonModule.createLogger(winstonConfig);

@@ -1,7 +1,7 @@
 import { Controller, Get, HttpException, Query, Request } from '@nestjs/common';
 import { ApiOkResponse, ApiTags } from '@nestjs/swagger';
-import { QueryFiltersRequest } from 'src/shared/dtos/shared/queryFilters.dto';
 
+import { QueryFiltersRequest } from '../../../../shared/dtos/shared/queryFilters.dto';
 import { ApiCommomDecorators } from '../../../../shared/decorators/globalDoc.decorator';
 import { EventAddressResponseDTO } from '../../../../shared/dtos/events/eventAddressResponse.dto';
 import { RequestDTO } from '../../../../shared/dtos/shared/request.dto';
@@ -17,7 +17,7 @@ export class ListEventsByUserInterestsController {
   @Get('/list/user')
   @ApiOkResponse({
     description: 'A list of events by user interests will be returned',
-    type: EventAddressResponseDTO,
+    type: [EventAddressResponseDTO],
   })
   @ApiCommomDecorators()
   public async handle(

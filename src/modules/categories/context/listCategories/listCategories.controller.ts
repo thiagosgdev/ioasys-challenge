@@ -1,6 +1,7 @@
 import { Controller, Get, HttpException } from '@nestjs/common';
 import { ApiOkResponse, ApiTags } from '@nestjs/swagger';
 
+import { CategoryResponse } from '../../../../shared/dtos/categories/category.dto';
 import { ApiCommomDecorators } from '../../../../shared/decorators/globalDoc.decorator';
 import { ListCategoriesService } from './listCategories.service';
 
@@ -12,6 +13,7 @@ export class ListCategoriesController {
   @Get('/list')
   @ApiOkResponse({
     description: 'A list of categories will be returned',
+    type: [CategoryResponse],
   })
   @ApiCommomDecorators()
   public async handle() {

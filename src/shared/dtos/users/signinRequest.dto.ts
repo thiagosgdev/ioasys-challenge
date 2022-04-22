@@ -10,7 +10,10 @@ import {
 export class SigninRequestDTO {
   @IsNotEmpty()
   @IsEmail()
-  @ApiProperty()
+  @ApiProperty({
+    example: 'test@test.com',
+    required: true,
+  })
   email: string;
 
   @IsNotEmpty()
@@ -18,8 +21,10 @@ export class SigninRequestDTO {
   @MinLength(6)
   @MaxLength(20)
   @ApiProperty({
+    required: true,
     minLength: 6,
     maxLength: 20,
+    example: 't9e1s*T',
   })
   password: string;
 }
