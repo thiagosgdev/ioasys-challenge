@@ -21,6 +21,7 @@ export class ListEventsParamsRequest {
   @IsOptional()
   @IsString()
   @ApiProperty({
+    description: 'Pass false or true, other value will be invalid',
     required: false,
     example: 'true',
   })
@@ -29,6 +30,7 @@ export class ListEventsParamsRequest {
   @IsOptional()
   @IsString()
   @ApiProperty({
+    description: 'Amount of rows do you want to skip',
     required: false,
     example: '5',
   })
@@ -37,6 +39,7 @@ export class ListEventsParamsRequest {
   @IsOptional()
   @IsString()
   @ApiProperty({
+    description: 'Amount of rows you want to take',
     required: false,
     example: '10',
   })

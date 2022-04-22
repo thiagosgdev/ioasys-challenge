@@ -41,8 +41,7 @@ export class UpdateAttendeeController {
     @Body() data: AttendeeRequestDTO,
   ) {
     try {
-      const userId = req.user.userId;
-      return await this.updateAttendeeService.execute(userId, data);
+      return await this.updateAttendeeService.execute(req.user.userId, data);
     } catch (error) {
       console.log(error);
       throw new HttpException(

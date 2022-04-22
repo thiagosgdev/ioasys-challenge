@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
-import { ListEventsParamsRequest } from 'src/shared/dtos/events/listEventParams.dto';
-import { Event } from 'src/shared/entities/event.entity';
 
+import { ListEventsParamsRequest } from '../../../../shared/dtos/events/listEventParams.dto';
+import { Event } from '../../../../shared/entities/event.entity';
 import { EventRepo } from '../../repositories/events.repository';
 
 @Injectable()

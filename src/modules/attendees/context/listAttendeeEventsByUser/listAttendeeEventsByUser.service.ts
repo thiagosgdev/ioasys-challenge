@@ -6,6 +6,11 @@ import { AttendeeRepo } from '../../repositories/attendee.repository';
 export class ListAttendeeEventsByUserIdService {
   constructor(private attendeeRepository: AttendeeRepo) {}
   async execute(data: ListAttendeeEventsRequestDTO) {
-    return await this.attendeeRepository.listAttendeeEventsByStatus(data);
+    const userId = data.userId;
+    const status = String(data.status).toUpperCase();
+    return await this.attendeeRepository.listAttendeeEventsByStatus(
+      userId,
+      status,
+    );
   }
 }

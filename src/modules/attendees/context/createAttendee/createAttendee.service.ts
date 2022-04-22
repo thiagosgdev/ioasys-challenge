@@ -10,7 +10,8 @@ export class CreateAttendeeService {
     private attendeeRepository: Repository<Attendee>,
   ) {}
   async execute(userId, data: AttendeeRequestDTO) {
-    const { status, eventId } = data;
+    const eventId = data.eventId;
+    const status = data.status.toUpperCase();
 
     const exists = await this.attendeeRepository.findOne({
       where: {

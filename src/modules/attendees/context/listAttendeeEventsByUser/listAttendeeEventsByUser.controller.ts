@@ -5,6 +5,7 @@ import { ListAttendeeEventsByUserResponseDTO } from '../../../../shared/dtos/att
 import { ApiCommomDecorators } from '../../../../shared/decorators/globalDoc.decorator';
 import { RequestDTO } from '../../../../shared/dtos/shared/request.dto';
 import { ListAttendeeEventsByUserIdService } from './listAttendeeEventsByUser.service';
+import { AttendeeStatusDTO } from 'src/shared/dtos/attendees/attendeeStatus.dto';
 
 @ApiTags('attendees')
 @Controller('/list')
@@ -22,13 +23,13 @@ export class ListAttendeeEventsByUserIdController {
   @ApiCommomDecorators()
   public async handle(
     @Request() req: RequestDTO,
-    @Query('status') status: string,
+    @Query() dto: AttendeeStatusDTO,
   ) {
     try {
       const userId = req.user.userId;
       return await this.listAttendeeEventsByUserIdService.execute({
         userId,
-        status,
+        status: dto.status,
       });
     } catch (error) {
       console.log(error);

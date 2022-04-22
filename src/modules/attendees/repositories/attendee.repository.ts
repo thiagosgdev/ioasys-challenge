@@ -11,8 +11,7 @@ export class AttendeeRepo {
     @InjectRepository(Attendee)
     private readonly repository: Repository<Attendee>,
   ) {}
-  async listAttendeeEventsByStatus(data: ListAttendeeEventsRequestDTO) {
-    const { userId, status } = data;
+  async listAttendeeEventsByStatus(userId: string, status: string) {
     return await this.repository
       .createQueryBuilder('attendees')
       .leftJoinAndSelect('attendees.event', 'event')

@@ -1,5 +1,5 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { IsNotEmpty, IsString, IsUUID } from 'class-validator';
+import { IsEnum, IsNotEmpty, IsUUID } from 'class-validator';
 
 export class ListAttendeeEventsRequestDTO {
   @IsUUID()
@@ -9,10 +9,10 @@ export class ListAttendeeEventsRequestDTO {
   })
   userId: string;
 
-  @IsString()
+  @IsEnum(['CONFIRMED', 'SAVED', 'saved', 'confirmed'])
   @IsNotEmpty()
   @ApiProperty({
-    examples: ['CONFIRMED', 'MAYBE', 'DECLINED'],
+    examples: ['CONFIRMED', 'SAVED'],
   })
   status: string;
 }
