@@ -9,7 +9,6 @@ import { JwtModule } from '@nestjs/jwt';
 import { ThrottlerGuard, ThrottlerModule } from '@nestjs/throttler';
 
 import { HealthModule } from './utils/health/health.module';
-import { MetricsController } from './utils/metrics/metrics.controller';
 import { LoggerInterceptor } from './shared/interceptors/logger.interceptor';
 import { JwtAuthGuard } from './shared/providers/EncryptProvider/jwtAuth.guard';
 import { winstonConfig } from './configs/logger/winston.config';
@@ -64,7 +63,6 @@ import { WellnessTipsModule } from './modules/wellnessTips/wellnessTips.module';
     UserDisabilitiesModule,
     WellnessTipsModule,
   ],
-  controllers: [MetricsController],
   providers: [
     {
       provide: APP_INTERCEPTOR,

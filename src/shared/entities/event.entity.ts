@@ -40,6 +40,9 @@ export class Event extends BaseEntity {
   @Column({ name: 'start_time' })
   startTime: string;
 
+  @Column({ name: 'end_time' })
+  endTime: string;
+
   @Column()
   price: number;
 
