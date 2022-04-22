@@ -30,7 +30,6 @@ export class ListEventsByUserInterestsController {
         filters,
       );
     } catch (error) {
-      console.log(error);
       throw new HttpException(
         error.response.message,
         error.response.statusCode,

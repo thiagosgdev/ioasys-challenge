@@ -81,8 +81,6 @@ export class EventRepo {
     take?: number,
     skip?: number,
   ): Promise<Event[]> {
-    console.log(userId);
-
     const query = this.repository
       .createQueryBuilder('events')
       .leftJoinAndSelect('events.users', 'users')

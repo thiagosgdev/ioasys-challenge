@@ -44,7 +44,6 @@ export class ResetPasswordService {
       },
     };
     await this.mailerService.sendMail(mail).catch((err) => {
-      console.log(err);
       throw new InternalServerErrorException(
         'There was a problem sending the e-mail, please contact the support',
       );

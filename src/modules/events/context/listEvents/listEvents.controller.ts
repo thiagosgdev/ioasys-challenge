@@ -27,7 +27,6 @@ export class ListEventsController {
     try {
       return await this.listEventsService.execute(data);
     } catch (error) {
-      console.log(error);
       throw new HttpException(
         error.response.message,
         error.response.statusCode,

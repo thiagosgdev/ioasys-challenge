@@ -32,7 +32,6 @@ export class ListAttendeeEventsByUserIdController {
         status: dto.status,
       });
     } catch (error) {
-      console.log(error);
       throw new HttpException(
         error.response.message,
         error.response.statusCode,

@@ -43,7 +43,6 @@ export class UpdateAttendeeController {
     try {
       return await this.updateAttendeeService.execute(req.user.userId, data);
     } catch (error) {
-      console.log(error);
       throw new HttpException(
         error.response.message,
         error.response.statusCode,

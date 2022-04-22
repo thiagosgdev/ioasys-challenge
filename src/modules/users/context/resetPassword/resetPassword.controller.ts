@@ -45,7 +45,6 @@ export class ResetPasswordController {
     try {
       return await this.resetPasswordService.execute(email);
     } catch (error) {
-      console.log(error);
       throw new HttpException(
         error.response.message,
         error.response.statusCode,

@@ -12,9 +12,7 @@ export class DailyMessageService {
   async execute(): Promise<MessageResponseDTO> {
     const messages = await this.messageRepository.find();
     let rand = Math.random();
-    console.log(rand);
     rand = Math.floor(rand * messages.length);
-    console.log(rand);
     return messages[rand];
   }
 }

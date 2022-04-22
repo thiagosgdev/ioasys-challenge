@@ -30,10 +30,8 @@ export class CreateEventController {
     @Body() data: CreateEventRequestDTO,
   ) {
     try {
-      const user = req.user;
-      return await this.createEventService.execute(user, data);
+      return await this.createEventService.execute(req.user, data);
     } catch (error) {
-      console.log(error);
       throw new HttpException(
         error.response.message,
         error.response.statusCode,
