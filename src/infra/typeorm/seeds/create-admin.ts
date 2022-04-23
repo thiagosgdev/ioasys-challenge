@@ -16,12 +16,12 @@ const createAdmin = async () => {
 
   await client.connect();
   await client.query(
-    `INSERT INTO users (id, name, password, email, about_me, city, is_admin, is_premium, phone, emergency_name, emergency_phone) VALUES ('758105a4-6a67-4afb-bb4f-6db73dcb0366', 'Squad 8 Camp', '${password}', 'squad8.test@gmail.com', null, 'About baou about', false, false, '(99)99999-9999', 'Fabi', '(88)88888-8888');`,
+    `INSERT INTO users (id, name, password, email, about_me, city, is_admin, is_premium, phone, emergency_name, emergency_phone) VALUES ('758105a4-6a67-4afb-bb4f-6db73dcb0366', 'Squad 8 Camp', '${password}', 'squad8.test@gmail.com', null, null, false, false, '(99)99999-9999', null, null);`,
   );
   password = await hash('12345678', 8);
   await client.query(
     `
-    INSERT INTO users (id, name, password, email, about_me, city, is_admin, is_premium, phone, emergency_name, emergency_phone) VALUES ('0fb4deeb-7fb5-4ea9-818b-fc25af011ce0', 'Admin', '${password}', 'admin@admin.com', 'Trololololo!', 'Sao Paulo', true, false, '(99)99999-9999', null, null);
+    INSERT INTO users (id, name, password, email, about_me, city, is_admin, is_premium, phone, emergency_name, emergency_phone) VALUES ('0fb4deeb-7fb5-4ea9-818b-fc25af011ce0', 'Admin', '${password}', 'admin@admin.com', null, 'Sao Paulo', true, false, '(99)99999-9999', null, null);
     `,
   );
   password = await hash('12345678', 8);
@@ -33,13 +33,14 @@ const createAdmin = async () => {
   password = await hash('12345678', 8);
   await client.query(
     `
-    INSERT INTO users (id, name, password, email, about_me, city, is_admin, is_premium, phone, emergency_name, emergency_phone) VALUES ('14522631-04b7-4de1-9bba-9c35758e8c5e', 'Premium user', '${password}', 'premium@premium.com', null, 'Premium City', false, true, '(88)88888-8888', null, null);;
+    INSERT INTO users (id, name, password, email, about_me, city, is_admin, is_premium, phone, emergency_name, emergency_phone) VALUES ('14522631-04b7-4de1-9bba-9c35758e8c5e', 'Premium user', '${password}', 'premium@premium.com', null, 'New York', false, true, '(88)88888-8888', null, null);;
     `,
   );
+
   password = await hash('12345678', 8);
   await client.query(
     `
-    INSERT INTO users (id, name, password, email, about_me, city, is_admin, is_premium, phone, emergency_name, emergency_phone) VALUES ('638e3a55-faf5-48f2-98fc-89ce04e0b51a', 'Student 01', '${password}', 'student1@test.com', 'Im studyng to become a Physician', 'Premium City', false, false, '(11)22222-2222', null, null);;
+    INSERT INTO users (id, name, password, email, about_me, city, is_admin, is_premium, phone, emergency_name, emergency_phone) VALUES ('638e3a55-faf5-48f2-98fc-89ce04e0b51a', 'Student 01', '${password}', 'student1@test.com', null, 'Belo Horizonte', false, false, '(11)22222-2222', null, null);;
     `,
   );
   console.log('Users created!');
