@@ -98,14 +98,14 @@ const createData = async () => {
     INSERT INTO events (
         id, name, description, date, max_participants, start_time, end_time, user_identity, is_online, is_pet_friendly, activity_id, user_id, is_promoted, price) VALUES 
         ('d1a9e7b5-0383-4ed7-a336-9653c8b26f52', 'Aula de meditação', 'Espaço Lótus', '2022-05-02',  100, '18:30','21:00','1245637', true, false,'0e94a69f-b4c2-47ac-a4fc-6c47eac2d7cc', '0fb4deeb-7fb5-4ea9-818b-fc25af011ce0', false, 0),
-        ('3f282eea-8127-4cd3-80ec-05ee288a6cf2', 'Yoga no gramado', 'Campus II Universidade', '2022-04-28',  50, '12:30', null,'987654',  false, false, '31cfa9f0-d462-4274-bfd5-4ffac931d9a8"', '0fb4deeb-7fb5-4ea9-818b-fc25af011ce0', false, 20),
+        ('3f282eea-8127-4cd3-80ec-05ee288a6cf2', 'Yoga no gramado', 'Campus II Universidade', '2022-04-28',  50, '12:30', null,'987654',  false, false, '31cfa9f0-d462-4274-bfd5-4ffac931d9a8', '0fb4deeb-7fb5-4ea9-818b-fc25af011ce0', false, 20),
         ('413880b6-6863-469e-9ab8-6455f17417be', 'Torneio Xadrez', 'Campus I, Universidade', '2022-04-26',  20,  '18:30', null,'1245637', false, true,'8fe385c9-4893-43e8-b6df-26ee9d4f4df5', '3dd96c63-5892-46ab-8830-e1231d32c6d6', false, 100),
         ('cc2da024-76e7-4ae6-9e39-169ed9138412', 'Corrida Noturna', 'Campus II Universidade', '2022-04-29',  20, '18:30', null,'1245637', false, true,'d01d82bb-d056-412a-bb2e-6719dd7c5058', '3dd96c63-5892-46ab-8830-e1231d32c6d6', false, 0),
         ('377c172d-0dce-4d57-bf6e-808b164749b7', 'Exibição Nomadland', 'Campus II, Universidade', '2022-05-09',  40, '18:30', null,'1245637', false, true,'c3a87d8e-2bf6-4c89-a387-7931c88ae8d7', '0fb4deeb-7fb5-4ea9-818b-fc25af011ce0', false, null),
         ('5af2d435-c4a4-4ec7-a8e6-85f05384e1cb', 'Aula de pintura', 'Aula para todos os públicos', '2022-05-09',  50, '18:30', null, '1245637', false, true, '6a249067-8b36-4459-9427-fd6c56160fb5', '14522631-04b7-4de1-9bba-9c35758e8c5e', true, null),
         ('2913c179-a18e-446b-838b-f575682b3375', 'Tecnologia para saúde', 'Focado para universitários', '2022-05-09',  50, '18:30', null, '1245637', true, false, 'f7cf2498-5e8b-47a3-9941-eb5cd38fd3e1', '14522631-04b7-4de1-9bba-9c35758e8c5e', false, null),
         ('c9562745-03d5-44e6-b0e5-8e9cfd956e0b', 'Como planejar sua semana', 'Espaço do saber', '2022-04-26',  50, '18:30', null, '1245637', true, false, 'c955a402-9f5b-45e5-9e75-778895185e47', '0fb4deeb-7fb5-4ea9-818b-fc25af011ce0', false, null),
-        ('7899928e-d70a-4111-87e1-854053bf063b', 'Treino funcional em casa', 'Academia do corpo', '2022-05-04',  50, '18:30', null, '1245637', true, false, '36482685-538f-4797-bcbd-79f4d4792261', '0fb4deeb-7fb5-4ea9-818b-fc25af011ce0', false, null),
+        ('7899928e-d70a-4111-87e1-854053bf063b', 'Treino funcional em casa', 'Academia do corpo', '2022-05-04',  50, '18:30', null, '1245637', true, false, '36482685-538f-4797-bcbd-79f4d4792261', '0fb4deeb-7fb5-4ea9-818b-fc25af011ce0', false, null);
         
     INSERT INTO addresses (id, street, number, city, state, zip_code, event_id) VALUES         
         ('68484939-cf4b-4a8b-b250-a22e48e93e52', 'Gramado do Centro de Vivência', 123, 'Belo Horizonte', 'MG', '999-68866', '3f282eea-8127-4cd3-80ec-05ee288a6cf2'),
