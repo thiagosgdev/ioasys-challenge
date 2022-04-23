@@ -82,32 +82,37 @@ const createData = async () => {
     ('a440b301-7363-41c9-8cf9-fe591b89edc4', 'ecf2d6c7-7e91-4a36-bef2-064e73373aec', 'Curiosidade, entusiasmo e paixão pela vida são aspectos normais da saúde perfeita. (Deepak Chopra)', true),
     ('c13bbb03-a621-478f-9f89-dcbc51b868a6', 'ecf2d6c7-7e91-4a36-bef2-064e73373aec', 'A saúde e a alegria promovem-se uma à outra. (Joseph Addison)', true);
 
-    INSERT INTO wellness_tips (id, title, description, image_url) VALUES ('4bb69b6f-98ce-4987-9c02-079b4fc62653', 'Chá para dormir melhor', 'Iniciando o ritual para uma boa noite.', 'https://i.picsum.photos/id/1000/360/300.jpg?hmac=jNiTq05sReJh4XUHdveLzABQSwtyjuCZqWwHNBQ2kwI'),
-        ('ce743f3d-a4f7-4463-ae48-5d480378ca41', 'Planeje suas refeições', 'Comer bem para viver com saúde', 'https://i.picsum.photos/id/600/360/300.jpg?hmac=jfMCXpFhx8Wu7Ormrl2pzeUSZz3nmeFSy2Hcg10mRGo'),
-        ('14bfe649-eb02-4036-a1e4-09f0d064d1d6', 'Faça pausas e alongamentos', 'Falta de movimento prejudica sua saúde', 'https://i.picsum.photos/id/585/360/300.jpg?hmac=uk84ujLBSUQiv4SZ0z-VhzTBWj-z4dLOsj6Ff-uMfhg'),
-        ('af2719a6-e104-44b6-a1e3-1e85e205c40c', 'Tenha uma vida social ativa', 'Socializar é uma necessidade humana', 'https://i.picsum.photos/id/485/360/300.jpg?hmac=iUldPFRTR6Tyrf3-8cy5YgrMQc9qbvqsNzLJUqgwFBY'),
-        ('46ee8075-7dd5-45d5-b674-9ebe40f00985', 'Evite bloqueios mentais', 'Faça pausas para limpar sua mente', 'https://i.picsum.photos/id/805/360/300.jpg?hmac=Irl6Lhvnc8wX7DsFoRHQE3aKUlZS4JyaRzdxaa7_3JM'),
-        ('8ab12849-b21c-4874-bba5-93687fcdc0fb', 'Técnicas de respiração', '5 minutos eficientes para acalmar', 'https://i.picsum.photos/id/301/360/300.jpg?hmac=dxy4g_QmUW8DOR1E23O40XBIhULUmVFquwnoOnDyOMY'),
-        ('dced21b9-1f6b-4bfa-8807-d8e43ee1189d', 'Faça algo que você gosta', 'Mesmo que tenha pouco tempo livre', 'https://i.picsum.photos/id/1012/360/300.jpg?hmac=iRkILyed49_mSTfKp9VvASI6MwZfEFwXOqOO3_jDgig'),
-        ('7c66a3ac-c8a1-4ad9-8ff9-21561275261b', 'Terapia com artes', 'Atividades manuais para relaxar', 'https://i.picsum.photos/id/267/360/300.jpg?hmac=AssPQwYgc8SquwpIVvRv6NyWCS-B4B2NKuPK-0R8j4I'),
-        ('d4b498ad-be8e-4e03-b78c-f24bcafb6ad3', 'Playlist para estudar', 'Sons para manter o foco e concentrar', 'https://i.picsum.photos/id/320/360/300.jpg?hmac=jU0bEJ_De04dpfTWI1XOcfMqRKtW3qrXK0lT-4W4bG0');
+    INSERT INTO wellness_tips (id, title, description, image_url) VALUES ('4bb69b6f-98ce-4987-9c02-079b4fc62653', 'Chá para dormir melhor', 'Iniciando o ritual para uma boa noite.', 'https://i.ibb.co/gVh9dVk/image-tea.png'),
+        ('ce743f3d-a4f7-4463-ae48-5d480378ca41', 'Planeje suas refeições', 'Comer bem para viver com saúde', 'https://i.ibb.co/846Y1qg/insights-2.png'),
+        ('14bfe649-eb02-4036-a1e4-09f0d064d1d6', 'Faça pausas e alongamentos', 'Falta de movimento prejudica sua saúde', 'https://i.ibb.co/S3RgrcM/insights-3.png'),
+        ('af2719a6-e104-44b6-a1e3-1e85e205c40c', 'Tenha uma vida social ativa', 'Socializar é uma necessidade humana', 'https://i.ibb.co/80X79NP/insights-1.png'),
+        ('46ee8075-7dd5-45d5-b674-9ebe40f00985', 'Evite bloqueios mentais', 'Faça pausas para limpar sua mente', 'https://i.ibb.co/pRjhBBd/insights-5.png'),
+        ('8ab12849-b21c-4874-bba5-93687fcdc0fb', 'Técnicas de respiração', '5 minutos eficientes para acalmar', 'https://i.ibb.co/Lvvj96X/insights-6.png'),
+        ('dced21b9-1f6b-4bfa-8807-d8e43ee1189d', 'Faça algo que você gosta', 'Mesmo que tenha pouco tempo livre', 'https://i.ibb.co/fSPcHPH/insights-7.png'),
+        ('7c66a3ac-c8a1-4ad9-8ff9-21561275261b', 'Terapia com artes', 'Atividades manuais para relaxar', 'https://i.ibb.co/SsHvRss/insights-4.png'),
+        ('d4b498ad-be8e-4e03-b78c-f24bcafb6ad3', 'Playlist para estudar', 'Sons para manter o foco e concentrar', 'https://i.ibb.co/866YjNF/insights-8.png'),
+        ('d1e6da87-7921-4be7-8d16-6573b92dcfb1', 'Organizando a rotina', 'Estratégicas a rotina', 'https://i.ibb.co/2yzhGNb/insights-organizing.png'),
+        ('8e128d0c-2f81-4cae-80b2-d41ad93d39f3', 'Suporte psicológico', 'Comece a praticar em casa!', 'https://i.ibb.co/kB007rf/insights-meditation.png'),
+        ('5dab50e0-49d5-44fd-957d-1da5f3f0a8b3', 'Apps para meditar', 'Onde buscar atendimento!', 'https://i.ibb.co/jgMTNwc/insights-support.png');
 
     INSERT INTO events (
         id, name, description, date, max_participants, start_time, end_time, user_identity, is_online, is_pet_friendly, activity_id, user_id, is_promoted, price) VALUES 
-        ('d1a9e7b5-0383-4ed7-a336-9653c8b26f52', 'Volei na Praia', 'Jogar volei na praia do Arrastão', '2022-04-30',  20, '18:30','21:00','1245637', false, false,'16c2e354-773e-4e99-9c3a-7237f888b2b6', '0fb4deeb-7fb5-4ea9-818b-fc25af011ce0', false, 0),
-        ('3f282eea-8127-4cd3-80ec-05ee288a6cf2', 'Meditação Tibetana', 'Meditação na praça do Lobato', '2022-08-12',  50, '12:30', null,'987654',  false, false, 'f4a8b18e-eb79-4b48-8442-fb322687b409', '0fb4deeb-7fb5-4ea9-818b-fc25af011ce0', false, 20),
-        ('413880b6-6863-469e-9ab8-6455f17417be', 'Show Sabaton', 'Open show Amaranthe, bora galera', '2022-06-20',  20,  '18:30', null,'1245637', false, true,'31cfa9f0-d462-4274-bfd5-4ffac931d9a8', '3dd96c63-5892-46ab-8830-e1231d32c6d6', false, 100),
-        ('cc2da024-76e7-4ae6-9e39-169ed9138412', 'Futebol na rua', 'Futebol na rua 3', '2022-05-10',  20, '18:30', null,'1245637', false, true,'76e56e1a-c5fb-451b-b49c-0019258383dc', '3dd96c63-5892-46ab-8830-e1231d32c6d6', false, 0),
-        ('377c172d-0dce-4d57-bf6e-808b164749b7', 'Palestra sobre Saude mental', 'Palestra voltada para todos os públicos', '2022-04-30',  40, '18:30', null,'1245637', false, true,'f4a8b18e-eb79-4b48-8442-fb322687b409', '0fb4deeb-7fb5-4ea9-818b-fc25af011ce0', false, null),
-        ('5af2d435-c4a4-4ec7-a8e6-85f05384e1cb', 'Terra do amanhã 2022', 'Varios shows de diferentes estilos musicais', '2022-10-25',  1000, '18:30', null, '1245637', false, true, 'f4a8b18e-eb79-4b48-8442-fb322687b409', '14522631-04b7-4de1-9bba-9c35758e8c5e', true, 500);
+        ('d1a9e7b5-0383-4ed7-a336-9653c8b26f52', 'Aula de meditação', 'Espaço Lótus', '2022-05-02',  100, '18:30','21:00','1245637', true, false,'0e94a69f-b4c2-47ac-a4fc-6c47eac2d7cc', '0fb4deeb-7fb5-4ea9-818b-fc25af011ce0', false, 0),
+        ('3f282eea-8127-4cd3-80ec-05ee288a6cf2', 'Yoga no gramado', 'Campus II Universidade', '2022-04-28',  50, '12:30', null,'987654',  false, false, '31cfa9f0-d462-4274-bfd5-4ffac931d9a8"', '0fb4deeb-7fb5-4ea9-818b-fc25af011ce0', false, 20),
+        ('413880b6-6863-469e-9ab8-6455f17417be', 'Torneio Xadrez', 'Campus I, Universidade', '2022-04-26',  20,  '18:30', null,'1245637', false, true,'8fe385c9-4893-43e8-b6df-26ee9d4f4df5', '3dd96c63-5892-46ab-8830-e1231d32c6d6', false, 100),
+        ('cc2da024-76e7-4ae6-9e39-169ed9138412', 'Corrida Noturna', 'Campus II Universidade', '2022-04-29',  20, '18:30', null,'1245637', false, true,'d01d82bb-d056-412a-bb2e-6719dd7c5058', '3dd96c63-5892-46ab-8830-e1231d32c6d6', false, 0),
+        ('377c172d-0dce-4d57-bf6e-808b164749b7', 'Exibição Nomadland', 'Campus II, Universidade', '2022-05-09',  40, '18:30', null,'1245637', false, true,'c3a87d8e-2bf6-4c89-a387-7931c88ae8d7', '0fb4deeb-7fb5-4ea9-818b-fc25af011ce0', false, null),
+        ('5af2d435-c4a4-4ec7-a8e6-85f05384e1cb', 'Aula de pintura', 'Aula para todos os públicos', '2022-05-09',  50, '18:30', null, '1245637', false, true, '6a249067-8b36-4459-9427-fd6c56160fb5', '14522631-04b7-4de1-9bba-9c35758e8c5e', true, null),
+        ('2913c179-a18e-446b-838b-f575682b3375', 'Tecnologia para saúde', 'Focado para universitários', '2022-05-09',  50, '18:30', null, '1245637', true, false, 'f7cf2498-5e8b-47a3-9941-eb5cd38fd3e1', '14522631-04b7-4de1-9bba-9c35758e8c5e', false, null),
+        ('c9562745-03d5-44e6-b0e5-8e9cfd956e0b', 'Como planejar sua semana', 'Espaço do saber', '2022-04-26',  50, '18:30', null, '1245637', true, false, 'c955a402-9f5b-45e5-9e75-778895185e47', '0fb4deeb-7fb5-4ea9-818b-fc25af011ce0', false, null),
+        ('7899928e-d70a-4111-87e1-854053bf063b', 'Treino funcional em casa', 'Academia do corpo', '2022-05-04',  50, '18:30', null, '1245637', true, false, '36482685-538f-4797-bcbd-79f4d4792261', '0fb4deeb-7fb5-4ea9-818b-fc25af011ce0', false, null),
         
-    INSERT INTO addresses (id, street, number, city, state, zip_code, event_id) VALUES 
-        ('a7819eeb-9c89-427c-b46b-bc2a584aaf8a', 'Rua das Andorinhas', 123, 'Sao Paulo', 'SP', '666666-666', 'd1a9e7b5-0383-4ed7-a336-9653c8b26f52'),
-        ('68484939-cf4b-4a8b-b250-a22e48e93e52', 'Rua Macapa', 123, 'Rio de Janeiro', 'RJ', '999-68866', '3f282eea-8127-4cd3-80ec-05ee288a6cf2'),
-        ('a53da905-1ad4-4b52-a4f1-d316717f6dd6', 'Rua Ilhabela', 876, 'Salvador', 'BA', '8888-888', '413880b6-6863-469e-9ab8-6455f17417be'),
-        ('1081479a-bcf8-4da8-95f4-d1ab1cb9dc5c', 'Rua Ubatuba', 98, 'Campinas', 'SP', '88888-66886', 'cc2da024-76e7-4ae6-9e39-169ed9138412'),
-        ('b6d9280e-3ca1-4b3a-982e-0bb25cd8824e', 'Rua dos Peixes', 456, 'São José dos Campos', 'SP', '666666-666', '377c172d-0dce-4d57-bf6e-808b164749b7'),
-        ('ef69c11f-9445-4f6a-905e-e38babbd693c', 'Rua Santa Joaquina', 987, 'Belo Horizonte', 'MG', '666666-666', '5af2d435-c4a4-4ec7-a8e6-85f05384e1cb');
+    INSERT INTO addresses (id, street, number, city, state, zip_code, event_id) VALUES         
+        ('68484939-cf4b-4a8b-b250-a22e48e93e52', 'Gramado do Centro de Vivência', 123, 'Belo Horizonte', 'MG', '999-68866', '3f282eea-8127-4cd3-80ec-05ee288a6cf2'),
+        ('a53da905-1ad4-4b52-a4f1-d316717f6dd6', 'Espaço Multiuso', 876, 'Belo Horizonte', 'MG', '8888-888', '413880b6-6863-469e-9ab8-6455f17417be'),
+        ('1081479a-bcf8-4da8-95f4-d1ab1cb9dc5c', 'Entrada 2', 98, 'Belo Horizonte', 'MG', '88888-66886', 'cc2da024-76e7-4ae6-9e39-169ed9138412'),
+        ('b6d9280e-3ca1-4b3a-982e-0bb25cd8824e', 'Cine DCE', 456, 'Belo Horizonte', 'MG', '666666-666', '377c172d-0dce-4d57-bf6e-808b164749b7'),
+        ('ef69c11f-9445-4f6a-905e-e38babbd693c', 'Rua Amendoeiras', 2, 'Belo Horizonte', 'MG', '666666-666', '5af2d435-c4a4-4ec7-a8e6-85f05384e1cb');
     
     INSERT INTO attendees (id, user_id, event_id, status) VALUES 
         ('8bb38f06-3fad-486e-9748-78b2e2a0e962', '14522631-04b7-4de1-9bba-9c35758e8c5e', 'd1a9e7b5-0383-4ed7-a336-9653c8b26f52', 'SAVED'),
