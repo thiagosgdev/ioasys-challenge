@@ -1,0 +1,1338 @@
+{
+	"info": {
+		"_postman_id": "a2907462-c4aa-45b5-ad02-e44fa433ecab",
+		"name": "Squad 8",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Users",
+			"item": [
+				{
+					"name": "Reset Password",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"thiagosgdev@gmail.com\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/users/resetpassword",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"users",
+								"resetpassword"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Signup",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Pedro\",\n    \"email\": \"pbruno1283@gmail.com\",\n    \"phone\": \"12456789\",\n    \"password\":\"12345678\",\n    \"passwordConfirmation\": \"12345678\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/users/signup",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"users",
+								"signup"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Logout",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/users/logout",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"users",
+								"logout"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "List Users",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/users/list",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"users",
+								"list"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Sigin",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"admin@admin.com\",\n    \"password\": \"12345678\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/users/signin",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"users",
+								"signin"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update User",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI3NTgxMDVhNC02YTY3LTRhZmItYmI0Zi02ZGI3M2RjYjAzNjYiLCJyb2xlIjoidXNlciIsImlhdCI6MTY0OTYwMjQ5NCwiZXhwIjoxNjUwMjA3Mjk0fQ.R8l0oNfY43ePeJxGQ-6MK7Lm15LMP5chNGnx3-4CwOU",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Squad8\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/users",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Refresh",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"refreshToken\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI1MjE3ZmI4NC01ZDIzLTQwNjUtODI2YS04NTVlMWY0MjY1ZDQiLCJyb2xlIjoidXNlciIsImlhdCI6MTY1MDU5ODc3OCwiZXhwIjoxNjUwNTk5Mzc4fQ.h70uFXRFpnyK15iI9oLFXZRuIPWIuOE1S7pov6qoHzc\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/users/refresh",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"users",
+								"refresh"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Find User by Email",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/users/find?email=luma.silva123987@gmail.com",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"users",
+								"find"
+							],
+							"query": [
+								{
+									"key": "email",
+									"value": "luma.silva123987@gmail.com"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Find User by Id",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/users/find",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"users",
+								"find"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Messages",
+			"item": [
+				{
+					"name": "List Message Types",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/messages/types/list",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"messages",
+								"types",
+								"list"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "List Messages",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/messages/list",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"messages",
+								"list"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Message",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"text\": \"Exercite a cada 1h durante o home office.\",\n    \"messageTypeId\": \"596f420d-4e06-48da-9347-9960b7785b3e\",\n    \"active\": true\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/messages",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"messages"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Message Type",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Saude mental\",\n    \"active\": true\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/messages/types",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"messages",
+								"types"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Daily message",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/messages/daily",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"messages",
+								"daily"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Moods",
+			"item": [
+				{
+					"name": "Create Mood",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Irritado\",\n    \"active\": true\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/moods",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"moods"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "List Moods",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/moods/list",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"moods",
+								"list"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Activities",
+			"item": [
+				{
+					"name": "Create Activity",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Futebol\",\n    \"active\": true\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/activities",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"activities"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "List Activities",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Futebol\",\n    \"active\": true\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/activities/list",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"activities",
+								"list"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Categories",
+			"item": [
+				{
+					"name": "Create Category",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Bem estar\",\n    \"active\": true\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/categories",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"categories"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "List Categories",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/categories/list",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"categories",
+								"list"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "User Interests",
+			"item": [
+				{
+					"name": "Create User Interest",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"activityIds\":[\"31cfa9f0-d462-4274-bfd5-4ffac931d9a8\"]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/users/interests",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"users",
+								"interests"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "List Users Interest",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI3NTgxMDVhNC02YTY3LTRhZmItYmI0Zi02ZGI3M2RjYjAzNjYiLCJyb2xlIjoidXNlciIsImlhdCI6MTY0OTUyNTY1MiwiZXhwIjoxNjUwMTMwNDUyfQ.PbZEGMS1WRWbZJ3UotJLpJmnHjc3URtGoDg_hs4Cf50",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/users/interests/list",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"users",
+								"interests",
+								"list"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "List Users Interest by user ID",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/users/interests/list",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"users",
+								"interests",
+								"list"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Events",
+			"item": [
+				{
+					"name": "Create Event",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"event\": {\n        \"name\": \"Futebol no campo do Sete\",\n        \"description\": \"Partida entre Time A e Time B\",\n        \"startTime\": \"18:30\",\n        \"date\": \"5/30/2022\" ,\n        \"maxParticipants\": 23,\n        \"activityId\": \"f7cf2498-5e8b-47a3-9941-eb5cd38fd3e1\",\n        \"userIdentity\": \"12345-123\",\n        \"accessibilities\": [\"a5be99b0-eb8e-4149-8550-04ee30d16b70\", \"e3d97014-f59d-4098-8866-2dec0e866a75\"],\n        \"isOnline\": false,\n        \"isPetFriendly\": false\n    },\n    \"address\": {\n        \"street\": \"Rua dos Andradas\",\n        \"number\": \"123\",\n        \"city\": \"São Paulo\",\n        \"state\":  \"SP\",\n        \"zipCode\": \"11111-111\"\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/events",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"events"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "List Events",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/events/list",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"events",
+								"list"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "List Events by User Interest",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/events/list/user/",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"events",
+								"list",
+								"user",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Event",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"event\": {\n        \"eventId\": \"413880b6-6863-469e-9ab8-6455f17417be\",\n        \"name\": \"Show Sabaton Maximus Festival\",\n        \"date\": \"05/20/2022\",\n        \"isPetFriendly\": false\n    },\n    \"address\": {\n        \"street\": \"Rua Andromeda\"\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/events",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"events"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "List Organizer Events",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/events/organizer/list",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"events",
+								"organizer",
+								"list"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Activities Categories",
+			"item": [
+				{
+					"name": "Create Activity Category",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"activityId\": \"\",\n    \"\":\"\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/activities/categories",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"activities",
+								"categories"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Addresses",
+			"item": [
+				{
+					"name": "Create Address",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"street\": \"Rua Alo\",\n    \"number\": 52,\n    \"city\": \"Random\",\n    \"state\": \"SP\",\n    \"zipCode\": \"11111-111\",\n    \"userId\": \"3beed8b9-8190-4e58-8685-740226fced5d\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/addresses",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"addresses"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "List Address",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/addresses/list",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"addresses",
+								"list"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "User Moods",
+			"item": [
+				{
+					"name": "Create User Moods",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"moodId\": \"ea3fa04f-cda9-480d-90da-354307a1ae05\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/users/moods",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"users",
+								"moods"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "List User Moods",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/users/moods/list",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"users",
+								"moods",
+								"list"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Attendee",
+			"item": [
+				{
+					"name": "Create Attendee",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"eventId\": \"d1a9e7b5-0383-4ed7-a336-9653c8b26f52\",\n    \"status\": \"confirmed\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/events/attendees",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"events",
+								"attendees"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Attendee Status",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"eventId\": \"5af2d435-c4a4-4ec7-a8e6-85f05384e1cb\",\n    \"status\": \"CONFIRMED\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/events/attendees",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"events",
+								"attendees"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "List Attendees",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI3NTgxMDVhNC02YTY3LTRhZmItYmI0Zi02ZGI3M2RjYjAzNjYiLCJyb2xlIjoidXNlciIsImlhdCI6MTY0OTY3NzQwNSwiZXhwIjoxNjUwMjgyMjA1fQ.f-FA70i17KNXGwEz-GVnkj7mbpnIcfvjopjyQs3dxJA",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/events/attendees/list",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"events",
+								"attendees",
+								"list"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "List Attendee Events",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/events/attendees/list/user?status=confirmed",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"events",
+								"attendees",
+								"list",
+								"user"
+							],
+							"query": [
+								{
+									"key": "status",
+									"value": "confirmed"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Attendee",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/events/attendees?eventId=d1a9e7b5-0383-4ed7-a336-9653c8b26f52",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"events",
+								"attendees"
+							],
+							"query": [
+								{
+									"key": "eventId",
+									"value": "d1a9e7b5-0383-4ed7-a336-9653c8b26f52"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Disabilities",
+			"item": [
+				{
+					"name": "List Disabilities",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/disabilities/list",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"disabilities",
+								"list"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "User Disabilities",
+			"item": [
+				{
+					"name": "Create User Disability",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"userId\": \"3dd96c63-5892-46ab-8830-e1231d32c6d6\",\n    \"disabilityIds\": [\"e5862d84-17a8-4d1b-b216-2e3465aae137\", \"9913e26d-54df-4f99-aa92-703c370890c8\"]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/users/disabilities",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"users",
+								"disabilities"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "List All Users Disabilities",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/users/disabilities/list",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"users",
+								"disabilities",
+								"list"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "List Users Disabilities by User ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/users/disabilities/list/3dd96c63-5892-46ab-8830-e1231d32c6d6",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"users",
+								"disabilities",
+								"list",
+								"3dd96c63-5892-46ab-8830-e1231d32c6d6"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Wellness",
+			"item": [
+				{
+					"name": "List Wellness Tips",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/wellness/list?take=5",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"wellness",
+								"list"
+							],
+							"query": [
+								{
+									"key": "take",
+									"value": "5"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Docs",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/api/docs",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"api",
+						"docs"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"variable": [
+		{
+			"key": "token",
+			"value": "eyJ1c2VySWQiOiI3NTgxMDVhNC02YTY3LTRhZmItYmI0Zi02ZGI3M2RjYjAzNjYiLCJyb2xlIjoidXNlciIsImlhdCI6MTY0OTcxMDkzOSwiZXhwIjoxNjUwMzE1NzM5fQ"
+		}
+	]
+}
