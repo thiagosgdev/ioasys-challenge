@@ -4,7 +4,9 @@ import { ApiOkResponse, ApiTags } from '@nestjs/swagger';
 import { ListActivitiesService } from './listActivities.service';
 import { ApiCommomDecorators } from '../../../../shared/decorators/globalDoc.decorator';
 import { ActivityResponse } from '../../../../shared/dtos/activities/activity.dto';
+import { Public } from 'src/shared/decorators/public.decorator';
 
+@Public()
 @ApiTags('activities')
 @Controller()
 export class ListActivitiesController {
